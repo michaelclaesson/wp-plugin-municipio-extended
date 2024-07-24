@@ -23,5 +23,10 @@
               "type:wordpress-muplugin"
           ]
       }
+  },
+  "autoload": {
+    "psr-4": {
+      "MunicipioExtended\\": "psr-4/"
+    }
   }
 }
