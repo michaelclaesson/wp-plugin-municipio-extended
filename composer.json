@@ -13,5 +13,15 @@
     "allow-plugins": {
       "php-http/discovery": true
     }
+  },
+  "extra": {
+      "installer-name": "municipio-extended",
+      "installer-paths": {
+          "vendor/{$vendor}/{$name}/": [
+              "vendor:wpackagist-plugin",
+              "type:wordpress-plugin",
+              "type:wordpress-muplugin"
+          ]
+      }
   }
 }
