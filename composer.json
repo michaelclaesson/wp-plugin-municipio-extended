@@ -1,0 +1,17 @@
+{
+  "name": "municipio-lts/wp-plugin-municipio-extended-2024",
+  "description": "WordPress plugin that adds more features to Municipio",
+  "type": "wordpress-plugin",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "AGPL-3.0",
+  "require": {
+    "elasticsearch/elasticsearch": "^8.14",
+    "imangazaliev/didom": "^2.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}

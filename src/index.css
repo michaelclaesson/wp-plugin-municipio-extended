@@ -1,0 +1,24 @@
+.tailwind {
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer base {
+    :focus-visible {
+      box-shadow: none;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  @layer components {
+    .grid {
+      gap: 0;
+    }
+    .grid > * {
+      min-height: auto;
+    }
+  }
+}
