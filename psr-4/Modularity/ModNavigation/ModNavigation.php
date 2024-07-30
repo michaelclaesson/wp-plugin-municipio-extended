@@ -159,9 +159,11 @@ class ModNavigation extends \Modularity\Module {
         "description" => $post
           ? get_field("page_navigation_description", $post->ID)
           : null,
-        "color" => $post
-          ? get_field("page_apperance_theme_color", $post->ID)
-          : null,
+        "color" =>
+          $item["color"] ?:
+          ($post
+            ? get_field("page_apperance_theme_color", $post->ID)
+            : null),
       ];
     }, $items);
   }
