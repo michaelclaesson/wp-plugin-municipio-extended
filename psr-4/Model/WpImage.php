@@ -2,23 +2,12 @@
 
 namespace MunicipioExtended\Model;
 
-class WpImage extends Model {
-  protected $attachment_id;
-  protected $attachment;
+class WpImage extends WpPost {
   protected $size;
 
-  public function __construct($attachment, $size = "thumbnail", $data = []) {
-    if (is_numeric($attachment)) {
-      $this->attachment_id = $attachment;
-      $this->attachment = get_post($attachment);
-    } elseif ($attachment instanceof \WP_Post) {
-      $this->attachment_id = $attachment->ID;
-      $this->attachment = $attachment;
-    } else {
-      throw new \InvalidArgumentException("Invalid attachment");
-    }
+  public function __construct($post, $size = "thumbnail", $data = []) {
+    parent::__construct($post, $data);
     $this->size = $size;
-    parent::__construct($data);
   }
 
   protected static function getAllImageSizes() {
@@ -29,7 +18,7 @@ class WpImage extends Model {
   }
 
   public function toSize(string $size) {
-    return new self($this->attachment_id, $size, $this->data);
+    return new self($this->post_id, $size, $this->data);
   }
 
   public function get(string $name): mixed {
@@ -46,18 +35,14 @@ class WpImage extends Model {
   }
 
   public function getSrc() {
-    return wp_get_attachment_image_url($this->attachment_id, $this->size);
+    return wp_get_attachment_image_url($this->post_id, $this->size);
   }
 
   public function getSrcset() {
-    return wp_get_attachment_image_srcset($this->attachment_id, $this->size);
+    return wp_get_attachment_image_srcset($this->post_id, $this->size);
   }
 
   public function getAlt() {
-    return get_post_meta(
-      $this->attachment_id,
-      "_wp_attachment_image_alt",
-      true,
-    );
+    return get_post_meta($this->post_id, "_wp_attachment_image_alt", true);
   }
 }

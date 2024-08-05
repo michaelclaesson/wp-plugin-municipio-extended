@@ -5,8 +5,35 @@ namespace MunicipioExtended\Model;
 class Model implements \ArrayAccess {
   protected $data;
 
+  public function getDefaultArrayMapping(): array {
+    return array_keys($this->data);
+  }
+
   public function __construct($data = []) {
     $this->data = $data;
+  }
+
+  public static function create(string $class, ...$args): Model {
+    $namespaces = ["MunicipioExtended\\Model\\", "MuPlugin\\Model\\"];
+    $namespaces = apply_filters(
+      "mx/model/namespaces",
+      $namespaces,
+      $class,
+      $args,
+    );
+    $namespaces = array_reverse($namespaces);
+    $full_class = null;
+    foreach ($namespaces as $namespace) {
+      if (class_exists($namespace . $class)) {
+        $full_class = $namespace . $class;
+        break;
+      }
+    }
+    $full_class = apply_filters("mx/model/class", $full_class, $class);
+    if (!$full_class) {
+      throw new \InvalidArgumentException("No model class found for $class");
+    }
+    return new $full_class(...$args);
   }
 
   public function has(string $name): bool {
@@ -53,5 +80,20 @@ class Model implements \ArrayAccess {
 
   public function offsetUnset(mixed $offset): void {
     throw new \BadMethodCallException("Unsetting properties is not allowed");
+  }
+
+  public function toArray($mapping = null): array {
+    if (!$mapping) {
+      $mapping = $this->getDefaultArrayMapping();
+    }
+    $data = [];
+    foreach ($mapping as $key => $value) {
+      if (is_string($key)) {
+        $data[$key] = $this->$value;
+      } else {
+        $data[$value] = $this->$value;
+      }
+    }
+    return $data;
   }
 }

@@ -60,10 +60,3 @@ function clsx() {
   }
   return $str;
 }
-
-function mx_get_image($attachment_id, $size = "thumbnail") {
-  if (!$attachment_id) {
-    return null;
-  }
-  return new \MunicipioExtended\Model\WpImage($attachment_id, $size);
-}
