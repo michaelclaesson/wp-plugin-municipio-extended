@@ -5,13 +5,10 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "AGPL-3.0",
-  "require": {
-    "elasticsearch/elasticsearch": "^8.14",
-    "imangazaliev/didom": "^2.0"
-  },
   "config": {
     "allow-plugins": {
-      "php-http/discovery": true
+      "php-http/discovery": true,
+      "composer/installers": true
     }
   },
   "extra": {
@@ -19,8 +16,9 @@
       "installer-paths": {
           "vendor/{$vendor}/{$name}/": [
               "vendor:wpackagist-plugin",
+              "type:wordpress-muplugin",
               "type:wordpress-plugin",
-              "type:wordpress-muplugin"
+              "type:wordpress-theme"
           ]
       }
   },
@@ -28,5 +26,49 @@
     "psr-4": {
       "MunicipioExtended\\": "psr-4/"
     }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/municipio-lts/wp-theme-municipio-2024.git",
+      "only": [
+        "municipio-lts/wp-theme-municipio-2024"
+      ],
+      "no-api": true
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/municipio-lts/wp-plugin-hbg-component-library-2024.git",
+      "only": [
+        "municipio-lts/wp-plugin-hbg-component-library-2024"
+      ],
+      "no-api": true
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/municipio-lts/wp-plugin-modularity-2024.git",
+      "only": [
+        "municipio-lts/wp-plugin-modularity-2024"
+      ],
+      "no-api": true
+    },
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "require": {
+    "elasticsearch/elasticsearch": "^8.14",
+    "imangazaliev/didom": "^2.0"
+  },
+  "require-dev": {
+    "municipio-lts/wp-plugin-hbg-component-library-2024": "dev-lts/v4.11.6",
+    "municipio-lts/wp-plugin-modularity-2024": "dev-lts/v6.16.5",
+    "municipio-lts/wp-theme-municipio-2024": "dev-lts/v4.25.0",
+    "wpackagist-plugin/advanced-custom-fields": "^6.3"
   }
 }
