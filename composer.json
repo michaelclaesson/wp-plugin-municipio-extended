@@ -69,6 +69,7 @@
     "municipio-lts/wp-plugin-hbg-component-library-2024": "dev-lts/v4.11.6",
     "municipio-lts/wp-plugin-modularity-2024": "dev-lts/v6.16.5",
     "municipio-lts/wp-theme-municipio-2024": "dev-lts/v4.25.0",
-    "wpackagist-plugin/advanced-custom-fields": "^6.3"
+    "wpackagist-plugin/advanced-custom-fields": "^6.3",
+    "10up/elasticpress": "^5.1.3"
   }
 }

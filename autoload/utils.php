@@ -60,3 +60,18 @@ function clsx() {
   }
   return $str;
 }
+
+function mx_coalesce_string($values, $glue = " ") {
+  foreach ($values as $value) {
+    if (is_array($value)) {
+      $value = implode($glue, $value);
+    }
+    if (!empty($value)) {
+      $value = trim((string) $value);
+    }
+    if (!empty($value)) {
+      return $value;
+    }
+  }
+  return "";
+}
