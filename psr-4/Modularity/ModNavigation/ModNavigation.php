@@ -53,6 +53,8 @@ class ModNavigation extends \Modularity\Module {
         return $this->getSiblings();
       case "manual":
         return $this->getManualItems();
+      case "menu":
+        return $this->getMenus();
       default:
         return [];
     }
@@ -135,6 +137,31 @@ class ModNavigation extends \Modularity\Module {
     return $items;
   }
 
+protected function getMenus() {
+    $menu_slug = $this->getField("mod_navigation_menu");
+
+    if (empty($menu_slug)) {
+        return [];
+    }
+
+    $menu_items = wp_get_nav_menu_items($menu_slug);
+
+    if (empty($menu_items)) {
+        return [];
+    }
+
+    return array_map(function ($item) {
+      $icon = get_post_meta($item->ID, 'menu_item_icon', true);
+        return [
+            "title" => $item->title,
+            "href" => $item->url,
+            "icon" => $icon ?: get_field('page_navigation_icon', $item ? $item->ID : null),
+            // TODO: Add color field for case "menu" in wordpress
+            // "color" => get_field("page_apperance_theme_color", $item ? $item->ID : null),
+        ];
+    }, $menu_items);
+}
+
   protected function getManualItems() {
     $items = $this->getField("mod_navigation_items");
     if (empty($items)) {
@@ -159,9 +186,11 @@ class ModNavigation extends \Modularity\Module {
         "description" => $post
           ? get_field("page_navigation_description", $post->ID)
           : null,
-        "color" => $post
-          ? get_field("page_apperance_theme_color", $post->ID)
-          : null,
+        "color" =>
+          $item["color"] ?:
+          ($post
+            ? get_field("page_apperance_theme_color", $post->ID)
+            : null),
       ];
     }, $items);
   }

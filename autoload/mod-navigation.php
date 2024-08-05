@@ -19,6 +19,17 @@ add_action("plugins_loaded", function ($array) {
   }
 });
 
+function get_all_menus() {
+  $menus = wp_get_nav_menus();
+  $choices = [];
+
+  foreach ($menus as $menu) {
+    $choices[$menu->slug] = $menu->name;
+  }
+
+  return $choices;
+}
+
 add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_mod_navigation",
@@ -93,6 +104,30 @@ add_action("acf/init", function () {
             "Navigation Module Source Choice",
             "municipio-extended",
           ),
+        ],
+      ],
+      [
+        "key" => "field_mod_navigation_menu",
+        "label" => _x(
+            "Menu",
+            "Navigation Module Field Label",
+            "municipio-extended"
+        ),
+        "name" => "mod_navigation_menu",
+        "graphql_field_name" => "menu",
+        "show_in_graphql" => 1,
+        "type" => "select",
+        "return_format" => "value",
+        "choices" => get_all_menus(),
+        "allow_null" => 1,
+        "conditional_logic" => [
+          [
+            [
+              "field" => "field_mod_navigation_source",
+              "operator" => "==",
+              "value" => "menu"
+            ]
+          ]
         ],
       ],
       [
