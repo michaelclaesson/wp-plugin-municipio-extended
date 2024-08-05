@@ -77,8 +77,6 @@ function mx_search_ajax_handler() {
 
   $query = apply_filters("mx_search_es_query", $query, $data);
 
-  error_log(var_export($query, true));
-
   $es_body = [
     "query" => [
       "function_score" => [
