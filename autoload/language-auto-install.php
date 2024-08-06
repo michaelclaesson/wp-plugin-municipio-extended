@@ -57,6 +57,15 @@ function check_and_install_language() {
           " " .
           __LINE__,
       );
+    } else {
+      // Force a page reload if the language was successfully installed
+      if (!headers_sent()) {
+        header("Refresh:0");
+        exit();
+      } else {
+        echo '<script type="text/javascript">window.location.reload();</script>';
+        exit();
+      }
     }
   }
 }
