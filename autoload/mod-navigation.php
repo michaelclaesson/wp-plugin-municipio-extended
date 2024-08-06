@@ -109,9 +109,9 @@ add_action("acf/init", function () {
       [
         "key" => "field_mod_navigation_menu",
         "label" => _x(
-            "Menu",
-            "Navigation Module Field Label",
-            "municipio-extended"
+          "Menu",
+          "Navigation Module Field Label",
+          "municipio-extended",
         ),
         "name" => "mod_navigation_menu",
         "graphql_field_name" => "menu",
@@ -125,9 +125,9 @@ add_action("acf/init", function () {
             [
               "field" => "field_mod_navigation_source",
               "operator" => "==",
-              "value" => "menu"
-            ]
-          ]
+              "value" => "menu",
+            ],
+          ],
         ],
       ],
       [

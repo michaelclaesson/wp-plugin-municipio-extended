@@ -12,15 +12,15 @@
     }
   },
   "extra": {
-      "installer-name": "municipio-extended",
-      "installer-paths": {
-          "vendor/{$vendor}/{$name}/": [
-              "vendor:wpackagist-plugin",
-              "type:wordpress-muplugin",
-              "type:wordpress-plugin",
-              "type:wordpress-theme"
-          ]
-      }
+    "installer-name": "municipio-extended",
+    "installer-paths": {
+      "vendor/{$vendor}/{$name}/": [
+        "vendor:wpackagist-plugin",
+        "type:wordpress-muplugin",
+        "type:wordpress-plugin",
+        "type:wordpress-theme"
+      ]
+    }
   },
   "autoload": {
     "psr-4": {
