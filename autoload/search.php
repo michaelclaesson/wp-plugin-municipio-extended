@@ -257,6 +257,9 @@ add_filter("ep_post_mapping", function ($mapping) {
  * Adds a "Search" ACF field group to all indexable post types.
  */
 add_action("acf/init", function () {
+  if (!class_exists("\ElasticPress\Indexables")) {
+    return;
+  }
   /**
    * @var \ElasticPress\Indexable\Post $indexable
    */
