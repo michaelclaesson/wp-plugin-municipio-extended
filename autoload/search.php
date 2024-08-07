@@ -3,7 +3,7 @@
 use Elastic\Elasticsearch\ClientBuilder;
 
 function mx_search_perform_es_search($body) {
-  $hosts = [get_option("ep_host")];
+  $hosts = [defined("EP_HOST") ? constant("EP_HOST") : get_option("ep_host")];
   $index = \ElasticPress\Indexables::factory()
     ->get("post")
     ->get_index_name(null);
