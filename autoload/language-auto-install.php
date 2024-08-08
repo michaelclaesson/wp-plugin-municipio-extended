@@ -21,21 +21,26 @@ function check_and_install_language() {
   // Check if the Swedish language pack is installed
   if (!file_exists($languages_dir . "/sv_SE.mo")) {
     // Detect environment and set PHP and WP-CLI paths accordingly
-    if (file_exists("/usr/local/bin/php") && file_exists("/usr/local/bin/wp")) {
-      // Server environment
+    $php_path = null;
+    $wp_cli_path = null;
+
+    // Check for PHP binary
+    if (file_exists("/usr/local/bin/php")) {
       $php_path = "/usr/local/bin/php";
-      $wp_cli_path = "/usr/local/bin/wp";
-    } elseif (
-      file_exists("/opt/homebrew/bin/php") &&
-      file_exists("/opt/homebrew/bin/wp")
-    ) {
-      // Mac laptop environment
+    } elseif (file_exists("/opt/homebrew/bin/php")) {
       $php_path = "/opt/homebrew/bin/php";
+    } else {
+      error_log("PHP binary not found. Cannot proceed with language installation.");
+      return;
+    }
+
+    // Check for WP-CLI binary
+    if (file_exists("/usr/local/bin/wp")) {
+      $wp_cli_path = "/usr/local/bin/wp";
+    } elseif (file_exists("/opt/homebrew/bin/wp")) {
       $wp_cli_path = "/opt/homebrew/bin/wp";
     } else {
-      error_log(
-        "PHP or WP-CLI binary not found. Cannot proceed with language installation.",
-      );
+      error_log("WP-CLI binary not found. Cannot proceed with language installation.");
       return;
     }
 
