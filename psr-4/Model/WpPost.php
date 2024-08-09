@@ -96,6 +96,10 @@ class WpPost extends Model {
     return $this->getField(static::MENU_DESCRIPTION_FIELD_NAME);
   }
 
+  public function getUrl() {
+    return get_permalink($this->post);
+  }
+
   public function getHref() {
     return get_permalink($this->post);
   }

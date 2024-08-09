@@ -5,7 +5,7 @@
         <div class="self-start">
           <span class="bg-custom text-contrast-custom rounded-full size-[1.5em] grid items-center justify-center text-[40px] group-hover:bg-custom-tint-100 group-active:bg-custom-shade-100 transition-colors">
             @icon([
-              'icon' => $item['icon'] ?: 'arrow_forward',
+              'icon' => ($item['icon']['name'] ?? $item['icon']) ?: 'arrow_forward',
             ])
             @endicon
           </span>

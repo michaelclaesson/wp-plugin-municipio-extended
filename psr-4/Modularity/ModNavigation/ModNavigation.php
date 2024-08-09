@@ -41,20 +41,20 @@ class ModNavigation extends \Modularity\Module {
   }
 
   protected function getItems() {
+    $depth =
+      $this->getField("mod_navigation_depth") ?:
+      ($this->getField("mod_navigation_format") === "tree"
+        ? 2
+        : 1);
     switch ($this->getField("mod_navigation_source")) {
       case "children":
-        $depth =
-          $this->getField("mod_navigation_depth") ?:
-          ($this->getField("mod_navigation_format") === "tree"
-            ? 2
-            : 1);
         return $this->getChildren($depth);
       case "siblings":
         return $this->getSiblings();
       case "manual":
         return $this->getManualItems();
       case "menu":
-        return $this->getMenus();
+        return $this->getMenuItems($depth);
       default:
         return [];
     }
@@ -137,28 +137,37 @@ class ModNavigation extends \Modularity\Module {
     return $items;
   }
 
-  protected function getMenus() {
-    $menu_slug = $this->getField("mod_navigation_menu");
+  protected function getMenuItems($depth = 1, $post_parent = 0) {
+    if ($depth <= 0) {
+      return null;
+    }
 
+    $menu_slug = $this->getField("mod_navigation_menu");
     if (empty($menu_slug)) {
       return [];
     }
 
     $menu_items = wp_get_nav_menu_items($menu_slug);
-
+    $menu_items = array_filter($menu_items, function ($item) use (
+      $post_parent,
+    ) {
+      return $item->menu_item_parent == $post_parent;
+    });
     if (empty($menu_items)) {
       return [];
     }
 
-    return array_map(function ($item) {
-      $icon = get_post_meta($item->ID, "menu_item_icon", true);
+    return array_map(function (\WP_Post $item) use ($depth) {
+      $item = mx_get_menu_item($item);
       return [
-        "title" => $item->title,
+        "id" => $item->id,
         "href" => $item->url,
-        "icon" =>
-          $icon ?: get_field("page_navigation_icon", $item ? $item->ID : null),
-        // TODO: Add color field for case "menu" in wordpress
-        // "color" => get_field("page_apperance_theme_color", $item ? $item->ID : null),
+        "title" => $item->title,
+        "image" => $item->image,
+        "icon" => $item->icon,
+        "color" => $item->ownThemeColor,
+        "description" => $item->menuDescription,
+        "children" => $this->getMenuItems($depth - 1, $item->ID),
       ];
     }, $menu_items);
   }
