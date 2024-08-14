@@ -25,20 +25,19 @@ function _clsx_val($mix) {
   if (is_string($mix) || is_numeric($mix)) {
     $str .= $mix;
   } elseif (is_array($mix)) {
-    $len = count($mix);
-    for ($k = 0; $k < $len; $k++) {
-      if ($mix[$k]) {
-        if ($y = _clsx_val($mix[$k])) {
-          $str && ($str .= " ");
-          $str .= $y;
+    foreach ($mix as $k => $value) {
+      if (is_numeric($k)) {
+        if ($mix[$k]) {
+          if ($y = _clsx_val($mix[$k])) {
+            $str && ($str .= " ");
+            $str .= $y;
+          }
         }
-      }
-    }
-  } elseif (is_object($mix)) {
-    foreach ($mix as $y => $value) {
-      if ($value) {
-        $str && ($str .= " ");
-        $str .= $y;
+      } else {
+        if ($value) {
+          $str && ($str .= " ");
+          $str .= $k;
+        }
       }
     }
   }
