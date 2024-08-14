@@ -40,7 +40,7 @@ class WpMenuItem extends WpPost {
     if ($value !== null) {
       return $value;
     }
-    return $this->connectedObject->get($name) ?? null;
+    return $this->connectedObject->$name ?? null;
   }
 
   public function has(string $name): bool {
