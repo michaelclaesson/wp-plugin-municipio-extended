@@ -2,6 +2,23 @@
 
 use DiDom\Document;
 
+function mx_new_instance_without_constructor($class) {
+  $reflector = new ReflectionClass($class);
+  return $reflector->newInstanceWithoutConstructor();
+}
+
+function mx_get_module_directory($module) {
+  static $display = mx_new_instance_without_constructor("Modularity\\Display");
+  return $display->getModuleDirectory($module);
+}
+
+function mx_get_default_module_view_path($module) {
+  return MODULARITY_PATH .
+    "source/php/Module/" .
+    mx_get_module_directory($module) .
+    "/views";
+}
+
 function mx_plain_text($string, $options = []) {
   if (empty($string)) {
     return "";
