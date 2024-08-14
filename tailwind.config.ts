@@ -45,8 +45,13 @@ export default {
     './psr-4/**/*.php',
     './src/**/*.php',
     './views/**/*.php',
-    '../psr-4/**/*.php',
-    '../views/**/*.php',
+    // '../psr-4/**/*.php',
+    // '../views/**/*.php',
+  ],
+  safelist: [
+    {
+      pattern: /^c-.*/,
+    },
   ],
   theme: {
     colors: {

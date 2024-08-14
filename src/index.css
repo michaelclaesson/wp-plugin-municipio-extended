@@ -22,3 +22,9 @@
     }
   }
 }
+
+@layer components {
+  .c-typography__variant--p {
+    margin-top: calc(var(--base, 8px) * 2);
+  }
+}
