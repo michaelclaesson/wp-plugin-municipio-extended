@@ -8,8 +8,13 @@ function mx_new_instance_without_constructor($class) {
 }
 
 function mx_get_module_directory($module) {
-  static $display = mx_new_instance_without_constructor("Modularity\\Display");
-  return $display->getModuleDirectory($module);
+  global $mx_modularity_display_instance;
+  if (empty($mx_modularity_display_instance)) {
+    $mx_modularity_display_instance = mx_new_instance_without_constructor(
+      "Modularity\\Display",
+    );
+  }
+  return $mx_modularity_display_instance->getModuleDirectory($module);
 }
 
 function mx_get_default_module_view_path($module) {
