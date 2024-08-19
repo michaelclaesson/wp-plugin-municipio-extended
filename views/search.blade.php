@@ -73,8 +73,7 @@
             <div
               class="hidden group-[:not(:state(pending)):where(:not(:state(has-results)),:state(error))]:block"
             >
-              <h2 id="mx-site-search-results-heading">Inga träffar</h2>
-              <p part="summary" class="empty:hidden"></p>
+              <h2 id="mx-site-search-results-heading">Sökresultat</h2>
               <p>Din sökning gav inga träffar. Kontrollera stavningen eller försök med ett annat sökord.</p>
             </div>
 
