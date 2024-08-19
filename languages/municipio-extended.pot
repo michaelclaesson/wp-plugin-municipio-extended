@@ -104,6 +104,11 @@ msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr ""
 
+#: autoload/mod-posts.php:9
+msgctxt "Posts Module Display Mode"
+msgid "Cards and list"
+msgstr ""
+
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"
 msgid "Theme color"
