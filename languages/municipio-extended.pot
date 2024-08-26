@@ -41,65 +41,70 @@ msgstr ""
 
 #: autoload/mod-navigation.php:56
 msgctxt "Navigation Module Format Choice"
-msgid "Grid"
+msgid "List"
 msgstr ""
 
 #: autoload/mod-navigation.php:61
 msgctxt "Navigation Module Format Choice"
-msgid "Bar"
+msgid "Grid"
 msgstr ""
 
 #: autoload/mod-navigation.php:66
 msgctxt "Navigation Module Format Choice"
+msgid "Bar"
+msgstr ""
+
+#: autoload/mod-navigation.php:71
+msgctxt "Navigation Module Format Choice"
 msgid "Tree"
 msgstr ""
 
-#: autoload/mod-navigation.php:75
+#: autoload/mod-navigation.php:80
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr ""
 
-#: autoload/mod-navigation.php:87
+#: autoload/mod-navigation.php:92
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr ""
 
-#: autoload/mod-navigation.php:92
+#: autoload/mod-navigation.php:97
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr ""
 
-#: autoload/mod-navigation.php:97
+#: autoload/mod-navigation.php:102
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr ""
 
-#: autoload/mod-navigation.php:102
+#: autoload/mod-navigation.php:107
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr ""
 
-#: autoload/mod-navigation.php:111
+#: autoload/mod-navigation.php:116
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr ""
 
-#: autoload/mod-navigation.php:135
+#: autoload/mod-navigation.php:140
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr ""
 
-#: autoload/mod-navigation.php:156
+#: autoload/mod-navigation.php:161
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr ""
 
-#: autoload/mod-navigation.php:168
+#: autoload/mod-navigation.php:173
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr ""
 
-#: autoload/mod-navigation.php:188
+#: autoload/mod-navigation.php:193
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr ""

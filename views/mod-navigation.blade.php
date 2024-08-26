@@ -1,8 +1,11 @@
 @if (!$hideTitle && !empty($postTitle))
-  <h2>{{ $postTitle }}</h2>
+  <h2 class="c-typography c-typography__variant--h2 module-title">{{ $postTitle }}</h2>
 @endif
 <div class="tailwind">
   @switch($format)
+    @case ('list')
+      @include('mxui.list-navigation')
+      @break
     @case ('grid')
       @include('mxui.grid-navigation')
       @break

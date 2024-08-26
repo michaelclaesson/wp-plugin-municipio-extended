@@ -53,6 +53,11 @@ add_action("acf/init", function () {
         "required" => 1,
         "return_format" => "value",
         "choices" => [
+          "list" => _x(
+            "List",
+            "Navigation Module Format Choice",
+            "municipio-extended",
+          ),
           "grid" => _x(
             "Grid",
             "Navigation Module Format Choice",
