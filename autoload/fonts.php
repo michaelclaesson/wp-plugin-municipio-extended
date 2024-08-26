@@ -29,6 +29,8 @@ add_action("wp_head", function () {
   $font_css = "";
   foreach ($fonts as $font) {
     $url = wp_get_attachment_url($font->ID);
+    $site_url = home_url();
+    $url = str_replace(network_home_url(), $site_url, $url);
     $font_css .= "@font-face{font-family:'{$font->post_title}';src: url('{$url}') format('woff2');}";
   }
   echo "<style>{$font_css}</style>";
