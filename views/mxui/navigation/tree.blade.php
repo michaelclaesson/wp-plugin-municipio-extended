@@ -1,7 +1,7 @@
 <ul class="divide-y space-y-0 *:border-border-divider my-8">
   @foreach($items as $item)
     <li class="p-0 flex gap-[--grid-gap] py-8 first:pt-0 last:pb-0">
-      <div class="w-[180px]">
+      <div class="w-[180px] flex-none">
         @if ($image = ($item['image']['medium'] ?? null))
           <img src="{!! $image['src'] !!}" alt="{{ $image['alt'] }}" srcset="{!! $image['srcset'] !!}" class="block w-full">
         @endif
@@ -21,7 +21,7 @@
           <ul class="flex flex-wrap gap-2 space-y-0">
             @foreach($item['children'] as $child)
               <li class="p-0">
-                <a href="{{ $child['href'] }}" class="text-h3 block p-3 leading-none rounded bg-secondary text-white hover:bg-secondary-dark visited:hover:text-white transition-colors">
+                <a href="{{ $child['href'] }}" class="text-h3 block p-3 leading-none rounded bg-secondary text-secondary-contrast hover:bg-secondary-dark visited:hover:text-white transition-colors">
                   {{ $child['title'] }}
                 </a>
               </li>
