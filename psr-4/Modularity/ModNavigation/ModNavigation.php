@@ -2,7 +2,9 @@
 
 namespace MunicipioExtended\Modularity\ModNavigation;
 
-class ModNavigation extends \Modularity\Module {
+use MunicipioExtended\Modularity\MxModule;
+
+class ModNavigation extends MxModule {
   public $slug = "navigation";
   public $supports = [];
 
@@ -206,33 +208,12 @@ class ModNavigation extends \Modularity\Module {
   }
 
   /**
-   * Get metadata for block or module.
-   * @return array
-   */
-  protected function getFields() {
-    $fields = parent::getFields();
-    $fields = array_combine(
-      array_map(function ($key) {
-        return preg_replace("/^mod_navigation_/", "", $key);
-      }, array_keys($fields)),
-      $fields,
-    );
-    return $fields;
-  }
-
-  /**
    * Data array
    * @return array $data
    */
   public function data(): array {
-    $data = (array) $this->getFields();
+    $data = parent::data();
     $data["items"] = $this->getItems();
-
-    // error_log(var_export($data, true));
-
-    // $data["title"] = get_field("field_block_title", $this->ID);
-    // $data["hide_title"] = $this->hideTitle;
-
     return $data;
   }
 }

@@ -4,16 +4,16 @@
 <div class="tailwind">
   @switch($format)
     @case ('list')
-      @include('mxui.list-navigation')
+      @include('mxui.navigation.list')
       @break
     @case ('grid')
-      @include('mxui.grid-navigation')
+      @include('mxui.navigation.grid')
       @break
     @case ('bar')
-      @include('mxui.bar-navigation')
+      @include('mxui.navigation.bar')
       @break
     @case ('tree')
-      @include('mxui.tree-navigation')
+      @include('mxui.navigation.tree')
       @break
     @endswitch
 </div>
