@@ -21,7 +21,7 @@
           <ul class="flex flex-wrap gap-2 space-y-0">
             @foreach($item['children'] as $child)
               <li class="p-0">
-                <a href="{{ $child['href'] }}" class="text-h3 block p-3 leading-none rounded bg-secondary text-secondary-contrast hover:bg-secondary-dark visited:hover:text-white transition-colors">
+                <a href="{{ $child['href'] }}" class="text-h3 block p-3 leading-none rounded bg-secondary text-secondary-contrasting hover:bg-secondary-dark visited:hover:text-white transition-colors">
                   {{ $child['title'] }}
                 </a>
               </li>
