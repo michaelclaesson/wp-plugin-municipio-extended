@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-28T13:49:29+00:00\n"
+"POT-Creation-Date: 2024-08-28T16:58:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
@@ -232,16 +232,31 @@ msgstr ""
 msgid "Seperate keywords with commas or new lines."
 msgstr ""
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:10
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"
 msgid "Navigation"
 msgstr ""
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:15
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:17
 msgctxt "Post Type General Name"
 msgid "Navigation modules"
 msgstr ""
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:20
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:22
 msgid "Outputs a menu or manually selected links"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:51
+msgctxt "Navigation Module Customization Field Label"
+msgid "Style for format “bar”"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:59
+msgctxt "Navigation Module Bar Style Choice"
+msgid "Outline"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:64
+msgctxt "Navigation Module Bar Style Choice"
+msgid "Solid"
 msgstr ""

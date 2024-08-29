@@ -38,6 +38,39 @@ class ModNavigation extends MxModule {
     return "mod-navigation.blade.php";
   }
 
+  /**
+   * Want to add more fields for this module in the customizer? Add them to the
+   * array in this method. Ensure "settings" value starts with
+   * "mod_navigation_". It will then be available in the blade template.
+   */
+  protected function getCustomizationFields() {
+    return [
+      [
+        "type" => "select",
+        "settings" => "mod_navigation_bar_style",
+        "label" => _x(
+          "Style for format “bar”",
+          "Navigation Module Customization Field Label",
+          "municipio-extended",
+        ),
+        "default" => "outline",
+        "priority" => 10,
+        "choices" => [
+          "outline" => _x(
+            "Outline",
+            "Navigation Module Bar Style Choice",
+            "municipio-extended",
+          ),
+          "solid" => _x(
+            "Solid",
+            "Navigation Module Bar Style Choice",
+            "municipio-extended",
+          ),
+        ],
+      ],
+    ];
+  }
+
   protected function getField($field, ...$args) {
     return get_field($field, $this->ID, ...$args);
   }

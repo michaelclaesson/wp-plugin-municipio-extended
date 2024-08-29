@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-08-28T13:49:29+00:00\n"
-"PO-Revision-Date: 2024-08-28 15:50+0200\n"
+"POT-Creation-Date: 2024-08-28T16:58:47+00:00\n"
+"PO-Revision-Date: 2024-08-28 18:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -245,16 +245,31 @@ msgstr "Nyckelord"
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:10
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:15
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:17
 msgctxt "Post Type General Name"
 msgid "Navigation modules"
 msgstr "Navigationsmoduler"
 
-#: psr-4/Modularity/ModNavigation/ModNavigation.php:20
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:22
 msgid "Outputs a menu or manually selected links"
 msgstr "Visar en meny eller manuellt valda länkar"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:51
+msgctxt "Navigation Module Customization Field Label"
+msgid "Style for format “bar”"
+msgstr "Stil för formatet ”rad”"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:59
+msgctxt "Navigation Module Bar Style Choice"
+msgid "Outline"
+msgstr "Ramlinje"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:64
+msgctxt "Navigation Module Bar Style Choice"
+msgid "Solid"
+msgstr "Solid"
