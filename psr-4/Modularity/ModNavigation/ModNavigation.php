@@ -68,6 +68,18 @@ class ModNavigation extends MxModule {
           ),
         ],
       ],
+      [
+        "type" => "color",
+        "settings" => "mod_navigation_cards_color",
+        "label" => _x(
+          "Color for format “cards”",
+          "Navigation Module Customization Field Label",
+          "municipio-extended",
+        ),
+        "default" => "#0008DC",
+        "priority" => 10,
+
+      ],
     ];
   }
 

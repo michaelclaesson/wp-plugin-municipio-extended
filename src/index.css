@@ -30,9 +30,9 @@
 }
 
 /* TODO: replace with the color specific for navigation cards format */
-/* .cards-navigation {
-  background-color: var(--color-background-card);
-} */
+.cards-navigation {
+  background-color: var(--cards_color);
+}
 
 .cards-navigation h2 {
   text-decoration: underline;

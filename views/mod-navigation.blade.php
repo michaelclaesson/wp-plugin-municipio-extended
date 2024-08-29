@@ -16,7 +16,7 @@
       @include('mxui.navigation.tree')
       @break
     @case ('cards')
-      @include('mxui.cards-navigation')
+      @include('mxui.navigation.cards')
       @break
     @endswitch
 </div>

@@ -3,7 +3,7 @@
         @php
         $content = wp_trim_words($item['post']->post_content ?? '', 8, '...');
         @endphp
-        <li class="lg:max-h-[310px]">
+        <li class="lg:min-h-[310px]" style="background-color: {{ $cards_color }};">
             @card([
                 'link' => $item['href'],
                 'imageFirst' => true,
