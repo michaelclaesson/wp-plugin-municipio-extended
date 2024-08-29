@@ -1,0 +1,99 @@
+name: Build Assets
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: ["opened", "edited", "reopened", "synchronize"]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build assets
+        run: pnpm build
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add .
+
+          # Check if there are any staged changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: build assets"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.WHITESPACE_DEVOPS_REPO_PAT }}
+
+  update_repos:
+    runs-on: ubuntu-20.04
+    needs: build
+    strategy:
+      matrix:
+        repo: [whitespace-se/hoor.se-2024, whitespace-se/eslov.se-2024]
+    steps:
+      - name: Checkout ${{ matrix.repo }} repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ matrix.repo }}
+          path: repo_${{ matrix.repo }}
+          token: ${{ secrets.WHITESPACE_DEVOPS_REPO_PAT }}
+
+      - name: Run Composer Update
+        working-directory: repo_${{ matrix.repo }}/wordpress
+        env:
+          COMPOSER_AUTH: |
+            {
+              "github-oauth": {
+                "github.com": "${{ secrets.COMPOSER_AUTH_TOKEN }}"
+              },
+              "http-basic": {
+                "composer.whitespace.house": {
+                  "username": "${{ secrets.COMPOSER_REPO_USERNAME }}",
+                  "password": "${{ secrets.COMPOSER_REPO_PASSWORD }}"
+                }
+              }
+            }
+        run: composer update
+
+      - name: Commit Composer changes and push new branch
+        working-directory: repo_${{ matrix.repo }}/wordpress
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git checkout -b update/composer-dependencies
+          git add .
+          git commit -m "chore: update composer dependencies"
+          git push --set-upstream origin update/composer-dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.WHITESPACE_DEVOPS_REPO_PAT }}
