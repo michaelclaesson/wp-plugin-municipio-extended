@@ -27,8 +27,8 @@ function mx_get_uploaded_fonts() {
     "posts_per_page" => -1,
   ]);
 
-  // Cache the fonts for 12 hours (43200 seconds)
-  set_transient('mx_uploaded_fonts', $fonts, 12 * HOUR_IN_SECONDS);
+  // Cache the fonts for 1 minute (60 seconds)
+  set_transient('mx_uploaded_fonts', $fonts, 60);
 
   return $fonts;
 }
