@@ -91,9 +91,16 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
+          
+          # Check if the branch exists and delete it if it does
+          if git show-ref --verify --quiet refs/heads/update/composer-dependencies; then
+            git branch -D update/composer-dependencies
+          fi
+
           git checkout -b update/composer-dependencies
           git add .
           git commit -m "chore: update composer dependencies"
           git push --set-upstream origin update/composer-dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.WHITESPACE_DEVOPS_REPO_PAT }}
+```

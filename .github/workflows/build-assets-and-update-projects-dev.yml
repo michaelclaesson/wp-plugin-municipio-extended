@@ -85,12 +85,18 @@ jobs:
               }
             }
         run: composer update
-
+        
       - name: Commit Composer changes and push new branch
         working-directory: repo_${{ matrix.repo }}/wordpress
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
+          
+          # Check if the branch exists and delete it if it does
+          if git show-ref --verify --quiet refs/heads/update/composer-dependencies; then
+            git branch -D update/composer-dependencies
+          fi
+
           git checkout -b update/composer-dependencies
           git add .
           git commit -m "chore: update composer dependencies"
