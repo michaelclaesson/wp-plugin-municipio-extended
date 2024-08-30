@@ -56,6 +56,7 @@ export default {
   theme: {
     colors: {
       inherit: 'inherit',
+      transparent: 'transparent',
       white: '#fff',
       primary: 'var(--color-primary)',
       'primary-dark': 'var(--color-primary-dark)',
@@ -163,44 +164,62 @@ export default {
   },
   plugins: [
     containerQueriesPlugin,
-    plugin(({ matchUtilities, addUtilities, theme, e }) => {
-      matchUtilities(
-        {
-          'text-contrast': (value) => {
-            return {
-              color: toContrastColor(value),
-            };
+    plugin(
+      ({
+        addBase,
+        addVariant,
+        matchVariant,
+        addUtilities,
+        matchUtilities,
+        theme,
+      }) => {
+        addVariant(
+          'interactive',
+          '&:is(:any-link, :enabled, label, [tabindex])',
+        );
+        addVariant('inert', '&:not(:any-link, :enabled, label, [tabindex])');
+        addVariant('contentless', [
+          '&:empty:not(area, embed, hr, img, input, source, track)',
+          '&:not(:has(:not(:empty), area, embed, hr, img, input, source, track))',
+        ]);
+        matchUtilities(
+          {
+            'text-contrast': (value) => {
+              return {
+                color: toContrastColor(value),
+              };
+            },
           },
-        },
-        {
-          values: flattenColorPalette(theme('colors')),
-          type: ['color', 'any'],
-        },
-      );
-      // matchUtilities(
-      //   {
-      //     // Turns `bg-toned-[base-color]/[alpha]` into `color-mix(in oklab, oklab(from [base-color] calc(1 / (.6 - l)) 0 0) [alpha]%, [base-color])`
-      //     'toned-bg': (value, { modifier }) => {
-      //       return {
-      //         '--debug': e(JSON.stringify({ value, modifier })),
-      //         // 'background-color': `color-mix(in oklab, oklab(from ${value} calc(1 / (.6 - l)) 0 0) ${10}%, ${value})`,
-      //       };
-      //     },
-      //     // 'bg-tinted': (value, { modifier }) => {
-      //     //   return {
-      //     //     color: `color-mix(in oklab, white ${modifier}%, ${value})`,
-      //     //   };
-      //     // },
-      //     // 'bg-shaded': (value, { modifier }) => {
-      //     //   return {
-      //     //     color: `color-mix(in oklab, black ${modifier}%, ${value})`,
-      //     //   };
-      //     // },
-      //   },
-      //   {
-      //     values: flattenColorPalette(theme('backgroundColors')),
-      //   },
-      // );
-    }),
+          {
+            values: flattenColorPalette(theme('colors')),
+            type: ['color', 'any'],
+          },
+        );
+        // matchUtilities(
+        //   {
+        //     // Turns `bg-toned-[base-color]/[alpha]` into `color-mix(in oklab, oklab(from [base-color] calc(1 / (.6 - l)) 0 0) [alpha]%, [base-color])`
+        //     'toned-bg': (value, { modifier }) => {
+        //       return {
+        //         '--debug': e(JSON.stringify({ value, modifier })),
+        //         // 'background-color': `color-mix(in oklab, oklab(from ${value} calc(1 / (.6 - l)) 0 0) ${10}%, ${value})`,
+        //       };
+        //     },
+        //     // 'bg-tinted': (value, { modifier }) => {
+        //     //   return {
+        //     //     color: `color-mix(in oklab, white ${modifier}%, ${value})`,
+        //     //   };
+        //     // },
+        //     // 'bg-shaded': (value, { modifier }) => {
+        //     //   return {
+        //     //     color: `color-mix(in oklab, black ${modifier}%, ${value})`,
+        //     //   };
+        //     // },
+        //   },
+        //   {
+        //     values: flattenColorPalette(theme('backgroundColors')),
+        //   },
+        // );
+      },
+    ),
   ],
 };
