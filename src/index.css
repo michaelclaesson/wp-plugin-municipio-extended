@@ -30,7 +30,7 @@
 }
 
 .cards-navigation {
-  background-color: var(--cards_color);
+  background-color: var(--navigation-card-color);
 }
 
 .cards-navigation h2 {

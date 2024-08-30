@@ -78,7 +78,12 @@ class ModNavigation extends MxModule {
         ),
         "default" => "#0008DC",
         "priority" => 10,
-
+        'output' => array(
+          array(
+            'element'  => ':root',
+            'property' => '--navigation-card-color',
+          ),
+         ),
       ],
     ];
   }
