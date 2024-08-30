@@ -86,17 +86,18 @@ jobs:
             }
         run: composer update
         
+      - name: Delete remote branch if it exists
+        working-directory: repo_${{ matrix.repo }}/wordpress
+        run: |
+          if git ls-remote --exit-code --heads origin update/composer-dependencies; then
+            git push origin --delete update/composer-dependencies
+          fi
+
       - name: Commit Composer changes and push new branch
         working-directory: repo_${{ matrix.repo }}/wordpress
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          
-          # Check if the branch exists and delete it if it does
-          if git show-ref --verify --quiet refs/heads/update/composer-dependencies; then
-            git branch -D update/composer-dependencies
-          fi
-
           git checkout -b update/composer-dependencies
           git add .
           git commit -m "chore: update composer dependencies"
