@@ -5,31 +5,31 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-08-28T16:58:47+00:00\n"
-"PO-Revision-Date: 2024-08-28 18:59+0200\n"
+"POT-Creation-Date: 2024-08-30T06:44:12+00:00\n"
+"PO-Revision-Date: 2024-08-30 08:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
 #: municipio-extended.php
 msgid "Municipio Extended"
-msgstr "Municipio Extended"
+msgstr ""
 
 #. Description of the plugin
 #: municipio-extended.php
 msgid "Adds more features to Municipio."
-msgstr "Lägger till fler funktioner till Municipio."
+msgstr ""
 
 #. Author of the plugin
 #: municipio-extended.php
 msgid "Whitespace Dev"
-msgstr "Whitespace Dev"
+msgstr ""
 
 #: autoload/mod-navigation.php:36
 msgctxt "Navigation Module Field Group Title"
@@ -61,52 +61,57 @@ msgctxt "Navigation Module Format Choice"
 msgid "Tree"
 msgstr "Träd"
 
-#: autoload/mod-navigation.php:80
+#: autoload/mod-navigation.php:76
+msgctxt "Navigation Module Format Choice"
+msgid "Cards"
+msgstr "Kort"
+
+#: autoload/mod-navigation.php:85
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr "Källa"
 
-#: autoload/mod-navigation.php:92
+#: autoload/mod-navigation.php:97
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr "Underordnade sidor"
 
-#: autoload/mod-navigation.php:97
+#: autoload/mod-navigation.php:102
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr "Syskonsidor"
 
-#: autoload/mod-navigation.php:102
+#: autoload/mod-navigation.php:107
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:107
+#: autoload/mod-navigation.php:112
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr "Manuellt utvalda"
 
-#: autoload/mod-navigation.php:116
+#: autoload/mod-navigation.php:121
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:140
+#: autoload/mod-navigation.php:145
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr "Objekt"
 
-#: autoload/mod-navigation.php:161
+#: autoload/mod-navigation.php:166
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr "Länk"
 
-#: autoload/mod-navigation.php:173
+#: autoload/mod-navigation.php:178
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr "Färg"
 
-#: autoload/mod-navigation.php:193
+#: autoload/mod-navigation.php:198
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr "Ikon"
@@ -181,9 +186,10 @@ msgstr "Sök nyheter"
 
 #: autoload/post.php:17
 msgid "Parent news:"
-msgstr "Överordnad nyhet:"
+msgstr "Överordnat nyhet:"
 
 #: autoload/post.php:18
+#, fuzzy
 msgid "No news found."
 msgstr "Inga nyheter hittades."
 
@@ -253,7 +259,7 @@ msgstr "Navigation"
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:17
 msgctxt "Post Type General Name"
 msgid "Navigation modules"
-msgstr "Navigationsmoduler"
+msgstr "Navigationsmodul"
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:22
 msgid "Outputs a menu or manually selected links"
@@ -273,3 +279,8 @@ msgstr "Ramlinje"
 msgctxt "Navigation Module Bar Style Choice"
 msgid "Solid"
 msgstr "Solid"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:74
+msgctxt "Navigation Module Customization Field Label"
+msgid "Color for format “cards”"
+msgstr "Färg för format “kort”"
