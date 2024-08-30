@@ -37,8 +37,15 @@ add_filter(
 );
 
 add_filter("helsingborg-stad/blade/controllerPaths", function ($paths) {
-  $new_paths[] = MUNICIPIO_EXTENDED_PATH . "/psr-4/ComponentLibrary/Component";
-  // $new_paths[] = MU_PLUGINS_DIR . "/psr-4/ComponentLibrary/Component";
-  $paths = array_merge($new_paths, $paths);
+  $paths[] = MUNICIPIO_EXTENDED_PATH . "/psr-4/ComponentLibrary/Component/";
+  return $paths;
+});
+
+add_filter("ComponentLibrary/ViewPaths", function ($paths) {
+  array_unshift(
+    $paths,
+    MUNICIPIO_EXTENDED_PATH . "/psr-4/ComponentLibrary/Component",
+  );
+  array_unshift($paths, MUNICIPIO_EXTENDED_PATH . "/views");
   return $paths;
 });

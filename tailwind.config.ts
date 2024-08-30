@@ -44,7 +44,7 @@ export default {
     './autoload/**/*.php',
     './psr-4/**/*.php',
     './src/**/*.php',
-    './views/**/*.php',
+    './**/*.blade.php',
     // '../psr-4/**/*.php',
     // '../views/**/*.php',
   ],
