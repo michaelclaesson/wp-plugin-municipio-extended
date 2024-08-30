@@ -96,3 +96,7 @@ function mx_coalesce_string($values, $glue = " ") {
   }
   return "";
 }
+
+function mx_attrs(...$attrs) {
+  return new MunicipioExtended\Model\AttributeBag(...$attrs);
+}
