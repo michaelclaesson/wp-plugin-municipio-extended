@@ -39,6 +39,10 @@ jobs:
       - name: Build assets
         run: pnpm build
 
+      - name: Get the commit message
+        id: get_commit_msg
+        run: echo "COMMIT_MSG=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
       - name: Commit and push changes
         run: |
           git config --local user.name "GitHub Actions"
@@ -89,8 +93,8 @@ jobs:
       - name: Delete remote branch if it exists
         working-directory: repo_${{ matrix.repo }}/wordpress
         run: |
-          if git ls-remote --exit-code --heads origin update/composer-dependencies; then
-            git push origin --delete update/composer-dependencies
+          if git ls-remote --exit-code --heads origin update/wp-plugin-municipio-extended-2024; then
+            git push origin --delete update/wp-plugin-municipio-extended-2024
           fi
 
       - name: Commit Composer changes and push new branch
@@ -98,9 +102,9 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          git checkout -b update/composer-dependencies
+          git checkout -b update/wp-plugin-municipio-extended-2024
           git add .
-          git commit -m "chore: update composer dependencies"
-          git push --set-upstream origin update/composer-dependencies
+          git commit -m "${{ env.COMMIT_MSG }}"
+          git push --set-upstream origin update/wp-plugin-municipio-extended-2024
         env:
           GITHUB_TOKEN: ${{ secrets.WHITESPACE_DEVOPS_REPO_PAT }}
