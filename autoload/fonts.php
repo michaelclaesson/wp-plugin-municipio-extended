@@ -13,11 +13,23 @@ add_filter("upload_mimes", function ($mimes) {
  * Utility function to get all fonts uploaded to the media library.
  */
 function mx_get_uploaded_fonts() {
+  // Check if fonts are already cached
+  $cached_fonts = get_transient('mx_uploaded_fonts');
+
+  if ($cached_fonts !== false) {
+      return $cached_fonts;
+  }
+
+  // If not cached, retrieve fonts from the database
   $fonts = get_posts([
     "post_type" => "attachment",
     "post_mime_type" => "font/woff2",
     "posts_per_page" => -1,
   ]);
+
+  // Cache the fonts for 1 minute (60 seconds)
+  set_transient('mx_uploaded_fonts', $fonts, 60);
+
   return $fonts;
 }
 
