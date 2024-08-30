@@ -1,4 +1,4 @@
-name: Build Assets
+name: Build Assets and Update Projects (main)
 
 on:
   push:
