@@ -32,7 +32,3 @@
 .cards-navigation {
   background-color: var(--navigation-card-color);
 }
-
-.cards-navigation h2 {
-  text-decoration: underline;
-}

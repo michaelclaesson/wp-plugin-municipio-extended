@@ -19,17 +19,17 @@ msgstr ""
 #. Plugin Name of the plugin
 #: municipio-extended.php
 msgid "Municipio Extended"
-msgstr ""
+msgstr "Municipio Extended"
 
 #. Description of the plugin
 #: municipio-extended.php
 msgid "Adds more features to Municipio."
-msgstr ""
+msgstr "Lägger till fler funktioner till Municipio."
 
 #. Author of the plugin
 #: municipio-extended.php
 msgid "Whitespace Dev"
-msgstr ""
+msgstr "Whitespace Dev"
 
 #: autoload/mod-navigation.php:36
 msgctxt "Navigation Module Field Group Title"
