@@ -73,6 +73,11 @@ add_action("acf/init", function () {
             "Navigation Module Format Choice",
             "municipio-extended",
           ),
+          "cards" => _x(
+            "Cards",
+            "Navigation Module Format Choice",
+            "municipio-extended",
+          ),
         ],
       ],
       [

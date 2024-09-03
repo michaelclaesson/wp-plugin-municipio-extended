@@ -28,3 +28,7 @@
     margin-top: calc(var(--base, 8px) * 2);
   }
 }
+
+.cards-navigation {
+  background-color: var(--navigation-card-color);
+}
