@@ -14,18 +14,40 @@
   }
 
   @layer components {
+    .typography-h3 {
+      font-family: var(
+        --h3-font-family,
+        var(--font-family-heading, var(--font-family-base))
+      );
+      font-size: clamp(
+        var(--font-size-base, 1rem) + 0.125rem,
+        3vw,
+        var(--h3-font-size, 1.125rem)
+      );
+      font-weight: var(--h3-font-weight, var(--font-weight-heading, 500));
+      line-height: var(--h3-line-height, var(--line-height-heading, 1.33));
+    }
+
     .grid {
       gap: 0;
     }
     .grid > * {
       min-height: auto;
+      position: static;
     }
   }
+}
+
+.tailwind.contents {
+  display: contents;
 }
 
 @layer components {
   .c-typography__variant--p {
     margin-top: calc(var(--base, 8px) * 2);
+  }
+  .c-collection p {
+    margin-top: 0;
   }
 }
 

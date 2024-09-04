@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-30T06:44:12+00:00\n"
+"POT-Creation-Date: 2024-09-04T11:24:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -117,6 +117,14 @@ msgstr ""
 #: autoload/mod-posts.php:9
 msgctxt "Posts Module Display Mode"
 msgid "Cards and list"
+msgstr ""
+
+#: autoload/mxui.php:14
+msgid "Cards"
+msgstr ""
+
+#: autoload/mxui.php:22
+msgid "Use MXUI version"
 msgstr ""
 
 #: autoload/page-apperance.php:10
