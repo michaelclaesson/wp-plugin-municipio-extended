@@ -94,11 +94,6 @@ class Card extends MxBaseController {
     }
   }
 
-  protected function getKirkiOption($name) {
-    $value = Kirki::get_option(Customizer::KIRKI_CONFIG, $name);
-    return $value;
-  }
-
   public function init() {
     $this->data["useHbg"] =
       $this->data["useHbg"] ?? !$this->getKirkiOption("card_mxui_enabled");

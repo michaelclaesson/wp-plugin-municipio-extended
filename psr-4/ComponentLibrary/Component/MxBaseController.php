@@ -2,6 +2,9 @@
 
 namespace MunicipioExtended\ComponentLibrary\Component;
 
+use Kirki;
+use Municipio\Customizer;
+
 class MxBaseController extends \ComponentLibrary\Component\BaseController {
   /**
    * The original BaseController creates filters based on the full class name,
@@ -59,5 +62,10 @@ class MxBaseController extends \ComponentLibrary\Component\BaseController {
   protected function hasContext($context) {
     $contexts = $this->getContexts();
     return in_array($context, $contexts);
+  }
+
+  protected function getKirkiOption($name) {
+    $value = Kirki::get_option(Customizer::KIRKI_CONFIG, $name);
+    return $value;
   }
 }

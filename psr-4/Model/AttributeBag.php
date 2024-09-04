@@ -6,6 +6,7 @@ class AttributeBag implements \Illuminate\Contracts\Support\Htmlable {
   protected $data;
 
   public function __construct(...$data) {
+    $data = array_filter($data);
     $data = array_merge(...$data);
     $this->data = $data;
   }
