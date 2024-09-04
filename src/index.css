@@ -54,3 +54,19 @@
 .cards-navigation {
   background-color: var(--navigation-card-color);
 }
+
+/**
+ * Fixes conflicts between the language selector and the MXUI card component
+ */
+.site-language-menu .site-language-menu__card {
+  position: absolute !important;
+  /* right: 0;
+  top: 100%; */
+  width: calc(var(--base, 8px) * 34) !important;
+}
+.site-language-menu:.is-expanded .site-language-menu__card {
+  display: grid !important;
+}
+.site-language-menu:not(.is-expanded) .site-language-menu__card {
+  display: none !important;
+}
