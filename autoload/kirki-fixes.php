@@ -2,6 +2,10 @@
 
 use Kirki\Util\Helper;
 
+/**
+ * Kirki doesn't merge default values with the saved values if they are arrays.
+ * This fixes that.
+ */
 add_filter(
   "kirki_get_value",
   function ($value, $setting_name, $default, $option_type) {
