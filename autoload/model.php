@@ -37,3 +37,13 @@ function mx_get_icon($input, ...$args) {
   }
   return mx_get_model("Icon", $input, ...$args);
 }
+
+function mx_date($value, ...$args) {
+  if (!$value) {
+    return null;
+  }
+  if (is_string($value)) {
+    $value = strtotime($value);
+  }
+  return mx_get_model("Date", $value, ...$args);
+}
