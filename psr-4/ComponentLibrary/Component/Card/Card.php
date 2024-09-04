@@ -111,6 +111,12 @@ class Card extends MxBaseController {
     $this->data["modifiers"] = $this->getModifiers();
     $this->data["modifier"] = reset($this->data["modifiers"]);
 
+    $this->data["classList"] = array_diff($this->data["classList"], [
+      "u-display--flex",
+    ]);
+
+    $this->data["date"] = mx_date($date);
+
     $this->data["content"] = $content ?? null ?: $slot ?? null;
 
     if ($this->hasContext("module.manual-input.card")) {

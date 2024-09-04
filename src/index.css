@@ -14,6 +14,34 @@
   }
 
   @layer components {
+    .typography-h1 {
+      font-family: var(
+        --h1-font-family,
+        var(--font-family-heading, var(--font-family-base))
+      );
+      font-size: clamp(
+        var(--font-size-base, 1rem) + 0.5rem,
+        3vw,
+        var(--h1-font-size, 2rem)
+      );
+      font-weight: var(--h1-font-weight, var(--font-weight-bold, 700));
+      line-height: var(--h1-line-height, 1.25);
+    }
+
+    .typography-h2 {
+      font-family: var(
+        --h2-font-family,
+        var(--font-family-heading, var(--font-family-base))
+      );
+      font-size: clamp(
+        var(--font-size-base, 1rem) + 0.125rem,
+        3vw,
+        var(--h2-font-size, 1.125rem)
+      );
+      font-weight: var(--h2-font-weight, var(--font-weight-heading, 500));
+      line-height: var(--h2-line-height, var(--line-height-heading, 1.33));
+    }
+
     .typography-h3 {
       font-family: var(
         --h3-font-family,
@@ -26,6 +54,34 @@
       );
       font-weight: var(--h3-font-weight, var(--font-weight-heading, 500));
       line-height: var(--h3-line-height, var(--line-height-heading, 1.33));
+    }
+
+    .typography-h5 {
+      font-family: var(
+        --h5-font-family,
+        var(--font-family-heading, var(--font-family-base))
+      );
+      font-size: clamp(
+        var(--font-size-base, 1rem),
+        3vw,
+        var(--h5-font-size, 1rem)
+      );
+      font-weight: var(--h5-font-weight, var(--font-weight-heading, 500));
+      line-height: var(--h5-line-height, var(--line-height-heading, 1.33));
+    }
+
+    .typography-h5 {
+      font-family: var(
+        --h5-font-family,
+        var(--font-family-heading, var(--font-family-base))
+      );
+      font-size: clamp(
+        var(--font-size-base, 1rem) - 0.125rem,
+        3vw,
+        var(--h5-font-size, 0.875rem)
+      );
+      font-weight: var(--h5-font-weight, var(--font-weight-heading, 500));
+      line-height: var(--h5-line-height, var(--line-height-heading, 1.33));
     }
 
     .grid {
@@ -64,7 +120,7 @@
   top: 100%; */
   width: calc(var(--base, 8px) * 34) !important;
 }
-.site-language-menu:.is-expanded .site-language-menu__card {
+.site-language-menu.is-expanded .site-language-menu__card {
   display: grid !important;
 }
 .site-language-menu:not(.is-expanded) .site-language-menu__card {

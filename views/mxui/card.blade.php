@@ -3,7 +3,6 @@ Left to handle:
 
 'meta' => $post->readingTime,
 'metaFirst' => true,
-'dateBadge' => $post->dateBadge,
 'containerAware' => true,
 'hasAction' => true,
 'postId' => $post->id,
@@ -13,13 +12,14 @@ Left to handle:
 
 @php
   $asSubgrid ??= false;
-  $date ??= null;
-  $heading ??= null;
-  $image ??= null;
-  $content ??= null;
-  $link ??= null;
   $classList ??= null;
+  $content ??= null;
+  $date ??= null;
+  $dateBadge ??= false;
+  $heading ??= null;
   $headingLevel ??= 3;
+  $image ??= null;
+  $link ??= null;
   $wrapContent ??= !empty($content) && is_string($content);
 @endphp
 
@@ -89,6 +89,15 @@ Left to handle:
       ]) }}
     >
       @include('mxui.image', (is_array($image) ? $image : ['src' => $image]) + ['classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent'])
+    </div>
+    <div
+      aria-hidden="true"
+      class="absolute left-0 top-0 m-4 w-auto"
+    >
+      @component('mxui.datebadge', [
+        'date' => $date, 'classList' => [],
+      ])
+      @endcomponent
     </div>
   @endif
   @if(!empty($content))
