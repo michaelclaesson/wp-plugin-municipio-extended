@@ -44,9 +44,7 @@ export default {
     './autoload/**/*.php',
     './psr-4/**/*.php',
     './src/**/*.php',
-    './**/*.blade.php',
-    // '../psr-4/**/*.php',
-    // '../views/**/*.php',
+    './views/**/*.php',
   ],
   safelist: [
     {
