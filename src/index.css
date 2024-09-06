@@ -56,18 +56,18 @@
       line-height: var(--h3-line-height, var(--line-height-heading, 1.33));
     }
 
-    .typography-h5 {
+    .typography-h4 {
       font-family: var(
-        --h5-font-family,
+        --h4-font-family,
         var(--font-family-heading, var(--font-family-base))
       );
       font-size: clamp(
         var(--font-size-base, 1rem),
         3vw,
-        var(--h5-font-size, 1rem)
+        var(--h4-font-size, 1rem)
       );
-      font-weight: var(--h5-font-weight, var(--font-weight-heading, 500));
-      line-height: var(--h5-line-height, var(--line-height-heading, 1.33));
+      font-weight: var(--h4-font-weight, var(--font-weight-heading, 500));
+      line-height: var(--h4-line-height, var(--line-height-heading, 1.33));
     }
 
     .typography-h5 {
@@ -82,6 +82,58 @@
       );
       font-weight: var(--h5-font-weight, var(--font-weight-heading, 500));
       line-height: var(--h5-line-height, var(--line-height-heading, 1.33));
+    }
+
+    .typography-body {
+      @apply mb-3 mt-0;
+    }
+
+    .typography-list {
+      @apply mb-3 ps-[3ch];
+    }
+
+    .typography-li:not(:first-child) {
+      @apply mt-2;
+    }
+    .typography-li {
+      @apply ps-1;
+    }
+
+    .typography-link {
+      @apply text-[--color-link] visited:text-link-visited hover:text-link-hover visited:hover:text-link-visited-hover;
+      text-decoration: underline;
+    }
+
+    .prose {
+      @apply prose-link:typography-link prose-heading:no-underline;
+    }
+    .prose.prose :where(.prose > :first-child) {
+      @apply mt-0;
+    }
+    .prose.prose :where(.prose > :last-child) {
+      @apply mb-0;
+    }
+    .prose :where(ol, ol[type='1' s]):where(:not(.no-prose)) {
+      list-style-type: decimal;
+    }
+    .prose :where(ol[type='a' s]):where(:not(.no-prose)) {
+      list-style-type: lower-alpha;
+    }
+    .prose :where(ol[type='A' s]):where(:not(.no-prose)) {
+      list-style-type: upper-alpha;
+    }
+    .prose :where(ol[type='i' s]):where(:not(.no-prose)) {
+      list-style-type: lower-roman;
+    }
+    .prose :where(ol[type='I' s]):where(:not(.no-prose)) {
+      list-style-type: upper-roman;
+    }
+    .prose :where(ul):where(:not(.no-prose)) {
+      list-style-type: disc;
+    }
+
+    .prose {
+      @apply prose-h1:typography-h1 prose-h2:typography-h2 prose-h3:typography-h3 prose-h4:typography-h4 prose-h5:typography-h5 prose-body:typography-body prose-list:typography-list prose-li:typography-li /* prose-h6:typography-h6 prose-lead:typography-lead prose-blockquote:typography-blockquote; */ prose-h1:mb-3 prose-h2:mb-3 prose-h3:mb-3 prose-h4:mb-3 prose-h5:mb-3;
     }
 
     .grid {

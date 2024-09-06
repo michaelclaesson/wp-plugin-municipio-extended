@@ -158,6 +158,27 @@ export default {
         h6: 'var(--h6-font-size)',
         caption: 'var(--caption-font-size)',
       },
+      prose: {
+        elements: {
+          // Sorted from most specific to least specific
+          body: 'p',
+          blockquote: 'blockquote',
+          ul: 'ul:not(:where(.unlist))',
+          ol: 'ol:not(:where(.unlist))',
+          list: 'ul:not(:where(.unlist)), ol:not(:where(.unlist))',
+          li: 'li',
+          link: 'a',
+          lead: 'p.lead, p.lead a',
+          heading:
+            ':is(h1, h2, h3, h4, h5, h6):not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography))',
+          h1: 'h1:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h1:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h1, .c-typography__variant--h1, .typography-h1 a, .c-typography__variant--h1',
+          h2: 'h2:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h2:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h2, .c-typography__variant--h2, .typography-h2 a, .c-typography__variant--h2',
+          h3: 'h3:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h3:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h3, .c-typography__variant--h3, .typography-h3 a, .c-typography__variant--h3',
+          h4: 'h4:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h4:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h4, .c-typography__variant--h4, .typography-h4 a, .c-typography__variant--h4',
+          h5: 'h5:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h5:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h5, .c-typography__variant--h5, .typography-h5 a, .c-typography__variant--h5',
+          h6: 'h6:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)), h6:not(:where(.typography-h1,.typography-h2,.typography-h3,.typography-h4,.typography-h5,.typography-h6,.c-typography)) a, .typography-h6, .c-typography__variant--h6, .typography-h6 a, .c-typography__variant--h6',
+        },
+      },
     },
   },
   plugins: [
@@ -191,6 +212,17 @@ export default {
           {
             values: flattenColorPalette(theme('colors')),
             type: ['color', 'any'],
+          },
+        );
+        matchVariant(
+          'prose',
+          (
+            value,
+            // { modifier }
+          ) => `& :where(${value}):where(:not(.no-prose))`,
+          {
+            values: theme('prose.elements'),
+            // sort,
           },
         );
         // matchUtilities(
