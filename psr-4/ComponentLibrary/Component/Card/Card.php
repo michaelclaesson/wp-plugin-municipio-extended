@@ -119,6 +119,9 @@ class Card extends MxBaseController {
 
     $this->data["content"] = $content ?? null ?: $slot ?? null;
 
+    $this->data["proseWrap"] =
+      $this->data["proseWrap"] ?? $this->hasContext("widget.sidebar-right");
+
     if ($this->hasContext("module.manual-input.card")) {
       $this->data["content"] =
         $this->data["content"] && is_string($this->data["content"])

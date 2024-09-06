@@ -21,6 +21,7 @@ Left to handle:
   $image ??= null;
   $link ??= null;
   $wrapContent ??= !empty($content) && is_string($content);
+  $proseWrap ??= false;
 @endphp
 
 <div {{ mx_attrs(
@@ -110,10 +111,16 @@ Left to handle:
         'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
       ],
     ]) }}>
+      @if($proseWrap)
+        <div class="prose">
+      @endif
       @if (is_string($content))
         <p>{{ $content }}</p>
       @else
         {!! $content !!}
+      @endif
+      @if($proseWrap)
+        </div>
       @endif
     </div>
   @endif
