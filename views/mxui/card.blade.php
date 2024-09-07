@@ -22,51 +22,57 @@ Left to handle:
   $link ??= null;
   $wrapContent ??= !empty($content) && is_string($content);
   $proseWrap ??= false;
+  $expandLinkCover ??= false;
 @endphp
 
-<div {{ mx_attrs(
-  [
-    'class' => [
-      'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-white group relative overflow-hidden grid-cols-[100%]',
-      'grid-rows-subgrid' => $asSubgrid,
-      'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
-      'w-full',
-
-      // In some places (e.g. contact module in list mode), headers are added via $content, so we cannot style them in-place. Hence the weird selectors here.
-      '[&_.c-card\_\_header]:bg-primary [&_.c-card\_\_header]:text-primary-contrasting' => $modifier == 'panel',
-      '[&_.c-card\_\_header]:border-b-[length:calc(var(--base,8px)/2)] [&_.c-card\_\_header]:border-b-[color:var(--color-primary)]' => $modifier == 'accented',
-
-      // Replacement for `.c-card .c-collection { border: none; }`
-      '[&_.c-collection]:border-none',
-
-      $classList,
-    ],
-  ],
-  $attributeList ?? []
-) }}>
+<div
+  {{ mx_attrs(
+      [
+          'class' => [
+              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-white overflow-hidden grid-cols-[100%]',
+              'relative group' => !$expandLinkCover,
+              'grid-rows-subgrid' => $asSubgrid,
+              'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
+              'w-full',
+  
+              // In some places (e.g. contact module in list mode), headers are added via $content, so we cannot style them in-place. Hence the weird selectors here.
+              '[&_.c-card\_\_header]:bg-primary [&_.c-card\_\_header]:text-primary-contrasting' => $modifier == 'panel',
+              '[&_.c-card\_\_header]:border-b-[length:calc(var(--base,8px)/2)] [&_.c-card\_\_header]:border-b-[color:var(--color-primary)]' =>
+                  $modifier == 'accented',
+  
+              // Replacement for `.c-card .c-collection { border: none; }`
+              '[&_.c-collection]:border-none',
+  
+              $classList,
+          ],
+      ],
+      $attributeList ?? [],
+  ) }}>
   @if (!empty($date) || !empty($heading))
     {{-- CardHeader --}}
-    <div {{ mx_attrs([
-      'class' => [
-        'row-start-2',
-        'row-span-1',
-        "space-y-2",
-        "p-4",
-        'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
-        'border-b-[length:calc(var(--base,8px)/2)] border-b-[color:var(--color-primary)]' => $modifier == 'accented',
-        'bg-primary text-primary-contrasting' => $modifier == 'panel',
-      ],
-    ]) }}>
+    <div
+      {{ mx_attrs([
+          'class' => [
+              'row-start-2',
+              'row-span-1',
+              'space-y-2',
+              'px-[var(--card-px,1rem)] py-[var(--card-py,1rem)]',
+              'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
+              'border-b-[length:calc(var(--base,8px)/2)] border-b-[color:var(--color-primary)]' => $modifier == 'accented',
+              'bg-primary text-primary-contrasting' => $modifier == 'panel',
+          ],
+      ]) }}>
       @if (!empty($heading))
         {{-- CardTitle --}}
         <h{!! $headingLevel !!} class="typography-h3">
           {{-- CardClickable --}}
           @include('mxui.clickable', [
-            'link' => $link ?? null,
-            'content' => $heading ?? null,
-            'classList' => 'no-underline after:absolute after:inset-0 after:z-[1] interactive:hover:underline after:inert:hidden hover:visited:text-inherit'
+              'link' => $link ?? null,
+              'content' => $heading ?? null,
+              'classList' =>
+                  'no-underline after:absolute after:inset-0 after:z-[1] interactive:hover:underline after:inert:hidden hover:visited:text-inherit',
           ])
-        </h{!! $headingLevel !!}>
+          </h{!! $headingLevel !!}>
       @endif
       @if (!empty($date))
         <div class="flex items-center gap-1 text-sm text-gray-500">
@@ -80,38 +86,41 @@ Left to handle:
     {{-- CardMedia --}}
     <div
       {{ mx_attrs([
-        'class' => [
-          'w-full',
-          'row-start-1',
-          'row-span-1',
-          'aspect-video bg-secondary first:last:mb-0',
-          'overflow-hidden border-none',
-        ],
-      ]) }}
-    >
-      @include('mxui.image', (is_array($image) ? $image : ['src' => $image]) + ['classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent'])
+          'class' => [
+              'w-full',
+              'row-start-1',
+              'row-span-1',
+              'aspect-video bg-secondary first:last:mb-0',
+              'overflow-hidden border-none',
+          ],
+      ]) }}>
+      @include(
+          'mxui.image',
+          (is_array($image) ? $image : ['src' => $image]) + [
+              'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+          ]
+      )
     </div>
-    <div
-      aria-hidden="true"
-      class="absolute left-0 top-0 m-4 w-auto"
-    >
+    <div aria-hidden="true" class="absolute left-0 top-0 m-4 w-auto">
       @component('mxui.datebadge', [
-        'date' => $date, 'classList' => [],
+          'date' => $date,
+          'classList' => [],
       ])
       @endcomponent
     </div>
   @endif
-  @if(!empty($content))
+  @if (!empty($content))
     {{-- CardContent --}}
-    <div {{ mx_attrs([
-      'class' => [
-        'row-start-3',
-        'row-span-1',
-        'px-4 pb-4' => $wrapContent,
-        'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
-      ],
-    ]) }}>
-      @if($proseWrap)
+    <div
+      {{ mx_attrs([
+          'class' => [
+              'row-start-3',
+              'row-span-1',
+              'px-[var(--card-px,1rem)] pb-[var(--card-py,1rem)]' => $wrapContent,
+              'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
+          ],
+      ]) }}>
+      @if ($proseWrap)
         <div class="prose">
       @endif
       @if (is_string($content))
@@ -119,29 +128,30 @@ Left to handle:
       @else
         {!! $content !!}
       @endif
-      @if($proseWrap)
-        </div>
-      @endif
+      @if ($proseWrap)
     </div>
   @endif
-  @if(!empty($tags))
-    {{-- CardFooter --}}
-    <div {{ mx_attrs([
-      'class' => [
-        'row-start-4',
-        'row-span-1',
-        'px-4 py-4',
-        'border-t border-t-border-divider',
-        'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
-      ],
+</div>
+@endif
+@if (!empty($tags))
+  {{-- CardFooter --}}
+  <div
+    {{ mx_attrs([
+        'class' => [
+            'row-start-4',
+            'row-span-1',
+            'px-[var(--card-px,1rem)] py-[var(--card-py,1rem)]',
+            'border-t border-t-border-divider',
+            'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
+        ],
     ]) }}>
-      @tags([
-        'compress' => 4, 
-        'tags' => $tags, 
+    @tags([
+        'compress' => 4,
+        'tags' => $tags,
         'format' => false,
         'classList' => []
-      ])
-      @endtags
-    </div>
-  @endif
+    ])
+    @endtags
+  </div>
+@endif
 </div>
