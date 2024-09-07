@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-09-04T11:24:49+00:00\n"
+"POT-Creation-Date: 2024-09-07T13:53:39+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,6 +29,18 @@ msgstr "Lägger till fler funktioner till Municipio."
 #: municipio-extended.php
 msgid "Whitespace Dev"
 msgstr "Whitespace Dev"
+
+#: autoload/api-event-manager-integration.php:20
+msgid "Disable event hero overlay"
+msgstr "Inaktivera textöverlägg på evenemangshero"
+
+#: autoload/mod-form.php:14
+msgid "Form"
+msgstr "Formulär"
+
+#: autoload/mod-form.php:22
+msgid "Default content for GDPR notice"
+msgstr "Standardinnehåll för GDPR-meddelande"
 
 #: autoload/mod-navigation.php:36
 msgctxt "Navigation Module Field Group Title"
@@ -196,7 +208,6 @@ msgid "Parent news:"
 msgstr "Överordnat nyhet:"
 
 #: autoload/post.php:18
-#, fuzzy
 msgid "No news found."
 msgstr "Inga nyheter hittades."
 
