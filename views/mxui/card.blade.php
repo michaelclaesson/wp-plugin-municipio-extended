@@ -101,13 +101,15 @@ Left to handle:
           ]
       )
     </div>
-    <div aria-hidden="true" class="absolute left-0 top-0 m-4 w-auto">
-      @component('mxui.datebadge', [
-          'date' => $date,
-          'classList' => [],
-      ])
-      @endcomponent
-    </div>
+    @if ($dateBadge)
+      <div aria-hidden="true" class="absolute left-0 top-0 m-4 w-auto">
+        @component('mxui.datebadge', [
+            'date' => $date,
+            'classList' => [],
+        ])
+        @endcomponent
+      </div>
+    @endif
   @endif
   @if (!empty($content))
     {{-- CardContent --}}
