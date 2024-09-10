@@ -37,7 +37,7 @@ function toContrastColor(color) {
 }
 
 export default {
-  // important: 'tailwind',
+  important: '.tailwind',
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
@@ -46,11 +46,7 @@ export default {
     './src/**/*.php',
     './views/**/*.php',
   ],
-  safelist: [
-    {
-      pattern: /^c-.*/,
-    },
-  ],
+  safelist: [],
   theme: {
     colors: {
       inherit: 'inherit',
