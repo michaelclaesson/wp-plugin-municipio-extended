@@ -56,7 +56,11 @@ jobs:
     needs: build
     strategy:
       matrix:
-        repo: [whitespace-se/hoor.se-2024, whitespace-se/eslov.se-2024]
+        repo: 
+          - whitespace-se/arvidsjaur.se
+          - whitespace-se/new.trelleborg.se-inspiration
+          - whitespace-se/eslov.se-2024
+          - whitespace-se/hoor.se-2024
     steps:
       - name: Checkout ${{ matrix.repo }} repo
         uses: actions/checkout@v3
