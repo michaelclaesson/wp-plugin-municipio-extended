@@ -23,10 +23,6 @@ add_action("init", function () {
     "default" => false,
   ]);
 
-});
-
-add_action("init", function () {
- 
   $section_id = "municipio_customizer_section_header";
 
   Kirki::add_field(Customizer::KIRKI_CONFIG, [
