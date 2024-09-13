@@ -14,7 +14,7 @@
           'id' => "$id-{$item['id']}-{$loop->index}__item",
           'class' => [
             'bg-secondary-dark underline decoration-white' => $item['active'] || $item['ancestor'],
-            'py-3 px-10 first:pl-0 last:pr-0',
+            'py-3 px-10 first:pl-0 last:pr-0 my-auto',
           ],
           $item['attributeList'] ?? [],
         ]) }}
