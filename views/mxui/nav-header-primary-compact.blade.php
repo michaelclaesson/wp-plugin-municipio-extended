@@ -9,6 +9,10 @@
 @if (!empty($items))
   <ul {{ mx_attrs(['class' => [$class, 'text-base', 'font-semibold'], $attributeList ?? []]) }}>
     @foreach ($items as $item)
+    <script>
+        // Log item data to the console for test
+        console.log(@json($item));
+     </script>
       <li
         {{ mx_attrs([
           'id' => "$id-{$item['id']}-{$loop->index}__item",
