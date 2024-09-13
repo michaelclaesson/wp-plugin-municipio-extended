@@ -5,15 +5,16 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-09-07T13:53:39+00:00\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2024-09-13T07:11:03+00:00\n"
+"PO-Revision-Date: 2024-09-13 09:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: sv_SE\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
 #: municipio-extended.php
@@ -139,6 +140,18 @@ msgstr "Kort"
 #: autoload/mxui.php:22
 msgid "Use MXUI version"
 msgstr "Använd MXUI-version"
+
+#: autoload/mxui.php:32
+msgid "Style for main menu"
+msgstr "Stil för huvudmenyn"
+
+#: autoload/mxui.php:36
+msgid "Standard"
+msgstr "Standard"
+
+#: autoload/mxui.php:37
+msgid "Compact"
+msgstr "Kompakt"
 
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"

@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-07T13:53:39+00:00\n"
+"POT-Creation-Date: 2024-09-13T07:11:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -137,6 +137,18 @@ msgstr ""
 
 #: autoload/mxui.php:22
 msgid "Use MXUI version"
+msgstr ""
+
+#: autoload/mxui.php:32
+msgid "Style for main menu"
+msgstr ""
+
+#: autoload/mxui.php:36
+msgid "Standard"
+msgstr ""
+
+#: autoload/mxui.php:37
+msgid "Compact"
 msgstr ""
 
 #: autoload/page-apperance.php:10
