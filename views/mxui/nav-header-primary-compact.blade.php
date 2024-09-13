@@ -13,9 +13,9 @@
         {{ mx_attrs([
           'id' => "$id-{$item['id']}-{$loop->index}__item",
           'class' => [
-            'bg-secondary-dark underline decoration-white' => $item['active'] || $item['ancestor'],
-            'py-3 px-10 first:pl-0 last:pr-0 my-auto',
-            'hover:bg-secondary-dark hover:underline hover:decoration-white',
+            'bg-secondary-dark decoration-white' => $item['active'] || $item['ancestor'],
+            'py-3 px-10 flex items-center',
+            'hover:bg-secondary-dark hover:decoration-white',
           ],
           $item['attributeList'] ?? [],
         ]) }}
