@@ -7,36 +7,26 @@
 @endphp
 
 @if (!empty($items))
-  <ul {{ mx_attrs(['class' => [$class, 'text-base', 'font-semibold'], $attributeList ?? []]) }}>
+  <ul {{ mx_attrs(['class' => ['text-base font-semibold -mx-6 w-auto', $class], $attributeList ?? []]) }}>
     @foreach ($items as $item)
-      <script>
-        // Log item data to the console for test
-        console.log(@json($item));
-      </script>
       <li
         {{ mx_attrs([
             'id' => "$id-{$item['id']}-{$loop->index}__item",
-            'class' => [
-                'bg-secondary-dark decoration-white' => $item['active'] || $item['ancestor'],
-                'py-3 px-10 flex items-center',
-                'hover:bg-secondary-dark hover:decoration-white',
-            ],
+            'class' => [],
             $item['attributeList'] ?? [],
         ]) }}>
-        <div class="{{ $baseClass }}__item-wrapper">
-          {{-- Nav item --}}
-          @if ($allowStyle)
-            @includeIf('Nav.style.' . ($item['style'] ?? 'default'))
-          @else
-            @includeIf('Nav.style.default')
-          @endif
-
-          {{-- Children list --}}
-          @includeWhen($item['hasToggle'] ?? false, 'Nav.toggle')
-        </div>
-
-        {{-- Children list --}}
-        @includeWhen($item['hasChildren'] ?? false, 'Nav.children')
+        @component('mxui.clickable', [
+            'id' => $id . '-' . $item['id'] . '-' . $loop->index . '__label',
+            'href' => $item['href'],
+            'classList' => [
+                'block text-secondary-contrasting visited:text-secondary-contrasting',
+                'bg-secondary-dark underline' => $item['active'] || $item['ancestor'],
+                'py-3 px-6 flex items-center',
+                'hover:bg-secondary-dark',
+            ],
+        ])
+          {!! $item['label'] !!}
+        @endcomponent
       </li>
     @endforeach
   </ul>

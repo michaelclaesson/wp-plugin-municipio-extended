@@ -272,11 +272,6 @@ class Nav extends MxBaseController {
      * structure
      */
 
-    //Declarations
-    if (!isset($this->data["depth"])) {
-      $this->data["depth"] = 1;
-    }
-
     //Extract array for eazy access (fetch only)
     extract($this->data);
   }
