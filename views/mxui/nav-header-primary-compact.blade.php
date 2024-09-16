@@ -9,24 +9,23 @@
 @if (!empty($items))
   <ul {{ mx_attrs(['class' => [$class, 'text-base', 'font-semibold'], $attributeList ?? []]) }}>
     @foreach ($items as $item)
-    <script>
+      <script>
         // Log item data to the console for test
         console.log(@json($item));
-     </script>
+      </script>
       <li
         {{ mx_attrs([
-          'id' => "$id-{$item['id']}-{$loop->index}__item",
-          'class' => [
-            'bg-secondary-dark decoration-white' => $item['active'] || $item['ancestor'],
-            'py-3 px-10 flex items-center',
-            'hover:bg-secondary-dark hover:decoration-white',
-          ],
-          $item['attributeList'] ?? [],
-        ]) }}
-      >
-        <div class="{{$baseClass}}__item-wrapper">
+            'id' => "$id-{$item['id']}-{$loop->index}__item",
+            'class' => [
+                'bg-secondary-dark decoration-white' => $item['active'] || $item['ancestor'],
+                'py-3 px-10 flex items-center',
+                'hover:bg-secondary-dark hover:decoration-white',
+            ],
+            $item['attributeList'] ?? [],
+        ]) }}>
+        <div class="{{ $baseClass }}__item-wrapper">
           {{-- Nav item --}}
-          @if($allowStyle)
+          @if ($allowStyle)
             @includeIf('Nav.style.' . ($item['style'] ?? 'default'))
           @else
             @includeIf('Nav.style.default')
@@ -42,7 +41,3 @@
     @endforeach
   </ul>
 @endif
-
-
-
-
