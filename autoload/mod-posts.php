@@ -11,6 +11,14 @@ add_filter(
       "Posts Module Display Mode",
       "municipio-extended",
     );
+
+    $options_to_remove = ["items", "news", "grid", "features-grid"];
+
+    foreach ($options_to_remove as $option) {
+      if (isset($field["choices"][$option])) {
+        unset($field["choices"][$option]);
+      }
+    }
     return $field;
   },
   99,
