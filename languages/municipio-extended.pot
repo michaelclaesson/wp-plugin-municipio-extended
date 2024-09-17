@@ -300,5 +300,20 @@ msgstr ""
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:74
 msgctxt "Navigation Module Customization Field Label"
+msgid "Style for format “tree”"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:82
+msgctxt "Navigation Module Tree Style Choice"
+msgid "Standard"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:87
+msgctxt "Navigation Module Tree Style Choice"
+msgid "Highlighted"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:97
+msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr ""

@@ -69,6 +69,29 @@ class ModNavigation extends MxModule {
         ],
       ],
       [
+        "type" => "select",
+        "settings" => "mod_navigation_tree_style",
+        "label" => _x(
+          "Style for format “tree”",
+          "Navigation Module Customization Field Label",
+          "municipio-extended",
+        ),
+        "default" => "standard",
+        "priority" => 10,
+        "choices" => [
+          "standard" => _x(
+            "Standard",
+            "Navigation Module Tree Style Choice",
+            "municipio-extended",
+          ),
+          "highlighted" => _x(
+            "Highlighted",
+            "Navigation Module Tree Style Choice",
+            "municipio-extended",
+          ),
+        ],
+      ],
+      [
         "type" => "color",
         "settings" => "mod_navigation_cards_color",
         "label" => _x(
@@ -126,6 +149,7 @@ class ModNavigation extends MxModule {
       "nopaging" => true,
       "post_status" => "publish",
       "orderby" => "menu_order",
+      "order" => "ASC",
       "meta_query" => [
         [
           "key" => "hide_in_menu",

@@ -313,5 +313,20 @@ msgstr "Solid"
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:74
 msgctxt "Navigation Module Customization Field Label"
+msgid "Style for format “tree”"
+msgstr "Stil för formatet ”träd”"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:82
+msgctxt "Navigation Module Tree Style Choice"
+msgid "Standard"
+msgstr "Standard"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:87
+msgctxt "Navigation Module Tree Style Choice"
+msgid "Highlighted"
+msgstr "Framhävd"
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:97
+msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr "Färg för format “kort”"
