@@ -22,8 +22,25 @@ add_action("init", function () {
     "label" => __("Use MXUI version", "municipio-extended"),
     "default" => false,
   ]);
-});
 
+  $section_id = "municipio_customizer_section_header";
+
+  Kirki::add_field(Customizer::KIRKI_CONFIG, [
+    "section" => $section_id,
+    "type" => "select",
+    "settings" => "main_menu_style",
+    "label" => __("Style for main menu", "municipio-extended"),
+    "default" => 'standard',
+    'priority'    => 10,
+    'choices'     => [
+      'standard' => __('Standard', 'municipio-extended'),
+      'compact' => __('Compact', 'municipio-extended'),
+  ],
+  'output' => [
+      ['type' => 'controller']
+  ],
+  ]);
+});
 /**
  * Overrides the default way of setting placeholder images on cards.
  */
