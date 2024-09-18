@@ -54,10 +54,7 @@ add_action("init", function () {
     ],
     "output" => [["type" => "controller"]],
   ]);
-});
 
-
-add_action("init", function () {
   $section_id = "municipio_customizer_panel_content_types_page";
 
   Kirki::add_field(Customizer::KIRKI_CONFIG, [
