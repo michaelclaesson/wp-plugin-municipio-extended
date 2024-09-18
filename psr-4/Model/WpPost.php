@@ -10,6 +10,7 @@ class WpPost extends Model {
   const THEME_COLOR_FIELD_NAME = "page_apperance_theme_color";
   const MENU_TITLE_FIELD_NAME = "custom_menu_title";
   const MENU_DESCRIPTION_FIELD_NAME = "page_navigation_description";
+  const SECTION_START_PAGE_FIELD_NAME = "page_navigation_section_start_page";
 
   public function __construct($post, $data = []) {
     if (is_numeric($post)) {
@@ -78,6 +79,17 @@ class WpPost extends Model {
       return null;
     }
     return mx_get_post($this->parentId);
+  }
+
+  public function getSectionPageAncestor() {
+    $parent = $this->getParent();
+    if (!$parent) {
+      return null;
+    }
+    if ($parent->getField(static::SECTION_START_PAGE_FIELD_NAME)) {
+      return $parent;
+    }
+    return $parent -> sectionPageAncestor;
   }
 
   public function getOwnThemeColor() {
