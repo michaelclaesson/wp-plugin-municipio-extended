@@ -11,6 +11,7 @@ class WpPost extends Model {
   const MENU_TITLE_FIELD_NAME = "custom_menu_title";
   const MENU_DESCRIPTION_FIELD_NAME = "page_navigation_description";
   const SECTION_START_PAGE_FIELD_NAME = "page_navigation_section_start_page";
+  const SECTION_START_PAGE_ENABLED_FIELD_NAME = "section_start_page_enabled";
 
   public function __construct($post, $data = []) {
     if (is_numeric($post)) {
@@ -90,6 +91,10 @@ class WpPost extends Model {
       return $parent;
     }
     return $parent -> sectionPageAncestor;
+  }
+
+  public function getSectionStartPageEnabled() {
+    return get_theme_mod(static::SECTION_START_PAGE_ENABLED_FIELD_NAME);
   }
 
   public function getOwnThemeColor() {
