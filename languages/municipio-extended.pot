@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-13T07:11:03+00:00\n"
+"POT-Creation-Date: 2024-09-17T10:49:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -314,6 +314,21 @@ msgid "Highlighted"
 msgstr ""
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:97
+msgctxt "Navigation Module Customization Field Label"
+msgid "Style for format “grid”"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:105
+msgctxt "Navigation Module Grid Style Choice"
+msgid "Standard"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:110
+msgctxt "Navigation Module Grid Style Choice"
+msgid "Blocks"
+msgstr ""
+
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:120
 msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr ""

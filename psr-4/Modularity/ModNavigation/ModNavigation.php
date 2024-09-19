@@ -92,6 +92,29 @@ class ModNavigation extends MxModule {
         ],
       ],
       [
+        "type" => "select",
+        "settings" => "mod_navigation_grid_style",
+        "label" => _x(
+          "Style for format “grid”",
+          "Navigation Module Customization Field Label",
+          "municipio-extended",
+        ),
+        "default" => "default",
+        "priority" => 10,
+        "choices" => [
+          "default" => _x(
+            "Standard",
+            "Navigation Module Grid Style Choice",
+            "municipio-extended",
+          ),
+          "blocks" => _x(
+            "Blocks",
+            "Navigation Module Grid Style Choice",
+            "municipio-extended",
+          ),
+        ],
+      ],
+      [
         "type" => "color",
         "settings" => "mod_navigation_cards_color",
         "label" => _x(
@@ -101,12 +124,12 @@ class ModNavigation extends MxModule {
         ),
         "default" => "#0008DC",
         "priority" => 10,
-        'output' => array(
-          array(
-            'element'  => ':root',
-            'property' => '--navigation-card-color',
-          ),
-         ),
+        "output" => [
+          [
+            "element" => ":root",
+            "property" => "--navigation-card-color",
+          ],
+        ],
       ],
     ];
   }
@@ -242,7 +265,7 @@ class ModNavigation extends MxModule {
         "image" => $item->image,
         "icon" => $item->icon,
         "color" => $item->ownThemeColor,
-        "description" => $item->menuDescription,
+        "description" => $item->description ?: $item->menuDescription,
         "children" => $this->getMenuItems($depth - 1, $item->ID),
       ];
     }, $menu_items);
