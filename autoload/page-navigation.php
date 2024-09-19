@@ -4,6 +4,9 @@ add_action("acf/init", function () {
   add_action(
     "init",
     function () {
+
+      $section_start_page_enabled = get_theme_mod('section_start_page_enabled', false);
+
       acf_add_local_field([
         "parent" => "group_56d83cff12bb3",
         "key" => "field_page_navigation_description",
@@ -60,6 +63,26 @@ add_action("acf/init", function () {
         "ui" => 1,
         "allow_null" => 1,
       ]);
+
+      if ($section_start_page_enabled) {
+        acf_add_local_field([
+          "parent" => "group_56d83cff12bb3",
+          "key" => "field_page_navigation_section_start_page",
+          "label" => _x(
+            "Section start page",
+            "Page Navigation Field Label",
+            "municipio-extended",
+          ),
+          "name" => "page_navigation_section_start_page",
+          "type" => "true_false",
+          "graphql_field_name" => "sectionStartPage",
+          "show_in_graphql" => 1,
+          'default_value' => 0,
+          'ui' => 1,
+          'ui_on_text' => '',
+          'ui_off_text' => '',
+        ]);
+      }
     },
     20,
   );

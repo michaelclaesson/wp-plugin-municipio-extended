@@ -54,7 +54,18 @@ add_action("init", function () {
     ],
     "output" => [["type" => "controller"]],
   ]);
+
+  $section_id = "municipio_customizer_panel_content_types_page";
+
+  Kirki::add_field(Customizer::KIRKI_CONFIG, [
+    "section" => $section_id,
+    "type" => "checkbox",
+    "settings" => "section_start_page_enabled",
+    "label" => __("Section start page", "municipio-extended"),
+    "default" => false,
+  ]);
 });
+
 /**
  * Overrides the default way of setting placeholder images on cards.
  */
