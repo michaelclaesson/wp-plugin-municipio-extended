@@ -21,7 +21,7 @@
             'classList' => [
                 'block text-secondary-contrasting visited:text-secondary-contrasting',
                 'bg-secondary-dark underline' => $item['active'] || $item['ancestor'],
-                'py-3 px-6 flex items-center',
+                'py-3 px-6 flex items-center text-balance',
                 'hover:bg-secondary-dark',
             ],
         ])
