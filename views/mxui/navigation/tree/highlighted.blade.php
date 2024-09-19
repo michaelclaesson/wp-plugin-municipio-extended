@@ -8,7 +8,7 @@
         <div class="@[40rem]:row-span-2 col-span-1 @[40rem]:-ml-4 @[40rem]:-my-4 @[40rem]:w-[calc(100%+1rem)]">
           @component(
               'mxui.image',
-              (is_array($image) ? $image : ['src' => $image]) + [
+              (is_array($image) ? $image : ['src' => $item['image']['medium']['src']]) + [
                   'classList' => 'aspect-video h-full',
               ]
           )
