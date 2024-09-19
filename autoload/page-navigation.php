@@ -78,7 +78,7 @@ add_action("acf/init", function () {
           "graphql_field_name" => "sectionStartPage",
           "show_in_graphql" => 1,
           'default_value' => 0,
-          'ui' => 0,
+          'ui' => 1,
           'ui_on_text' => '',
           'ui_off_text' => '',
         ]);

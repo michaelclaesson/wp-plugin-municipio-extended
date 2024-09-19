@@ -83,6 +83,9 @@ class WpPost extends Model {
   }
 
   public function getSectionPageAncestor() {
+    if(!get_theme_mod(static::SECTION_START_PAGE_ENABLED_FIELD_NAME)){
+      return null;
+    }
     $parent = $this->getParent();
     if (!$parent) {
       return null;
@@ -91,10 +94,6 @@ class WpPost extends Model {
       return $parent;
     }
     return $parent -> sectionPageAncestor;
-  }
-
-  public function getSectionStartPageEnabled() {
-    return get_theme_mod(static::SECTION_START_PAGE_ENABLED_FIELD_NAME);
   }
 
   public function getOwnThemeColor() {
