@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-09-17T10:49:06+00:00\n"
-"PO-Revision-Date: 2024-09-17 12:50+0200\n"
+"POT-Creation-Date: 2024-09-19T10:48:20+00:00\n"
+"PO-Revision-Date: 2024-09-19 12:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -137,19 +137,23 @@ msgstr "Kort och lista"
 msgid "Cards"
 msgstr "Kort"
 
-#: autoload/mxui.php:22
+#: autoload/mxui.php:22 autoload/mxui.php:38
 msgid "Use MXUI version"
 msgstr "Använd MXUI-version"
 
-#: autoload/mxui.php:32
+#: autoload/mxui.php:30
+msgid "Segments"
+msgstr "Segment"
+
+#: autoload/mxui.php:48
 msgid "Style for main menu"
 msgstr "Stil för huvudmenyn"
 
-#: autoload/mxui.php:36
+#: autoload/mxui.php:52
 msgid "Standard"
 msgstr "Standard"
 
-#: autoload/mxui.php:37
+#: autoload/mxui.php:53
 msgid "Compact"
 msgstr "Kompakt"
 

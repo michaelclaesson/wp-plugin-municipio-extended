@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-17T10:49:06+00:00\n"
+"POT-Creation-Date: 2024-09-19T10:48:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
@@ -136,18 +136,23 @@ msgid "Cards"
 msgstr ""
 
 #: autoload/mxui.php:22
+#: autoload/mxui.php:38
 msgid "Use MXUI version"
 msgstr ""
 
-#: autoload/mxui.php:32
+#: autoload/mxui.php:30
+msgid "Segments"
+msgstr ""
+
+#: autoload/mxui.php:48
 msgid "Style for main menu"
 msgstr ""
 
-#: autoload/mxui.php:36
+#: autoload/mxui.php:52
 msgid "Standard"
 msgstr ""
 
-#: autoload/mxui.php:37
+#: autoload/mxui.php:53
 msgid "Compact"
 msgstr ""
 

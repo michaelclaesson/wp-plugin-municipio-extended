@@ -23,6 +23,22 @@ add_action("init", function () {
     "default" => false,
   ]);
 
+  $section_id = "municipio_customizer_section_component_segment";
+
+  Kirki::add_section($section_id, [
+    "panel" => "municipio_customizer_panel_design_component",
+    "title" => __("Segments", "municipio-extended"),
+    "priority" => 170,
+  ]);
+
+  Kirki::add_field(Customizer::KIRKI_CONFIG, [
+    "section" => $section_id,
+    "type" => "checkbox",
+    "settings" => "segment_mxui_enabled",
+    "label" => __("Use MXUI version", "municipio-extended"),
+    "default" => false,
+  ]);
+
   $section_id = "municipio_customizer_section_header";
 
   Kirki::add_field(Customizer::KIRKI_CONFIG, [
@@ -30,15 +46,13 @@ add_action("init", function () {
     "type" => "select",
     "settings" => "main_menu_style",
     "label" => __("Style for main menu", "municipio-extended"),
-    "default" => 'standard',
-    'priority'    => 10,
-    'choices'     => [
-      'standard' => __('Standard', 'municipio-extended'),
-      'compact' => __('Compact', 'municipio-extended'),
-  ],
-  'output' => [
-      ['type' => 'controller']
-  ],
+    "default" => "standard",
+    "priority" => 10,
+    "choices" => [
+      "standard" => __("Standard", "municipio-extended"),
+      "compact" => __("Compact", "municipio-extended"),
+    ],
+    "output" => [["type" => "controller"]],
   ]);
 });
 /**
