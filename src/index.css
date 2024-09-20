@@ -165,6 +165,16 @@
 }
 
 /**
+ * Hides articles and sidebars that don't have any content
+ */
+:is(.content):where(
+    :empty:not(area, embed, hr, img, input, source, track),
+    :not(:has(:not(:empty), area, embed, hr, img, input, source, track))
+  ) {
+  display: none;
+}
+
+/**
  * Fixes conflicts between the language selector and the MXUI card component
  */
 .site-language-menu .site-language-menu__card {
