@@ -213,7 +213,6 @@ function mx_search_ajax_handler() {
     wp_send_json($results);
   } catch (Exception $e) {
     mx_error_log($e->getMessage());
-    error_log($e->getMessage());
     return wp_send_json([
       "success" => false,
       "error" => "An error occurred while searching.",
