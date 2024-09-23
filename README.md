@@ -14,53 +14,32 @@ https://github.com/whitespace-se/lts.malmstad.se/tree/main/wordpress#municipio-e
 
 1. Branch out from `main`.
 
-2. Make commits as needed.
+1. Make commits as needed.
 
-3. When ready for testing, merge into `dev`:
-
+1. When ready for testing, merge into `dev`:
    ```bash
    git checkout dev
    git pull
    git merge feature/my-feature
    git push
    ```
+   This will trigger a Github Action that will create a PR in the Malmstad repo. This repo acts as testing ground for the changes.
 
-4. Switch to the `lts.malmstad` repo:
+1. Close the PR in the Malmstad repo and wait for the changes to be deployed. You can follow the progress in the Github Actions tab in the Malmstad repo, and see when the deployment is finished by checking the status of the container in Portainer: https://portainer.falkenberg.municipio.w8e.se/.
 
-   ```bash
-   cd wordpress && composer update
-   ```
+1. When the changes are deployed, check https://malmstad.se to make sure they work as intended.
 
-5. Make a commit on `main` with a descriptive name, such as
-   `feat: implement something`.
+1. Create a pull request in this repo from your feature branch back to the `main` branch.
 
-6. Push the commit:
+1. Link to `malmstad.se/<relevant page>` in the pull request.
 
-   ```bash
-   git push
-   ```
-
-7. Create a pull request.
-
-8. Link to `lts.malmstad/relevant-sida` in the pull request.
-
-9. Link to `lts.malmstad/relevant-sida` in the Trello card and move it to the
+1. Link to `malmstad.se/<relevant page>` in the Github issue card and move it to the
    testing column.
 
-10. When testing is complete, close the pull request so the branch merges back
-    into `main`.
+1. When testing is complete, close the pull request so the branch merges back
+    into `main`. This will trigger a Github Action that will generate a PR for each of the Municipio site repos.
 
-11. Open each of the project repositories (currently `Arvidsjaur`, `Eslöv`, and
-    `Höör`).
-
-12. Run the following command:
-
-    ```bash
-    cd wordpress && composer update
-    ```
-
-13. Make a commit on `main` with a descriptive name, such as
-    `feat: implement something`.
+1. Close each of these new PR:s in turn, wait for deployment and make sure the sites works as intended.
 
 ## Migrations
 
