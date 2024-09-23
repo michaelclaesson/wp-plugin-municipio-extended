@@ -100,3 +100,9 @@ function mx_coalesce_string($values, $glue = " ") {
 function mx_attrs(...$attrs) {
   return new MunicipioExtended\Model\AttributeBag(...$attrs);
 }
+
+function mx_error_log($message) {
+  if (defined("MX_DEBUG") && MX_DEBUG) {
+    error_log($message);
+  }
+}
