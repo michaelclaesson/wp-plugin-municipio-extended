@@ -15,6 +15,31 @@
   }
 }
 
+.layer-complementary {
+  --color-layer-dark: var(--color-complementary);
+  --color-layer: var(--color-complementary-light);
+  --color-layer-light: var(--color-complementary-lighter);
+  --color-layer-lighter: var(--color-complementary-lightest);
+}
+.layer-white {
+  --color-layer-dark: #fff;
+  --color-layer: #fff;
+  --color-layer-light: #fff;
+  --color-layer-lighter: #fff;
+}
+.layer-neutral {
+  --color-layer-dark: var(--color-default);
+  --color-layer: var(--color-light);
+  --color-layer-light: var(--color-lighter);
+  --color-layer-lighter: var(--color-lightest);
+}
+.layer-card {
+  --color-layer-dark: var(--color-background-card);
+  --color-layer: var(--color-background-card);
+  --color-layer-light: var(--color-background-card);
+  --color-layer-lighter: var(--color-background-card);
+}
+
 @layer components {
   .typography-h1 {
     font-family: var(
@@ -188,4 +213,19 @@
 }
 .site-language-menu:not(.is-expanded) .site-language-menu__card {
   display: none !important;
+}
+
+/**
+ * Hides articles and sidebars that don't have any content
+ */
+:is(.s-article, .s-sidebar):where(
+    :empty:not(area, embed, hr, img, input, source, track),
+    :not(:has(:not(:empty), area, embed, hr, img, input, source, track))
+  ) {
+  display: none;
+}
+
+#sidebar-top-sidebar {
+  background: var(--color-complementary-light);
+  @apply layer-white;
 }

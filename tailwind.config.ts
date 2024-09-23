@@ -92,10 +92,19 @@ export default {
       'info-dark': 'var(--color-info-dark)',
       'info-light': 'var(--color-info-light)',
       'info-contrasting': 'var(--color-info-contrasting)',
+
       complementary: 'var(--color-complementary)',
       'complementary-light': 'var(--color-complementary-light)',
       'complementary-lighter': 'var(--color-complementary-lighter)',
       'complementary-lightest': 'var(--color-complementary-lightest)',
+
+      'layer-dark': 'var(--color-layer-dark, var(--color-complementary))',
+      layer: 'var(--color-layer, var(--color-complementary-light))',
+      'layer-light':
+        'var(--color-layer-light, var(--color-complementary-lighter))',
+      'layer-lighter':
+        'var(--color-layer-lighter, var(--color-complementary-lightest))',
+
       default: 'var(--color-default)',
       black: 'var(--color-black)',
       darkest: 'var(--color-darkest)',
