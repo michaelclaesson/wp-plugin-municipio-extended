@@ -57,3 +57,5 @@ logged there.
 
 Additional logging can be added manually in the migration’s file by calling
 `mx_migration_progress_log`.
+
+See /migrations/replace-mod-files1.php for an example.
