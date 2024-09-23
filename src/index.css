@@ -183,6 +183,9 @@
   .c-collection p {
     margin-top: 0;
   }
+  .c-brand__logotype {
+    flex: none;
+  }
 }
 
 .cards-navigation {

@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-19T19:34:15+00:00\n"
+"POT-Creation-Date: 2024-09-23T15:32:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -31,6 +31,32 @@ msgstr ""
 
 #: autoload/api-event-manager-integration.php:20
 msgid "Disable event hero overlay"
+msgstr ""
+
+#: autoload/header.php:16
+msgid "Header Logotype Text: Width"
+msgstr ""
+
+#: autoload/migrations.php:162
+msgctxt "Admin Page Title"
+msgid "Migrations"
+msgstr ""
+
+#: autoload/migrations.php:163
+msgctxt "Admin Menu Item"
+msgid "Migrations"
+msgstr ""
+
+#: autoload/migrations.php:176
+msgid "Migrations"
+msgstr ""
+
+#: autoload/migrations.php:180
+msgid "Name"
+msgstr ""
+
+#: autoload/migrations.php:181
+msgid "Status"
 msgstr ""
 
 #: autoload/mod-form.php:14
