@@ -19,11 +19,6 @@ buttons
       ],
       $attributeList,
   ) }}>
-  {{-- @component('mxui.image',
-    (is_array($image) ? $image : ['src' => $image]) + [
-        'classList' => ['rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]', 'aspect-video'],
-    ])
-  @endcomponent --}}
   <div class="-mt-8 mx-4 w-auto">
     @component('mxui.card', [
         'heading' => $title,
@@ -47,12 +42,11 @@ buttons
             'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
         ],
     ]) }}>
-    @component(
-        'mxui.image',
-        (is_array($image) ? $image : ['src' => $image]) + [
-            'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
-        ]
-    )
+    @component('mxui.image', [
+        'image' => $image,
+        'size' => 'medium',
+        'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+    ])
     @endcomponent
   </div>
 </section>

@@ -6,13 +6,15 @@
         class="relative group grid grid-cols-subgrid grid-rows-subgrid row-span-2 col-span-2 bg-complementary-light hover:bg-complementary gap-x-7 gap-y-4 p-4">
         <!-- Image Section -->
         <div class="@[40rem]:row-span-2 col-span-1 @[40rem]:-ml-4 @[40rem]:-my-4 @[40rem]:w-[calc(100%+1rem)]">
-          @component(
-              'mxui.image',
-              (is_array($image) ? $image : ['src' => $item['image']['medium']['src']]) + [
-                  'classList' => 'aspect-video h-full',
-              ]
-          )
-          @endcomponent
+          @if ($item['image'] ?? null)
+            @component('mxui.image', [
+                'image' => $item['image'],
+                'size' => 'medium',
+                'sizes' => '200px',
+                'classList' => 'aspect-video h-full',
+            ])
+            @endcomponent
+          @endif
         </div>
 
         <!-- Text Section (Coloured Section) -->

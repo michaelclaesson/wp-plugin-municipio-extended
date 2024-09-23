@@ -2,10 +2,45 @@
 
 namespace MunicipioExtended\Model;
 
-class WpImage extends WpPost {
+class WpImage extends WpPost implements WpImageInterface {
   protected $size;
 
-  public function __construct($post, $size = "thumbnail", $data = []) {
+  public function __construct($post, $size = null, $data = []) {
+    if (is_array($post) && isset($post["src"])) {
+      $data = array_merge($data, $post);
+      $post = $post["src"];
+    }
+    if (is_string($post) && !is_numeric($post)) {
+      $post = attachment_url_to_postid($post) ?: $post;
+    }
+    if (
+      is_string($post) &&
+      !is_numeric($post) &&
+      preg_match("/^(.+?)(-scaled)?(-\d+x\d+)?(\.[a-z0-9]+)$/", $post, $matches)
+    ) {
+      $candidates = [
+        $matches[1] . $matches[4],
+        $matches[1] . $matches[2] . $matches[4],
+      ];
+      foreach ($candidates as $candidate) {
+        $matching_post = attachment_url_to_postid($candidate) ?: null;
+        if ($matching_post) {
+          $post = $matching_post;
+          break;
+        }
+      }
+      if ($post && $matches[3]) {
+        $meta = get_post_meta($post, "_wp_attachment_metadata", true);
+        foreach ($meta["sizes"] as $key => $value) {
+          if ("-" . $value["width"] . "x" . $value["height"] === $matches[3]) {
+            $size = $key;
+            break;
+          }
+        }
+        $size ??= substr($matches[3], 1);
+      }
+    }
+    $size ??= "thumbnail";
     parent::__construct($post, $data);
     $this->size = $size;
   }
@@ -17,7 +52,10 @@ class WpImage extends WpPost {
     return array_merge($default_image_sizes, $additional_image_sizes);
   }
 
-  public function toSize(string $size) {
+  public function toSize(?string $size) {
+    if (!$size) {
+      return $this;
+    }
     return new self($this->post_id, $size, $this->data);
   }
 

@@ -41,12 +41,13 @@ background
             'overflow-hidden border-none',
         ],
     ]) }}>
-    @component(
-        'mxui.image',
-        (is_array($image) ? $image : ['src' => $image]) + [
-            'classList' => ['text-transparent', 'group-hover:scale-105 transition-transform duration-500' => $link],
-        ]
-    )
-    @endcomponent
+    @if ($image ?? null)
+      @component('mxui.image', [
+          'image' => $image,
+          'size' => 'medium',
+          'classList' => ['text-transparent', 'group-hover:scale-105 transition-transform duration-500' => $link],
+      ])
+      @endcomponent
+    @endif
   </div>
 </section>

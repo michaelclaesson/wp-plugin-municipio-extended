@@ -24,11 +24,18 @@ function mx_get_menu_item($post_id = null, ...$args) {
   return mx_get_model("WpMenuItem", $post_id, ...$args);
 }
 
-function mx_get_image($attachment_id, $size = "thumbnail") {
+function mx_get_image($attachment_id, $size = null) {
   if (!$attachment_id) {
     return null;
   }
+  if (mx_is_image($attachment_id)) {
+    return $attachment_id->toSize($size);
+  }
   return mx_get_model("WpImage", $attachment_id, $size);
+}
+
+function mx_is_image($value) {
+  return $value instanceof \MunicipioExtended\Model\WpImageInterface;
 }
 
 function mx_get_icon($input, ...$args) {

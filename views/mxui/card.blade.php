@@ -94,12 +94,12 @@ Left to handle:
               'overflow-hidden border-none',
           ],
       ]) }}>
-      @include(
-          'mxui.image',
-          (is_array($image) ? $image : ['src' => $image]) + [
-              'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
-          ]
-      )
+      @component('mxui.image', [
+          'image' => $image,
+          'size' => 'medium',
+          'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+      ])
+      @endcomponent
     </div>
     @if ($dateBadge)
       <div aria-hidden="true" class="absolute left-0 top-0 m-4 w-auto">
