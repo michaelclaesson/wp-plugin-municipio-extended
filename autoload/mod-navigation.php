@@ -78,6 +78,11 @@ add_action("acf/init", function () {
             "Navigation Module Format Choice",
             "municipio-extended",
           ),
+          "buttons" => _x(
+            "Buttons",
+            "Navigation Module Format Choice",
+            "municipio-extended",
+          ),
         ],
       ],
       [
@@ -189,6 +194,44 @@ add_action("acf/init", function () {
                   "field" => "field_mod_navigation_format",
                   "operator" => "==",
                   "value" => "grid",
+                ],
+              ],
+            ],
+          ],
+          [
+            "key" => "field_mod_navigation_button_variant",
+            "label" => _x(
+              "Variant",
+              "Navigation Module Field Label",
+              "municipio-extended",
+            ),
+            "name" => "button_variant",
+            "type" => "select",
+            "choices" => [
+              "primary" => _x(
+                "Primary",
+                "Navigation Module Button Variant Choice",
+                "municipio-extended",
+              ),
+              "secondary" => _x(
+                "Secondary",
+                "Navigation Module Button Variant Choice",
+                "municipio-extended",
+              ),
+              "default" => _x(
+                "Default",
+                "Navigation Module Button Variant Choice",
+                "municipio-extended",
+              ),
+            ],
+            "default_value" => "default",
+            "wrapper" => ["width" => "25%"],
+            "conditional_logic" => [
+              [
+                [
+                  "field" => "field_mod_navigation_format",
+                  "operator" => "==",
+                  "value" => "buttons",
                 ],
               ],
             ],

@@ -1,22 +1,39 @@
 @if (!$hideTitle && !empty($postTitle))
-  <h2 class="c-typography c-typography__variant--h2 module-title">{{ $postTitle }}</h2>
+  @typography([
+      'id' => 'mod-navigation-' . $ID . '-label',
+      'element' => 'h2',
+      // 'variant' => 'h2',
+      'autopromote' => true,
+      'classList' => ['module-title']
+  ])
+    {!! $postTitle !!}
+  @endtypography
 @endif
+
 <div class="tailwind">
   @switch($format)
     @case ('list')
       @include('mxui.navigation.list')
-      @break
+    @break
+
     @case ('grid')
       @include('mxui.navigation.grid')
-      @break
+    @break
+
     @case ('bar')
       @include('mxui.navigation.bar')
-      @break
+    @break
+
     @case ('tree')
       @include('mxui.navigation.tree')
-      @break
+    @break
+
     @case ('cards')
       @include('mxui.navigation.cards')
-      @break
-    @endswitch
+    @break
+
+    @case ('buttons')
+      @include('mxui.navigation.buttons')
+    @break
+  @endswitch
 </div>

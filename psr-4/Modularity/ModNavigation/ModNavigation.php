@@ -300,6 +300,7 @@ class ModNavigation extends MxModule {
           ($post
             ? get_field("page_apperance_theme_color", $post->ID)
             : null),
+        "buttonVariant" => $item["button_variant"],
       ];
     }, $items);
   }

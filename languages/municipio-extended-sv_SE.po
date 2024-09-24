@@ -104,52 +104,77 @@ msgctxt "Navigation Module Format Choice"
 msgid "Cards"
 msgstr "Kort"
 
-#: autoload/mod-navigation.php:85
+#: autoload/mod-navigation.php:81
+msgctxt "Navigation Module Format Choice"
+msgid "Buttons"
+msgstr "Knappar"
+
+#: autoload/mod-navigation.php:90
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr "Källa"
 
-#: autoload/mod-navigation.php:97
+#: autoload/mod-navigation.php:102
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr "Underordnade sidor"
 
-#: autoload/mod-navigation.php:102
+#: autoload/mod-navigation.php:107
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr "Syskonsidor"
 
-#: autoload/mod-navigation.php:107
+#: autoload/mod-navigation.php:112
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:112
+#: autoload/mod-navigation.php:117
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr "Manuellt utvalda"
 
-#: autoload/mod-navigation.php:121
+#: autoload/mod-navigation.php:126
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:145
+#: autoload/mod-navigation.php:150
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr "Objekt"
 
-#: autoload/mod-navigation.php:166
+#: autoload/mod-navigation.php:171
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr "Länk"
 
-#: autoload/mod-navigation.php:178
+#: autoload/mod-navigation.php:183
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr "Färg"
 
-#: autoload/mod-navigation.php:198
+#: autoload/mod-navigation.php:203
+msgctxt "Navigation Module Field Label"
+msgid "Variant"
+msgstr "Variant"
+
+#: autoload/mod-navigation.php:211
+msgctxt "Navigation Module Button Variant Choice"
+msgid "Primary"
+msgstr "Primär"
+
+#: autoload/mod-navigation.php:216
+msgctxt "Navigation Module Button Variant Choice"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: autoload/mod-navigation.php:221
+msgctxt "Navigation Module Button Variant Choice"
+msgid "Default"
+msgstr "Standard"
+
+#: autoload/mod-navigation.php:241
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr "Ikon"

@@ -64,7 +64,7 @@ export default {
       'background-complementary': 'var(--color-background-complementary)',
       'background-card': 'var(--color-background-card)',
       'border-card': 'var(--color-border-card)',
-      base: 'var(--color-base)',
+
       'secondary-text': 'var(--text-secondary)',
       'disabled-text': 'var(--text-disabled)',
       'border-divider': 'var(--color-border-divider)',
