@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-09-24T11:13:17+00:00\n"
-"PO-Revision-Date: 2024-09-24 13:13+0200\n"
+"POT-Creation-Date: 2024-09-25T13:49:18+00:00\n"
+"PO-Revision-Date: 2024-09-25 15:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -217,24 +217,37 @@ msgctxt "Page Apperance Field Label"
 msgid "Theme color"
 msgstr "Temafärg"
 
-#: autoload/page-navigation.php:13
+#: autoload/page-navigation.php:18
 msgctxt "Page Navigation Field Label"
 msgid "Description"
 msgstr "Beskrivning"
 
-#: autoload/page-navigation.php:22
+#: autoload/page-navigation.php:27
 msgid "A short description of the page to show in menus."
 msgstr "En kort beskrivning av sidan som visas i menyerna."
 
-#: autoload/page-navigation.php:41
+#: autoload/page-navigation.php:46
 msgctxt "Page Navigation Field Label"
 msgid "Icon"
 msgstr "Ikon"
 
-#: autoload/page-navigation.php:71
+#: autoload/page-navigation.php:76
 msgctxt "Page Navigation Field Label"
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
+
+#: autoload/page-navigation.php:102
+msgctxt "Page Navigation Field Label"
+msgid "Hide secondary menu"
+msgstr "Dölj sekundär meny"
+
+#: autoload/page-navigation.php:117
+msgid "The menu in the left sidebar"
+msgstr "Menyn i det vänstra sidofältet"
+
+#: autoload/page-navigation.php:118
+msgid "The menu in the right sidebar"
+msgstr "Menyn i det högra sidofältet"
 
 #: autoload/post.php:6
 msgctxt "Post type general name"
@@ -409,3 +422,10 @@ msgstr "Block"
 msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr "Färg för format “kort”"
+
+#~ msgctxt "Page Navigation Field Label"
+#~ msgid "Left menu"
+#~ msgstr "Vänstermenyn"
+
+#~ msgid "Hide left menu on this page."
+#~ msgstr "Dölj vänstermenyn på denna sida."

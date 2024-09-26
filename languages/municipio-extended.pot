@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-24T11:13:17+00:00\n"
+"POT-Creation-Date: 2024-09-25T13:49:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
@@ -216,23 +216,36 @@ msgctxt "Page Apperance Field Label"
 msgid "Theme color"
 msgstr ""
 
-#: autoload/page-navigation.php:13
+#: autoload/page-navigation.php:18
 msgctxt "Page Navigation Field Label"
 msgid "Description"
 msgstr ""
 
-#: autoload/page-navigation.php:22
+#: autoload/page-navigation.php:27
 msgid "A short description of the page to show in menus."
 msgstr ""
 
-#: autoload/page-navigation.php:41
+#: autoload/page-navigation.php:46
 msgctxt "Page Navigation Field Label"
 msgid "Icon"
 msgstr ""
 
-#: autoload/page-navigation.php:71
+#: autoload/page-navigation.php:76
 msgctxt "Page Navigation Field Label"
 msgid "Section start page"
+msgstr ""
+
+#: autoload/page-navigation.php:102
+msgctxt "Page Navigation Field Label"
+msgid "Hide secondary menu"
+msgstr ""
+
+#: autoload/page-navigation.php:117
+msgid "The menu in the left sidebar"
+msgstr ""
+
+#: autoload/page-navigation.php:118
+msgid "The menu in the right sidebar"
 msgstr ""
 
 #: autoload/post.php:6

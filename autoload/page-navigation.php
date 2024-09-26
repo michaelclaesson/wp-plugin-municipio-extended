@@ -1,11 +1,16 @@
 <?php
 
+use Kirki;
+use Municipio\Customizer;
+
 add_action("acf/init", function () {
   add_action(
     "init",
     function () {
-
-      $section_start_page_enabled = get_theme_mod('section_start_page_enabled', false);
+      $section_start_page_enabled = get_theme_mod(
+        "section_start_page_enabled",
+        false,
+      );
 
       acf_add_local_field([
         "parent" => "group_56d83cff12bb3",
@@ -77,13 +82,54 @@ add_action("acf/init", function () {
           "type" => "true_false",
           "graphql_field_name" => "sectionStartPage",
           "show_in_graphql" => 1,
-          'default_value' => 0,
-          'ui' => 1,
-          'ui_on_text' => '',
-          'ui_off_text' => '',
+          "default_value" => 0,
+          "ui" => 1,
+          "ui_on_text" => "",
+          "ui_off_text" => "",
         ]);
       }
+
+      $secondary_menu_position =
+        Kirki::get_option(
+          Customizer::KIRKI_CONFIG,
+          "secondary_navigation_position",
+        ) ?:
+        "left";
+
+      acf_add_local_field([
+        "parent" => "group_56d83cff12bb3",
+        "key" => "field_page_hide_secondary_menu",
+        "label" => _x(
+          "Hide secondary menu",
+          "Page Navigation Field Label",
+          "municipio-extended",
+        ),
+        "name" => "page_hide_secondary_menu",
+        "type" => "true_false",
+        "ui" => 1,
+        "wrapper" => [
+          // Hide the field if the secondary menu is hidden globally
+          "style" =>
+            $secondary_menu_position == "hidden" ? "display:none;" : null,
+        ],
+        "instructions" =>
+          [
+            "left" => __("The menu in the left sidebar", "municipio-extended"),
+            "right" => __(
+              "The menu in the right sidebar",
+              "municipio-extended",
+            ),
+          ][$secondary_menu_position] ?? "",
+        "conditional_logic" => 0,
+      ]);
     },
     20,
   );
+});
+
+add_filter("Municipio/Template/viewData", function ($viewData) {
+  if (get_field("page_hide_secondary_menu")) {
+    unset($viewData["secondaryMenuItems"]);
+  }
+  return $viewData;
 });
