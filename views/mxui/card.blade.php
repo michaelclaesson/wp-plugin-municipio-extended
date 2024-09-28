@@ -48,7 +48,7 @@ Left to handle:
       ],
       $attributeList ?? [],
   ) }}>
-  @if (!empty($date) || !empty($heading))
+  @if (!empty($date) || !empty($heading) || !empty($meta))
     {{-- CardHeader --}}
     <div
       {{ mx_attrs([
@@ -78,6 +78,12 @@ Left to handle:
         <div class="flex items-center gap-1 text-sm text-gray-500">
           {{-- <Icon class="text-deep-blue" name="calendar" /> --}}
           {{ $date }}
+        </div>
+      @endif
+      @if (!empty($meta))
+        <div class="flex items-center gap-1 text-sm text-gray-500">
+          {{-- <Icon class="text-deep-blue" name="calendar" /> --}}
+          {!! $meta !!}
         </div>
       @endif
     </div>
