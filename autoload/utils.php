@@ -102,9 +102,11 @@ function mx_attrs(...$attrs) {
   return new MunicipioExtended\Model\AttributeBag(...$attrs);
 }
 
-function mx_error_log($message) {
+function mx_error_log(...$messages) {
   if (defined("MX_DEBUG") && MX_DEBUG) {
-    error_log($message);
+    foreach ($messages as $message) {
+      error_log(var_export($message, true));
+    }
   }
 }
 
