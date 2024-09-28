@@ -8,6 +8,9 @@ function mx_search_perform_es_search($body) {
     ->get("post")
     ->get_index_name(null);
 
+  mx_error_log("Searching on hosts", $hosts);
+  mx_error_log("Searching in index '$index'");
+
   $client = ClientBuilder::create()->setHosts($hosts)->build();
 
   return $client->search([
