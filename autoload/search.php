@@ -35,6 +35,8 @@ function mx_search_ajax_handler() {
 
   $query = $data["s"];
 
+  mx_error_log("Searching for '$query'");
+
   $query = [
     "bool" => [
       "must" => [
