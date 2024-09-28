@@ -3,12 +3,22 @@
 use Elastic\Elasticsearch\ClientBuilder;
 
 function mx_search_perform_es_search($body) {
-  $hosts = [defined("EP_HOST") ? constant("EP_HOST") : get_option("ep_host")];
+  $hosts = [
+    defined("EP_HOST")
+      ? constant("EP_HOST")
+      : (get_option("ep_host") ?:
+      get_network_option(null, "ep_host")),
+  ];
+  if (empty($hosts)) {
+    throw new Exception("No Elasticsearch host defined.");
+  }
+  mx_error_log("Searching on hosts", $hosts);
   $index = \ElasticPress\Indexables::factory()
     ->get("post")
     ->get_index_name(null);
-
-  mx_error_log("Searching on hosts", $hosts);
+  if (empty($index)) {
+    throw new Exception("No Elasticsearch index defined.");
+  }
   mx_error_log("Searching in index '$index'");
 
   $client = ClientBuilder::create()->setHosts($hosts)->build();
