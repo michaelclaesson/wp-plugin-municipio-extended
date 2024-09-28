@@ -2,9 +2,13 @@
 
 import { program } from 'commander';
 import chalk from 'chalk';
-import path from 'path';
+import path from 'node:path';
 import ora from 'ora';
-import { mkdir, readdir, readFile, writeFile } from 'fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { gzip } from 'node:zlib';
+import { promisify } from 'node:util';
+
+const gzipAsync = promisify(gzip);
 
 const variants = [
   '20px',
@@ -201,10 +205,9 @@ program
     await mkdir(outDir, { recursive: true });
     for (const style of styles) {
       for (const variant of variants) {
-        const filename = `${style}_${variant}.xml`;
-        console.log({ filename });
+        let filename = `${style}_${variant}.xml`;
 
-        const contents = (
+        let contents = (
           await Promise.all(
             icons.map(async (name) => {
               const iconPath = path.resolve(
@@ -218,7 +221,9 @@ program
             }),
           )
         ).join('\n');
-        console.log(path.resolve(outDir, filename));
+
+        contents = await gzipAsync(contents);
+        filename += '.gz';
 
         await writeFile(path.resolve(outDir, filename), contents);
       }

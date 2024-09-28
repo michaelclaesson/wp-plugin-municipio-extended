@@ -1,5 +1,75 @@
 <?php
 
+function mx_get_materialsymbols_cache_path() {
+  return apply_filters(
+    "mx_materialsymbols_cache_path",
+    MUNICIPIO_EXTENDED_PATH . "/cache/materialsymbols",
+  );
+}
+function mx_get_materialsymbols_cache_url() {
+  return apply_filters(
+    "mx_materialsymbols_cache_url",
+    MUNICIPIO_EXTENDED_URL . "/cache/materialsymbols",
+  );
+}
+
+function mx_get_materialsymbols_unzipped_pack_file($pack) {
+  return mx_get_materialsymbols_cache_path() . "/packs/{$pack}.xml";
+}
+
+function mx_ensure_materialsymbols_unzipped_pack($pack) {
+  if (file_exists(mx_get_materialsymbols_unzipped_pack_file($pack))) {
+    return true;
+  }
+  $source_file = mx_get_materialsymbols_source($pack);
+  $unzipped = gzdecode(file_get_contents($source_file));
+  wp_mkdir_p(mx_get_materialsymbols_cache_path() . "/packs");
+  file_put_contents(
+    mx_get_materialsymbols_unzipped_pack_file($pack),
+    $unzipped,
+  );
+  return true;
+}
+
+function mx_ensure_materialsymbols_svg($name, $pack) {
+  if (file_exists(mx_get_materialsymbols_svg_path($name, $pack))) {
+    return true;
+  }
+  mx_ensure_materialsymbols_unzipped_pack($pack);
+  $source_file = mx_get_materialsymbols_unzipped_pack_file($pack);
+  $file = fopen($source_file, "r");
+  if (!$file) {
+    throw new \Exception("Could not open file $source_file");
+  }
+  while (!feof($file)) {
+    $line = fgets($file);
+    $prefix = $name . ":";
+    if (strpos($line, $prefix) === 0) {
+      $found = substr($line, strlen($prefix));
+      break;
+    }
+  }
+  fclose($file);
+  if ($found) {
+    wp_mkdir_p(mx_get_materialsymbols_cache_path() . "/svg");
+    file_put_contents(mx_get_materialsymbols_svg_path($name, $pack), $found);
+    return true;
+  }
+  return false;
+}
+function mx_get_materialsymbols_source($pack) {
+  return MUNICIPIO_EXTENDED_PATH . "/static/materialsymbols/{$pack}.xml.gz";
+}
+function mx_get_materialsymbols_svg_path($name, $pack) {
+  return mx_get_materialsymbols_cache_path() . "/svg/{$name}_{$pack}.svg";
+}
+function mx_get_materialsymbols_svg_url($name, $pack, $ensure = true) {
+  if ($ensure) {
+    mx_ensure_materialsymbols_svg($name, $pack);
+  }
+  return mx_get_materialsymbols_cache_url() . "/svg/{$name}_{$pack}.svg";
+}
+
 function mx_get_material_icons() {
   return [
     "360",

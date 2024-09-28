@@ -119,12 +119,12 @@ class Icon extends Model implements Htmlable, IconInterface {
     return $value;
   }
 
-  public function getSourceFileName() {
+  protected function getPack() {
     $render_params = self::getRenderParams();
 
     $style = $this->getResolvedRenderParamValue("style");
 
-    $file = $style;
+    $pack = $style;
 
     $variant = "";
 
@@ -147,66 +147,19 @@ class Icon extends Model implements Htmlable, IconInterface {
     }
 
     if ($variant) {
-      $file .= "_{$variant}";
+      $pack .= "_{$variant}";
     }
 
     $optical_size = $this->getResolvedRenderParamValue("optical_size");
-    $file .= "_{$optical_size}px";
+    $pack .= "_{$optical_size}px";
 
-    return $file;
-  }
-
-  public function getSourceFile() {
-    return MUNICIPIO_EXTENDED_PATH .
-      "/static/materialsymbols/" .
-      $this->getSourceFileName() .
-      ".xml";
-  }
-
-  protected function ensureFile() {
-    if (!file_exists($this->getFilePath())) {
-      $this->generateFile();
-    }
-  }
-
-  protected function generateFile() {
-    $source_file = $this->getSourceFile();
-    $file = fopen($source_file, "r");
-    if (!$file) {
-      throw new \Exception("Could not open file $source_file");
-    }
-    while (!feof($file)) {
-      $line = fgets($file);
-      $prefix = $this->data["name"] . ":";
-      if (strpos($line, $prefix) === 0) {
-        $found = substr($line, strlen($prefix));
-        break;
-      }
-    }
-    fclose($file);
-    if ($found) {
-      wp_mkdir_p(wp_get_upload_dir()["basedir"] . "/mx/materialsymbols");
-      file_put_contents($this->getFilePath(), $found);
-    }
-  }
-
-  public function getFilePath() {
-    return wp_get_upload_dir()["basedir"] .
-      "/mx/materialsymbols/" .
-      $this->data["name"] .
-      "_" .
-      $this->getSourceFileName() .
-      ".svg";
+    return $pack;
   }
 
   public function getUrl() {
-    $this->ensureFile();
-    return wp_get_upload_dir()["baseurl"] .
-      "/mx/materialsymbols/" .
-      $this->data["name"] .
-      "_" .
-      $this->getSourceFileName() .
-      ".svg";
+    $name = $this->data["name"];
+    $pack = $this->getPack();
+    return mx_get_materialsymbols_svg_url($name, $pack);
   }
 
   public function render($props = []) {
