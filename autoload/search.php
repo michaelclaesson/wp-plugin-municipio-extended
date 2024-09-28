@@ -1,17 +1,14 @@
 <?php
 
 use Elastic\Elasticsearch\ClientBuilder;
+use ElasticPress\Utils;
 
 function mx_search_perform_es_search($body) {
-  $hosts = [
-    defined("EP_HOST")
-      ? constant("EP_HOST")
-      : (get_option("ep_host") ?:
-      get_network_option(null, "ep_host")),
-  ];
-  if (empty($hosts)) {
+  $host = Utils\get_host();
+  if (empty($host)) {
     throw new Exception("No Elasticsearch host defined.");
   }
+  $hosts = [$host];
   mx_error_log("Searching on hosts", $hosts);
   $index = \ElasticPress\Indexables::factory()
     ->get("post")
