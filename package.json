@@ -12,6 +12,9 @@
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.2",
     "autoprefixer": "^10.4.19",
+    "chalk": "^4",
+    "commander": "^12.1.0",
+    "ora": "^8.1.0",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",

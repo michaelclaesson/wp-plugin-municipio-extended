@@ -49,6 +49,7 @@ export default {
   safelist: [],
   theme: {
     colors: {
+      current: 'currentColor',
       inherit: 'inherit',
       transparent: 'transparent',
       white: '#fff',

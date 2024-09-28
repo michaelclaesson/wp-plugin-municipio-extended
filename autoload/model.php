@@ -42,7 +42,14 @@ function mx_get_icon($input, ...$args) {
   if (!$input) {
     return null;
   }
+  if (mx_is_icon($input)) {
+    return $input;
+  }
   return mx_get_model("Icon", $input, ...$args);
+}
+
+function mx_is_icon($value) {
+  return $value instanceof \MunicipioExtended\Model\IconInterface;
 }
 
 function mx_date($value, ...$args) {

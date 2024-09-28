@@ -1,6 +1,7 @@
 <?php
 
 use DiDom\Document;
+use Illuminate\Support\HtmlString;
 
 function mx_new_instance_without_constructor($class) {
   $reflector = new ReflectionClass($class);
@@ -105,4 +106,8 @@ function mx_error_log($message) {
   if (defined("MX_DEBUG") && MX_DEBUG) {
     error_log($message);
   }
+}
+
+function mx_safe_html($string) {
+  return new HtmlString($string);
 }
