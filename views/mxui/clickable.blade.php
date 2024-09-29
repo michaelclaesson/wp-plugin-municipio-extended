@@ -1,7 +1,7 @@
 @php
   $link = is_string($link ?? null) ? ['href' => $link] : $link ?? null;
   $href = $href ?? null ?: $link['href'] ?? null ?: $link['url'] ?? null;
-  $content = $content ?? null ?: $link['content'] ?? null ?: $link['text'] ?? null ?: $slot ?? null;
+  $content = $content ?? null ?: $link['content'] ?? null ?: $link['text'] ?? null ?: $label ?? null ?: $slot ?? null;
 @endphp
 
 @if (!empty($href))
@@ -12,5 +12,7 @@
     {{ $content }}
   </a>
 @else
-  <span>{{ $content }}</span>
+  <span {{ mx_attrs([
+      'class' => [$classList ?? null],
+  ]) }}>{{ $content }}</span>
 @endif

@@ -111,6 +111,20 @@
     line-height: var(--h5-line-height, var(--line-height-heading, 1.33));
   }
 
+  .typography-caption {
+    font-family: var(
+      --caption-font-family,
+      var(--font-family-heading, var(--font-family-base))
+    );
+    font-size: clamp(
+      var(--font-size-base, 1rem) - 0.125rem,
+      3vw,
+      var(--caption-font-size, 0.875rem)
+    );
+    font-weight: var(--caption-font-weight, 400);
+    line-height: var(--caption-line-height, 1);
+  }
+
   .typography-body {
     @apply mb-3 mt-0;
   }
