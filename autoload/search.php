@@ -3,6 +3,8 @@
 use Elastic\Elasticsearch\ClientBuilder;
 use ElasticPress\Utils;
 
+add_filter("Municipio/Hook/searchFormValidation", "__return_false");
+
 add_filter("ep_skip_query_integration", "__return_true");
 
 function mx_search_perform_es_search($body) {
