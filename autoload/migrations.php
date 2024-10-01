@@ -110,22 +110,30 @@ add_action(
       $name = $migration["name"];
       $file = $migration["file"];
       $status = get_option("mx_migration_status_" . $name) ?: "pending";
-      if ($status === "pending") {
+      if ($status !== "done") {
         error_log('Running migration "' . $name . '"...');
         update_option("mx_migration_status_" . $name, "running");
         $mx_current_migration = $name;
+        $error = true;
         try {
           require_once $file;
+          $error = false;
           mx_migration_finish_log();
           update_option("mx_migration_status_" . $name, "done");
         } catch (MxMigrationTimeoutException $e) {
           mx_migration_halt_log($e->getMessage());
-          update_option("mx_migration_status_" . $name, "pending");
+          update_option("mx_migration_status_" . $name, "halted");
+          $error = false;
         } catch (Exception $e) {
           mx_migration_error_log($e->getMessage());
           update_option("mx_migration_status_" . $name, "error");
+          $error = false;
         } finally {
           $mx_current_migration = null;
+          if ($error) {
+            mx_migration_error_log("Uncaught exception");
+            update_option("mx_migration_status_" . $name, "error");
+          }
         }
       }
     }

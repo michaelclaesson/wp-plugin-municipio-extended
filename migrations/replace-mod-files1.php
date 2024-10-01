@@ -22,7 +22,7 @@ foreach ($posts as $post) {
   $new_field_value = array_map(
     function ($file) {
       return [
-        "file" => $file["id"],
+        "file" => is_array($file) ? $file["id"] : $file,
       ];
     },
     $old_field_value ?: [],
