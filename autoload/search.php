@@ -155,7 +155,10 @@ function mx_search_ajax_handler() {
         wp_trim_words($hit["_source"]["post_content_filtered"] ?? "", 40),
       ]),
 
-      "href" => fn($hit) => $hit["_source"]["permalink"],
+      "href" => fn($hit) => ($hit["_source"]["post_type"] ?? null) ==
+      "attachment"
+        ? $hit["_source"]["guid"]
+        : $hit["_source"]["permalink"],
 
       "image" => fn($hit) => get_the_post_thumbnail_url(
         $hit["_source"]["post_id"],
@@ -194,6 +197,7 @@ function mx_search_ajax_handler() {
         $es_body,
         $data,
       ) {
+        error_log(var_export($hit["_source"], true));
         $transformed_hit = array_map(function ($fn) use ($hit) {
           return $fn($hit);
         }, $hit_source_mapping);
