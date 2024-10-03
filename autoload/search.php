@@ -197,7 +197,6 @@ function mx_search_ajax_handler() {
         $es_body,
         $data,
       ) {
-        error_log(var_export($hit["_source"], true));
         $transformed_hit = array_map(function ($fn) use ($hit) {
           return $fn($hit);
         }, $hit_source_mapping);
