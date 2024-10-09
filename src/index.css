@@ -246,3 +246,21 @@
   background: var(--color-complementary-light);
   @apply layer-white;
 }
+
+.c-header__tab-menu--above {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.c-header__tab-menu--standard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.c-header__inner-area {
+    display: flex;
+    gap: 1rem;
+}

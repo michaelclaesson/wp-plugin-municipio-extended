@@ -55,6 +55,20 @@ add_action("init", function () {
     "output" => [["type" => "controller"]],
   ]);
 
+  Kirki::add_field(Customizer::KIRKI_CONFIG, [
+    "section" => $section_id,
+    "type" => "select",
+    "settings" => "tab_menu_placing",
+    "label" => __("Placing for tab menu", "municipio-extended"),
+    "default" => "standard",
+    "priority" => 10,
+    "choices" => [
+      "standard" => __("Standard", "municipio-extended"),
+      "above" => __("Above", "municipio-extended"),
+    ],
+    "output" => [["type" => "controller"]],
+  ]);
+
   $section_id = "municipio_customizer_panel_content_types_page";
 
   Kirki::add_field(Customizer::KIRKI_CONFIG, [
