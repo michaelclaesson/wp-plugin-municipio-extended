@@ -7,8 +7,7 @@
       "o-grid--stretch" => !empty($stretch),
       "o-grid--no-gutter" => !empty($noGutter),
       "grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-[--grid-gap]",
-    ]) }}"
-    @if (!$hideTitle && !empty($postTitle)) aria-labelledby="{{ 'mod-posts-' . $ID . '-label' }}" @endif>
+    ]) }}">
     @if($posts)
       <div class="{{ clsx([
         "o-grid",
@@ -30,9 +29,6 @@
       <div>
         @card([
           'heading' => false,
-          'attributeList' => [
-            'aria-labelledby' => 'mod-posts-' . $ID . '-label'
-          ],
           'context' => 'module.posts.list',
           "classList" => explode(' ', clsx([
           ]))
