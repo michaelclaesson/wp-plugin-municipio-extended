@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-25T13:49:18+00:00\n"
+"POT-Creation-Date: 2024-10-10T20:16:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: municipio-extended\n"
@@ -37,25 +37,54 @@ msgstr ""
 msgid "Header Logotype Text: Width"
 msgstr ""
 
-#: autoload/migrations.php:162
+#: autoload/header.php:35
+msgid "Header breakpoint"
+msgstr ""
+
+#: autoload/header.php:38
+msgctxt "Screen Breakpoint"
+msgid "Extra small"
+msgstr ""
+
+#: autoload/header.php:39
+msgctxt "Screen Breakpoint"
+msgid "Small"
+msgstr ""
+
+#: autoload/header.php:40
+msgctxt "Screen Breakpoint"
+msgid "Medium"
+msgstr ""
+
+#: autoload/header.php:41
+msgctxt "Screen Breakpoint"
+msgid "Large"
+msgstr ""
+
+#: autoload/header.php:42
+msgctxt "Screen Breakpoint"
+msgid "Extra large"
+msgstr ""
+
+#: autoload/migrations.php:170
 msgctxt "Admin Page Title"
 msgid "Migrations"
 msgstr ""
 
-#: autoload/migrations.php:163
+#: autoload/migrations.php:171
 msgctxt "Admin Menu Item"
 msgid "Migrations"
 msgstr ""
 
-#: autoload/migrations.php:176
+#: autoload/migrations.php:184
 msgid "Migrations"
 msgstr ""
 
-#: autoload/migrations.php:180
+#: autoload/migrations.php:188
 msgid "Name"
 msgstr ""
 
-#: autoload/migrations.php:181
+#: autoload/migrations.php:189
 msgid "Status"
 msgstr ""
 
@@ -335,15 +364,15 @@ msgctxt "Screen reader text for the items list heading on the post type listing 
 msgid "News list"
 msgstr ""
 
-#: autoload/search.php:271
+#: autoload/search.php:290
 msgid "Search"
 msgstr ""
 
-#: autoload/search.php:287
+#: autoload/search.php:306
 msgid "Keywords"
 msgstr ""
 
-#: autoload/search.php:290
+#: autoload/search.php:309
 msgid "Seperate keywords with commas or new lines."
 msgstr ""
 

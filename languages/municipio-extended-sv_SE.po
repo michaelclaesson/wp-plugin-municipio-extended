@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-09-25T13:49:18+00:00\n"
-"PO-Revision-Date: 2024-09-25 15:50+0200\n"
+"POT-Creation-Date: 2024-10-10T20:16:03+00:00\n"
+"PO-Revision-Date: 2024-10-10 22:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -39,25 +39,54 @@ msgstr "Inaktivera textöverlägg på evenemangshero"
 msgid "Header Logotype Text: Width"
 msgstr "Webbplatstitel: Bredd"
 
-#: autoload/migrations.php:162
+#: autoload/header.php:35
+msgid "Header breakpoint"
+msgstr "Brytpunkt för sidhuvud"
+
+#: autoload/header.php:38
+msgctxt "Screen Breakpoint"
+msgid "Extra small"
+msgstr "Extra liten"
+
+#: autoload/header.php:39
+msgctxt "Screen Breakpoint"
+msgid "Small"
+msgstr "Liten"
+
+#: autoload/header.php:40
+msgctxt "Screen Breakpoint"
+msgid "Medium"
+msgstr "Mellan"
+
+#: autoload/header.php:41
+msgctxt "Screen Breakpoint"
+msgid "Large"
+msgstr "Stor"
+
+#: autoload/header.php:42
+msgctxt "Screen Breakpoint"
+msgid "Extra large"
+msgstr "Extra stor"
+
+#: autoload/migrations.php:170
 msgctxt "Admin Page Title"
 msgid "Migrations"
 msgstr "Migreringar"
 
-#: autoload/migrations.php:163
+#: autoload/migrations.php:171
 msgctxt "Admin Menu Item"
 msgid "Migrations"
 msgstr "Migreringar"
 
-#: autoload/migrations.php:176
+#: autoload/migrations.php:184
 msgid "Migrations"
 msgstr "Migreringar"
 
-#: autoload/migrations.php:180
+#: autoload/migrations.php:188
 msgid "Name"
 msgstr "Namn"
 
-#: autoload/migrations.php:181
+#: autoload/migrations.php:189
 msgid "Status"
 msgstr "Status"
 
@@ -347,15 +376,15 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/search.php:271
+#: autoload/search.php:290
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:287
+#: autoload/search.php:306
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:290
+#: autoload/search.php:309
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
@@ -422,6 +451,30 @@ msgstr "Block"
 msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr "Färg för format “kort”"
+
+#~ msgid "Previous page"
+#~ msgstr "Föregående sida"
+
+#~ msgid "Next page"
+#~ msgstr "Nästa sida"
+
+#~ msgid "Search settings"
+#~ msgstr "Sökinställningar"
+
+#~ msgid "Post type settings"
+#~ msgstr "Inställningar för innehållstyper"
+
+#~ msgid "Boost"
+#~ msgstr "Boosta"
+
+#~ msgid "The boost factor for this post type."
+#~ msgstr "Boostfaktorn för den här innehållstypen."
+
+#~ msgid "Decay"
+#~ msgstr "Trappa av"
+
+#~ msgid "Whether older posts should have lower scores."
+#~ msgstr "Om äldre inlägg ska ha lägre poäng."
 
 #~ msgctxt "Page Navigation Field Label"
 #~ msgid "Left menu"
