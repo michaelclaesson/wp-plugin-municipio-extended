@@ -262,5 +262,6 @@
 
 .c-header__inner-area {
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
