@@ -113,3 +113,27 @@ function mx_error_log(...$messages) {
 function mx_safe_html($string) {
   return new HtmlString($string);
 }
+
+function mx_get_regular_post_types($output = "names") {
+  $post_types = get_post_types(
+    [
+      "public" => true,
+    ],
+    $output,
+  );
+  if ($output === "names") {
+    $post_types = array_diff($post_types, ["attachment"]);
+    $post_types = array_filter($post_types, function ($post_type) {
+      return strpos($post_type, "mod-") === false;
+    });
+  }
+  if ($output === "objects") {
+    $post_types = array_filter($post_types, function ($post_type) {
+      return $post_type->name !== "attachment";
+    });
+    $post_types = array_filter($post_types, function ($post_type) {
+      return strpos($post_type->name, "mod-") === false;
+    });
+  }
+  return $post_types;
+}
