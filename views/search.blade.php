@@ -47,14 +47,15 @@
                 <template name="hit">
                   <li>
                     <a href=""
-                      class="flex text-inherit no-underline bg-layer-lighter p-6 [&_mark]:bg-complementary-light hover:text-inherit visited:hover:text-inherit group/hit gap-6"
+                      class="flex text-inherit no-underline bg-layer-lighter p-6 [&_mark]:bg-complementary-light hover:text-inherit visited:hover:text-inherit group/hit gap-6 @@container"
                       slot="link">
                       <div class="flex-grow space-y-2">
                         <h3 slot="title" class="m-0 decoration-1 group-hover/hit:underline typography-h4"></h3>
                         <div slot="date" class="empty:hidden text-sm text-gray-700"></div>
                         <p slot="excerpt" class="m-0"></p>
                       </div>
-                      <img class="aspect-video w-60 flex-shrink-0 object-cover" slot="image" alt="">
+                      <img class="aspect-video w-60 flex-shrink-0 object-cover hidden self-start @[30rem]:block"
+                        slot="image" alt="">
                     </a>
                   </li>
                 </template>
