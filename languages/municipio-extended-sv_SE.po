@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-10-09T12:42:24+00:00\n"
-"PO-Revision-Date: 2024-10-09 15:00+0200\n"
+"POT-Creation-Date: 2024-10-10T20:16:03+00:00\n"
+"PO-Revision-Date: 2024-10-10 22:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -41,32 +41,32 @@ msgstr "Webbplatstitel: Bredd"
 
 #: autoload/header.php:35
 msgid "Header breakpoint"
-msgstr ""
+msgstr "Brytpunkt för sidhuvud"
 
 #: autoload/header.php:38
 msgctxt "Screen Breakpoint"
 msgid "Extra small"
-msgstr ""
+msgstr "Extra liten"
 
 #: autoload/header.php:39
 msgctxt "Screen Breakpoint"
 msgid "Small"
-msgstr ""
+msgstr "Liten"
 
 #: autoload/header.php:40
 msgctxt "Screen Breakpoint"
 msgid "Medium"
-msgstr ""
+msgstr "Mellan"
 
 #: autoload/header.php:41
 msgctxt "Screen Breakpoint"
 msgid "Large"
-msgstr ""
+msgstr "Stor"
 
 #: autoload/header.php:42
 msgctxt "Screen Breakpoint"
 msgid "Extra large"
-msgstr ""
+msgstr "Extra stor"
 
 #: autoload/migrations.php:170
 msgctxt "Admin Page Title"
@@ -459,6 +459,30 @@ msgstr "Block"
 msgctxt "Navigation Module Customization Field Label"
 msgid "Color for format “cards”"
 msgstr "Färg för format “kort”"
+
+#~ msgid "Previous page"
+#~ msgstr "Föregående sida"
+
+#~ msgid "Next page"
+#~ msgstr "Nästa sida"
+
+#~ msgid "Search settings"
+#~ msgstr "Sökinställningar"
+
+#~ msgid "Post type settings"
+#~ msgstr "Inställningar för innehållstyper"
+
+#~ msgid "Boost"
+#~ msgstr "Boosta"
+
+#~ msgid "The boost factor for this post type."
+#~ msgstr "Boostfaktorn för den här innehållstypen."
+
+#~ msgid "Decay"
+#~ msgstr "Trappa av"
+
+#~ msgid "Whether older posts should have lower scores."
+#~ msgstr "Om äldre inlägg ska ha lägre poäng."
 
 #~ msgctxt "Page Navigation Field Label"
 #~ msgid "Left menu"

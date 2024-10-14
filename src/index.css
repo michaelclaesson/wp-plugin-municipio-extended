@@ -200,6 +200,9 @@
   .c-brand__logotype {
     flex: none;
   }
+  .c-header__logotype-link {
+    flex-shrink: 0;
+  }
 }
 
 .cards-navigation {
@@ -207,9 +210,9 @@
 }
 
 /**
- * Hides articles and sidebars that don't have any content
+ * Hides articles, sidebars etc that don't have any content
  */
-:is(.content, .c-signature):where(
+:is(.content, .c-signature, .s-article, .s-sidebar):where(
     :empty:not(area, embed, hr, img, input, source, track),
     :not(:has(:not(:empty), area, embed, hr, img, input, source, track))
   ) {
@@ -230,16 +233,6 @@
 }
 .site-language-menu:not(.is-expanded) .site-language-menu__card {
   display: none !important;
-}
-
-/**
- * Hides articles and sidebars that don't have any content
- */
-:is(.s-article, .s-sidebar):where(
-    :empty:not(area, embed, hr, img, input, source, track),
-    :not(:has(:not(:empty), area, embed, hr, img, input, source, track))
-  ) {
-  display: none;
 }
 
 #sidebar-top-sidebar {
@@ -264,4 +257,25 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+@media (max-width: 30rem) {
+  :is(#mobile-menu-trigger-open, #site-language-menu-button) {
+    min-width: auto;
+  }
+  :is(#mobile-menu-trigger-open, #site-language-menu-button)
+    .c-button__label-text {
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  }
+  :is(#mobile-menu-trigger-open, #site-language-menu-button)
+    .c-button__label-icon {
+    margin-right: calc(var(--base, 8px) * -0.5);
+  }
 }
