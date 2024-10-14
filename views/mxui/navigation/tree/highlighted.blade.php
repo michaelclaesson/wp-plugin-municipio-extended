@@ -21,16 +21,16 @@
         <div class="self-center">
           <a href="{{ $item['href'] }}"
             class="text-base inline-flex items-center after:absolute after:inset-0 after:z-[1] after:inert:hidden">
-            <span class="sm:text-h2 text-h3 underline font-medium">{{ $item['title'] }}</span>
+            <span class="typography-h3 underline">{{ $item['title'] }}</span>
             @icon([
-                'icon' => 'chevron_right',
+                'icon' => 'arrow_forward',
                 'classList' => ['text-2xl']
             ])
             @endicon
           </a>
         </div>
         @if (!empty($item['description']))
-          <div class="text-h4 sm:text-h3 col-span-2 @[40rem]:col-span-1">
+          <div class="text-xs sm:text-base col-span-2 @[40rem]:col-span-1">
             {{ $item['description'] }}
           </div>
         @endif
