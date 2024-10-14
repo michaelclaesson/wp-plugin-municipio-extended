@@ -60,10 +60,10 @@ add_action("init", function () {
     "type" => "select",
     "settings" => "tab_menu_placing",
     "label" => __("Placing for tab menu", "municipio-extended"),
-    "default" => "standard",
+    "default" => "default",
     "priority" => 10,
     "choices" => [
-      "standard" => __("Standard", "municipio-extended"),
+      "default" => __("Standard", "municipio-extended"),
       "above" => __("Above", "municipio-extended"),
     ],
     "output" => [["type" => "controller"]],
