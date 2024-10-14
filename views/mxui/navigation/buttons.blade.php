@@ -14,7 +14,7 @@
             @endicon
           </span>
         @endif
-        <span class="flex-grow flex-shrink">
+        <span class="text-base flex-grow flex-shrink">
           {{ $item['title'] }}
         </span>
       @endcomponent
