@@ -1,4 +1,4 @@
-<ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0">
+<ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0 [--color-background-card:var(--color-complementary-light)] [--color-background-card-hover:var(--color-complementary)]">
     @foreach($items as $item)
         @php
         $content = wp_trim_words($item['post']->post_content ?? '', 8, '...');
@@ -13,7 +13,7 @@
                 'meta' => $item['readingTime'] ?? '',
                 'date' => $item['postDateFormatted'] ?? '',
                 'dateBadge' => $item['dateBadge'] ?? '',
-                'classList' => ['u-height--100', 'cards-navigation'],
+                'classList' => ['u-height--100'],
                 'containerAware' => true,
                 'hasAction' => true,
                 'hasPlaceholder' => $item['hasPlaceholderImage'] ?? false,
@@ -21,6 +21,7 @@
                 'postId' => $item['id'] ?? '',
                 'postType' => $item['postType'] ?? '',
                 'attributeList' => $item['attributeList'] ?? [],
+                'useHbg' =>  false,
             ])
             @includeWhen(!empty($post->callToActionItems['floating']), 'partials.floating')
             @endcard
