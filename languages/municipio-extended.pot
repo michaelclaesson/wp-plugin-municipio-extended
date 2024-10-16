@@ -435,3 +435,7 @@ msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr ""
 
+#: psr-4/Modularity/ModNavigation/ModNavigation.php:120
+msgctxt "Navigation Module Customization Field Label"
+msgid "Color for format “cards”"
+msgstr ""
