@@ -22,11 +22,6 @@
           <a href="{{ $item['href'] }}"
             class="text-base inline-flex items-center after:absolute after:inset-0 after:z-[1] after:inert:hidden">
             <span class="typography-h3 underline">{{ $item['title'] }}</span>
-            @icon([
-                'icon' => 'arrow_forward',
-                'classList' => ['text-2xl']
-            ])
-            @endicon
           </a>
         </div>
         @if (!empty($item['description']))
