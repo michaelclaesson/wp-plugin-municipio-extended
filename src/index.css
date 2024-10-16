@@ -205,6 +205,10 @@
   }
 }
 
+.cards-navigation {
+  background-color: var(--navigation-card-color);
+}
+
 /**
  * Hides articles, sidebars etc that don't have any content
  */
