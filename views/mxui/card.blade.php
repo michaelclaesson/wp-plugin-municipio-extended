@@ -29,7 +29,7 @@ Left to handle:
   {{ mx_attrs(
       [
           'class' => [
-              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-white overflow-hidden grid-cols-[100%]',
+              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] overflow-hidden grid-cols-[100%]',
               'relative group' => !$expandLinkCover,
               'grid-rows-subgrid' => $asSubgrid,
               'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
