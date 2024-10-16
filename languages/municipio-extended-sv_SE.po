@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -229,7 +229,7 @@ msgstr "Segment"
 msgid "Style for main menu"
 msgstr "Stil för huvudmenyn"
 
-#: autoload/mxui.php:52
+#: autoload/mxui.php:52 autoload/mxui.php:66
 msgid "Standard"
 msgstr "Standard"
 
@@ -237,7 +237,15 @@ msgstr "Standard"
 msgid "Compact"
 msgstr "Kompakt"
 
-#: autoload/mxui.php:64
+#: autoload/mxui.php:62
+msgid "Tab menu - Location"
+msgstr "Tabbmeny – Placering"
+
+#: autoload/mxui.php:67
+msgid "Above"
+msgstr "På egen rad"
+
+#: autoload/mxui.php:78
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 

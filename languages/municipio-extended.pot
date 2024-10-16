@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-10-10T20:16:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -229,6 +229,7 @@ msgid "Style for main menu"
 msgstr ""
 
 #: autoload/mxui.php:52
+#: autoload/mxui.php:66
 msgid "Standard"
 msgstr ""
 
@@ -236,7 +237,15 @@ msgstr ""
 msgid "Compact"
 msgstr ""
 
-#: autoload/mxui.php:64
+#: autoload/mxui.php:62
+msgid "Tab menu - Location"
+msgstr ""
+
+#: autoload/mxui.php:67
+msgid "Above"
+msgstr ""
+
+#: autoload/mxui.php:78
 msgid "Section start page"
 msgstr ""
 

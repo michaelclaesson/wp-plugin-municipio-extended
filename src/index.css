@@ -240,6 +240,26 @@
   @apply layer-white;
 }
 
+.c-header__tab-menu--above {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.c-header__tab-menu--standard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.c-header__inner-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 @media (max-width: 30rem) {
   :is(#mobile-menu-trigger-open, #site-language-menu-button) {
     min-width: auto;
