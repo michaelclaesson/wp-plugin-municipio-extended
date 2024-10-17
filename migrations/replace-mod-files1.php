@@ -17,7 +17,6 @@ foreach ($posts as $post) {
       "$count of $total modules changed from mod-files1 to mod-fileslist",
     );
   });
-  $fields = get_fields($posts[0]->ID);
   $old_field_value = get_field("files", $post->ID);
   $new_field_value = array_map(
     function ($file) {
