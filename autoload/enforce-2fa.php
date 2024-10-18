@@ -1,5 +1,8 @@
 <?php
 
+// For some reasen the config variables didn't load properly. I fixed it by wrapping the
+// code in an init action for now. TODO: Investigate why the config variables didn't load
+// properly and fix the issue.
 add_action('init', function() {
   add_filter('two_factor_enabled_providers_for_user', function($providers, $user_id){
     $force_roles = [];
