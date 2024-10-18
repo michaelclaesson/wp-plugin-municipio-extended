@@ -2,6 +2,7 @@
 
 use Elastic\Elasticsearch\ClientBuilder;
 use ElasticPress\Utils;
+use ElasticPress\Feature\SearchOrdering\SearchOrdering;
 
 add_filter("Municipio/Hook/searchFormValidation", "__return_false");
 
@@ -33,6 +34,12 @@ function mx_search_perform_es_search($body) {
 function mx_search_ajax_handler() {
   check_ajax_referer("mx_search", "nonce");
 
+  $default_boosted_post_type_weight = 2;
+  $post_types = mx_get_regular_post_types();
+  $post_types["attachment"] = get_post_type_object("attachment");
+  $mx_search_settings_post_types =
+    get_field("mx_search_settings_post_types", "option") ?: [];
+
   $data = json_decode(json_decode('"' . $_POST["data"] . '"'), true);
 
   // $fieldsToHighlight = [
@@ -55,11 +62,12 @@ function mx_search_ajax_handler() {
     "bool" => [
       "must" => [
         [
-          "multi_match" => [
+          // `combined_fields` allows us to search multiple fields with the same query
+          "combined_fields" => [
             "query" => $query,
             "fields" => $fields,
             "boost" => 4,
-            "minimum_should_match" => "100%",
+            "minimum_should_match" => "100%", // Same as `"operator" => "and"`
           ],
         ],
         [
@@ -91,15 +99,156 @@ function mx_search_ajax_handler() {
     ],
   ];
 
+  /**
+   * Filter the basic Elasticsearch bool query before performing wrapping it in a function_score query.
+   * @param array $query The bool query.
+   * @param array $data The Ajax request data.
+   */
   $query = apply_filters("mx_search_es_query", $query, $data);
+
+  $boosted_post_types = [];
+  foreach ($post_types as $post_type) {
+    if (!isset($mx_search_settings_post_types[$post_type])) {
+      continue;
+    }
+    $boosted_post_types[$post_type] =
+      $mx_search_settings_post_types[$post_type]["boost"] ?? 1;
+  }
+  /**
+   * Filter the boosted post types before performing the search.
+   * @param array $boosted_post_types The boosted post types with or without weights.
+   * @param array $data The Ajax request data.
+   */
+  $boosted_post_types = apply_filters(
+    "mx_search_boosted_post_types",
+    $boosted_post_types,
+    $data,
+  );
+  $boosted_post_type_functions = array_map(
+    function ($key, $value) use ($default_boosted_post_type_weight) {
+      if (is_numeric($key)) {
+        $key = $value;
+        $value = $default_boosted_post_type_weight;
+      }
+      if ($value == 1) {
+        return false;
+      }
+      return [
+        "filter" => [
+          "match" => [
+            "post_type" => $key,
+          ],
+        ],
+        "weight" => $value,
+      ];
+    },
+    array_keys($boosted_post_types),
+    $boosted_post_types,
+  );
+
+  /**
+   * Filter the functions corresponding to the post type boosts before passing it to the function_score query.
+   * @param array $boosted_post_type_functions The boosted post type functions.
+   * @param array $data The Ajax request data.
+   */
+  $boosted_post_type_functions = apply_filters(
+    "mx_search_boosted_post_type_functions",
+    $boosted_post_type_functions,
+    $data,
+  );
+
+  $decaying_post_types = [];
+  foreach ($post_types as $post_type) {
+    if (!isset($mx_search_settings_post_types[$post_type])) {
+      continue;
+    }
+    if (!$mx_search_settings_post_types[$post_type]["decay"] ?? false) {
+      continue;
+    }
+    $decaying_post_types[] = $post_type;
+  }
+  /**
+   * Filter the decaying post types before performing the search.
+   * @param array $decaying_post_types The decaying post types with or without params.
+   * @param array $data The Ajax request data.
+   */
+  $decaying_post_types = apply_filters(
+    "mx_search_decaying_post_types",
+    $decaying_post_types,
+    $data,
+  );
+  $decaying_post_type_functions = array_map(
+    function ($key, $value) {
+      if (is_numeric($key)) {
+        $key = $value;
+        $value = [];
+      }
+      if (!is_array($value)) {
+        throw new Exception("Decaying post type params must be an array.");
+      }
+      $value = array_merge(
+        [
+          "origin" => "now",
+          "scale" => "30d",
+          "decay" => 0.5,
+          "field" => "post_date",
+        ],
+        $value,
+      );
+      $field = $value["field"];
+      unset($value["field"]);
+
+      return [
+        "filter" => [
+          "match" => [
+            "post_type" => $key,
+          ],
+        ],
+        "gauss" => [
+          $field => $value,
+        ],
+      ];
+    },
+    array_keys($decaying_post_types),
+    $decaying_post_types,
+  );
+
+  /**
+   * Filter the functions corresponding to the post type decays before passing it to the function_score query.
+   * @param array $decaying_post_type_functions The decaying post type functions.
+   * @param array $data The Ajax request data.
+   */
+  $decaying_post_type_functions = apply_filters(
+    "mx_search_decaying_post_type_functions",
+    $decaying_post_type_functions,
+    $data,
+  );
+
+  $function_score = [
+    "query" => $query,
+    "score_mode" => "multiply", // How the scores of the functions are combined.
+    "boost_mode" => "multiply", // How the result of the functions is combined with the base score of the document.
+    "functions" => [
+      ...array_filter(array_values($boosted_post_type_functions)),
+      ...array_filter(array_values($decaying_post_type_functions)),
+    ],
+  ];
+
+  /**
+   * Filter the function query before performing the search.
+   * @param array $function_score The Elasticsearch function_score query that wraps the base query.
+   * @param array $data The Ajax request data.
+   * @return array The modified function_score query.
+   */
+  $function_score = apply_filters(
+    "mx_search_es_function_score",
+    $function_score,
+    $data,
+  );
 
   $es_body = [
     "query" => [
-      "function_score" => [
-        "query" => $query,
-        "score_mode" => "avg",
-        "boost_mode" => "sum",
-      ],
+      "function_score" => $function_score,
     ],
     "highlight" => [
       "pre_tags" => ["<mark>"],
@@ -174,6 +323,8 @@ function mx_search_ajax_handler() {
       "type" => fn($hit) => get_post_type_labels(
         get_post_type_object(get_post_type($hit["_source"]["post_id"])),
       )->singular_name ?? null,
+
+      "score" => fn($hit) => $hit["_score"] ?? null,
     ];
 
     /**
@@ -361,3 +512,121 @@ add_filter("mx_search_es_query", function ($query) {
   ];
   return $query;
 });
+
+/**
+ * Removes unsupported features from the ElasticPress admin menu.
+ */
+add_action(
+  "admin_menu",
+  function () {
+    $menu_slug =
+      defined("EP_IS_NETWORK") &&
+      EP_IS_NETWORK &&
+      !Utils\is_top_level_admin_context()
+        ? "elasticpress"
+        : "elasticpress-weighting";
+    remove_submenu_page("elasticpress", $menu_slug);
+
+    remove_submenu_page(
+      "elasticpress",
+      "edit.php?post_type=" . SearchOrdering::POST_TYPE_NAME,
+    );
+
+    remove_submenu_page("elasticpress", "elasticpress-synonyms");
+  },
+  60,
+);
+
+/**
+ * Hides the unsupported ep-pointer post type from wp-admin.
+ */
+add_action(
+  "init",
+  function () {
+    $post_type = "ep-pointer";
+    $post_type_object = get_post_type_object($post_type);
+    if ($post_type_object) {
+      $post_type_object->show_ui = false;
+      $post_type_object->show_in_menu = false;
+    }
+  },
+  20,
+);
+
+/**
+ * Adds a field group to the acf-options-search page
+ */
+add_action(
+  "init",
+  function () {
+    if (!function_exists("acf_add_local_field_group")) {
+      return;
+    }
+    $post_types = mx_get_regular_post_types("objects");
+    $post_types["attachment"] = get_post_type_object("attachment");
+
+    acf_add_local_field_group([
+      "key" => "group_mx_search_settings",
+      "title" => __("Search settings", "municipio-extended"),
+      "fields" => [
+        [
+          "key" => "field_mx_search_settings_post_types",
+          "label" => __("Post type settings", "municipio-extended"),
+          "name" => "mx_search_settings_post_types",
+          "type" => "group",
+          "layout" => "horizontal",
+          "sub_fields" => array_map(function ($post_type) {
+            return [
+              "key" => "field_mx_search_settings_post_types_{$post_type->name}",
+              "label" => $post_type->label,
+              "name" => $post_type->name,
+              "type" => "group",
+              "layout" => "horizontal",
+              "sub_fields" => [
+                [
+                  "key" => "field_mx_search_settings_post_types_{$post_type->name}_boost",
+                  "label" => __("Boost", "municipio-extended"),
+                  "name" => "boost",
+                  "type" => "number",
+                  "instructions" => __(
+                    "The boost factor for this post type.",
+                    "municipio-extended",
+                  ),
+                  "default_value" => 1,
+                  "wrapper" => [
+                    "width" => "50%",
+                  ],
+                ],
+                [
+                  "key" => "field_mx_search_settings_post_types_{$post_type->name}_decay",
+                  "label" => __("Decay", "municipio-extended"),
+                  "name" => "decay",
+                  "type" => "true_false",
+                  "ui" => 1,
+                  "instructions" => __(
+                    "Whether older posts should have lower scores.",
+                    "municipio-extended",
+                  ),
+                  "default_value" => 0,
+                  "wrapper" => [
+                    "width" => "50%",
+                  ],
+                ],
+              ],
+            ];
+          }, $post_types),
+        ],
+      ],
+      "location" => [
+        [
+          [
+            "param" => "options_page",
+            "operator" => "==",
+            "value" => "acf-options-search",
+          ],
+        ],
+      ],
+    ]);
+  },
+  20,
+);

@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-10-10T20:16:03+00:00\n"
-"PO-Revision-Date: 2024-10-10 22:16+0200\n"
+"POT-Creation-Date: 2024-10-18T10:20:00+00:00\n"
+"PO-Revision-Date: 2024-10-18 12:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -238,7 +238,7 @@ msgid "Compact"
 msgstr "Kompakt"
 
 #: autoload/mxui.php:62
-msgid "Tab menu - Location"
+msgid "Placing for tab menu"
 msgstr "Tabbmeny – Placering"
 
 #: autoload/mxui.php:67
@@ -384,17 +384,41 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/search.php:290
+#: autoload/search.php:441
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:306
+#: autoload/search.php:457
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:309
+#: autoload/search.php:460
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
+
+#: autoload/search.php:570
+msgid "Search settings"
+msgstr "Sökinställningar"
+
+#: autoload/search.php:574
+msgid "Post type settings"
+msgstr "Inställningar för innehållstyper"
+
+#: autoload/search.php:588
+msgid "Boost"
+msgstr "Boosta"
+
+#: autoload/search.php:591
+msgid "The boost factor for this post type."
+msgstr "Boostfaktorn för den här innehållstypen."
+
+#: autoload/search.php:602
+msgid "Decay"
+msgstr "Trappa av"
+
+#: autoload/search.php:606
+msgid "Whether older posts should have lower scores."
+msgstr "Om äldre inlägg ska ha lägre poäng."
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"
@@ -455,29 +479,15 @@ msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
 
+#~ msgctxt "Navigation Module Customization Field Label"
+#~ msgid "Color for format “cards”"
+#~ msgstr "Färg för format “kort”"
+
 #~ msgid "Previous page"
 #~ msgstr "Föregående sida"
 
 #~ msgid "Next page"
 #~ msgstr "Nästa sida"
-
-#~ msgid "Search settings"
-#~ msgstr "Sökinställningar"
-
-#~ msgid "Post type settings"
-#~ msgstr "Inställningar för innehållstyper"
-
-#~ msgid "Boost"
-#~ msgstr "Boosta"
-
-#~ msgid "The boost factor for this post type."
-#~ msgstr "Boostfaktorn för den här innehållstypen."
-
-#~ msgid "Decay"
-#~ msgstr "Trappa av"
-
-#~ msgid "Whether older posts should have lower scores."
-#~ msgstr "Om äldre inlägg ska ha lägre poäng."
 
 #~ msgctxt "Page Navigation Field Label"
 #~ msgid "Left menu"
