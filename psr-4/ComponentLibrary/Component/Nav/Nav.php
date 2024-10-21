@@ -259,8 +259,8 @@ class Nav extends MxBaseController {
   public function init() {
     $this->data["useHbg"] =
       $this->data["useHbg"] ??
-      !in_array("s-nav-primary", $this->data["classList"]) ||
-        (in_array("s-nav-primary", $this->data["classList"]) &&
+      !in_array("s-nav-primary", $this->data["classList"] ?? []) ||
+        (in_array("s-nav-primary", $this->data["classList"] ?? []) &&
           $this->getKirkiOption("main_menu_style") === "standard");
 
     if ($this->data["useHbg"]) {
