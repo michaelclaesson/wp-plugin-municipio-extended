@@ -29,7 +29,7 @@ Left to handle:
   {{ mx_attrs(
       [
           'class' => [
-              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] overflow-hidden grid-cols-[100%]',
+              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] hover:text-[var(--color-text-card-hover,var(--color-black))] overflow-hidden grid-cols-[100%]',
               'relative group' => !$expandLinkCover,
               'grid-rows-subgrid' => $asSubgrid,
               'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
@@ -70,7 +70,7 @@ Left to handle:
               'link' => $link ?? null,
               'content' => $heading ?? null,
               'classList' =>
-                  'no-underline after:absolute after:inset-0 after:z-[1] interactive:hover:underline after:inert:hidden hover:visited:text-inherit',
+                  'underline after:absolute after:inset-0 after:z-[1] interactive:hover:underline after:inert:hidden hover:visited:text-inherit transition-none',
           ])
           </h{!! $headingLevel !!}>
       @endif

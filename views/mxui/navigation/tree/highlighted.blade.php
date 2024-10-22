@@ -3,7 +3,7 @@
     <li class="grid grid-cols-[min(200px,33%)_minmax(0,1fr)] grid-rows-[auto_auto_auto] gap-7">
       <!-- Wrapper div for Image and Text section -->
       <div
-        class="relative group grid grid-cols-subgrid grid-rows-subgrid row-span-2 col-span-2 bg-complementary-light hover:bg-complementary gap-x-7 gap-y-4 p-4">
+        class="relative group grid grid-cols-subgrid grid-rows-subgrid row-span-2 col-span-2 bg-complementary-light hover:bg-primary gap-x-7 gap-y-4 p-4">
         <!-- Image Section -->
         <div class="@[40rem]:row-span-2 col-span-1 @[40rem]:-ml-4 @[40rem]:-my-4 @[40rem]:w-[calc(100%+1rem)]">
           @if ($item['image'] ?? null)
@@ -21,11 +21,11 @@
         <div class="self-center">
           <a href="{{ $item['href'] }}"
             class="text-base inline-flex items-center after:absolute after:inset-0 after:z-[1] after:inert:hidden">
-            <span class="typography-h3 underline">{{ $item['title'] }}</span>
+            <span class="typography-h3 underline group-hover:text-primary-contrasting">{{ $item['title'] }}</span>
           </a>
         </div>
         @if (!empty($item['description']))
-          <div class="text-xs sm:text-base col-span-2 @[40rem]:col-span-1">
+          <div class="text-xs sm:text-base col-span-2 @[40rem]:col-span-1 group-hover:text-primary-contrasting">
             {{ $item['description'] }}
           </div>
         @endif
