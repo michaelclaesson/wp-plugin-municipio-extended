@@ -35,7 +35,7 @@ function mx_search_ajax_handler() {
 
   $default_boosted_post_type_weight = 2;
   $post_types = mx_get_regular_post_types();
-  $post_types["attachment"] = get_post_type_object("attachment");
+  $post_types[] = "attachment";
   $mx_search_settings_post_types =
     get_field("mx_search_settings_post_types", "option") ?: [];
 
