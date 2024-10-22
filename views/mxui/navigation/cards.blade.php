@@ -1,4 +1,4 @@
-<ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0 [--color-background-card:var(--color-complementary-light)] [--color-background-card-hover:var(--color-complementary)]">
+<ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0 [--color-background-card:var(--color-complementary-light)] [--color-background-card-hover:var(--color-primary)] [--color-text-card-hover:var(--color-primary-contrasting)]">
     @foreach($items as $item)
         @php
         $content = wp_trim_words($item['post']->post_content ?? '', 8, '...');
