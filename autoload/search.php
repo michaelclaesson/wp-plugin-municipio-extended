@@ -2,7 +2,6 @@
 
 use Elastic\Elasticsearch\ClientBuilder;
 use ElasticPress\Utils;
-use ElasticPress\Feature\SearchOrdering\SearchOrdering;
 
 add_filter("Municipio/Hook/searchFormValidation", "__return_false");
 
@@ -527,10 +526,7 @@ add_action(
         : "elasticpress-weighting";
     remove_submenu_page("elasticpress", $menu_slug);
 
-    remove_submenu_page(
-      "elasticpress",
-      "edit.php?post_type=" . SearchOrdering::POST_TYPE_NAME,
-    );
+    remove_submenu_page("elasticpress", "edit.php?post_type=ep-pointer");
 
     remove_submenu_page("elasticpress", "elasticpress-synonyms");
   },
