@@ -1,5 +1,8 @@
 <?php
 
+use Kirki;
+use Municipio\Customizer;
+
 add_action("acf/init", function () {
   add_action(
     "init",
@@ -21,4 +24,34 @@ add_action("acf/init", function () {
     },
     20,
   );
+});
+
+add_action("init", function () {
+  Kirki::add_field(Customizer::KIRKI_CONFIG, [
+    "section" => "municipio_customizer_section_general",
+    "type" => "checkbox_switch",
+    "settings" => "municipio_customizer_onepage_body_text",
+    "label" => __(
+      "Display text content for One Page template",
+      "municipio-extended",
+    ),
+    "default" => false,
+    "priority" => 20,
+    "output" => [["type" => "controller"]],
+  ]);
+});
+
+add_action("onepage_content", function () {
+  $post = mx_get_post();
+
+  $displayBodyText = Kirki::get_option(
+    Customizer::KIRKI_CONFIG,
+    "municipio_customizer_onepage_body_text",
+  );
+
+  if ($displayBodyText) {
+    echo '<div class="tailwind">';
+    echo $post->post_content;
+    echo "</div>";
+  }
 });
