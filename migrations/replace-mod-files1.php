@@ -11,6 +11,18 @@ $posts = get_posts([
 $total = count($posts);
 $count = 0;
 
+// Enables mod-fileslist if it's not enabled
+$modularity_options = get_option("modularity_options");
+if (
+  $modularity_options["enabled-modules"] ??
+  null &&
+    is_array($modularity_options["enabled-modules"]) &&
+    !in_array("mod-fileslist", $modularity_options["enabled-modules"])
+) {
+  $modularity_options["enabled-modules"][] = "mod-fileslist";
+  update_option("modularity_options", $modularity_options);
+}
+
 foreach ($posts as $post) {
   mx_migration_breakpoint(function () use ($count, $total) {
     mx_migration_progress_log(
@@ -34,4 +46,19 @@ foreach ($posts as $post) {
   update_field("file_list", $new_field_value, $post->ID);
   update_field("show_filter", false, $post->ID);
   $count++;
+}
+
+// Disables mod-files1 if it's enabled
+$modularity_options = get_option("modularity_options");
+if (
+  $modularity_options["enabled-modules"] ??
+  null &&
+    is_array($modularity_options["enabled-modules"]) &&
+    !in_array("mod-files1", $modularity_options["enabled-modules"])
+) {
+  $modularity_options["enabled-modules"] = array_diff(
+    $modularity_options["enabled-modules"],
+    ["mod-files1"],
+  );
+  update_option("modularity_options", $modularity_options);
 }
