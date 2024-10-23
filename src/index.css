@@ -255,8 +255,12 @@
     gap: 1rem;
 }
 
-.c-nav {
-  padding-bottom: 0.5rem;
+.tab-area {
+    padding-bottom: 0.5rem;
+}
+
+.tab-area {
+  padding-top: 0.5rem;
 }
 
 @media (max-width: 30rem) {
