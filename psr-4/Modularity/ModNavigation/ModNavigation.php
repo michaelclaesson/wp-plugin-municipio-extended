@@ -157,10 +157,15 @@ class ModNavigation extends MxModule {
       "orderby" => "menu_order",
       "order" => "ASC",
       "meta_query" => [
+        "relation" => "OR",
         [
           "key" => "hide_in_menu",
           "value" => "1",
           "compare" => "!=",
+        ],
+        [
+          "key" => "hide_in_menu",
+          "compare" => "NOT EXISTS",
         ],
       ],
     ];
@@ -195,10 +200,15 @@ class ModNavigation extends MxModule {
       "post_status" => "publish",
       "orderby" => "menu_order",
       "meta_query" => [
+        "relation" => "OR",
         [
           "key" => "hide_in_menu",
           "value" => "1",
           "compare" => "!=",
+        ],
+        [
+          "key" => "hide_in_menu",
+          "compare" => "NOT EXISTS",
         ],
       ],
     ];
