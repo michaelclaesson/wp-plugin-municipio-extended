@@ -7,6 +7,44 @@ add_filter("Municipio/Hook/searchFormValidation", "__return_false");
 
 add_filter("ep_skip_query_integration", "__return_true");
 
+function mx_enable_external_page_content_type() {
+  return get_field("mx_enable_external_page_content_type", "option") ?? false;
+}
+
+function mx_get_searchable_post_types($field = "names") {
+  if (!class_exists("\ElasticPress\Indexables")) {
+    return;
+  }
+  /**
+   * @var \ElasticPress\Indexable\Post $indexable
+   */
+  $indexable = \ElasticPress\Indexables::factory()->get("post");
+  $post_types = $indexable->get_indexable_post_types();
+  if ($field === "names") {
+    return array_keys($post_types);
+  }
+  if ($field === "objects") {
+    return array_map(function ($post_type) {
+      return get_post_type_object($post_type);
+    }, array_keys($post_types));
+  }
+}
+
+add_filter(
+  "ep_indexable_post_types",
+  function ($post_types) {
+    $post_types = get_post_types([], "objects");
+    unset($post_types["attachment"]);
+    $post_types = array_filter($post_types, function ($post_type) {
+      return $post_type->show_in_search ?? ($post_type->public ?? false);
+    });
+    $post_types = array_keys($post_types);
+    $post_types = array_combine($post_types, $post_types);
+    return $post_types;
+  },
+  5,
+);
+
 function mx_search_perform_es_search($body) {
   $host = Utils\get_host();
   if (empty($host)) {
@@ -34,8 +72,13 @@ function mx_search_ajax_handler() {
   check_ajax_referer("mx_search", "nonce");
 
   $default_boosted_post_type_weight = 2;
-  $post_types = mx_get_regular_post_types();
-  $post_types[] = "attachment";
+  $post_types = mx_get_searchable_post_types("names");
+  if (empty($post_types)) {
+    return wp_send_json([
+      "success" => false,
+      "error" => "No post types are searchable.",
+    ]);
+  }
   $mx_search_settings_post_types =
     get_field("mx_search_settings_post_types", "option") ?: [];
 
@@ -312,19 +355,18 @@ function mx_search_ajax_handler() {
         $hit["_source"]["post_id"],
       ),
 
-      "date" => fn($hit) => in_array(
-        get_post_type($hit["_source"]["post_id"]),
-        ["post"],
-      )
-        ? $hit["_source"]["post_date"]
-        : null,
+      "date" => fn($hit) => $hit["_source"]["post_date"] ?? null,
 
-      "type" => fn($hit) => get_post_type_labels(
-        get_post_type_object(get_post_type($hit["_source"]["post_id"])),
-      )->singular_name ?? null,
+      "type" => fn($hit) => $hit["_source"]["content_type_formatted"] ??
+        (get_post_type_labels(
+          get_post_type_object($hit["_source"]["post_type"]),
+        )->singular_name ??
+          null),
 
       "score" => fn($hit) => $hit["_score"] ?? null,
     ];
+
+    $default_visible_fields = ["date"];
 
     /**
      * Filter the hit source mapping before transforming the hits.
@@ -345,11 +387,27 @@ function mx_search_ajax_handler() {
         $es_results,
         $hit_source_mapping,
         $es_body,
+        $default_visible_fields,
+        $mx_search_settings_post_types,
         $data,
       ) {
-        $transformed_hit = array_map(function ($fn) use ($hit) {
-          return $fn($hit);
-        }, $hit_source_mapping);
+        $post_type = $hit["_source"]["post_type"];
+        $visible_fields =
+          $mx_search_settings_post_types[$post_type]["visible_fields"] ??
+          $default_visible_fields;
+        $transformed_hit = array_combine(
+          array_keys($hit_source_mapping),
+          array_map(
+            function ($fn, $field) use ($hit, $visible_fields) {
+              return !in_array($field, ["date", "type"]) ||
+                in_array($field, $visible_fields)
+                ? $fn($hit)
+                : null;
+            },
+            $hit_source_mapping,
+            array_keys($hit_source_mapping),
+          ),
+        );
 
         /**
          * Filter the transformed hit before returning it.
@@ -394,11 +452,25 @@ add_action("wp_ajax_mx_search", "mx_search_ajax_handler");
 add_action("wp_ajax_nopriv_mx_search", "mx_search_ajax_handler"); // For non-logged-in users
 
 /**
- * Strips all HTML tags from the post_content_filtered field before indexing.
+ * Prepares posts for indexing.
+ * - Adds a content_type field to the post_args array.
+ * - Strips all HTML tags from the post_content_filtered field before indexing.
  */
 add_filter(
   "ep_post_sync_args_post_prepare_meta",
-  function (array $post_args, string|int $post_id): array {
+  function ($post_args, $post_id) {
+    $post_args["content_type"] = apply_filters(
+      "mx_search_post_content_type",
+      $post_args["post_type"],
+      $post_args,
+      $post_id,
+    );
+    $post_args["content_type_formatted"] = apply_filters(
+      "mx_search_post_content_type_formatted",
+      get_post_type_object($post_args["post_type"])->labels->singular_name,
+      $post_args,
+      $post_id,
+    );
     $post_args["post_content_filtered"] = mx_plain_text(
       $post_args["post_content_filtered"],
       ["exclude" => ".modularity-edit-module"],
@@ -426,14 +498,10 @@ add_filter("ep_post_mapping", function ($mapping) {
  * Adds a "Search" ACF field group to all indexable post types.
  */
 add_action("acf/init", function () {
-  if (!class_exists("\ElasticPress\Indexables")) {
+  $post_types = mx_get_searchable_post_types("names");
+  if (empty($post_types)) {
     return;
   }
-  /**
-   * @var \ElasticPress\Indexable\Post $indexable
-   */
-  $indexable = \ElasticPress\Indexables::factory()->get("post");
-  $post_types = $indexable->get_indexable_post_types();
 
   acf_add_local_field_group([
     "key" => "group_search",
@@ -558,13 +626,30 @@ add_action(
     if (!function_exists("acf_add_local_field_group")) {
       return;
     }
-    $post_types = mx_get_regular_post_types("objects");
-    $post_types["attachment"] = get_post_type_object("attachment");
+    $post_types = mx_get_searchable_post_types("objects");
+    if (empty($post_types)) {
+      return;
+    }
 
     acf_add_local_field_group([
       "key" => "group_mx_search_settings",
       "title" => __("Search settings", "municipio-extended"),
       "fields" => [
+        [
+          "key" => "field_mx_search_settings_enable_external_page_content_type",
+          "label" => __(
+            "Enable ”external pages” content type",
+            "municipio-extended",
+          ),
+          "name" => "mx_enable_external_page_content_type",
+          "type" => "true_false",
+          "ui" => 1,
+          "default_value" => 0,
+          "instructions" => __(
+            "Check this box to enable the ”external pages” content type which you can use to add external pages to the site search.",
+            "municipio-extended",
+          ),
+        ],
         [
           "key" => "field_mx_search_settings_post_types",
           "label" => __("Post type settings", "municipio-extended"),
@@ -584,6 +669,7 @@ add_action(
                   "label" => __("Boost", "municipio-extended"),
                   "name" => "boost",
                   "type" => "number",
+                  "min" => 1,
                   "instructions" => __(
                     "The boost factor for this post type.",
                     "municipio-extended",
@@ -608,6 +694,32 @@ add_action(
                     "width" => "50%",
                   ],
                 ],
+                [
+                  "key" => "field_mx_search_settings_post_types_{$post_type->name}_visible_fields",
+                  "label" => __("Visible fields", "municipio-extended"),
+                  "name" => "visible_fields",
+                  "type" => "checkbox",
+                  "choices" => [
+                    "date" => _x(
+                      "Date",
+                      "Search Settings Visible Fields Choice",
+                      "municipio-extended",
+                    ),
+                    "type" => _x(
+                      "Type",
+                      "Search Settings Visible Fields Choice",
+                      "municipio-extended",
+                    ),
+                  ],
+                  "instructions" => __(
+                    "Which fields to show or hide in the search results.",
+                    "municipio-extended",
+                  ),
+                  "default_value" => ["type"],
+                  "wrapper" => [
+                    "width" => "50%",
+                  ],
+                ],
               ],
             ];
           }, $post_types),
@@ -625,4 +737,120 @@ add_action(
     ]);
   },
   20,
+);
+
+/**
+ * Register "External pages" post type and "Content type" taxonomy
+ */
+add_action("init", function () {
+  register_post_type("external_page", [
+    "label" => __("External pages", "municipio-extended"),
+    "labels" => [
+      "name" => __("External pages", "municipio-extended"),
+      "singular_name" => __("External page", "municipio-extended"),
+    ],
+    "public" => false,
+    "show_ui" => mx_enable_external_page_content_type(),
+    "show_in_menu" => true,
+    "show_in_nav_menus" => false,
+    "show_in_admin_bar" => false,
+    "show_in_rest" => false,
+    "show_in_search" => mx_enable_external_page_content_type(),
+    "supports" => ["title", "editor"],
+    "menu_icon" => "dashicons-admin-links",
+  ]);
+  register_taxonomy("external_page_content_type", "external_page", [
+    "label" => __("Content type", "municipio-extended"),
+    "labels" => [
+      "name" => __("Content types", "municipio-extended"),
+      "singular_name" => __("Content type", "municipio-extended"),
+    ],
+    "public" => false,
+    "show_ui" => true,
+    "show_in_menu" => true,
+    "show_in_nav_menus" => false,
+    "show_in_admin_bar" => false,
+    "show_in_rest" => false,
+    "hierarchical" => false,
+    "multiple" => false,
+  ]);
+});
+
+/**
+ * Add "External page attributes" field group with required URL field
+ */
+add_action("acf/init", function () {
+  acf_add_local_field_group([
+    "key" => "group_external_page_attributes",
+    "title" => __("External page attributes", "municipio-extended"),
+    "fields" => [
+      [
+        "key" => "field_external_page_attributes_url",
+        "label" => __("URL", "municipio-extended"),
+        "name" => "url",
+        "type" => "url",
+        "instructions" => __(
+          "The URL to the external page.",
+          "municipio-extended",
+        ),
+        "required" => true,
+      ],
+    ],
+    "location" => [
+      [
+        [
+          "param" => "post_type",
+          "operator" => "==",
+          "value" => "external_page",
+        ],
+      ],
+    ],
+  ]);
+});
+
+/**
+ * Use the URL field as the permalink for external pages
+ */
+add_filter(
+  "post_type_link",
+  function ($post_link, $post, $leavename, $sample) {
+    if (get_post_type($post) == "external_page") {
+      $post_link = get_field("url", $post);
+    }
+    return $post_link;
+  },
+  10,
+  4,
+);
+
+/**
+ * Use the content type taxonomy as the content type for external pages
+ */
+add_filter(
+  "mx_search_post_content_type",
+  function ($content_type, $post_args, $post_id) {
+    if ($post_args["post_type"] == "external_page") {
+      $term_slug =
+        get_the_terms($post_id, "external_page_content_type")[0]->slug ?? null;
+      if ($term_slug ?? null) {
+        $content_type .= ":" . $term_slug;
+      }
+    }
+    return $content_type;
+  },
+  10,
+  3,
+);
+add_filter(
+  "mx_search_post_content_type_formatted",
+  function ($content_type_formatted, $post_args, $post_id) {
+    if ($post_args["post_type"] == "external_page") {
+      $term_name =
+        get_the_terms($post_id, "external_page_content_type")[0]->name ?? null;
+      $content_type_formatted = $term_name ?? $content_type_formatted;
+    }
+    return $content_type_formatted;
+  },
+  10,
+  3,
 );

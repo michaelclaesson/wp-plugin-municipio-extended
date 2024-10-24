@@ -222,6 +222,10 @@ class MxSiteSearchElement extends HTMLElement {
             imageEl.remove();
           }
         }
+        const typeEl = el.querySelector('[slot=type]') as HTMLElement | null;
+        if (typeEl && hit.type) {
+          typeEl.innerText = hit.type;
+        }
         const dateEl = el.querySelector('[slot=date]') as HTMLElement | null;
         if (dateEl && hit.date) {
           dateEl.innerHTML = new Date(hit.date).toLocaleDateString('default', {

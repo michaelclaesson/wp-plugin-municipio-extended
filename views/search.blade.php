@@ -51,8 +51,13 @@
                       slot="link">
                       <div class="flex-grow space-y-2">
                         <h3 slot="title" class="m-0 decoration-1 group-hover/hit:underline typography-h4"></h3>
-                        <div slot="date" class="empty:hidden text-sm text-gray-700"></div>
-                        <p slot="excerpt" class="m-0"></p>
+                        <div class="contentless:hidden">
+                          <span slot="type"
+                            class="empty:hidden text-sm text-gray-700 [:not(:empty)~&:not(:empty)]:before:content-['_•_']"></span>
+                          <span slot="date"
+                            class="empty:hidden text-sm text-gray-700 [:not(:empty)~&:not(:empty)]:before:content-['_•_']"></span>
+                        </div>
+                        <p slot="excerpt" class="m-0 contentless:hidden"></p>
                       </div>
                       <img class="aspect-video w-60 flex-shrink-0 object-cover hidden self-start @[30rem]:block"
                         slot="image" alt="">
