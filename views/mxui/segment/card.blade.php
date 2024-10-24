@@ -10,6 +10,10 @@ sub_title
 
 buttons
 --}}
+@php
+echo json_encode($reverseColumns);
+@endphp
+
 
 <!-- mxui.segment.card -->
 <div class="@container">
@@ -20,7 +24,7 @@ buttons
         ],
         $attributeList,
     ) }}>
-    <div class="-mt-8 mx-4 w-auto @[50rem]:mt-8 @[50rem]:absolute @[50rem]:w-1/2 @[50rem]:left-1/2 @[50rem]:mx-0">
+    <div class="-mt-8 mx-4 w-auto @[50rem]:mt-8 @[50rem]:absolute @[50rem]:w-1/2 @[50rem]:mx-0 {{ $reverseColumns ? '@[50rem]:left-1/2' : '@[50rem]:right-1/2' }}">
       @component('mxui.card', [
           'heading' => $title,
           'content' => new \Illuminate\Support\HtmlString($content),
@@ -39,6 +43,7 @@ buttons
           'class' => [
               'w-full @[50rem]:relative @[50rem]:w-3/4 @[50rem]:max-h-96',
               '-order-1',
+              $reverseColumns ? '' : '@[50rem]:left-1/4',
               'aspect-video bg-secondary first:last:mb-0',
               'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
           ],
