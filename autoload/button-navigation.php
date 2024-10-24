@@ -1,5 +1,8 @@
 <?php
 
+use Kirki;
+use Municipio\Customizer;
+
 add_action("article_content_before", function () {
   $post = mx_get_post();
   echo mx_render_view("section-back-button", ["post" => $post]);
@@ -19,6 +22,15 @@ add_filter(
 );
 
 add_action("article_content_before", function () {
+  $value = Kirki::get_option(
+    Customizer::KIRKI_CONFIG,
+    "secondary_navigation_position",
+  );
+
+  if ($value !== "below_title") {
+    return null;
+  }
+
   $post = mx_get_post();
 
   $args = [
@@ -29,10 +41,15 @@ add_action("article_content_before", function () {
     "orderby" => "menu_order",
     "order" => "ASC",
     "meta_query" => [
+      "relation" => "OR",
       [
         "key" => "hide_in_menu",
         "value" => "1",
         "compare" => "!=",
+      ],
+      [
+        "key" => "hide_in_menu",
+        "compare" => "NOT EXISTS",
       ],
     ],
   ];
