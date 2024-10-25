@@ -18,7 +18,7 @@ buttons
   <section
     {{ mx_attrs(
         [
-            'class' => ['flex flex-col min-h-full group @[50rem]:flex-row @[50rem]:max-w-[1920px]', $classList],
+            'class' => ['flex flex-col min-h-full group @[50rem]:flex-row', $classList],
         ],
         $attributeList,
     ) }}>

@@ -148,7 +148,7 @@ Left to handle:
         <li class="">
           @component('mxui.button', [
               'href' => $button['href'],
-              'variant' => $button['color'] ?? 'default',
+              'variant' => $button['color'] ?? $button['buttonVariant'] ?? 'default',
               'classList' => 'h-14',
           ])
             @if ($button['icon'])
@@ -161,7 +161,7 @@ Left to handle:
               </span>
             @endif
             <span class="text-base flex-grow flex-shrink">
-              {{ $button['text'] }}
+              {{ $button['text'] ?? $button['title']}}
             </span>
           @endcomponent
         </li>
