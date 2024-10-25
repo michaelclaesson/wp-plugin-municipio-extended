@@ -11,6 +11,57 @@ function mx_enable_external_page_content_type() {
   return get_field("mx_enable_external_page_content_type", "option") ?? false;
 }
 
+/**
+ * Makes ep_indexable_post_types() take the `show_in_search` property into account.
+ */
+add_filter(
+  "ep_indexable_post_types",
+  function ($post_types) {
+    $post_types = get_post_types([], "objects");
+    unset($post_types["attachment"]);
+    $post_types = array_filter($post_types, function ($post_type) {
+      return $post_type->show_in_search ?? ($post_type->public ?? false);
+    });
+    $post_types = array_keys($post_types);
+    $post_types = array_combine($post_types, $post_types);
+    return $post_types;
+  },
+  5,
+);
+
+/**
+ * Accounts for the Municipio settings for hiding built-in post types.
+ */
+add_action(
+  "init",
+  function () {
+    global $wp_post_types;
+
+    if (isset($wp_post_types["post"])) {
+      if (
+        function_exists("get_field") &&
+        get_field("disable_default_blog_post_type", "option")
+      ) {
+        $wp_post_types["post"]->show_in_search = false;
+      }
+    }
+    if (isset($wp_post_types["page"])) {
+      if (
+        function_exists("get_field") &&
+        get_field("disable_default_page_post_type", "option")
+      ) {
+        $wp_post_types["page"]->show_in_search = false;
+      }
+    }
+  },
+  12,
+);
+
+/**
+ * Returns an array of searchable post types, based on the `show_in_search` property.
+ * @param string $field Whether to return the post types as names or objects.
+ * @return array
+ */
 function mx_get_searchable_post_types($field = "names") {
   if (!class_exists("\ElasticPress\Indexables")) {
     return;
@@ -30,21 +81,6 @@ function mx_get_searchable_post_types($field = "names") {
     }, array_keys($post_types));
   }
 }
-
-add_filter(
-  "ep_indexable_post_types",
-  function ($post_types) {
-    $post_types = get_post_types([], "objects");
-    unset($post_types["attachment"]);
-    $post_types = array_filter($post_types, function ($post_type) {
-      return $post_type->show_in_search ?? ($post_type->public ?? false);
-    });
-    $post_types = array_keys($post_types);
-    $post_types = array_combine($post_types, $post_types);
-    return $post_types;
-  },
-  5,
-);
 
 function mx_search_perform_es_search($body) {
   $host = Utils\get_host();
