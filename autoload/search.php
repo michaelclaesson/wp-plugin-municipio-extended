@@ -20,6 +20,7 @@ function mx_get_searchable_post_types($field = "names") {
    */
   $indexable = \ElasticPress\Indexables::factory()->get("post");
   $post_types = $indexable->get_indexable_post_types();
+  // TODO: Add attachment if documents are indexable
   if ($field === "names") {
     return array_keys($post_types);
   }
@@ -664,6 +665,7 @@ add_action(
               "type" => "group",
               "layout" => "horizontal",
               "sub_fields" => [
+                // TODO: Add checkbox for disabling search per post type
                 [
                   "key" => "field_mx_search_settings_post_types_{$post_type->name}_boost",
                   "label" => __("Boost", "municipio-extended"),
