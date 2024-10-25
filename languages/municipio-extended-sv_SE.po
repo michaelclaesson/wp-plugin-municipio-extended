@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-10-25T12:06:36+00:00\n"
-"PO-Revision-Date: 2024-10-25 14:06+0200\n"
+"POT-Creation-Date: 2024-10-25T18:52:46+00:00\n"
+"PO-Revision-Date: 2024-10-25 20:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -393,27 +393,27 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/search.php:545
+#: autoload/search.php:558
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:561
+#: autoload/search.php:574
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:564
+#: autoload/search.php:577
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
-#: autoload/search.php:673
+#: autoload/search.php:686
 msgid "Search settings"
 msgstr "Sökinställningar"
 
-#: autoload/search.php:677
+#: autoload/search.php:690
 msgid "Enable ”external pages” content type"
 msgstr "Aktivera innehållstypen \"externa sidor\""
 
-#: autoload/search.php:685
+#: autoload/search.php:698
 msgid ""
 "Check this box to enable the ”external pages” content type which you can use "
 "to add external pages to the site search."
@@ -422,71 +422,76 @@ msgstr ""
 "som du kan använda för att lägga till externa sidor i webbplatsens "
 "sökfunktion."
 
-#: autoload/search.php:692
+#: autoload/search.php:705
 msgid "Post type settings"
 msgstr "Inställningar för innehållstyper"
 
-#: autoload/search.php:707
+#: autoload/search.php:720
 msgid "Boost"
 msgstr "Boosta"
 
-#: autoload/search.php:711
+#: autoload/search.php:724
 msgid "The boost factor for this post type."
 msgstr "Boostfaktorn för den här innehållstypen."
 
-#: autoload/search.php:722
+#: autoload/search.php:735
 msgid "Decay"
 msgstr "Trappa av"
 
-#: autoload/search.php:726
+#: autoload/search.php:739
 msgid "Whether older posts should have lower scores."
 msgstr "Om äldre inlägg ska ha lägre poäng."
 
-#: autoload/search.php:737
+#: autoload/search.php:750
 msgid "Visible fields"
 msgstr "Synliga fält"
 
-#: autoload/search.php:741
+#: autoload/search.php:754
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr "Datum"
 
-#: autoload/search.php:746
+#: autoload/search.php:759
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr "Typ"
 
-#: autoload/search.php:752
+#: autoload/search.php:765
 msgid "Which fields to show or hide in the search results."
 msgstr "Vilka fält som ska visas eller döljas i sökresultaten."
 
-#: autoload/search.php:785 autoload/search.php:787
+#: autoload/search.php:798 autoload/search.php:800
 msgid "External pages"
 msgstr "Externa sidor"
 
-#: autoload/search.php:788
+#: autoload/search.php:801
 msgid "External page"
 msgstr "Extern sida"
 
-#: autoload/search.php:801 autoload/search.php:804
+#: autoload/search.php:814 autoload/search.php:817
 msgid "Content type"
 msgstr "Innehållstyp"
 
-#: autoload/search.php:803
+#: autoload/search.php:816
 msgid "Content types"
 msgstr "Innehållstyper"
 
-#: autoload/search.php:823
+#: autoload/search.php:836
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
 
-#: autoload/search.php:827
+#: autoload/search.php:840
 msgid "URL"
 msgstr "URL"
 
-#: autoload/search.php:830
+#: autoload/search.php:843
 msgid "The URL to the external page."
 msgstr "URL:en till den externa sidan."
+
+#: autoload/search.php:919
+msgctxt "Attachment Search Result Type Label"
+msgid "Document"
+msgstr "Dokument"
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"

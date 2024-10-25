@@ -71,7 +71,19 @@ function mx_get_searchable_post_types($field = "names") {
    */
   $indexable = \ElasticPress\Indexables::factory()->get("post");
   $post_types = $indexable->get_indexable_post_types();
-  // TODO: Add attachment if documents are indexable
+
+  // Add attachment if documents are indexable
+  /**
+   * @var \ElasticPress\Feature\Documents\Documents $documents_feature
+   */
+  $documents_feature = \ElasticPress\Features::factory()->get_registered_feature(
+    "documents",
+  );
+  $documents_feature_is_active = $documents_feature->is_active();
+  if ($documents_feature_is_active) {
+    $post_types["attachment"] = "attachment";
+  }
+
   if ($field === "names") {
     return array_keys($post_types);
   }
@@ -886,6 +898,28 @@ add_filter(
       $term_name =
         get_the_terms($post_id, "external_page_content_type")[0]->name ?? null;
       $content_type_formatted = $term_name ?? $content_type_formatted;
+    }
+    return $content_type_formatted;
+  },
+  10,
+  3,
+);
+
+/**
+ * Use the file type as the content type for attachments
+ */
+add_filter(
+  "mx_search_post_content_type_formatted",
+  function ($content_type_formatted, $post_args, $post_id) {
+    if (
+      $post_args["post_type"] == "attachment" &&
+      !empty($post_args["post_mime_type"])
+    ) {
+      $content_type_formatted = _x(
+        "Document",
+        "Attachment Search Result Type Label",
+        "municipio-extended",
+      );
     }
     return $content_type_formatted;
   },
