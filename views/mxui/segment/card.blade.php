@@ -10,7 +10,6 @@ sub_title
 
 buttons
 --}}
-@php
 
 
 <!-- mxui.segment.card -->
