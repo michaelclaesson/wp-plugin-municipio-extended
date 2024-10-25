@@ -11,8 +11,6 @@ sub_title
 buttons
 --}}
 @php
-echo json_encode($reverseColumns);
-@endphp
 
 
 <!-- mxui.segment.card -->
@@ -35,25 +33,28 @@ echo json_encode($reverseColumns);
           'wrapContent' => true,
           'classList' => ['[--card-px:2.5rem] [--card-py:1.5rem] @[50rem]:min-h-80 isolate'],
           'expandLinkCover' => true,
+          'buttons' => $buttons,
       ])
       @endcomponent
     </div>
-    <div
-      {{ mx_attrs([
-          'class' => [
-              'w-full @[50rem]:relative @[50rem]:w-3/4 @[50rem]:max-h-96',
-              '-order-1',
-              $reverseColumns ? '' : '@[50rem]:left-1/4',
-              'aspect-video bg-secondary first:last:mb-0',
-              'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
-          ],
-      ]) }}>
-      @component('mxui.image', [
-          'image' => $image,
-          'size' => 'medium',
-          'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
-      ])
-      @endcomponent
-    </div>
+    @if (!empty($image))
+      <div
+        {{ mx_attrs([
+            'class' => [
+                'w-full @[50rem]:relative @[50rem]:w-3/4 @[50rem]:max-h-96',
+                '-order-1',
+                $reverseColumns ? '' : '@[50rem]:left-1/4',
+                'aspect-video bg-secondary first:last:mb-0',
+                'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
+            ],
+        ]) }}>
+        @component('mxui.image', [
+            'image' => $image,
+            'size' => 'medium',
+            'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+        ])
+        @endcomponent
+      </div>
+    @endif
   </section>
 </div>

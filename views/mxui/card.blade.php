@@ -23,7 +23,9 @@ Left to handle:
   $wrapContent ??= !empty($content) && is_string($content);
   $proseWrap ??= false;
   $expandLinkCover ??= false;
+  $buttons ??= null;
 @endphp
+<!-- mxui.card -->
 
 <div
   {{ mx_attrs(
@@ -42,7 +44,8 @@ Left to handle:
   
               // Replacement for `.c-card .c-collection { border: none; }`
               '[&_.c-collection]:border-none',
-  
+              '@container',
+
               $classList,
           ],
       ],
@@ -138,6 +141,32 @@ Left to handle:
       @endif
       @if ($proseWrap)
     </div>
+  @endif
+  @if ($buttons)
+    <ul class="px-0 space-y-0 flex flex-wrap gap-4 mt-4">
+      @foreach ($buttons as $button)
+        <li class="">
+          @component('mxui.button', [
+              'href' => $button['href'],
+              'variant' => $button['color'] ?? 'default',
+              'classList' => 'h-14',
+          ])
+            @if ($button['icon'])
+              <span class="min-h-[1lh] flex-none flex items-center">
+                @icon([
+                    'icon' => $button['icon']['name'] ?? $button['icon'],
+                    'classList' => ['block text-[1.5rem] leading-none flex-none']
+                ])
+                @endicon
+              </span>
+            @endif
+            <span class="text-base flex-grow flex-shrink">
+              {{ $button['text'] }}
+            </span>
+          @endcomponent
+        </li>
+      @endforeach
+    </ul>
   @endif
 </div>
 @endif
