@@ -137,3 +137,9 @@ function mx_get_regular_post_types($output = "names") {
   }
   return $post_types;
 }
+
+function mx_array_replace($array, $search, $replace) {
+  return array_map(function ($value) use ($search, $replace) {
+    return $value === $search ? $replace : $value;
+  }, $array);
+}
