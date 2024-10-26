@@ -14,14 +14,29 @@ class AttributeBag implements \Illuminate\Contracts\Support\Htmlable {
   public function toHtml() {
     $arr = array_map(
       function ($value, $name) {
-        if (is_array($value)) {
-          $value = _clsx_val($value);
-        }
         if (
           (strpos($name, "aria-") === 0 || strpos($name, "data-") === 0) &&
           !is_string($value)
         ) {
           $value = json_encode($value);
+        } elseif ($name === "style" && is_array($value)) {
+          $value = implode(
+            "; ",
+            array_filter(
+              array_map(
+                function ($prop, $value) {
+                  if (is_null($value) || $value === "") {
+                    return null;
+                  }
+                  return $prop . ": " . $value;
+                },
+                array_keys($value),
+                $value,
+              ),
+            ),
+          );
+        } elseif (is_array($value)) {
+          $value = _clsx_val($value);
         }
         if (is_null($value) || $value === false) {
           return false;
