@@ -11,8 +11,7 @@
     </div>
     @if($includeTime)
       <div class="{{$baseClass . '__time'}}">
-        @icon(['icon' => 'access_time', 'size' => 'inherit'])
-        @endicon
+        {{ mx_icon('access_time', ['size' => 'inherit']) }}
         @typography(['variant' => 'meta', 'element' => 'span'])
           {{ $time }}
         @endtypography

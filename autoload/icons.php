@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Removes the material-symbols-fonts style
+ */
+add_action(
+  "wp_enqueue_scripts",
+  function () {
+    wp_dequeue_style("material-symbols-fonts");
+    wp_deregister_style("material-symbols-fonts");
+  },
+  6, // Original registration is at 5
+);
+
 function mx_get_materialsymbols_cache_path() {
   return apply_filters(
     "mx_materialsymbols_cache_path",

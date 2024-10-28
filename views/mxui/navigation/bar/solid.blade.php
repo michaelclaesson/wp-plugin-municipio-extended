@@ -5,11 +5,9 @@
         <li class="contents">
           <a href="{{ $item['href'] }}" class="text-primary-contrasting hover:text-primary-contrasting grid grid-rows-subgrid row-span-2 gap-2 items-center visited:hover:text-primary-contrasting text-center py-5 px-2 hover:bg-primary-dark transition-colors">
             <span class="text-[54px] leading-none">
-              @icon([
-                'icon' => $item['icon'] ?: 'arrow_forward',
-                'classList' => ['block']
-              ])
-              @endicon
+              {{ mx_get_icon($item['icon'] ?: 'arrow_forward', [
+                  'classList' => ['block'],
+              ]) }}
             </span>
             <div class="text-sm font-medium underline">
               {{ $item['title'] }}

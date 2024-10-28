@@ -7,11 +7,9 @@
       ])
         @if ($item['icon'])
           <span class="min-h-[1lh] flex-none flex items-center">
-            @icon([
-                'icon' => $item['icon']['name'] ?? $item['icon'],
-                'classList' => ['block text-[1.5rem] leading-none flex-none']
-            ])
-            @endicon
+            {{ mx_get_icon($item['icon']['name'] ?? $item['icon'], [
+                'classList' => ['block text-[1.5rem] leading-none flex-none'],
+            ]) }}
           </span>
         @endif
         <span class="text-base flex-grow flex-shrink">

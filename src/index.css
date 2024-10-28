@@ -250,9 +250,9 @@
 }
 
 .c-header__inner-area {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .tab-area {
@@ -282,4 +282,28 @@
     .c-button__label-icon {
     margin-right: calc(var(--base, 8px) * -0.5);
   }
+}
+
+/**
+ * Padding doesn't work on MXUI icon so we need to override with margin
+ */
+.c-field .c-field__inner .c-field__icon,
+.c-field .c-field__inner .c-field__prefix {
+  padding-left: 0;
+  margin-left: var(--c-field-padding, 1rem);
+}
+.c-field.c-field--sm .c-field__icon,
+.c-field.c-field--sm .c-field__prefix {
+  padding-left: 0;
+  margin-left: 0.5rem;
+}
+.c-field.c-field--md .c-field__icon,
+.c-field.c-field--md .c-field__prefix {
+  padding-left: 0;
+  margin-left: 1rem;
+}
+.c-field.c-field--lg .c-field__icon,
+.c-field.c-field--lg .c-field__prefix {
+  padding-left: 0;
+  margin-left: calc(1.25rem);
 }

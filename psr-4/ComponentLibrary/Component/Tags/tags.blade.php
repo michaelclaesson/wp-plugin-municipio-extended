@@ -15,13 +15,11 @@
         @else
           <span class="c-tags__tag {{ $isHidden($loop->index) }}">
             @if (!empty($icon))
-              @icon([
-                  'icon' => $icon['icon'],
+              {{ mx_get_icon($icon['icon'], [
                   'size' => $icon['size'],
                   'customColor' => $tag['color'],
-                  'classList' => ['u-margin__right--05']
-              ])
-              @endicon
+                  'classList' => ['u-margin__right--05'],
+              ]) }}
             @else
               {{ $beforeLabel }}
             @endif
