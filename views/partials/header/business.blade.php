@@ -33,7 +33,7 @@ $tab_menu_placing = get_theme_mod("tab_menu_placing");
             @endlink
 
             <div  class="@if($tab_menu_placing == 'above') c-header__tab-menu--above @else c-header__tab-menu--standard @endif">
-                <div class="c-header__inner-area">
+                <div class="{{ apply_filters('Municipio/Hook/headerSecondaryNavigationClass', 'c-header__inner-area tab-area') }}">   
                     {{-- Tab menu items --}}
                     @includeWhen($tabMenuItems, 'partials.navigation.tabs')
 
