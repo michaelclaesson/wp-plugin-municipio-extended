@@ -1,8 +1,9 @@
 @switch($layout ?? 'card')
   @case ('card')
     @include('mxui.segment.card')
-    @break
+  @break
+
   @case ('split')
     @include('mxui.segment.split')
-    @break
+  @break
 @endswitch

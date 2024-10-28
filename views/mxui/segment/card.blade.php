@@ -21,7 +21,8 @@ buttons
         ],
         $attributeList,
     ) }}>
-    <div class="-mt-8 mx-4 w-auto @[50rem]:mt-8 @[50rem]:absolute @[50rem]:w-1/2 @[50rem]:mx-0 {{ $reverseColumns ? '@[50rem]:left-1/2' : '@[50rem]:right-1/2' }}">
+    <div
+      class="-mt-8 mx-4 w-auto @[50rem]:mt-8 @[50rem]:absolute @[50rem]:w-1/2 @[50rem]:mx-0 {{ $reverseColumns ? '@[50rem]:left-1/2' : '@[50rem]:right-1/2' }}">
       @component('mxui.card', [
           'heading' => $title,
           'content' => new \Illuminate\Support\HtmlString($content),
@@ -50,7 +51,8 @@ buttons
         @component('mxui.image', [
             'image' => $image,
             'size' => 'medium',
-            'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+            'classList' =>
+                'group-hover:group-has-[[data-mxui-card-link][data-mxui-interactive]]:scale-105 transition-transform duration-500 text-transparent',
         ])
         @endcomponent
       </div>

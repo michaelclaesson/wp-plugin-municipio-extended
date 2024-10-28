@@ -45,7 +45,7 @@ Left to handle:
               // Replacement for `.c-card .c-collection { border: none; }`
               '[&_.c-collection]:border-none',
               '@container',
-
+  
               $classList,
           ],
       ],
@@ -74,6 +74,7 @@ Left to handle:
               'content' => $heading ?? null,
               'classList' =>
                   'no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none',
+              'attributes' => ['data-mxui-card-link' => ''],
           ])
           </h{!! $headingLevel !!}>
       @endif
@@ -106,7 +107,8 @@ Left to handle:
       @component('mxui.image', [
           'image' => $image,
           'size' => 'medium',
-          'classList' => 'group-hover:scale-105 transition-transform duration-500 text-transparent',
+          'classList' =>
+              'group-hover:group-has-[[data-mxui-card-link][data-mxui-interactive]]:scale-105 transition-transform duration-500 text-transparent',
       ])
       @endcomponent
     </div>
@@ -148,7 +150,7 @@ Left to handle:
         <li class="">
           @component('mxui.button', [
               'href' => $button['href'],
-              'variant' => $button['color'] ?? $button['buttonVariant'] ?? 'default',
+              'variant' => $button['color'] ?? ($button['buttonVariant'] ?? 'default'),
               'classList' => 'h-14',
           ])
             @if ($button['icon'])
@@ -161,7 +163,7 @@ Left to handle:
               </span>
             @endif
             <span class="text-base flex-grow flex-shrink">
-              {{ $button['text'] ?? $button['title']}}
+              {{ $button['text'] ?? $button['title'] }}
             </span>
           @endcomponent
         </li>
