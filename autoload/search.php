@@ -864,8 +864,8 @@ add_action("acf/init", function () {
 add_filter(
   "post_type_link",
   function ($post_link, $post, $leavename, $sample) {
-    if (!($post ?? null) && get_post_type($post) == "external_page") {
-      $post_link = get_field("url", $post);
+    if ($post && get_post_type($post) == "external_page") {
+      $post_link = get_field("url", $post) ?: $post_link;
     }
     return $post_link;
   },
