@@ -5,14 +5,25 @@
 @endphp
 
 @if (!empty($href))
-  <a {{ mx_attrs([
-      'href' => $href,
-      'class' => [$classList ?? null],
-  ]) }}>
+  <a
+    {{ mx_attrs(
+        [
+            'href' => $href,
+            'class' => [$classList ?? null],
+            'data-mxui-clickable' => '',
+            'data-mxui-interactive' => true,
+        ],
+        $attributes ?? null,
+    ) }}>
     {{ $content }}
   </a>
 @else
-  <span {{ mx_attrs([
-      'class' => [$classList ?? null],
-  ]) }}>{{ $content }}</span>
+  <span
+    {{ mx_attrs(
+        [
+            'class' => [$classList ?? null],
+            'data-mxui-clickable' => '',
+        ],
+        $attributes ?? null,
+    ) }}>{{ $content }}</span>
 @endif
