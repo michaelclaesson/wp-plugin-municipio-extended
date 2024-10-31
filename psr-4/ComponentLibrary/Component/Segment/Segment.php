@@ -187,8 +187,7 @@ class Segment extends MxBaseController {
     $this->data["classList"] = array_diff($this->data["classList"], [
       "modularity-event-hero",
     ]);
-    error_log(var_export($buttons, true));
-    error_log(var_export($link, true));
+
     if (
       !empty($buttons) &&
       empty($link) &&
