@@ -168,7 +168,11 @@ class Segment extends MxBaseController {
 
   public function init() {
     $this->data["useHbg"] =
-      $this->data["useHbg"] ?? !($this->getKirkiOption("segment_mxui_enabled") || $this->hasContext("sections.card"));
+      $this->data["useHbg"] ??
+      !(
+        $this->getKirkiOption("segment_mxui_enabled") ||
+        $this->hasContext("sections.card")
+      );
     if ($this->data["useHbg"]) {
       return $this->originalInit();
     }
@@ -183,8 +187,15 @@ class Segment extends MxBaseController {
     $this->data["classList"] = array_diff($this->data["classList"], [
       "modularity-event-hero",
     ]);
-
-    if (!empty($buttons) && empty($link) && count($buttons) === 1) {
+    error_log(var_export($buttons, true));
+    error_log(var_export($link, true));
+    if (
+      !empty($buttons) &&
+      empty($link) &&
+      count($buttons) === 1 &&
+      empty($buttons[0]["text"])
+    ) {
+      $this->data["buttons"] = [];
       $this->data["link"] = $buttons[0]["href"] ?? null;
     }
   }
