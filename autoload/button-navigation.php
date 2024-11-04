@@ -59,6 +59,7 @@ add_action("article_content_before", function () {
     return [
       "title" => get_the_title($post->ID),
       "href" => get_permalink($post->ID),
+      "buttonVariant" => "secondary",
     ];
   }, $child_posts);
 
