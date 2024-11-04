@@ -10,7 +10,6 @@
     @include('Segment.partials.' . $layout)
   </section>
 @else
-  <div class="tailwind contents">
     @switch($layout ?? 'card')
       @case('card')
         @include('mxui.segment')
@@ -23,5 +22,4 @@
       @default
         @include('mxui.segment')
     @endswitch
-  </div>
 @endif
