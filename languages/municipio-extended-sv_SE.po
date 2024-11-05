@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-10-25T18:52:46+00:00\n"
-"PO-Revision-Date: 2024-10-25 20:52+0200\n"
+"POT-Creation-Date: 2024-11-05T13:05:30+00:00\n"
+"PO-Revision-Date: 2024-11-05 14:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -254,7 +254,23 @@ msgstr "Tabbmeny – Placering"
 msgid "Above"
 msgstr "På egen rad"
 
-#: autoload/mxui.php:78
+#: autoload/mxui.php:76
+msgid "Tab menu button size"
+msgstr "Tabbmeny – Knappstorlek"
+
+#: autoload/mxui.php:80
+msgid "Small"
+msgstr "Liten"
+
+#: autoload/mxui.php:81
+msgid "Medium"
+msgstr "Mellan"
+
+#: autoload/mxui.php:82
+msgid "Large"
+msgstr "Stor"
+
+#: autoload/mxui.php:93
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
@@ -393,27 +409,27 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/search.php:558
+#: autoload/search.php:557
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:574
+#: autoload/search.php:573
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:577
+#: autoload/search.php:576
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
-#: autoload/search.php:686
+#: autoload/search.php:685
 msgid "Search settings"
 msgstr "Sökinställningar"
 
-#: autoload/search.php:690
+#: autoload/search.php:689
 msgid "Enable ”external pages” content type"
 msgstr "Aktivera innehållstypen \"externa sidor\""
 
-#: autoload/search.php:698
+#: autoload/search.php:697
 msgid ""
 "Check this box to enable the ”external pages” content type which you can use "
 "to add external pages to the site search."
@@ -422,73 +438,73 @@ msgstr ""
 "som du kan använda för att lägga till externa sidor i webbplatsens "
 "sökfunktion."
 
-#: autoload/search.php:705
+#: autoload/search.php:704
 msgid "Post type settings"
 msgstr "Inställningar för innehållstyper"
 
-#: autoload/search.php:720
+#: autoload/search.php:719
 msgid "Boost"
 msgstr "Boosta"
 
-#: autoload/search.php:724
+#: autoload/search.php:723
 msgid "The boost factor for this post type."
 msgstr "Boostfaktorn för den här innehållstypen."
 
-#: autoload/search.php:735
+#: autoload/search.php:734
 msgid "Decay"
 msgstr "Trappa av"
 
-#: autoload/search.php:739
+#: autoload/search.php:738
 msgid "Whether older posts should have lower scores."
 msgstr "Om äldre inlägg ska ha lägre poäng."
 
-#: autoload/search.php:750
+#: autoload/search.php:749
 msgid "Visible fields"
 msgstr "Synliga fält"
 
-#: autoload/search.php:754
+#: autoload/search.php:753
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr "Datum"
 
-#: autoload/search.php:759
+#: autoload/search.php:758
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr "Typ"
 
-#: autoload/search.php:765
+#: autoload/search.php:764
 msgid "Which fields to show or hide in the search results."
 msgstr "Vilka fält som ska visas eller döljas i sökresultaten."
 
-#: autoload/search.php:798 autoload/search.php:800
+#: autoload/search.php:797 autoload/search.php:799
 msgid "External pages"
 msgstr "Externa sidor"
 
-#: autoload/search.php:801
+#: autoload/search.php:800
 msgid "External page"
 msgstr "Extern sida"
 
-#: autoload/search.php:814 autoload/search.php:817
+#: autoload/search.php:813 autoload/search.php:816
 msgid "Content type"
 msgstr "Innehållstyp"
 
-#: autoload/search.php:816
+#: autoload/search.php:815
 msgid "Content types"
 msgstr "Innehållstyper"
 
-#: autoload/search.php:836
+#: autoload/search.php:835
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
 
-#: autoload/search.php:840
+#: autoload/search.php:839
 msgid "URL"
 msgstr "URL"
 
-#: autoload/search.php:843
+#: autoload/search.php:842
 msgid "The URL to the external page."
 msgstr "URL:en till den externa sidan."
 
-#: autoload/search.php:919
+#: autoload/search.php:918
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr "Dokument"
