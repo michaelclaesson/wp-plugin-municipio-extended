@@ -17,3 +17,15 @@ add_action("init", function () {
     "output" => [["type" => "controller"]],
   ]);
 });
+
+// Add the filter
+add_filter("Municipio/Controller/Singular/showTitleOnOnePage", function (
+  $current_value,
+) {
+  $current_value = Kirki::get_option(
+    Customizer::KIRKI_CONFIG,
+    "municipio_customizer_onepage_body_text",
+  );
+
+  return $current_value;
+});

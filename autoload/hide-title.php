@@ -69,6 +69,7 @@ add_filter("Municipio/Helper/Post/postObject", function ($postObject) {
       boolval(get_post_meta(get_the_ID(), "modularity-module-hide-title", true))
     ) {
       $postObject->post_title_filtered = "";
+      $postObject->post_title = "";
     }
   }
   return $postObject;
