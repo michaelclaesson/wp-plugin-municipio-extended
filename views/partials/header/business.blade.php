@@ -55,15 +55,14 @@ $tab_menu_placing = get_theme_mod("tab_menu_placing");
                             @includeIf('partials.navigation.language')
                         </div>
                     @endif
+
+                    {{-- Hambuger menu trigger --}}
+                    @includeIf('partials.navigation.trigger.megamenu', ['context' => ['site.header.megamenu-trigger', 'site.header.business.megamenu-trigger']])
+
+                    {{-- Drawer menu --}}
+                    @includeIf('partials.navigation.drawer')
                 </div>
             </div>
-
-            {{-- Hambuger menu trigger --}}
-            @includeIf('partials.navigation.trigger.megamenu', ['context' => ['site.header.megamenu-trigger', 'site.header.business.megamenu-trigger']])
-            
-            {{-- Drawer menu --}}
-            @includeIf('partials.navigation.drawer')
-
         </div>
     </div>
 
