@@ -186,5 +186,12 @@ class Icon extends MxBaseController {
       $data["classList"][] =
         "[.c-nav_.c-nav\_\_item.is-open>.c-nav\_\_item-wrapper_&]:rotate-180";
     }
+
+    if (in_array("c-box__icon", $data["classList"])) {
+      $data["classList"][] = "self-center";
+      $data["classList"][] = "text-primary-contrasting";
+      $data["classList"][] = "text-[5rem]";
+      $data["classList"][] = "leading-[60px]";
+    }
   }
 }
