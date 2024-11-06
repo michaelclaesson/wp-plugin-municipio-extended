@@ -31,43 +31,45 @@ add_action("article_content_before", function () {
     return null;
   }
 
-  $post = mx_get_post();
+  if (!get_field("page_hide_secondary_menu")) {
+    $post = mx_get_post();
 
-  $args = [
-    "post_parent" => $post->ID,
-    "post_type" => $post->post_type,
-    "nopaging" => true,
-    "post_status" => "publish",
-    "orderby" => "menu_order",
-    "order" => "ASC",
-    "meta_query" => [
-      "relation" => "OR",
-      [
-        "key" => "hide_in_menu",
-        "value" => "1",
-        "compare" => "!=",
+    $args = [
+      "post_parent" => $post->ID,
+      "post_type" => $post->post_type,
+      "nopaging" => true,
+      "post_status" => "publish",
+      "orderby" => "menu_order",
+      "order" => "ASC",
+      "meta_query" => [
+        "relation" => "OR",
+        [
+          "key" => "hide_in_menu",
+          "value" => "1",
+          "compare" => "!=",
+        ],
+        [
+          "key" => "hide_in_menu",
+          "compare" => "NOT EXISTS",
+        ],
       ],
-      [
-        "key" => "hide_in_menu",
-        "compare" => "NOT EXISTS",
-      ],
-    ],
-  ];
-
-  $child_posts = get_posts($args);
-  $items = array_map(function ($post) {
-    return [
-      "title" => get_the_title($post->ID),
-      "href" => get_permalink($post->ID),
-      "buttonVariant" => "secondary",
     ];
-  }, $child_posts);
 
-  if (!empty($items)) {
-    echo '<div class="tailwind">';
-    echo mx_render_view("mxui.navigation.buttons", [
-      "items" => $items,
-    ]);
-    echo "</div>";
+    $child_posts = get_posts($args);
+    $items = array_map(function ($post) {
+      return [
+        "title" => get_the_title($post->ID),
+        "href" => get_permalink($post->ID),
+        "buttonVariant" => "secondary",
+      ];
+    }, $child_posts);
+
+    if (!empty($items)) {
+      echo '<div class="tailwind">';
+      echo mx_render_view("mxui.navigation.buttons", [
+        "items" => $items,
+      ]);
+      echo "</div>";
+    }
   }
 });
