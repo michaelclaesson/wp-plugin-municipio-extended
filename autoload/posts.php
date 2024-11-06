@@ -4,13 +4,19 @@
  * Puts the archive for posts at /nyheter
  */
 add_action("init", function () {
-  add_rewrite_rule('^nyheter$', "index.php?category_name=", "top");
+  // Add rewrite rule if posts are not disabled
+  if (get_field("disable_default_blog_post_type", "option") === "0") {
+    add_rewrite_rule('^nyheter$', "index.php?category_name=", "top");
+  }
 });
 
 add_filter(
   "post_type_archive_link",
   function ($link, $post_type) {
-    if ($post_type == "post") {
+    if (
+      $post_type == "post" &&
+      get_field("disable_default_blog_post_type", "option") === "0"
+    ) {
       return home_url("/nyheter/");
     }
     return $link;
@@ -23,13 +29,16 @@ add_filter(
  * Makes sure the first link in the breadcrumbs is always the same
  */
 add_filter("Municipio/Breadcrumbs/Items", function ($pageData) {
-  array_shift($pageData);
-  array_unshift($pageData, [
-    "label" => __("Home"),
-    "href" => get_home_url(),
-    "current" => is_front_page() ? true : false,
-    "icon" => "home",
-  ]);
+  if (get_field("disable_default_blog_post_type", "option") === "0") {
+    array_shift($pageData);
+    array_unshift($pageData, [
+      "label" => __("Home"),
+      "href" => get_home_url(),
+      "current" => is_front_page() ? true : false,
+      "icon" => "home",
+    ]);
+    return $pageData;
+  }
   return $pageData;
 });
 
@@ -41,8 +50,11 @@ add_filter("option_page_for_posts", "__return_null");
 add_filter(
   "Modularity/Module/Posts/archiveUrl",
   function ($archive_url, $post_type) {
-    if (!$archive_url) {
-      $archive_url = get_post_type_archive_link($post_type) ?: false;
+    if (get_field("disable_default_blog_post_type", "option") === "0") {
+      if (!$archive_url) {
+        $archive_url = get_post_type_archive_link($post_type) ?: false;
+      }
+      return $archive_url;
     }
     return $archive_url;
   },
