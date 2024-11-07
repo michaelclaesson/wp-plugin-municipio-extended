@@ -687,7 +687,7 @@ add_action(
         [
           "key" => "field_mx_search_settings_enable_external_page_content_type",
           "label" => __(
-            "Enable ”external pages” content type",
+            "Enable “external pages” content type",
             "municipio-extended",
           ),
           "name" => "mx_enable_external_page_content_type",
@@ -695,7 +695,7 @@ add_action(
           "ui" => 1,
           "default_value" => 0,
           "instructions" => __(
-            "Check this box to enable the ”external pages” content type which you can use to add external pages to the site search.",
+            "Check this box to enable the “external pages” content type which you can use to add external pages to the site search.",
             "municipio-extended",
           ),
         ],
