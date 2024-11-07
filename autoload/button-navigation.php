@@ -31,6 +31,10 @@ add_action("article_content_before", function () {
     return null;
   }
 
+  if (get_field("page_hide_secondary_menu")) {
+    return null;
+  }
+
   $post = mx_get_post();
 
   $args = [
