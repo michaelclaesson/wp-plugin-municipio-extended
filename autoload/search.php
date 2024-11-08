@@ -12,24 +12,6 @@ function mx_enable_external_page_content_type() {
 }
 
 /**
- * Makes ep_indexable_post_types() take the `show_in_search` property into account.
- */
-add_filter(
-  "ep_indexable_post_types",
-  function ($post_types) {
-    $post_types = get_post_types([], "objects");
-    unset($post_types["attachment"]);
-    $post_types = array_filter($post_types, function ($post_type) {
-      return $post_type->show_in_search ?? ($post_type->public ?? false);
-    });
-    $post_types = array_keys($post_types);
-    $post_types = array_combine($post_types, $post_types);
-    return $post_types;
-  },
-  5,
-);
-
-/**
  * Accounts for the Municipio settings for hiding built-in post types.
  */
 add_action(
@@ -42,7 +24,7 @@ add_action(
         function_exists("get_field") &&
         get_field("disable_default_blog_post_type", "option")
       ) {
-        $wp_post_types["post"]->show_in_search = false;
+        $wp_post_types["post"]->exclude_from_search = true;
       }
     }
     if (isset($wp_post_types["page"])) {
@@ -50,7 +32,7 @@ add_action(
         function_exists("get_field") &&
         get_field("disable_default_page_post_type", "option")
       ) {
-        $wp_post_types["page"]->show_in_search = false;
+        $wp_post_types["page"]->exclude_from_search = true;
       }
     }
   },
@@ -58,7 +40,7 @@ add_action(
 );
 
 /**
- * Returns an array of searchable post types, based on the `show_in_search` property.
+ * Returns an array of searchable post types, based on the `exclude_from_search` property.
  * @param string $field Whether to return the post types as names or objects.
  * @return array
  */
@@ -195,7 +177,12 @@ function mx_search_ajax_handler() {
    * @param array $query The bool query.
    * @param array $data The Ajax request data.
    */
-  $query = apply_filters("mx_search_es_query", $query, $data);
+  $query = apply_filters(
+    "mx_search_es_query",
+    $query,
+    $data,
+    $mx_search_settings_post_types,
+  );
 
   $boosted_post_types = [];
   foreach ($post_types as $post_type) {
@@ -556,18 +543,6 @@ add_action("acf/init", function () {
     "key" => "group_search",
     "title" => __("Search", "municipio-extended"),
     "fields" => [
-      // [
-      //   "key" => "field_search_excluded",
-      //   "label" => __("Exclude from search", "municipio-extended"),
-      //   "name" => "search_excluded",
-      //   "type" => "true_false",
-      //   "instructions" => __(
-      //     "Check this box to exclude this post from search results.",
-      //     "municipio-extended",
-      //   ),
-      //   "ui" => 1,
-      //   "default_value" => 0,
-      // ],
       [
         "key" => "field_search_keywords",
         "label" => __("Keywords", "municipio-extended"),
@@ -605,6 +580,31 @@ add_filter("mx_search_es_query", function ($query) {
   ];
   return $query;
 });
+
+/**
+ * Filter out post types that have been excluded via settings.
+ */
+add_filter(
+  "mx_search_es_query",
+  function ($query, $data, $mx_search_settings_post_types) {
+    $excluded_post_types = [];
+    foreach ($mx_search_settings_post_types as $post_type => $settings) {
+      if ($settings["search_excluded"] ?? false) {
+        $excluded_post_types[] = $post_type;
+      }
+    }
+    if (!empty($excluded_post_types)) {
+      $query["bool"]["must_not"][] = [
+        "terms" => [
+          "post_type.raw" => $excluded_post_types,
+        ],
+      ];
+    }
+    return $query;
+  },
+  10,
+  3,
+);
 
 /**
  * Filter documents by mime type
@@ -713,7 +713,21 @@ add_action(
               "type" => "group",
               "layout" => "horizontal",
               "sub_fields" => [
-                // TODO: Add checkbox for disabling search per post type
+                [
+                  "key" => "field_mx_search_settings_post_types_{$post_type->name}_search_excluded",
+                  "label" => __("Exclude from search", "municipio-extended"),
+                  "name" => "search_excluded",
+                  "type" => "true_false",
+                  "ui" => 1,
+                  "instructions" => __(
+                    "Check this box to exclude this post from search results.",
+                    "municipio-extended",
+                  ),
+                  "default_value" => 0,
+                  "wrapper" => [
+                    "width" => "50%",
+                  ],
+                ],
                 [
                   "key" => "field_mx_search_settings_post_types_{$post_type->name}_boost",
                   "label" => __("Boost", "municipio-extended"),
@@ -727,6 +741,11 @@ add_action(
                   "default_value" => 1,
                   "wrapper" => [
                     "width" => "50%",
+                  ],
+                  "conditional_logic" => [
+                    "field" => "field_mx_search_settings_post_types_{$post_type->name}_search_excluded",
+                    "operator" => "!=",
+                    "value" => "1",
                   ],
                 ],
                 [
@@ -742,6 +761,11 @@ add_action(
                   "default_value" => 0,
                   "wrapper" => [
                     "width" => "50%",
+                  ],
+                  "conditional_logic" => [
+                    "field" => "field_mx_search_settings_post_types_{$post_type->name}_search_excluded",
+                    "operator" => "!=",
+                    "value" => "1",
                   ],
                 ],
                 [
@@ -768,6 +792,11 @@ add_action(
                   "default_value" => ["type"],
                   "wrapper" => [
                     "width" => "50%",
+                  ],
+                  "conditional_logic" => [
+                    "field" => "field_mx_search_settings_post_types_{$post_type->name}_search_excluded",
+                    "operator" => "!=",
+                    "value" => "1",
                   ],
                 ],
               ],
@@ -805,7 +834,7 @@ add_action("init", function () {
     "show_in_nav_menus" => false,
     "show_in_admin_bar" => false,
     "show_in_rest" => false,
-    "show_in_search" => mx_enable_external_page_content_type(),
+    "exclude_from_search" => !mx_enable_external_page_content_type(),
     "supports" => ["title", "editor"],
     "menu_icon" => "dashicons-admin-links",
   ]);
