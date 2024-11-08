@@ -719,10 +719,6 @@ add_action(
                   "name" => "search_excluded",
                   "type" => "true_false",
                   "ui" => 1,
-                  "instructions" => __(
-                    "Check this box to exclude this post from search results.",
-                    "municipio-extended",
-                  ),
                   "default_value" => 0,
                   "wrapper" => [
                     "width" => "50%",
