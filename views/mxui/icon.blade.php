@@ -14,7 +14,7 @@ TODO: Handle these props:
         [
             'class' => [
                 'inline-block bg-current size-[1em] [mask-size:100%] [mask-repeat:no-repeat] text-[color:var(--icon-color,inherit)] align-[-6.25%]',
-                // 'flex-none',
+                'flex-none',
                 'text-[.5rem]' => $size === 'xs',
                 'text-[1rem]' => $size === 'sm',
                 'text-[1.5rem]' => $size === 'md',
