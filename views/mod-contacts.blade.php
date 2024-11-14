@@ -11,46 +11,31 @@
 
     <div class="o-grid">
       @foreach ($contacts as $contact)
-        {{-- @dump($contact) --}}
-        <div class="{{ $columns }}">
-          <div class="flex flex-col h-full">
-            @component('mxui.image', [
-                'image' => isset($contact['image'])
-                    ? [
-                        'src' => $contact['image']['url'],
-                        'alt' => $contact['image']['alt'],
-                    ]
-                    : [],
-                'size' => 'medium',
-            ])
-            @endcomponent
-            {!! mx_safe_html(
-                mx_render_view('mxui.contacts.contact-details', [
-                    'contact' => $contact,
-                ]),
-            ) !!}
-
-            {{-- @component('mxui.card', [
-    'content' => mx_safe_html(
-        mx_render_view('mxui.contacts.contact-details', [
-            'contact' => $contact,
-        ]),
-    ),
-    'wrapContent' => true,
-    'image' => isset($contact['image'])
-        ? [
-            'src' => $contact['image']['url'],
-            'alt' => $contact['image']['alt'],
-        ]
-        : [],
-])
-          @endcomponent --}}
-          </div>
+        <div class="o-grid-12 {{ $columns }}">
+          @component('mxui.card', [
+              'content' => mx_safe_html(
+                  mx_render_view('mxui.contacts.contact-details', [
+                      'contact' => $contact,
+                  ])),
+              'heading' =>
+                  $contact['first_name'] .
+                  ' ' .
+                  (isset($contact['last_name']) && !empty($contact['last_name']) ? $contact['last_name'] : ''),
+              'wrapContent' => true,
+              'image' => isset($contact['image'])
+                  ? array_merge($contact['image'], [
+                      'src' => $contact['image']['url'],
+                      'alt' => $contact['image']['alt'],
+                      'classList' => ['min-h-96'],
+                      'size' => ['large'],
+                  ])
+                  : [],
+              'imageAspectRatio' => 'square',
+              'overflowVisible' => true,
+          ])
+          @endcomponent
         </div>
       @endforeach
     </div>
-    {{-- @dump($contacts) --}}
-    {{-- @timeline(['events' => $events]) --}}
-    {{-- @endtimeline --}}
   </div>
 </div>

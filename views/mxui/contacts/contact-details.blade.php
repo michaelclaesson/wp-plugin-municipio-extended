@@ -1,35 +1,130 @@
-<div class="text-black p-4">
-  <h3 class="typography-h3 u-margin__top--2 u-margin__bottom--1">
-    {{ $contact['first_name'] }}
-    {{ isset($contact['last_name']) && !empty($contact['last_name']) ? $contact['last_name'] : '' }}
-  </h3>
-
-  <ul>
+<div {{ mx_attrs([
+    'class' => ['bg-[--color-background-card]'],
+]) }} itemscope itemtype="https://schema.org/Person">
+  <ul class="text-lg mb-4">
     @if (
         (isset($contact['work_title']) && !empty($contact['work_title'])) ||
             (isset($contact['administration_unit']) && !empty($contact['administration_unit'])))
-      <li>
-        {{ isset($contact['work_title']) && !empty($contact['work_title']) ? $contact['work_title'] : '' }}</li>
-      <li itemprop="department">
-        {{ isset($contact['administration_unit']) && !empty($contact['administration_unit']) ? $contact['administration_unit'] : '' }}
+      {{-- Work title --}}
+      <li
+        {{ mx_attrs([
+            'class' => [
+                'mb-4' => empty($contact['administration_unit']),
+            ],
+        ]) }}>
+        {{ isset($contact['work_title']) && !empty($contact['work_title']) ? $contact['work_title'] : '' }}
       </li>
+
+      {{-- Department --}}
+      <li class="mb-4" itemprop="department">
+        {{ isset($contact['administration_unit']) && !empty($contact['administration_unit']) ? $contact['administration_unit'] : '' }}
       </li>
     @endif
 
+    {{-- Phone number --}}
     @if (isset($contact['phone']) && !empty($contact['phone']))
       @foreach ($contact['phone'] as $phone)
-        <li class="flex items-center gap-2"> {{ mx_get_icon('call') }} <a itemprop="telephone" class=""
-            href="tel:{{ $phone['number'] }}">{{ $phone['number'] }}</a></li>
+        <li class="flex items-center text-primary underline font-medium hover:no-underline">
+          <a itemprop="telephone" href="tel:{{ $phone['number'] }}" aria-label="telephone">
+            {{ mx_get_icon('call') }}
+            {{ $phone['number'] }}
+          </a>
+        </li>
       @endforeach
     @endif
 
-    @if (isset($contact['email']) && !empty($contact['email']))
-      <li class="flex gap-2 items-center w-full"> {{ mx_get_icon('mail') }}<a itemprop="email" translate="no" class="flex-shrink min-w-0"
-          href="mailto:{{ $contact['email'] }}"><span class="block truncate">{{ $contact['email'] }}</span></a></li>
+    {{-- Email --}}
+    @if (!empty($contact['email']))
+      <li class="text-primary underline font-medium">
+        <a itemprop="email" translate="no" class="" href="mailto:{{ $contact['email'] }}" aria-label="email">
+          <div class="truncate hover:overflow-visible hover:bg-white hover:z-50 hover:inline-block">
+            {{ mx_get_icon('mail') }}
+            {{ $contact['email'] }}
+          </div>
+        </a>
+      </li>
     @endif
-
-    {{-- @if (!empty($module->post_content))
-            <li class="small description">{!! apply_filters('the_content', apply_filters('Modularity/Display/SanitizeContent', $this->post_content)) !!}</li>
-            @endif --}}
   </ul>
+
+  {{-- Social Media --}}
+  @if (!empty($contact['social_media']))
+    <h4 class="font-semibold"><?php _e('Social media', 'modularity'); ?>
+    </h4>
+    <ul class="mb-4">
+      @foreach ($contact['social_media'] as $media)
+        @php
+          $icon = '';
+          switch ($media['media']) {
+              case 'facebook':
+                  $icon =
+                      '<svg class="inline-block w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M279.1 288l14.2-92.7h-88.9v-60.1c0-25.4 12.4-50.1 52.2-50.1h40.4V6.3S260.4 0 225.4 0c-73.2 0-121.1 44.4-121.1 124.7v70.6H22.9V288h81.4v224h100.2V288z"/></svg>';
+                  break;
+              case 'instagram':
+                  $icon =
+                      '<svg class="inline-block w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>';
+                  break;
+              case 'linkedin':
+                  $icon =
+                      '<svg class="inline-block w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>';
+                  break;
+              case 'X':
+                  $icon =
+                      '<svg class="inline-block w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>';
+                  break;
+          }
+        @endphp
+        <li class="text-primary font-medium underline hover:no-underline">
+          <a href="{{ $media['url'] }}" aria-label="{{ $media['media'] }}" target="_blank" rel="noopener noreferrer">
+            {!! $icon !!}
+            {{ ucfirst($media['media']) }}
+          </a>
+        </li>
+      @endforeach
+    </ul>
+  @endif
+
+  {{-- Address --}}
+  @if (!empty($contact['address']))
+    <h4 class="font-semibold mt-2"><?php _e('Postal address', 'modularity'); ?>
+    </h4>
+    <p class="mb-4">{!! $contact['address'] !!}</p>
+  @endif
+
+
+  {{-- Visiting Address --}}
+  @if (!empty($contact['visiting_address']))
+    <h4 class="font-semibold mt-2"><?php _e('Visiting address', 'modularity'); ?>
+    </h4>
+    <p class="mb-4">{!! $contact['visiting_address'] !!}</p>
+  @endif
+
+  {{-- Opening Hours --}}
+  @if (!empty($contact['opening_hours']))
+    @php
+      // Convert string to array by splitting on newlines
+      $hours_array = explode("\n", $contact['opening_hours']);
+    @endphp
+    <h4 class="font-semibold mt-2"><?php _e('Opening hours', 'modularity'); ?>
+    </h4>
+    <ul class="mb-4">
+      @foreach ($hours_array as $hours)
+        @if (!empty(trim($hours)))
+          <li>{!! trim($hours) !!}</li>
+        @endif
+      @endforeach
+    </ul>
+  @endif
+
+  {{-- Other content data --}}
+  @if (!empty($contact['other']))
+    @if ($contact['other'])
+      <div class="mt-4">
+        {!! $contact['other'] !!}
+      </div>
+    @endif
+  @endif
+
+  {{-- @if (!empty($module->post_content))
+    <li class="small description">{!! apply_filters('the_content', apply_filters('Modularity/Display/SanitizeContent', $this->post_content)) !!}</li>
+  @endif --}}
 </div>
