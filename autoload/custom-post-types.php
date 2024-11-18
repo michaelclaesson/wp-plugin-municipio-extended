@@ -44,7 +44,6 @@ add_action("acf/init", function () {
   }
 });
 
-
 add_filter(
   "Municipio/CustomPostType/labels",
   function ($labels, $typeDefinition) {
