@@ -26,7 +26,7 @@ add_action("acf/init", function () {
     acf_add_local_field([
       "parent" => "field_56b347f3ffb6c",
       "key" => "field_post_type_singular_name",
-      "label" => _x("Post type singular name", "municipio-extended"),
+      "label" => __("Post type singular name", "municipio-extended"),
       "name" => "post_type_singular_name",
       "type" => "text",
       "instructions" => __(
@@ -70,7 +70,7 @@ add_filter(
 );
 
 add_filter("acf/load_field/key=field_56b3619c5defc", function ($field) {
-  $field["label"] = _x("Post type plural name", "municipio-extended");
+  $field["label"] = __("Post type plural name", "municipio-extended");
   $field["instructions"] = __(
     "Enter the plural name for this post type. Select a name with care! Cannot be changed.",
     "municipio-extended",
