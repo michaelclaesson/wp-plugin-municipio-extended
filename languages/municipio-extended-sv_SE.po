@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-11-08T13:47:42+00:00\n"
-"PO-Revision-Date: 2024-11-08 14:47+0100\n"
+"POT-Creation-Date: 2024-11-18T08:16:32+00:00\n"
+"PO-Revision-Date: 2024-11-18 09:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -408,6 +408,14 @@ msgctxt ""
 "screen. Default “Posts list”. Added in 4.4"
 msgid "News list"
 msgstr "Nyhetslista"
+
+#: autoload/redirection-permissions.php:13
+msgid "Redirection"
+msgstr "Redirection"
+
+#: autoload/redirection-permissions.php:17
+msgid "Allow Editors access to Redirection"
+msgstr "Tillåt redaktörer åtkomst till Redirection"
 
 #: autoload/search.php:544
 msgid "Search"
