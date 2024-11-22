@@ -6,7 +6,7 @@ acf_add_local_field([
   "label" => _x("Icon", "Notice Module Field Icon", "municipio-extended"),
   "name" => "notice_icon",
   "type" => "select",
-  "graphql_field_name" => "icon",
+  "graphql_field_name" => "noticeIcon",
   "show_in_graphql" => 1,
   "conditional_logic" => 0,
   "wrapper" => ["width" => "50%"],
@@ -16,10 +16,10 @@ acf_add_local_field([
 ]);
 
 add_filter("acf/load_field/key=field_notice_icon", function ($field) {
-  return addIconsList($field);
+  return mx_add_icons_list($field);
 });
 
-function addIconsList($field): array {
+function mx_add_icons_list($field): array {
   $materialIcons = mx_get_material_icons();
 
   if (is_array($materialIcons) && !empty($materialIcons)) {
@@ -39,3 +39,12 @@ function addIconsList($field): array {
 
   return $field;
 }
+
+add_filter("Modularity/Display/mod-notice/viewData", function ($data) {
+  if (!empty($data["notice_icon"])) {
+    $data["icon"] = [
+      "name" => $data["notice_icon"],
+    ];
+  }
+  return $data;
+});
