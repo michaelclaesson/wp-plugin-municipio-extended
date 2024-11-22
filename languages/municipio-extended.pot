@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T08:16:32+00:00\n"
+"POT-Creation-Date: 2024-11-22T18:31:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -212,6 +212,11 @@ msgstr ""
 
 #: autoload/mod-navigation.php:241
 msgctxt "Navigation Module Field Label"
+msgid "Icon"
+msgstr ""
+
+#: autoload/mod-notice.php:6
+msgctxt "Notice Module Field Icon"
 msgid "Icon"
 msgstr ""
 
