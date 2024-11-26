@@ -17,8 +17,19 @@ add_action(
       acf_remove_local_field("field_60d1a9935551d"); //Height
       acf_remove_local_field("field_60d2f7b110b0b"); //Spacing Top
       acf_remove_local_field("field_60d2f7cc10b0c"); //Spacing Bottom
-
     }
   },
-  20
+  20,
 );
+
+add_filter("Modularity/Display/mod-section-full/viewData", function ($data) {
+  if (!empty($data["meta"]["text"][0])) {
+    $rawText = $data["meta"]["text"][0];
+    $processedText = apply_filters(
+      "the_content",
+      do_shortcode(trim(mx_replace_builtin_classes($rawText))),
+    );
+    $data["text"] = $processedText;
+  }
+  return $data;
+});

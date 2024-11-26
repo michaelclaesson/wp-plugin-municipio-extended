@@ -2,7 +2,10 @@
 
 add_filter("Modularity/Display/mod-text/viewData", function ($data) {
   if (!empty($data["post_content"])) {
-    $data["post_content"] = mx_replace_builtin_classes($data["post_content"]);
+    $data["post_content"] = apply_filters(
+      "the_content",
+      mx_replace_builtin_classes($data["post_content"]),
+    );
   }
   return $data;
 });
