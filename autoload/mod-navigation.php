@@ -245,10 +245,7 @@ add_action("acf/init", function () {
             ),
             "name" => "icon",
             "type" => "select",
-            "choices" => array_combine(
-              mx_get_material_icons(),
-              mx_get_material_icons(),
-            ),
+            "choices" => [],
             "ui" => 1,
             "allow_null" => 1,
             "wrapper" => ["width" => "25%"],
@@ -296,4 +293,8 @@ add_action("acf/init", function () {
     ],
     "show_in_graphql" => 1,
   ]);
+});
+
+add_filter("acf/load_field/key=field_mod_navigation_item_icon", function ($field) {
+  return mx_add_icons_list($field);
 });

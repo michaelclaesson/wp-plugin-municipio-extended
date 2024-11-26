@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-11-18T13:53:51+00:00\n"
-"PO-Revision-Date: 2024-11-18 14:55+0100\n"
+"POT-Creation-Date: 2024-11-22T18:31:42+00:00\n"
+"PO-Revision-Date: 2024-11-22 19:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -234,6 +234,11 @@ msgstr "Standard"
 
 #: autoload/mod-navigation.php:241
 msgctxt "Navigation Module Field Label"
+msgid "Icon"
+msgstr "Ikon"
+
+#: autoload/mod-notice.php:6
+msgctxt "Notice Module Field Icon"
 msgid "Icon"
 msgstr "Ikon"
 
