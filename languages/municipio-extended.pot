@@ -414,6 +414,14 @@ msgctxt "Screen reader text for the items list heading on the post type listing 
 msgid "News list"
 msgstr ""
 
+#: autoload/redirection-permissions.php:13
+msgid "Redirection"
+msgstr ""
+
+#: autoload/redirection-permissions.php:17
+msgid "Allow Editors access to Redirection"
+msgstr ""
+
 #: autoload/search.php:544
 msgid "Search"
 msgstr ""

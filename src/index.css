@@ -256,7 +256,7 @@
 }
 
 .tab-area {
-    padding-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .tab-area {
@@ -306,4 +306,40 @@
 .c-field.c-field--lg .c-field__prefix {
   padding-left: 0;
   margin-left: calc(1.25rem);
+}
+
+/**
+ * Fixes icons added via JavaScript in the Events module
+ */
+.modularity-event-index .c-pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modularity-event-index .c-pagination__item .c-icon.material-icons {
+  @apply inline-block size-[1em] flex-none bg-current align-[-6.25%] text-[1.5rem] text-[color:var(--icon-color,inherit)] [mask-repeat:no-repeat] [mask-size:100%];
+  content-visibility: hidden;
+}
+.modularity-event-index
+  .c-pagination__item.c-pagination__item--previous
+  .c-icon.material-icons {
+  mask-image: url('./assets/material-symbols/outlined/chevron_left_fill1_24px.svg');
+}
+.modularity-event-index
+  .c-pagination__item.c-pagination__item--next
+  .c-icon.material-icons {
+  mask-image: url('./assets/material-symbols/outlined/chevron_right_fill1_24px.svg');
+}
+.modularity-event-index
+  .c-pagination__item.c-pagination__item--previous
+  + .c-pagination__item.u-display--none\@xs
+  + .c-pagination__item.u-display--none\@xs
+  .c-icon.material-icons {
+  mask-image: url('./assets/material-symbols/outlined/more_horiz_fill1_24px.svg');
+}
+.modularity-event-index
+  .c-pagination__page-wrapper
+  + .c-pagination__item.u-display--none\@xs
+  .c-icon.material-icons {
+  mask-image: url('./assets/material-symbols/outlined/more_horiz_fill1_24px.svg');
 }

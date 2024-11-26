@@ -429,6 +429,14 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
+#: autoload/redirection-permissions.php:13
+msgid "Redirection"
+msgstr "Redirection"
+
+#: autoload/redirection-permissions.php:17
+msgid "Allow Editors access to Redirection"
+msgstr "Tillåt redaktörer åtkomst till Redirection"
+
 #: autoload/search.php:544
 msgid "Search"
 msgstr "Sök"
