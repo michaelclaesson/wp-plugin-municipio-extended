@@ -23,20 +23,13 @@ add_action("init", function () {
   ]);
 });
 
-/**
- * Skips logging of event_groups changes
- */
 add_filter(
-  "aal_skip_insert_log",
-  function ($skip, $args) {
-    switch ($args["object_type"]) {
-      case "Taxonomies":
-        switch ($args["object_subtype"]) {
-          case "event_groups":
-            return true;
-        }
+  "register_taxonomy_args",
+  function ($args, $taxonomy) {
+    if ($taxonomy === "event_groups") {
+      $args["exclude_from_logs"] = true;
     }
-    return $skip;
+    return $args;
   },
   10,
   2,
