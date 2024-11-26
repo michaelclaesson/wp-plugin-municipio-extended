@@ -38,6 +38,22 @@ msgctxt "Secondary navigation position"
 msgid "Below title"
 msgstr ""
 
+#: autoload/custom-post-types.php:29
+msgid "Post type singular name"
+msgstr ""
+
+#: autoload/custom-post-types.php:32
+msgid "Enter the singular name for this post type."
+msgstr ""
+
+#: autoload/custom-post-types.php:73
+msgid "Post type plural name"
+msgstr ""
+
+#: autoload/custom-post-types.php:74
+msgid "Enter the plural name for this post type. Select a name with care! Cannot be changed."
+msgstr ""
+
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
 msgstr ""

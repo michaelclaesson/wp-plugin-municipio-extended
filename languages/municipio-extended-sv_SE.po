@@ -40,6 +40,26 @@ msgctxt "Secondary navigation position"
 msgid "Below title"
 msgstr "Under rubrik"
 
+#: autoload/custom-post-types.php:29
+msgid "Post type singular name"
+msgstr "Inläggstypens singularnamn"
+
+#: autoload/custom-post-types.php:32
+msgid "Enter the singular name for this post type."
+msgstr "Ange singularnamnet för denna inläggstyp."
+
+#: autoload/custom-post-types.php:73
+msgid "Post type plural name"
+msgstr "Inläggstypens pluralnamn"
+
+#: autoload/custom-post-types.php:74
+msgid ""
+"Enter the plural name for this post type. Select a name with care! Cannot be "
+"changed."
+msgstr ""
+"Ange pluralnamnet för denna inläggstyp. Välj namnet med omsorg! Det kan inte "
+"ändras."
+
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
 msgstr "Visa textinnehåll för One Page-mall"
