@@ -16,7 +16,7 @@ add_filter(
 add_filter("acf/load_field", function ($field) {
   if ($field["key"] === "field_5bf6a737c1b6c") {
     if (isset($field["choices"]["twitter"])) {
-      $field["choices"]["X"] = "X";
+      $field["choices"]["x"] = "X";
       unset($field["choices"]["twitter"]);
     }
   }

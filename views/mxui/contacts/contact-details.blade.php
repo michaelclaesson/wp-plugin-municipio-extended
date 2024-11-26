@@ -123,8 +123,4 @@
       </div>
     @endif
   @endif
-
-  {{-- @if (!empty($module->post_content))
-    <li class="small description">{!! apply_filters('the_content', apply_filters('Modularity/Display/SanitizeContent', $this->post_content)) !!}</li>
-  @endif --}}
 </div>
