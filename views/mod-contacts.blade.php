@@ -14,9 +14,9 @@
             'content' => mx_safe_html(
                 mx_render_view('mxui.contacts.contact-details', [
                     'contact' => $contact,
-                    'headingLevel' => !$hideTitle ? 4 : 3,
+                    'headingLevel' => !$hideTitle && !empty($postTitle) ? 4 : 3,
                 ])),
-            'headingLevel' => !$hideTitle ? 3 : 2,
+            'headingLevel' => !$hideTitle && !empty($postTitle) ? 3 : 2,
             'heading' =>
                 $contact['first_name'] .
                 ' ' .
