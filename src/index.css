@@ -343,3 +343,8 @@
   .c-icon.material-icons {
   mask-image: url('./assets/material-symbols/outlined/more_horiz_fill1_24px.svg');
 }
+
+.nav-link {
+  word-break: break-word;
+  hyphens: auto;
+}
