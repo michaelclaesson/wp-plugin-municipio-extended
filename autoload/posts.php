@@ -5,7 +5,7 @@
  */
 add_action("init", function () {
   // Add rewrite rule if posts are not disabled
-  if (get_field("disable_default_blog_post_type", "option") === "0") {
+  if (!get_field("disable_default_blog_post_type", "option")) {
     add_rewrite_rule('^nyheter$', "index.php?category_name=", "top");
   }
 });
@@ -15,7 +15,7 @@ add_filter(
   function ($link, $post_type) {
     if (
       $post_type == "post" &&
-      get_field("disable_default_blog_post_type", "option") === "0"
+      !get_field("disable_default_blog_post_type", "option")
     ) {
       return home_url("/nyheter/");
     }
@@ -29,7 +29,7 @@ add_filter(
  * Makes sure the first link in the breadcrumbs is always the same
  */
 add_filter("Municipio/Breadcrumbs/Items", function ($pageData) {
-  if (get_field("disable_default_blog_post_type", "option") === "0") {
+  if (!get_field("disable_default_blog_post_type", "option")) {
     array_shift($pageData);
     array_unshift($pageData, [
       "label" => __("Home"),
@@ -50,7 +50,7 @@ add_filter("option_page_for_posts", "__return_null");
 add_filter(
   "Modularity/Module/Posts/archiveUrl",
   function ($archive_url, $post_type) {
-    if (get_field("disable_default_blog_post_type", "option") === "0") {
+    if (!get_field("disable_default_blog_post_type", "option")) {
       if (!$archive_url) {
         $archive_url = get_post_type_archive_link($post_type) ?: false;
       }
