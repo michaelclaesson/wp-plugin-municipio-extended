@@ -22,7 +22,7 @@
                 ' ' .
                 (isset($contact['last_name']) && !empty($contact['last_name']) ? $contact['last_name'] : ''),
             'wrapContent' => true,
-            'image' => isset($contact['image'])
+            'image' => (!empty($contact['image']) && is_array($contact['image']))
                 ? array_merge($contact['image'], [
                     'src' => $contact['image']['url'],
                     'alt' => $contact['image']['alt'],
