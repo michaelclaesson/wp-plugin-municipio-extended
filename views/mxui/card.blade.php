@@ -19,11 +19,13 @@ Left to handle:
   $heading ??= null;
   $headingLevel ??= 3;
   $image ??= null;
+  $imageAspectRatio ??= 'video';
   $link ??= null;
   $wrapContent ??= !empty($content) && is_string($content);
   $proseWrap ??= false;
   $expandLinkCover ??= false;
   $buttons ??= null;
+  $overflowVisible ??= false;
 @endphp
 <!-- mxui.card -->
 
@@ -31,21 +33,22 @@ Left to handle:
   {{ mx_attrs(
       [
           'class' => [
-              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] hover:text-[var(--color-text-card-hover,var(--color-black))] overflow-hidden grid-cols-[100%]',
+              'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] hover:text-[var(--color-text-card-hover,var(--color-black))] grid-cols-[100%]',
               'relative group' => !$expandLinkCover,
               'grid-rows-subgrid' => $asSubgrid,
               'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
               'w-full',
-  
+              'overflow-hidden' => !$overflowVisible,
+
               // In some places (e.g. contact module in list mode), headers are added via $content, so we cannot style them in-place. Hence the weird selectors here.
               '[&_.c-card\_\_header]:bg-primary [&_.c-card\_\_header]:text-primary-contrasting' => $modifier == 'panel',
               '[&_.c-card\_\_header]:border-b-[length:calc(var(--base,8px)/2)] [&_.c-card\_\_header]:border-b-[color:var(--color-primary)]' =>
                   $modifier == 'accented',
-  
+
               // Replacement for `.c-card .c-collection { border: none; }`
               '[&_.c-collection]:border-none',
               '@container',
-  
+
               $classList,
           ],
       ],
@@ -100,8 +103,12 @@ Left to handle:
               'w-full',
               'row-start-1',
               'row-span-1',
-              'aspect-video bg-secondary first:last:mb-0',
+              'bg-secondary first:last:mb-0',
               'overflow-hidden border-none',
+              [
+                'aspect-video' => $imageAspectRatio == 'video',
+                'aspect-square' => $imageAspectRatio == 'square',
+              ],
           ],
       ]) }}>
       @component('mxui.image', [
