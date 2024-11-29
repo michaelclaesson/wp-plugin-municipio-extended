@@ -76,7 +76,7 @@ Left to handle:
               'link' => $link ?? null,
               'content' => $heading ?? null,
               'classList' =>
-                  'no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none',
+                  'no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none break-words',
               'attributes' => ['data-mxui-card-link' => ''],
           ])
           </h{!! $headingLevel !!}>
