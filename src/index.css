@@ -344,7 +344,7 @@
   mask-image: url('./assets/material-symbols/outlined/more_horiz_fill1_24px.svg');
 }
 
-.nav-link {
+.c-nav__text {
   word-break: break-word;
   hyphens: auto;
 }

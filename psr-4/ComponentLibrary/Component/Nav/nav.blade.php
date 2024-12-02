@@ -6,7 +6,7 @@
         <li id="{{ $id }}-{{ $item['id'] }}-{{ $loop->index }}__item"
           class="{{ $itemClass($item, $direction) }}" {!! $buildAttributes($item['attributeList']) !!}>
 
-          <div class="{{ $baseClass }}__item-wrapper nav-link">
+          <div class="{{ $baseClass }}__item-wrapper">
             {{-- Nav item --}}
             @if ($allowStyle)
               @includeIf('Nav.style.' . $item['style'])
