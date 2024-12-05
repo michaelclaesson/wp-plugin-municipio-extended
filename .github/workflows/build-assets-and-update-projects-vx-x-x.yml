@@ -1,9 +1,9 @@
-name: Build Assets and Update Projects (main)
+name: Build Assets and Update Projects (vx.x.x)
 
 on:
   push:
     branches:
-      - main
+      - 'v*'
 
 permissions:
   contents: write
@@ -57,11 +57,8 @@ jobs:
     strategy:
       matrix:
         repo:
-          - whitespace-se/eslov.se-2024
-          - whitespace-se/hoor.se-2024
-          - whitespace-se/kriswebb.malmstad.se-2024
-          - whitespace-se/demo1.malmstad.se-2024
-          - whitespace-se/demo2.malmstad.se-2024
+          - whitespace-se/trelleborg.se-2024
+          - whitespace-se/arvidsjaur.se
     steps:
       - name: Checkout ${{ matrix.repo }} repo
         uses: actions/checkout@v3
