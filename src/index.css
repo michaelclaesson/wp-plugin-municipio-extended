@@ -354,8 +354,8 @@
 }
 
 .c-modal--is-panel {
-  height: max-content;
-  width: max-content;
+  height: auto;
+  width: auto;
   max-height: max-content;
   max-width: max-content;
 }
