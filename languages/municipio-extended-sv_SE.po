@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-12-09T10:19:09+00:00\n"
-"PO-Revision-Date: 2024-12-09 11:19+0100\n"
+"POT-Creation-Date: 2024-12-09T10:44:47+00:00\n"
+"PO-Revision-Date: 2024-12-09 11:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -30,6 +30,80 @@ msgstr "Lägger till fler funktioner till Municipio."
 #: municipio-extended.php
 msgid "Whitespace Dev"
 msgstr "Whitespace Dev"
+
+#: autoload/alerts.php:6 autoload/alerts.php:28
+msgctxt "Post Type General Name"
+msgid "Alerts"
+msgstr "Lavinmeddelanden"
+
+#: autoload/alerts.php:7
+msgctxt "Post Type Singular Name"
+msgid "Alert"
+msgstr "Lavinmeddelande"
+
+#: autoload/alerts.php:12
+msgctxt "Admin Menu text"
+msgid "Alerts"
+msgstr "Lavinmeddelanden"
+
+#: autoload/alerts.php:13
+msgctxt "Add New on Toolbar"
+msgid "Alerts"
+msgstr "Lavinmeddelanden"
+
+#: autoload/alerts.php:18 autoload/alerts.php:19
+msgid "Add new alert"
+msgstr "Lägg till ett nytt meddelande"
+
+#: autoload/alerts.php:20
+msgid "New alert"
+msgstr "Nytt meddelande"
+
+#: autoload/alerts.php:21
+msgid "Edit alert"
+msgstr "Redigera meddelande"
+
+#: autoload/alerts.php:22
+msgid "View alert"
+msgstr "Visa meddelande"
+
+#: autoload/alerts.php:23
+msgid "All alerts"
+msgstr "Alla meddelanden"
+
+#: autoload/alerts.php:24
+msgid "No alerts found."
+msgstr "Inga meddelanden hittades."
+
+#: autoload/alerts.php:47
+msgctxt "Field Group Title"
+msgid "Alert Settings"
+msgstr "Inställningar för lavinmeddelande"
+
+#: autoload/alerts.php:55
+msgctxt "Alert Settings Field Label"
+msgid "Type"
+msgstr "Typ"
+
+#: autoload/alerts.php:63
+msgctxt "Alert Type Choice"
+msgid "Success"
+msgstr "Framgång"
+
+#: autoload/alerts.php:68
+msgctxt "Alert Type Choice"
+msgid "Info"
+msgstr "Info"
+
+#: autoload/alerts.php:69
+msgctxt "Alert Type Choice"
+msgid "Warning"
+msgstr "Varning"
+
+#: autoload/alerts.php:74
+msgctxt "Alert Type Choice"
+msgid "Danger"
+msgstr "Fara"
 
 #: autoload/api-event-manager-integration.php:20
 msgid "Disable event hero overlay"

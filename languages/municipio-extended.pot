@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-09T10:19:09+00:00\n"
+"POT-Creation-Date: 2024-12-09T10:44:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -27,6 +27,82 @@ msgstr ""
 #. Author of the plugin
 #: municipio-extended.php
 msgid "Whitespace Dev"
+msgstr ""
+
+#: autoload/alerts.php:6
+#: autoload/alerts.php:28
+msgctxt "Post Type General Name"
+msgid "Alerts"
+msgstr ""
+
+#: autoload/alerts.php:7
+msgctxt "Post Type Singular Name"
+msgid "Alert"
+msgstr ""
+
+#: autoload/alerts.php:12
+msgctxt "Admin Menu text"
+msgid "Alerts"
+msgstr ""
+
+#: autoload/alerts.php:13
+msgctxt "Add New on Toolbar"
+msgid "Alerts"
+msgstr ""
+
+#: autoload/alerts.php:18
+#: autoload/alerts.php:19
+msgid "Add new alert"
+msgstr ""
+
+#: autoload/alerts.php:20
+msgid "New alert"
+msgstr ""
+
+#: autoload/alerts.php:21
+msgid "Edit alert"
+msgstr ""
+
+#: autoload/alerts.php:22
+msgid "View alert"
+msgstr ""
+
+#: autoload/alerts.php:23
+msgid "All alerts"
+msgstr ""
+
+#: autoload/alerts.php:24
+msgid "No alerts found."
+msgstr ""
+
+#: autoload/alerts.php:47
+msgctxt "Field Group Title"
+msgid "Alert Settings"
+msgstr ""
+
+#: autoload/alerts.php:55
+msgctxt "Alert Settings Field Label"
+msgid "Type"
+msgstr ""
+
+#: autoload/alerts.php:63
+msgctxt "Alert Type Choice"
+msgid "Success"
+msgstr ""
+
+#: autoload/alerts.php:68
+msgctxt "Alert Type Choice"
+msgid "Info"
+msgstr ""
+
+#: autoload/alerts.php:69
+msgctxt "Alert Type Choice"
+msgid "Warning"
+msgstr ""
+
+#: autoload/alerts.php:74
+msgctxt "Alert Type Choice"
+msgid "Danger"
 msgstr ""
 
 #: autoload/api-event-manager-integration.php:20
