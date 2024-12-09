@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-02T11:16:59+00:00\n"
+"POT-Creation-Date: 2024-12-09T10:19:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -111,6 +111,10 @@ msgstr ""
 
 #: autoload/migrations.php:189
 msgid "Status"
+msgstr ""
+
+#: autoload/mod-contacts.php:20
+msgid "Use improved appearance"
 msgstr ""
 
 #: autoload/mod-form.php:14

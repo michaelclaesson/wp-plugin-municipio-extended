@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-12-02T11:16:59+00:00\n"
-"PO-Revision-Date: 2024-12-02 12:17+0100\n"
+"POT-Creation-Date: 2024-12-09T10:19:09+00:00\n"
+"PO-Revision-Date: 2024-12-09 11:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -118,6 +118,10 @@ msgstr "Namn"
 #: autoload/migrations.php:189
 msgid "Status"
 msgstr "Status"
+
+#: autoload/mod-contacts.php:20
+msgid "Use improved appearance"
+msgstr "Använd förbättrat utseende"
 
 #: autoload/mod-form.php:14
 msgid "Form"
