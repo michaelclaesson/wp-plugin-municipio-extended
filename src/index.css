@@ -359,3 +359,15 @@
   max-height: max-content;
   max-width: max-content;
 }
+
+blockquote {
+  background: var(--color-secondary-light);
+}
+blockquote::before,
+blockquote::after {
+  content: url('./assets/material-symbols/outlined/format_quote_fill1_24px.svg');
+}
+blockquote::after {
+  transform: rotate(360deg);
+  display: inline-block;
+}
