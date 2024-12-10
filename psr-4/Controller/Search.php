@@ -10,4 +10,11 @@ class Search extends \Municipio\Controller\Archive {
       $this->data["gridColumnClass"],
     );
   }
+
+  /**
+   * We don't need any posts for the search page.
+   */
+  public function getPosts($template): array {
+    return [];
+  }
 }
