@@ -134,3 +134,50 @@ add_filter(
   9, // Run before Municipio default filter
   1,
 );
+
+add_action("municipio_customizer_section_registered", function ($section) {
+  // Check if this is the desired section
+  if (
+    strpos($section->getID(), "municipio_customizer_panel_content_types") !==
+    false
+  ) {
+    $sectionId = $section->getID();
+
+    // Get the post type from the section ID
+    $postType = str_replace(
+      "municipio_customizer_panel_content_types_",
+      "",
+      $sectionId,
+    );
+
+    error_log("Post Type new: $postType");
+
+    // Fetch taxonomies for the post type
+    $taxonomies = get_object_taxonomies($postType, "objects");
+    error_log("taxonomies new: $taxonomies");
+    error_log("sectionId new: $sectionId");
+
+    $taxonomyChoices = [];
+    foreach ($taxonomies as $taxonomy) {
+      if ($taxonomy->public) {
+        $taxonomyChoices[$taxonomy->name] = $taxonomy->label;
+      }
+    }
+
+    // Add the taxonomy field
+    if (!empty($taxonomyChoices)) {
+      \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+        "type" => "multicheck",
+        "settings" => $sectionId . "_taxonomies",
+        "label" => esc_html__("Display Taxonomies", "municipio"),
+        "description" => esc_html__(
+          "Select which taxonomies to display for this post type.",
+          "municipio",
+        ),
+        "section" => $sectionId,
+        "default" => array_keys($taxonomyChoices),
+        "choices" => $taxonomyChoices,
+      ]);
+    }
+  }
+});

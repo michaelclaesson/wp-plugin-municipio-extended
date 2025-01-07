@@ -71,3 +71,87 @@ add_filter(
   10,
   2,
 );
+
+add_action("article_title_before", function () {
+  $post_id = get_the_ID();
+  $post_type = get_post_type($post_id);
+
+  // Retrieve selected taxonomies for this post type from Kirki settings
+  $section_id = "municipio_customizer_panel_content_types_" . $post_type;
+  $selected_taxonomies = \Kirki::get_option(
+    \Municipio\Customizer::KIRKI_CONFIG,
+    $section_id . "_taxonomies",
+  );
+
+  // Get assigned taxonomies and terms for the post
+  $taxonomy_data = mx_get_post_taxonomies_with_terms($post_id);
+
+  // Filter taxonomies based on the selected ones
+  $filtered_taxonomies = array_filter(
+    $taxonomy_data,
+    function ($taxonomy_name) use ($selected_taxonomies) {
+      return in_array($taxonomy_name, (array) $selected_taxonomies, true);
+    },
+    ARRAY_FILTER_USE_KEY,
+  );
+
+  // Build the tags array to pass to the view
+  $tags = [];
+  foreach ($filtered_taxonomies as $taxonomy_info) {
+    foreach ($taxonomy_info["terms"] as $term) {
+      $tags[] = $term->name; // Add the term name to the tags array
+    }
+  }
+
+  // Render the taxonomy-tags view with the filtered tags
+  echo mx_render_view("taxonomy-tags", ["tags" => $tags]);
+
+  // Render the filtered taxonomies
+  // foreach ($filtered_taxonomies as $taxonomy_name => $taxonomy_info) {
+  //   echo '<div class="taxonomy">';
+  //   echo "<strong>" . esc_html($taxonomy_info["label"]) . ":</strong> ";
+  //   echo implode(
+  //     ", ",
+  //     array_map("esc_html", wp_list_pluck($taxonomy_info["terms"], "name")),
+  //   );
+  //   echo "</div>";
+  // }
+});
+
+/**
+ * Get assigned taxonomies and terms for a specific post.
+ *
+ * @param int $post_id The ID of the post.
+ * @return array An array of taxonomies with terms assigned to the post.
+ */
+function mx_get_post_taxonomies_with_terms($post_id) {
+  // Validate the post ID
+  if (!$post_id || !is_numeric($post_id)) {
+    return [];
+  }
+
+  // Get the post type of the post
+  $post_type = get_post_type($post_id);
+  if (!$post_type) {
+    return [];
+  }
+
+  // Get all taxonomies associated with this post type
+  $taxonomies = get_object_taxonomies($post_type, "objects");
+  $assigned_taxonomies = [];
+
+  foreach ($taxonomies as $taxonomy) {
+    // Check if the post has terms in this taxonomy
+    $terms = wp_get_post_terms($post_id, $taxonomy->name);
+
+    if (!is_wp_error($terms) && !empty($terms)) {
+      // Add to the assigned taxonomies array if terms are found
+      $assigned_taxonomies[$taxonomy->name] = [
+        "label" => $taxonomy->label,
+        "terms" => $terms,
+      ];
+    }
+  }
+
+  return $assigned_taxonomies;
+}
