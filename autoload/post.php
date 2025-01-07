@@ -72,46 +72,71 @@ add_filter(
   2,
 );
 
-add_action("article_title_before", function () {
+add_action("wp", function () {
+  if (!is_singular()) {
+    return; // Ensure this only runs on single posts or pages
+  }
+
   $post_id = get_the_ID();
   $post_type = get_post_type($post_id);
 
-  // Retrieve selected taxonomies for this post type from Kirki settings
-  $section_id = "municipio_customizer_panel_content_types_" . $post_type;
-  $selected_taxonomies = \Kirki::get_option(
-    \Municipio\Customizer::KIRKI_CONFIG,
-    $section_id . "_taxonomies",
-  );
-
-  // Get assigned taxonomies and terms for the post
-  $taxonomy_data = mx_get_post_taxonomies_with_terms($post_id);
-
-  // Filter taxonomies based on the selected ones
-  $filtered_taxonomies = array_filter(
-    $taxonomy_data,
-    function ($taxonomy_name) use ($selected_taxonomies) {
-      return in_array($taxonomy_name, (array) $selected_taxonomies, true);
-    },
-    ARRAY_FILTER_USE_KEY,
-  );
-
-  // Build the tags array to pass to the view
-  $tags = [];
-  foreach ($filtered_taxonomies as $taxonomy_info) {
-    foreach ($taxonomy_info["terms"] as $term) {
-      $color = get_term_meta($term->term_id, "colour", true);
-
-      $tags[] = [
-        "label" => $term->name,
-        "color" => $color ? $color : "#e5e5e5",
-      ];
-    }
+  if (!$post_type) {
+    error_log("Post type not found.");
+    return;
   }
 
-  // Render the taxonomy-tags view with the filtered tags
-  echo '<div class="tailwind">';
-  echo mx_render_view("mxui.taglist", ["tags" => $tags]);
-  echo "</div>";
+  // Retrieve placement option for the current post type
+  $section_id = "municipio_customizer_panel_content_types_" . $post_type;
+  $placement =
+    \Kirki::get_option(
+      \Municipio\Customizer::KIRKI_CONFIG,
+      $section_id . "_taxonomy_placement",
+    ) ?? "under_header"; // Default to 'under_header' if not set
+
+  // Determine which hook to use
+  $hook =
+    $placement === "under_header"
+      ? "article_content_before"
+      : "article_content_after";
+
+  // Add the callback to the selected hook
+  add_action($hook, function () use ($post_id, $post_type, $section_id) {
+    // Retrieve selected taxonomies for this post type
+    $selected_taxonomies = \Kirki::get_option(
+      \Municipio\Customizer::KIRKI_CONFIG,
+      $section_id . "_taxonomies",
+    );
+
+    // Get assigned taxonomies and terms for the post
+    $taxonomy_data = mx_get_post_taxonomies_with_terms($post_id);
+
+    // Filter taxonomies based on the selected ones
+    $filtered_taxonomies = array_filter(
+      $taxonomy_data,
+      function ($taxonomy_name) use ($selected_taxonomies) {
+        return in_array($taxonomy_name, (array) $selected_taxonomies, true);
+      },
+      ARRAY_FILTER_USE_KEY,
+    );
+
+    // Build the tags array to pass to the view
+    $tags = [];
+    foreach ($filtered_taxonomies as $taxonomy_info) {
+      foreach ($taxonomy_info["terms"] as $term) {
+        $color = get_term_meta($term->term_id, "colour", true);
+
+        $tags[] = [
+          "label" => $term->name,
+          "color" => $color ? $color : "#e5e5e5",
+        ];
+      }
+    }
+
+    // Render the taxonomy-tags view with the filtered tags
+    echo '<div class="tailwind">';
+    echo mx_render_view("mxui.taglist", ["tags" => $tags]);
+    echo "</div>";
+  });
 });
 
 /**

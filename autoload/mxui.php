@@ -71,18 +71,18 @@ add_action("init", function () {
 
   Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
     "section" => $section_id,
-    'type'        => 'select',
-    'settings'    => 'tab_menu_button_size',
-    'label'       => __('Tab menu button size', 'municipio-extended'),
-    'default'     => 'md',
-    'priority'    => 10,
-    'choices'     => [
-        'sm' => __('Small', 'municipio-extended'),
-        'md' => __('Medium', 'municipio-extended'),
-        'lg' => __('Large', 'municipio-extended'),
+    "type" => "select",
+    "settings" => "tab_menu_button_size",
+    "label" => __("Tab menu button size", "municipio-extended"),
+    "default" => "md",
+    "priority" => 10,
+    "choices" => [
+      "sm" => __("Small", "municipio-extended"),
+      "md" => __("Medium", "municipio-extended"),
+      "lg" => __("Large", "municipio-extended"),
     ],
-    'output' => [['type' => 'controller']],
-]);
+    "output" => [["type" => "controller"]],
+  ]);
 
   $section_id = "municipio_customizer_panel_content_types_page";
 
@@ -179,5 +179,22 @@ add_action("municipio_customizer_section_registered", function ($section) {
         "choices" => $taxonomyChoices,
       ]);
     }
+
+    // Add the placement field
+    \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+      "type" => "select",
+      "settings" => $sectionId . "_taxonomy_placement",
+      "label" => esc_html__("Taxonomy Placement", "municipio"),
+      "description" => esc_html__(
+        "Select where to display taxonomy terms for this post type.",
+        "municipio",
+      ),
+      "section" => $sectionId,
+      "default" => "under_header",
+      "choices" => [
+        "under_header" => esc_html__("Under header", "municipio"),
+        "after_content" => esc_html__("After content", "municipio"),
+      ],
+    ]);
   }
 });
