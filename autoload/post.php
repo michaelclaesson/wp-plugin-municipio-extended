@@ -99,23 +99,19 @@ add_action("article_title_before", function () {
   $tags = [];
   foreach ($filtered_taxonomies as $taxonomy_info) {
     foreach ($taxonomy_info["terms"] as $term) {
-      $tags[] = $term->name; // Add the term name to the tags array
+      $color = get_term_meta($term->term_id, "colour", true);
+
+      $tags[] = [
+        "label" => $term->name,
+        "color" => $color ? $color : "#e5e5e5",
+      ];
     }
   }
 
   // Render the taxonomy-tags view with the filtered tags
-  echo mx_render_view("taxonomy-tags", ["tags" => $tags]);
-
-  // Render the filtered taxonomies
-  // foreach ($filtered_taxonomies as $taxonomy_name => $taxonomy_info) {
-  //   echo '<div class="taxonomy">';
-  //   echo "<strong>" . esc_html($taxonomy_info["label"]) . ":</strong> ";
-  //   echo implode(
-  //     ", ",
-  //     array_map("esc_html", wp_list_pluck($taxonomy_info["terms"], "name")),
-  //   );
-  //   echo "</div>";
-  // }
+  echo '<div class="tailwind">';
+  echo mx_render_view("mxui.taglist", ["tags" => $tags]);
+  echo "</div>";
 });
 
 /**
