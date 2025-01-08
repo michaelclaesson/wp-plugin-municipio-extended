@@ -124,10 +124,16 @@ add_action("wp", function () {
     foreach ($filtered_taxonomies as $taxonomy_info) {
       foreach ($taxonomy_info["terms"] as $term) {
         $color = get_term_meta($term->term_id, "colour", true);
+        $redirect_to_data = get_term_meta($term->term_id, "redirect_to", true);
+
+        $redirect_to_url = is_array($redirect_to_data)
+          ? $redirect_to_data["url"] ?? null
+          : null;
 
         $tags[] = [
           "label" => $term->name,
-          "color" => $color ? $color : "#e5e5e5",
+          "color" => $color ? $color : null,
+          "href" => $redirect_to_url,
         ];
       }
     }
@@ -176,3 +182,29 @@ function mx_get_post_taxonomies_with_terms($post_id) {
 
   return $assigned_taxonomies;
 }
+
+add_action("acf/init", function () {
+  if (!function_exists("acf_add_local_field")) {
+    return;
+  }
+
+  acf_add_local_field([
+    "key" => "field_redirect_to",
+    "label" => _x("Redirect to", "municipio-extended"),
+    "name" => "redirect_to",
+    "type" => "link",
+    "instructions" => __(
+      "Select a page or post to redirect to.",
+      "municipio-extended",
+    ),
+    "required" => 0,
+    "conditional_logic" => 0,
+    "parent" => "group_63e6002cc129c",
+    "wrapper" => [
+      "width" => "",
+      "class" => "",
+      "id" => "",
+    ],
+    "return_format" => "array",
+  ]);
+});
