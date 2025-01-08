@@ -169,10 +169,10 @@ add_action("municipio_customizer_section_registered", function ($section) {
       \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
         "type" => "multicheck",
         "settings" => $sectionId . "_taxonomies",
-        "label" => esc_html__("Display Taxonomies", "municipio"),
+        "label" => esc_html__("Display taxonomies", "municipio-extended"),
         "description" => esc_html__(
           "Select which taxonomies to display for this post type.",
-          "municipio",
+          "municipio-extended",
         ),
         "section" => $sectionId,
         "default" => array_keys($taxonomyChoices),
@@ -184,16 +184,16 @@ add_action("municipio_customizer_section_registered", function ($section) {
     \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
       "type" => "select",
       "settings" => $sectionId . "_taxonomy_placement",
-      "label" => esc_html__("Taxonomy Placement", "municipio"),
+      "label" => esc_html__("Taxonomy placement", "municipio-extended"),
       "description" => esc_html__(
         "Select where to display taxonomy terms for this post type.",
-        "municipio",
+        "municipio-extended",
       ),
       "section" => $sectionId,
       "default" => "under_header",
       "choices" => [
-        "under_header" => esc_html__("Under header", "municipio"),
-        "after_content" => esc_html__("After content", "municipio"),
+        "under_header" => esc_html__("Under header", "municipio-extended"),
+        "after_content" => esc_html__("After content", "municipio-extended"),
       ],
     ]);
   }

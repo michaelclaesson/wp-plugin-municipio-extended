@@ -1,19 +1,19 @@
-# Copyright (C) 2024 Whitespace Dev
+# Copyright (C) 2025 Whitespace Dev
 # This file is distributed under the same license as the Municipio Extended plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2024-12-09T10:44:47+00:00\n"
-"PO-Revision-Date: 2024-12-09 11:45+0100\n"
+"POT-Creation-Date: 2025-01-08T15:25:45+00:00\n"
+"PO-Revision-Date: 2025-01-08 17:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -377,6 +377,30 @@ msgstr "Stor"
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
+#: autoload/mxui.php:172
+msgid "Display taxonomies"
+msgstr "Visa taxonomier"
+
+#: autoload/mxui.php:173
+msgid "Select which taxonomies to display for this post type."
+msgstr "Välj vilka taxonomier som ska visas för den här inläggstypen."
+
+#: autoload/mxui.php:187
+msgid "Taxonomy placement"
+msgstr "Taxonomi placering"
+
+#: autoload/mxui.php:188
+msgid "Select where to display taxonomy terms for this post type."
+msgstr "Välj var du vill visa taxonomitermer för den här inläggstypen."
+
+#: autoload/mxui.php:195
+msgid "Under header"
+msgstr "Under rubriken"
+
+#: autoload/mxui.php:196
+msgid "After content"
+msgstr "Efter innehåll"
+
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"
 msgid "Theme color"
@@ -512,6 +536,10 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
+#: autoload/post.php:196
+msgid "Select a page or post to redirect to."
+msgstr "Välj en sida eller ett inlägg att omdirigera till."
+
 #: autoload/redirection-permissions.php:13
 msgid "Redirection"
 msgstr "Redirection"
@@ -520,27 +548,28 @@ msgstr "Redirection"
 msgid "Allow Editors access to Redirection"
 msgstr "Tillåt redaktörer åtkomst till Redirection"
 
-#: autoload/search.php:544
+#: autoload/search.php:561
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:548
+#: autoload/search.php:565
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:551
+#: autoload/search.php:568
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
-#: autoload/search.php:685
+#: autoload/search.php:702
 msgid "Search settings"
 msgstr "Sökinställningar"
 
-#: autoload/search.php:689
+#: autoload/search.php:706
 msgid "Enable “external pages” content type"
 msgstr "Aktivera innehållstypen ”externa sidor”"
 
-#: autoload/search.php:697
+#: autoload/search.php:714
+#, fuzzy
 msgid ""
 "Check this box to enable the “external pages” content type which you can use "
 "to add external pages to the site search."
@@ -548,77 +577,78 @@ msgstr ""
 "Markera den här rutan om du vill aktivera innehållstypen ”externa sidor” som "
 "du kan använda för att lägga till externa sidor i webbplatsens sökfunktion."
 
-#: autoload/search.php:704
+#: autoload/search.php:721
 msgid "Post type settings"
 msgstr "Inställningar för innehållstyper"
 
-#: autoload/search.php:718
+#: autoload/search.php:735
 msgid "Exclude from search"
 msgstr "Exkludera från sök"
 
-#: autoload/search.php:729
+#: autoload/search.php:746
 msgid "Boost"
 msgstr "Boosta"
 
-#: autoload/search.php:733
+#: autoload/search.php:750
 msgid "The boost factor for this post type."
 msgstr "Boostfaktorn för den här innehållstypen."
 
-#: autoload/search.php:749
+#: autoload/search.php:766
 msgid "Decay"
 msgstr "Trappa av"
 
-#: autoload/search.php:753
+#: autoload/search.php:770
 msgid "Whether older posts should have lower scores."
 msgstr "Om äldre inlägg ska ha lägre poäng."
 
-#: autoload/search.php:769
+#: autoload/search.php:786
 msgid "Visible fields"
 msgstr "Synliga fält"
 
-#: autoload/search.php:773
+#: autoload/search.php:790
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr "Datum"
 
-#: autoload/search.php:778
+#: autoload/search.php:795
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr "Typ"
 
-#: autoload/search.php:784
+#: autoload/search.php:801
 msgid "Which fields to show or hide in the search results."
 msgstr "Vilka fält som ska visas eller döljas i sökresultaten."
 
-#: autoload/search.php:822 autoload/search.php:824
+#: autoload/search.php:839 autoload/search.php:841
+#, fuzzy
 msgid "External pages"
 msgstr "Externa sidor"
 
-#: autoload/search.php:825
+#: autoload/search.php:842
 msgid "External page"
 msgstr "Extern sida"
 
-#: autoload/search.php:838 autoload/search.php:841
+#: autoload/search.php:855 autoload/search.php:858
 msgid "Content type"
 msgstr "Innehållstyp"
 
-#: autoload/search.php:840
+#: autoload/search.php:857
 msgid "Content types"
 msgstr "Innehållstyper"
 
-#: autoload/search.php:860
+#: autoload/search.php:877
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
 
-#: autoload/search.php:864
+#: autoload/search.php:881
 msgid "URL"
 msgstr "URL"
 
-#: autoload/search.php:867
+#: autoload/search.php:884
 msgid "The URL to the external page."
 msgstr "URL:en till den externa sidan."
 
-#: autoload/search.php:943
+#: autoload/search.php:960
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr "Dokument"
@@ -681,22 +711,3 @@ msgstr "Standard"
 msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
-
-#~ msgid "Check this box to exclude this post from search results."
-#~ msgstr ""
-#~ "Markera den här rutan för att utesluta det här inlägget från "
-#~ "sökresultaten."
-
-#~ msgctxt "Navigation Module Customization Field Label"
-#~ msgid "Color for format “cards”"
-#~ msgstr "Färg för format “kort”"
-
-#~ msgid "Previous page"
-#~ msgstr "Föregående sida"
-
-#~ msgctxt "Page Navigation Field Label"
-#~ msgid "Left menu"
-#~ msgstr "Vänstermenyn"
-
-#~ msgid "Hide left menu on this page."
-#~ msgstr "Dölj vänstermenyn på denna sida."
