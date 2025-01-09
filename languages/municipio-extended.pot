@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-08T15:25:45+00:00\n"
+"POT-Creation-Date: 2025-01-09T17:39:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -375,27 +375,27 @@ msgstr ""
 msgid "Section start page"
 msgstr ""
 
-#: autoload/mxui.php:172
+#: autoload/mxui.php:200
 msgid "Display taxonomies"
 msgstr ""
 
-#: autoload/mxui.php:173
+#: autoload/mxui.php:201
 msgid "Select which taxonomies to display for this post type."
 msgstr ""
 
-#: autoload/mxui.php:187
+#: autoload/mxui.php:215
 msgid "Taxonomy placement"
 msgstr ""
 
-#: autoload/mxui.php:188
+#: autoload/mxui.php:216
 msgid "Select where to display taxonomy terms for this post type."
 msgstr ""
 
-#: autoload/mxui.php:195
+#: autoload/mxui.php:223
 msgid "Under header"
 msgstr ""
 
-#: autoload/mxui.php:196
+#: autoload/mxui.php:224
 msgid "After content"
 msgstr ""
 
@@ -535,103 +535,103 @@ msgstr ""
 msgid "Allow Editors access to Redirection"
 msgstr ""
 
-#: autoload/search.php:561
+#: autoload/search.php:560
 msgid "Search"
 msgstr ""
 
-#: autoload/search.php:565
+#: autoload/search.php:564
 msgid "Keywords"
 msgstr ""
 
-#: autoload/search.php:568
+#: autoload/search.php:567
 msgid "Seperate keywords with commas or new lines."
 msgstr ""
 
-#: autoload/search.php:702
+#: autoload/search.php:701
 msgid "Search settings"
 msgstr ""
 
-#: autoload/search.php:706
+#: autoload/search.php:705
 msgid "Enable “external pages” content type"
 msgstr ""
 
-#: autoload/search.php:714
+#: autoload/search.php:713
 msgid "Check this box to enable the “external pages” content type which you can use to add external pages to the site search."
 msgstr ""
 
-#: autoload/search.php:721
+#: autoload/search.php:720
 msgid "Post type settings"
 msgstr ""
 
-#: autoload/search.php:735
+#: autoload/search.php:734
 msgid "Exclude from search"
 msgstr ""
 
-#: autoload/search.php:746
+#: autoload/search.php:745
 msgid "Boost"
 msgstr ""
 
-#: autoload/search.php:750
+#: autoload/search.php:749
 msgid "The boost factor for this post type."
 msgstr ""
 
-#: autoload/search.php:766
+#: autoload/search.php:765
 msgid "Decay"
 msgstr ""
 
-#: autoload/search.php:770
+#: autoload/search.php:769
 msgid "Whether older posts should have lower scores."
 msgstr ""
 
-#: autoload/search.php:786
+#: autoload/search.php:785
 msgid "Visible fields"
 msgstr ""
 
-#: autoload/search.php:790
+#: autoload/search.php:789
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr ""
 
-#: autoload/search.php:795
+#: autoload/search.php:794
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr ""
 
-#: autoload/search.php:801
+#: autoload/search.php:800
 msgid "Which fields to show or hide in the search results."
 msgstr ""
 
-#: autoload/search.php:839
-#: autoload/search.php:841
+#: autoload/search.php:838
+#: autoload/search.php:840
 msgid "External pages"
 msgstr ""
 
-#: autoload/search.php:842
+#: autoload/search.php:841
 msgid "External page"
 msgstr ""
 
-#: autoload/search.php:855
-#: autoload/search.php:858
+#: autoload/search.php:854
+#: autoload/search.php:857
 msgid "Content type"
 msgstr ""
 
-#: autoload/search.php:857
+#: autoload/search.php:856
 msgid "Content types"
 msgstr ""
 
-#: autoload/search.php:877
+#: autoload/search.php:876
 msgid "External page attributes"
 msgstr ""
 
-#: autoload/search.php:881
+#: autoload/search.php:880
 msgid "URL"
 msgstr ""
 
-#: autoload/search.php:884
+#: autoload/search.php:883
 msgid "The URL to the external page."
 msgstr ""
 
-#: autoload/search.php:960
+#: autoload/search.php:959
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr ""
