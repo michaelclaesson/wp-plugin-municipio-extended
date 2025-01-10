@@ -191,13 +191,11 @@ Left to handle:
             'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
         ],
     ]) }}>
-    @tags([
-        'compress' => 4,
-        'tags' => $tags,
-        'format' => false,
-        'classList' => []
-    ])
-    @endtags
+    @component('mxui.taglist', [
+          'tags' => $tags,
+          'classList' => [],
+      ])
+    @endcomponent
   </div>
 @endif
 </div>
