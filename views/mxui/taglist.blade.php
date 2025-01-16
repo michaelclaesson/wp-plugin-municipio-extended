@@ -12,7 +12,7 @@
             array_merge($tag, [
                 'classList' => [
                     'block bg-lighter interactive:hover:bg-light rounded font-medium py-[.5em] px-[.75em]',
-                    'border-custom border-l-[.75em]' => $tag['color'],
+                    $tag['color'] ? 'border-custom border-l-[.75em]' : null,
                 ],
             ]))
         @endcomponent

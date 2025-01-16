@@ -71,18 +71,18 @@ add_action("init", function () {
 
   Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
     "section" => $section_id,
-    'type'        => 'select',
-    'settings'    => 'tab_menu_button_size',
-    'label'       => __('Tab menu button size', 'municipio-extended'),
-    'default'     => 'md',
-    'priority'    => 10,
-    'choices'     => [
-        'sm' => __('Small', 'municipio-extended'),
-        'md' => __('Medium', 'municipio-extended'),
-        'lg' => __('Large', 'municipio-extended'),
+    "type" => "select",
+    "settings" => "tab_menu_button_size",
+    "label" => __("Tab menu button size", "municipio-extended"),
+    "default" => "md",
+    "priority" => 10,
+    "choices" => [
+      "sm" => __("Small", "municipio-extended"),
+      "md" => __("Medium", "municipio-extended"),
+      "lg" => __("Large", "municipio-extended"),
     ],
-    'output' => [['type' => 'controller']],
-]);
+    "output" => [["type" => "controller"]],
+  ]);
 
   $section_id = "municipio_customizer_panel_content_types_page";
 
@@ -134,3 +134,63 @@ add_filter(
   9, // Run before Municipio default filter
   1,
 );
+
+add_action("municipio_customizer_section_registered", function ($section) {
+  // Check if this is the desired section
+  if (
+    strpos($section->getID(), "municipio_customizer_panel_content_types") !==
+    false
+  ) {
+    $sectionId = $section->getID();
+
+    // Get the post type from the section ID
+    $postType = str_replace(
+      "municipio_customizer_panel_content_types_",
+      "",
+      $sectionId,
+    );
+
+    // Fetch taxonomies for the post type
+    $taxonomies = get_object_taxonomies($postType, "objects");
+
+    $taxonomyChoices = [];
+    foreach ($taxonomies as $taxonomy) {
+      if ($taxonomy->public) {
+        $taxonomyChoices[$taxonomy->name] = $taxonomy->label;
+      }
+    }
+
+    // Add the taxonomy field
+    if (!empty($taxonomyChoices)) {
+      \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+        "type" => "multicheck",
+        "settings" => $sectionId . "_taxonomies",
+        "label" => esc_html__("Display taxonomies", "municipio-extended"),
+        "description" => esc_html__(
+          "Select which taxonomies to display for this post type.",
+          "municipio-extended",
+        ),
+        "section" => $sectionId,
+        "default" => array_keys($taxonomyChoices),
+        "choices" => $taxonomyChoices,
+      ]);
+    }
+
+    // Add the placement field
+    \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+      "type" => "select",
+      "settings" => $sectionId . "_taxonomy_placement",
+      "label" => esc_html__("Taxonomy placement", "municipio-extended"),
+      "description" => esc_html__(
+        "Select where to display taxonomy terms for this post type.",
+        "municipio-extended",
+      ),
+      "section" => $sectionId,
+      "default" => "under_header",
+      "choices" => [
+        "under_header" => esc_html__("Under header", "municipio-extended"),
+        "after_content" => esc_html__("After content", "municipio-extended"),
+      ],
+    ]);
+  }
+});
