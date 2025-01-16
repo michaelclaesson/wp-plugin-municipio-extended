@@ -150,12 +150,8 @@ add_action("municipio_customizer_section_registered", function ($section) {
       $sectionId,
     );
 
-    error_log("Post Type new: $postType");
-
     // Fetch taxonomies for the post type
     $taxonomies = get_object_taxonomies($postType, "objects");
-    error_log("taxonomies new: $taxonomies");
-    error_log("sectionId new: $sectionId");
 
     $taxonomyChoices = [];
     foreach ($taxonomies as $taxonomy) {
