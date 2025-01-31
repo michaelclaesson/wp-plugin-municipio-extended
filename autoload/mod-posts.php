@@ -175,15 +175,15 @@ add_filter(
 );
 
 // Remove taxonomy field for the post
-add_action(
-  "admin_init",
-  function () {
-    if (function_exists("acf_remove_local_field_group")) {
-      // Taxonomies field for Post
-      acf_remove_local_field_group("group_630645d822841");
-      // Filtering based on taxonomy
-      acf_remove_local_field_group("group_571e045dd555d");
-    }
-  },
-  20,
-);
+// add_action(
+//   "admin_init",
+//   function () {
+//     if (function_exists("acf_remove_local_field_group")) {
+//       // Taxonomies field for Post
+//       acf_remove_local_field_group("group_630645d822841");
+//       // Filtering based on taxonomy
+//       acf_remove_local_field_group("group_571e045dd555d");
+//     }
+//   },
+//   20,
+// );
