@@ -187,17 +187,14 @@ Left to handle:
             'row-start-4',
             'row-span-1',
             'px-[var(--card-px,1rem)] py-[var(--card-py,1rem)]',
-            'border-t border-t-border-divider',
             'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
         ],
     ]) }}>
-    @tags([
-        'compress' => 4,
-        'tags' => $tags,
-        'format' => false,
-        'classList' => []
-    ])
-    @endtags
+    @component('mxui.taglist', [
+          'tags' => $tags,
+          'classList' => [],
+      ])
+    @endcomponent
   </div>
 @endif
 </div>
