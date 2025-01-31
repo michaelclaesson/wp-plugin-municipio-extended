@@ -102,6 +102,10 @@ add_filter("acf/load_field/key=field_taxonomy_selection_in_fields", function (
 ) {
   $post_type = get_field("posts_data_post_type");
 
+  if (!$post_type && isset($_GET["post_type"])) {
+    $post_type = sanitize_text_field($_GET["post_type"]);
+  }
+
   if (!$post_type) {
     $field["choices"] = [];
     return $field;
