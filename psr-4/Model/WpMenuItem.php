@@ -51,4 +51,16 @@ class WpMenuItem extends WpPost {
     }
     return parent::has($name) || $this->connectedObject->has($name) ?? false;
   }
+
+  public function getOwnThemeColor() {
+    if (empty($this->connectedObject)) {
+      return null;
+    }
+    return $this->connectedObject->getField(static::THEME_COLOR_FIELD_NAME);
+  }
+
+  public function getThemeColor() {
+    return $this->getOwnThemeColor() ?:
+      $this->connectedObject->parent->themeColor ?? null;
+  }
 }

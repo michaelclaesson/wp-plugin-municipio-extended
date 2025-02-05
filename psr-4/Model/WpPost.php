@@ -83,7 +83,7 @@ class WpPost extends Model {
   }
 
   public function getSectionPageAncestor() {
-    if(!get_theme_mod(static::SECTION_START_PAGE_ENABLED_FIELD_NAME)){
+    if (!get_theme_mod(static::SECTION_START_PAGE_ENABLED_FIELD_NAME)) {
       return null;
     }
     $parent = $this->getParent();
@@ -93,7 +93,7 @@ class WpPost extends Model {
     if ($parent->getField(static::SECTION_START_PAGE_FIELD_NAME)) {
       return $parent;
     }
-    return $parent -> sectionPageAncestor;
+    return $parent->sectionPageAncestor;
   }
 
   public function getOwnThemeColor() {
@@ -101,7 +101,7 @@ class WpPost extends Model {
   }
 
   public function getThemeColor() {
-    return $this->ownThemeColor ?: $this->parent->themeColor ?? null;
+    return $this->getOwnThemeColor() ?: $this->parent->themeColor ?? null;
   }
 
   public function getMenuTitle() {
