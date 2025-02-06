@@ -127,6 +127,7 @@ function mx_search_ajax_handler() {
     "post_content_filtered^1",
     "post_content_filtered.exact^1",
     "attachments.attachment.content^1",
+    "search_keywords^10",
   ];
 
   $query = $data["s"];
@@ -168,6 +169,14 @@ function mx_search_ajax_handler() {
             "type" => "phrase",
             "fields" => $fields,
             "boost" => 4,
+          ],
+        ],
+        [
+          "match" => [
+            "search_keywords" => [
+              "query" => $query,
+              "boost" => 10,
+            ],
           ],
         ],
       ],
@@ -496,6 +505,7 @@ add_action("wp_ajax_nopriv_mx_search", "mx_search_ajax_handler"); // For non-log
  * Prepares posts for indexing.
  * - Adds a content_type field to the post_args array.
  * - Strips all HTML tags from the post_content_filtered field before indexing.
+ * - Adds search_keywords field.
  */
 add_filter(
   "ep_post_sync_args_post_prepare_meta",
@@ -516,6 +526,7 @@ add_filter(
       $post_args["post_content_filtered"],
       ["exclude" => ".modularity-edit-module"],
     );
+    $post_args["search_keywords"] = get_field("search_keywords", $post_id);
     return $post_args;
   },
   20,
