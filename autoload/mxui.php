@@ -194,3 +194,20 @@ add_action("municipio_customizer_section_registered", function ($section) {
     ]);
   }
 });
+
+/**
+ * Adds a customizer section for MXUI components.
+ */
+add_action("init", function () {
+  $section_id = "municipio_customizer_section_search";
+
+  Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+    "section" => $section_id,
+    "type" => "text",
+    "settings" => "hero_search_placeholder",
+    "label" => __("Hero search placeholder", "municipio-extended"),
+    "default" => "",
+    "priority" => 10,
+    "output" => [["type" => "controller"]],
+  ]);
+});
