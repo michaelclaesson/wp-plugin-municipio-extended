@@ -211,3 +211,14 @@ add_action("init", function () {
     "output" => [["type" => "controller"]],
   ]);
 });
+
+/**
+ * Filter to modify the hero search placeholder.
+ */
+add_filter("Municipio/Search/Hero_search_placeholder", function ($placeholder) {
+  // Fetch the custom placeholder from the Customizer
+  $customPlaceholder = get_theme_mod("hero_search_placeholder", "");
+
+  // Return the custom placeholder or default
+  return !empty($customPlaceholder) ? $customPlaceholder : $placeholder;
+});
