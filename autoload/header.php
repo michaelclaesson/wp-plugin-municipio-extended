@@ -87,7 +87,11 @@ add_filter("Municipio/Hook/headerSecondaryNavigationTabsClass", function (
   $classList,
 ) {
   // Remove unwanted classes
-  return array_diff($classList, ["u-display--none@md"]);
+  return array_diff($classList, [
+    "u-display--none@xs",
+    "u-display--none@sm",
+    "u-display--none@md",
+  ]);
 });
 
 add_filter("Municipio/Hook/headerSearchFormClassList", function ($classList) {
