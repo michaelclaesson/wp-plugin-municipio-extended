@@ -83,6 +83,13 @@ add_filter("Municipio/Hook/headerSecondaryNavigationClass", function ($class) {
   return $class;
 });
 
+add_filter("Municipio/Hook/headerSecondaryNavigationTabsClass", function (
+  $classList,
+) {
+  // Remove unwanted classes
+  return array_diff($classList, ["u-display--none@md"]);
+});
+
 add_filter("Municipio/Hook/headerSearchFormClassList", function ($classList) {
   $header_breakpoint = Kirki::get_option(
     Customizer::KIRKI_CONFIG,
