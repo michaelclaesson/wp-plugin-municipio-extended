@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-01-09T17:39:44+00:00\n"
-"PO-Revision-Date: 2025-01-09 18:41+0100\n"
+"POT-Creation-Date: 2025-02-10T17:15:25+00:00\n"
+"PO-Revision-Date: 2025-02-10 18:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -134,10 +134,13 @@ msgstr ""
 "Ange pluralnamnet för denna inläggstyp. Välj namnet med omsorg! Det kan inte "
 "ändras."
 
-#: autoload/custom-post-types.php:83 autoload/custom-post-types.php:85
-#: autoload/custom-post-types.php:86
-msgid "Alert"
-msgstr "Lavinmeddelande"
+#: autoload/custom-widgets.php:5
+msgid "Related pages sidebar"
+msgstr ""
+
+#: autoload/custom-widgets.php:6
+msgid "Widget area made for related pages"
+msgstr ""
 
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
@@ -330,6 +333,10 @@ msgctxt "Posts Module Display Mode"
 msgid "Cards and list"
 msgstr "Kort och lista"
 
+#: autoload/mod-posts.php:81
+msgid "Välj taxonomier"
+msgstr ""
+
 #: autoload/mxui.php:14
 msgid "Cards"
 msgstr "Kort"
@@ -382,29 +389,33 @@ msgstr "Stor"
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
-#: autoload/mxui.php:200
+#: autoload/mxui.php:168
 msgid "Display taxonomies"
 msgstr "Visa taxonomier"
 
-#: autoload/mxui.php:201
+#: autoload/mxui.php:169
 msgid "Select which taxonomies to display for this post type."
 msgstr "Välj vilka taxonomier som ska visas för den här inläggstypen."
 
-#: autoload/mxui.php:215
+#: autoload/mxui.php:183
 msgid "Taxonomy placement"
 msgstr "Taxonomi placering"
 
-#: autoload/mxui.php:216
+#: autoload/mxui.php:184
 msgid "Select where to display taxonomy terms for this post type."
 msgstr "Välj var du vill visa taxonomitermer för den här inläggstypen."
 
-#: autoload/mxui.php:223
+#: autoload/mxui.php:191
 msgid "Under header"
 msgstr "Under rubriken"
 
-#: autoload/mxui.php:224
+#: autoload/mxui.php:192
 msgid "After content"
 msgstr "Efter innehåll"
+
+#: autoload/mxui.php:208
+msgid "Hero search placeholder"
+msgstr ""
 
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"
@@ -541,7 +552,7 @@ msgctxt ""
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/post.php:196
+#: autoload/post.php:195
 msgid "Select a page or post to redirect to."
 msgstr "Välj en sida eller ett inlägg att omdirigera till."
 
@@ -553,27 +564,27 @@ msgstr "Redirection"
 msgid "Allow Editors access to Redirection"
 msgstr "Tillåt redaktörer åtkomst till Redirection"
 
-#: autoload/search.php:560
+#: autoload/search.php:572
 msgid "Search"
 msgstr "Sök"
 
-#: autoload/search.php:564
+#: autoload/search.php:576
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: autoload/search.php:567
+#: autoload/search.php:579
 msgid "Seperate keywords with commas or new lines."
 msgstr "Separera sökord med kommatecken eller nya rader."
 
-#: autoload/search.php:701
+#: autoload/search.php:713
 msgid "Search settings"
 msgstr "Sökinställningar"
 
-#: autoload/search.php:705
+#: autoload/search.php:717
 msgid "Enable “external pages” content type"
 msgstr "Aktivera innehållstypen ”externa sidor”"
 
-#: autoload/search.php:713
+#: autoload/search.php:725
 msgid ""
 "Check this box to enable the “external pages” content type which you can use "
 "to add external pages to the site search."
@@ -581,80 +592,105 @@ msgstr ""
 "Markera den här rutan om du vill aktivera innehållstypen ”externa sidor” som "
 "du kan använda för att lägga till externa sidor i webbplatsens sökfunktion."
 
-#: autoload/search.php:720
+#: autoload/search.php:732
 msgid "Post type settings"
 msgstr "Inställningar för innehållstyper"
 
-#: autoload/search.php:734
+#: autoload/search.php:746
 msgid "Exclude from search"
 msgstr "Exkludera från sök"
 
-#: autoload/search.php:745
+#: autoload/search.php:757
 msgid "Boost"
 msgstr "Boosta"
 
-#: autoload/search.php:749
+#: autoload/search.php:761
 msgid "The boost factor for this post type."
 msgstr "Boostfaktorn för den här innehållstypen."
 
-#: autoload/search.php:765
+#: autoload/search.php:777
 msgid "Decay"
 msgstr "Trappa av"
 
-#: autoload/search.php:769
+#: autoload/search.php:781
 msgid "Whether older posts should have lower scores."
 msgstr "Om äldre inlägg ska ha lägre poäng."
 
-#: autoload/search.php:785
+#: autoload/search.php:797
 msgid "Visible fields"
 msgstr "Synliga fält"
 
-#: autoload/search.php:789
+#: autoload/search.php:801
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr "Datum"
 
-#: autoload/search.php:794
+#: autoload/search.php:806
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr "Typ"
 
-#: autoload/search.php:800
+#: autoload/search.php:812
 msgid "Which fields to show or hide in the search results."
 msgstr "Vilka fält som ska visas eller döljas i sökresultaten."
 
-#: autoload/search.php:838 autoload/search.php:840
+#: autoload/search.php:850 autoload/search.php:852
 msgid "External pages"
 msgstr "Externa sidor"
 
-#: autoload/search.php:841
+#: autoload/search.php:853
 msgid "External page"
 msgstr "Extern sida"
 
-#: autoload/search.php:854 autoload/search.php:857
+#: autoload/search.php:866 autoload/search.php:869
 msgid "Content type"
 msgstr "Innehållstyp"
 
-#: autoload/search.php:856
+#: autoload/search.php:868
 msgid "Content types"
 msgstr "Innehållstyper"
 
-#: autoload/search.php:876
+#: autoload/search.php:888
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
 
-#: autoload/search.php:880
+#: autoload/search.php:892
 msgid "URL"
 msgstr "URL"
 
-#: autoload/search.php:883
+#: autoload/search.php:895
 msgid "The URL to the external page."
 msgstr "URL:en till den externa sidan."
 
-#: autoload/search.php:959
+#: autoload/search.php:971
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr "Dokument"
+
+#: autoload/theme-mods.php:29 autoload/theme-mods.php:30
+#: autoload/theme-mods.php:61
+msgid "Clone Theme Customizations"
+msgstr "Klona temaanpassningar"
+
+#: autoload/theme-mods.php:52
+msgid "Theme customizations cloned successfully."
+msgstr "Temaanpassningar klonades utan problem."
+
+#: autoload/theme-mods.php:53
+msgid "Theme customizations could not be cloned."
+msgstr "Temaanpassningar kunde inte klonas."
+
+#: autoload/theme-mods.php:63
+msgid "Select a site to clone theme customizations from."
+msgstr "Välj en webbplats att klona temaanpassningar från."
+
+#: autoload/theme-mods.php:68
+msgid "Site"
+msgstr "Webbplats"
+
+#: autoload/theme-mods.php:82
+msgid "Clone"
+msgstr "Klona"
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"
@@ -714,3 +750,6 @@ msgstr "Standard"
 msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
+
+#~ msgid "Alert"
+#~ msgstr "Lavinmeddelande"

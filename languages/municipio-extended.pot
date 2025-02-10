@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-09T17:39:44+00:00\n"
+"POT-Creation-Date: 2025-02-10T17:15:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -128,6 +128,14 @@ msgstr ""
 
 #: autoload/custom-post-types.php:73
 msgid "Enter the plural name for this post type. Select a name with care! Cannot be changed."
+msgstr ""
+
+#: autoload/custom-widgets.php:5
+msgid "Related pages sidebar"
+msgstr ""
+
+#: autoload/custom-widgets.php:6
+msgid "Widget area made for related pages"
 msgstr ""
 
 #: autoload/general.php:11
@@ -321,6 +329,10 @@ msgctxt "Posts Module Display Mode"
 msgid "Cards and list"
 msgstr ""
 
+#: autoload/mod-posts.php:81
+msgid "Välj taxonomier"
+msgstr ""
+
 #: autoload/mxui.php:14
 msgid "Cards"
 msgstr ""
@@ -375,28 +387,32 @@ msgstr ""
 msgid "Section start page"
 msgstr ""
 
-#: autoload/mxui.php:200
+#: autoload/mxui.php:168
 msgid "Display taxonomies"
 msgstr ""
 
-#: autoload/mxui.php:201
+#: autoload/mxui.php:169
 msgid "Select which taxonomies to display for this post type."
 msgstr ""
 
-#: autoload/mxui.php:215
+#: autoload/mxui.php:183
 msgid "Taxonomy placement"
 msgstr ""
 
-#: autoload/mxui.php:216
+#: autoload/mxui.php:184
 msgid "Select where to display taxonomy terms for this post type."
 msgstr ""
 
-#: autoload/mxui.php:223
+#: autoload/mxui.php:191
 msgid "Under header"
 msgstr ""
 
-#: autoload/mxui.php:224
+#: autoload/mxui.php:192
 msgid "After content"
+msgstr ""
+
+#: autoload/mxui.php:208
+msgid "Hero search placeholder"
 msgstr ""
 
 #: autoload/page-apperance.php:10
@@ -523,7 +539,7 @@ msgctxt "Screen reader text for the items list heading on the post type listing 
 msgid "News list"
 msgstr ""
 
-#: autoload/post.php:196
+#: autoload/post.php:195
 msgid "Select a page or post to redirect to."
 msgstr ""
 
@@ -535,105 +551,131 @@ msgstr ""
 msgid "Allow Editors access to Redirection"
 msgstr ""
 
-#: autoload/search.php:560
+#: autoload/search.php:572
 msgid "Search"
 msgstr ""
 
-#: autoload/search.php:564
+#: autoload/search.php:576
 msgid "Keywords"
 msgstr ""
 
-#: autoload/search.php:567
+#: autoload/search.php:579
 msgid "Seperate keywords with commas or new lines."
 msgstr ""
 
-#: autoload/search.php:701
+#: autoload/search.php:713
 msgid "Search settings"
 msgstr ""
 
-#: autoload/search.php:705
+#: autoload/search.php:717
 msgid "Enable “external pages” content type"
 msgstr ""
 
-#: autoload/search.php:713
+#: autoload/search.php:725
 msgid "Check this box to enable the “external pages” content type which you can use to add external pages to the site search."
 msgstr ""
 
-#: autoload/search.php:720
+#: autoload/search.php:732
 msgid "Post type settings"
 msgstr ""
 
-#: autoload/search.php:734
+#: autoload/search.php:746
 msgid "Exclude from search"
 msgstr ""
 
-#: autoload/search.php:745
+#: autoload/search.php:757
 msgid "Boost"
 msgstr ""
 
-#: autoload/search.php:749
+#: autoload/search.php:761
 msgid "The boost factor for this post type."
 msgstr ""
 
-#: autoload/search.php:765
+#: autoload/search.php:777
 msgid "Decay"
 msgstr ""
 
-#: autoload/search.php:769
+#: autoload/search.php:781
 msgid "Whether older posts should have lower scores."
 msgstr ""
 
-#: autoload/search.php:785
+#: autoload/search.php:797
 msgid "Visible fields"
 msgstr ""
 
-#: autoload/search.php:789
+#: autoload/search.php:801
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr ""
 
-#: autoload/search.php:794
+#: autoload/search.php:806
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr ""
 
-#: autoload/search.php:800
+#: autoload/search.php:812
 msgid "Which fields to show or hide in the search results."
 msgstr ""
 
-#: autoload/search.php:838
-#: autoload/search.php:840
+#: autoload/search.php:850
+#: autoload/search.php:852
 msgid "External pages"
 msgstr ""
 
-#: autoload/search.php:841
+#: autoload/search.php:853
 msgid "External page"
 msgstr ""
 
-#: autoload/search.php:854
-#: autoload/search.php:857
+#: autoload/search.php:866
+#: autoload/search.php:869
 msgid "Content type"
 msgstr ""
 
-#: autoload/search.php:856
+#: autoload/search.php:868
 msgid "Content types"
 msgstr ""
 
-#: autoload/search.php:876
+#: autoload/search.php:888
 msgid "External page attributes"
 msgstr ""
 
-#: autoload/search.php:880
+#: autoload/search.php:892
 msgid "URL"
 msgstr ""
 
-#: autoload/search.php:883
+#: autoload/search.php:895
 msgid "The URL to the external page."
 msgstr ""
 
-#: autoload/search.php:959
+#: autoload/search.php:971
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
+msgstr ""
+
+#: autoload/theme-mods.php:29
+#: autoload/theme-mods.php:30
+#: autoload/theme-mods.php:61
+msgid "Clone Theme Customizations"
+msgstr ""
+
+#: autoload/theme-mods.php:52
+msgid "Theme customizations cloned successfully."
+msgstr ""
+
+#: autoload/theme-mods.php:53
+msgid "Theme customizations could not be cloned."
+msgstr ""
+
+#: autoload/theme-mods.php:63
+msgid "Select a site to clone theme customizations from."
+msgstr ""
+
+#: autoload/theme-mods.php:68
+msgid "Site"
+msgstr ""
+
+#: autoload/theme-mods.php:82
+msgid "Clone"
 msgstr ""
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
