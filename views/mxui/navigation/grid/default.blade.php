@@ -3,7 +3,7 @@
     <li class="p-0" style="--color-custom: {!! $item['color'] ?: 'var(--color-primary)' !!}">
       <a href="{{ $item['href'] }}" class="grid group grid-cols-[max-content_1fr] gap-4 items-center hover:text-inherit visited:hover:text-inherit">
         <div class="self-start">
-          <span class="bg-custom text-contrast-custom rounded-full size-[1.5em] grid items-center justify-center text-[40px] group-hover:bg-custom-tint-100 group-active:bg-custom-shade-100 transition-colors">
+          <span class="bg-custom text-white rounded-full size-[1.5em] grid items-center justify-center text-[40px] group-hover:bg-custom-tint-100 group-active:bg-custom-shade-100 transition-colors">
             {{ mx_get_icon(($item['icon']['name'] ?? $item['icon']) ?: 'arrow_forward', [
                 'classList' => ['block'],
             ]) }}
