@@ -107,7 +107,7 @@ add_action("admin_post_mx_import_theme_mods_action", function () {
   $redirect_url = add_query_arg(
     "form_status",
     $success ? "success" : "error",
-    admin_url("themes.php?page=mx-import-theme-mods"),
+    admin_url("tools.php?page=mx-import-theme-mods"),
   );
   wp_redirect($redirect_url);
   exit();
