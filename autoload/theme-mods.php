@@ -115,17 +115,29 @@ function mx_render_theme_mods_submenu_page() {
 add_action("admin_post_mx_import_theme_mods_action", function () {
   $site_id = $_POST["site_id"];
   $site_url = get_site_url($site_id);
-  $theme_mods = file_get_contents(
+  $response = wp_remote_get(
     $site_url . "/wp-admin/admin-ajax.php?action=get_theme_mods",
+    [
+      "sslverify" => false,
+    ],
   );
-  $theme_mods = json_decode($theme_mods, true);
-  if ($_POST["debug"]) {
-    echo "<pre>";
-    print_r($theme_mods);
-    echo "</pre>";
-    exit();
+  if (is_wp_error($response)) {
+    if ($_POST["debug"]) {
+      echo "<pre>", var_export($response->get_error_messages(), true), "</pre>";
+      exit();
+    }
+    $success = false;
+  } else {
+    if ($_POST["debug"]) {
+      echo "<pre>", var_export($response["body"], true), "</pre>";
+    }
+    $theme_mods = json_decode($response["body"], true);
+    if ($_POST["debug"]) {
+      echo "<pre>", var_export($theme_mods, true), "</pre>";
+      exit();
+    }
   }
-  if (!$theme_mods) {
+  if (empty($theme_mods)) {
     $success = false;
   } else {
     mx_import_theme_mods($theme_mods);
