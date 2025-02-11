@@ -65,24 +65,45 @@ function mx_render_theme_mods_submenu_page() {
         "municipio-extended",
       ); ?></p>
       <input type="hidden" name="action" value="mx_import_theme_mods_action">
-      <label for="site_id"><?php _e("Site", "municipio-extended"); ?></label>
-      <select name="site_id" id="site_id">
-        <?php
-        $sites = get_sites();
-        foreach ($sites as $site):
+      <table class="form-table">
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label for="site_id"><?php _e(
+                "Site",
+                "municipio-extended",
+              ); ?></label>
+            </th>
+            <td>
+              <select name="site_id" id="site_id">
+                <?php
+                $sites = get_sites();
+                foreach ($sites as $site):
 
-          $site_id = $site->blog_id;
-          $site_name = get_blog_option($site_id, "blogname");
-          ?>
-          <option value="<?php echo $site_id; ?>"><?php echo $site_name; ?></option>
-          <?php
-        endforeach;
-        ?>
-      </select>
-      <button type="submit" class="button button-primary"><?php _e(
-        "Clone",
-        "municipio-extended",
-      ); ?></button>
+                  $site_id = $site->blog_id;
+                  $site_name = get_blog_option($site_id, "blogname");
+                  ?>
+                  <option value="<?php echo $site_id; ?>"><?php echo $site_name; ?></option>
+                  <?php
+                endforeach;
+                ?>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <label for="debug"><?php _e(
+                "Debug",
+                "municipio-extended",
+              ); ?></label>
+            </th>
+            <td>
+              <input type="checkbox" name="debug" id="debug">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <?php submit_button(__("Clone", "municipio-extended")); ?>
     </form>
   </div>
   <?php
@@ -98,6 +119,12 @@ add_action("admin_post_mx_import_theme_mods_action", function () {
     $site_url . "/wp-admin/admin-ajax.php?action=get_theme_mods",
   );
   $theme_mods = json_decode($theme_mods, true);
+  if ($_POST["debug"]) {
+    echo "<pre>";
+    print_r($theme_mods);
+    echo "</pre>";
+    exit();
+  }
   if (!$theme_mods) {
     $success = false;
   } else {
