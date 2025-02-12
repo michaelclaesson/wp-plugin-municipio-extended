@@ -115,15 +115,16 @@ function mx_render_theme_mods_submenu_page() {
 add_action("admin_post_mx_import_theme_mods_action", function () {
   $site_id = $_POST["site_id"];
   $site_url = get_site_url($site_id);
+  if (defined("DISABLE_LOOPBACK_HTTPS") && constant("DISABLE_LOOPBACK_HTTPS")) {
+    $site_url = preg_replace("/^https:/", "http:", $site_url);
+  }
   if ($_POST["debug"]) {
     echo "<pre>", var_export($site_url, true), "</pre>";
   }
-  $response = wp_remote_get(
-    $site_url . "/wp-admin/admin-ajax.php?action=get_theme_mods",
-    [
-      "sslverify" => false,
-    ],
-  );
+  $url = $site_url . "/wp-admin/admin-ajax.php?action=get_theme_mods";
+  $response = wp_remote_get($url, [
+    "sslverify" => false,
+  ]);
   if (is_wp_error($response)) {
     if ($_POST["debug"]) {
       echo "<pre>", var_export($response->get_error_messages(), true), "</pre>";
