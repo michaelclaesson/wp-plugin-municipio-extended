@@ -79,7 +79,8 @@ $tab_menu_placing = get_theme_mod("tab_menu_placing");
                 'u-width--auto',
                 'u-display--none@lg',
                 'u-display--none@xl',
-                'u-print-display--none'
+                'u-print-display--none',
+                'o-container'
             ]
         ]
     )

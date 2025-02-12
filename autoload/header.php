@@ -99,21 +99,18 @@ add_filter("Municipio/Hook/headerSearchFormClassList", function ($classList) {
     Customizer::KIRKI_CONFIG,
     "header_breakpoint",
   );
-  // search-form u-print-display--none u-display--flex@lg u-display--flex@xl u-display--none@xs u-display--none@sm u-display--none@md
+
   $classList = array_diff($classList, [
     "u-display--none@xs",
     "u-display--none@sm",
     "u-display--none@md",
+    "u-display--none@lg",
+    "u-display--none@xl",
   ]);
   $class = clsx($classList, [
-    "u-display--none@xs" => in_array($header_breakpoint, [
-      "sm",
-      "md",
-      "lg",
-      "xl",
-    ]),
-    "u-display--none@sm" => in_array($header_breakpoint, ["md", "lg", "xl"]),
-    "u-display--none@md" => in_array($header_breakpoint, ["lg", "xl"]),
+    "u-display--none@xs" => true,
+    "u-display--none@sm" => true,
+    "u-display--none@md" => true,
     "u-display--none@lg" => in_array($header_breakpoint, ["xl"]),
   ]);
   return explode(" ", $class);
