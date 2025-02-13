@@ -1,4 +1,4 @@
-<ul class="px-0 space-y-0 flex flex-wrap gap-4">
+<ul class="px-0 space-y-0 flex flex-wrap gap-4 contentless:hidden">
   @foreach ($items as $item)
     <li class="">
       @component('mxui.button', [
@@ -18,4 +18,17 @@
       @endcomponent
     </li>
   @endforeach
+  <template>
+    <li class="">
+      @component('mxui.button', [
+          'href' => '#',
+          // 'variant' => $item['buttonVariant'] ?? 'default',
+          'attributes' => [
+              'slot' => 'link',
+          ],
+      ])
+        <span class="text-base flex-grow flex-shrink" slot="title"></span>
+      @endcomponent
+    </li>
+  </template>
 </ul>

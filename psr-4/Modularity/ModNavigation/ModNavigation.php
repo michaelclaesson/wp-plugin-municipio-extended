@@ -137,7 +137,7 @@ class ModNavigation extends MxModule {
       case "menu":
         return $this->getMenuItems($depth);
       default:
-        return [];
+        return $this->getManualItems();
     }
   }
 
