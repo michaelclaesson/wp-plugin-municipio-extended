@@ -1,4 +1,4 @@
-<div class="bg-primary">
+<div class="bg-primary contentless:hidden">
   <div class="o-container">
     <ul class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,7rem),1fr))] space-y-0 mx-auto justify-center">
       @foreach($items as $item)
@@ -15,6 +15,16 @@
           </a>
         </li>
       @endforeach
+        <template>
+          <li class="">
+            <a href="#" class="text-primary-contrasting hover:text-primary-contrasting flex items-start visited:hover:text-primary-contrasting py-5 px-2 hover:bg-primary-dark transition-colors gap-x-2" slot="link">
+              <span class="text-[13px] bg-white text-primary rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">
+                {{ mx_get_icon('arrow_forward_ios') }}
+              </span>
+              <div class="text-md text-left underline min-w-0" slot="title"></div>
+            </a>
+          </li>
+        </template>
     </ul>
   </div>
 </div>
