@@ -66,7 +66,7 @@ add_filter("redirection_role", function () {
       "redirection_link",
       "Redirection",
       "read",
-      "&#47;wp-admin/tools.php?page=redirection.php",
+      "tools.php?page=redirection.php",
       "",
       "dashicons-redo",
       25,
@@ -106,6 +106,7 @@ add_filter('admin_init', function() {
       'edit_published_posts',
       'publish_posts',
       'edit_pages',
+      'edit_posts',
       'read',
       'level_7',
       'level_6',
@@ -138,6 +139,7 @@ add_filter('admin_init', function() {
       'delete_module',
       'edit_theme_options',
       'manage_options',
+      'nestedpages',
       'gform_full_access',
     );
     foreach($allowedCapabilities as $key=>$cap) {
@@ -155,6 +157,7 @@ add_filter('admin_init', function() {
       'media-new.php',
       // Pages
       'nestedpages',
+      'admin.php?page=nestedpages',
       'edit.php?post_type=page',
       'post-new.php?post_type=page',
       'options.php?page=modularity-editor&id=single-page',
@@ -172,10 +175,10 @@ add_filter('admin_init', function() {
       current_user_can("editor") &&
       get_field("editor_access_to_redirection", "options") == 1
     ) {
-      $allowedMenuItems[] = '&#47;wp-admin/tools.php?page=redirection.php';
+      $allowedMenuItems[] = 'tools.php?page=redirection.php';
     }
     foreach($menu as $key=>$menuItem) {
-      if(!in_array($menuItem[2], $allowedMenuItems) || !in_array($menuItem[1], $allowedCapabilities)) {
+      if(!in_array($menuItem[1], $allowedCapabilities) || !in_array($menuItem[2], $allowedMenuItems)) {
         unset($menu[$key]);
       } else {
         if(isset($submenu[$menuItem[2]])) {
