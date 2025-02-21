@@ -1,7 +1,7 @@
 <!-- mxui.navigation.inline -->
 <div class="bg-primary contentless:hidden">
   <div class="o-container">
-      <ul class="px-0 space-y-0 flex flex-wrap gap-4 justify-center">
+      <ul class="px-0 space-y-0 flex flex-wrap gap-4 justify-start md:justify-center">
       @foreach($items as $item)
         <li class="contents">
           <a href="{{ $item['href'] }}" class="text-primary-contrasting hover:text-primary-contrasting grid group grid-cols-[max-content_1fr] gap-2 visited:hover:text-primary-contrasting py-5 px-2 hover:bg-primary-dark transition-colors gap-x-2">
