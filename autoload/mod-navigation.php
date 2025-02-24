@@ -83,6 +83,11 @@ add_action("acf/init", function () {
             "Navigation Module Format Choice",
             "municipio-extended",
           ),
+          "inline" => _x(
+            "Inline",
+            "Navigation Module Format Choice",
+            "municipio-extended",
+          ),
         ],
       ],
       [
@@ -295,6 +300,8 @@ add_action("acf/init", function () {
   ]);
 });
 
-add_filter("acf/load_field/key=field_mod_navigation_item_icon", function ($field) {
+add_filter("acf/load_field/key=field_mod_navigation_item_icon", function (
+  $field,
+) {
   return mx_add_icons_list($field);
 });

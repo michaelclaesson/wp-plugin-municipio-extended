@@ -35,5 +35,9 @@
     @case ('buttons')
       @include('mxui.navigation.buttons')
     @break
+
+    @case ('inline')
+      @include('mxui.navigation.inline')
+    @break
   @endswitch
 </div>
