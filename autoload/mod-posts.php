@@ -185,3 +185,16 @@ add_action(
   },
   20,
 );
+
+/**
+ * Removes HTML from excerpts
+ */
+add_filter("Municipio/Helper/Post/postObject", function ($postObject) {
+  if ($postObject->excerpt_short) {
+    $postObject->excerpt_short = strip_tags($postObject->excerpt_short);
+  }
+  if ($postObject->excerpt_shorter) {
+    $postObject->excerpt_shorter = strip_tags($postObject->excerpt_shorter);
+  }
+  return $postObject;
+});
