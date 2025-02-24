@@ -31,14 +31,6 @@ add_action("init", function () {
     "priority" => 170,
   ]);
 
-  Kirki::add_field(Customizer::KIRKI_CONFIG, [
-    "section" => $section_id,
-    "type" => "checkbox",
-    "settings" => "segment_mxui_enabled",
-    "label" => __("Use MXUI version", "municipio-extended"),
-    "default" => false,
-  ]);
-
   $section_id = "municipio_customizer_section_header";
 
   Kirki::add_field(Customizer::KIRKI_CONFIG, [
