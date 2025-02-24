@@ -169,10 +169,9 @@ class Segment extends MxBaseController {
   public function init() {
     $this->data["useHbg"] =
       $this->data["useHbg"] ??
-      !(
-        $this->getKirkiOption("segment_mxui_enabled") ||
-        $this->hasContext("sections.card")
-      );
+      (!$this->getKirkiOption("segment_mxui_enabled") &&
+        !$this->hasContext("sections.card")) ||
+        $this->hasContext("module.sections.full");
     if ($this->data["useHbg"]) {
       return $this->originalInit();
     }
