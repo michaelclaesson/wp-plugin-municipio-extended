@@ -20,7 +20,7 @@
   <div class="py-4 flex gap-3 o-container">
     @icon([
         'icon' => $icon,
-        'classList' => ['block text-[1.5rem] leading-none flex-none opacity-70'],
+        'classList' => ['block', 'text-[1.5rem]', 'leading-none', 'flex-none', 'opacity-70'],
         'aria-hidden' => 'true'
     ])
     @endicon
