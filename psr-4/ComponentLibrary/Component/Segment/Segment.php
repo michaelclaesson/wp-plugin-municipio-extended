@@ -169,8 +169,7 @@ class Segment extends MxBaseController {
   public function init() {
     $this->data["useHbg"] =
       $this->data["useHbg"] ??
-      !$this->hasContext("sections.card") ||
-        $this->hasContext("module.sections.full") ||
+      $this->hasContext("module.sections.full") ||
         $this->hasContext("module.sections.split");
     if ($this->data["useHbg"]) {
       return $this->originalInit();
