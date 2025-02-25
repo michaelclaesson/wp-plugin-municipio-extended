@@ -1,7 +1,7 @@
 <!-- mxui.taglist -->
 @if (!empty($tags))
   <ul {{ mx_attrs([
-      'class' => ['flex flex-wrap gap-3 space-y-0', $class],
+      'class' => ['flex flex-wrap gap-[.75em] space-y-0', $class],
       'id' => $uid,
   ]) }}>
     @foreach ($tags as $tag)
@@ -11,7 +11,10 @@
             'mxui.clickable',
             array_merge($tag, [
                 'classList' => [
-                    'block bg-lighter interactive:hover:bg-light rounded font-medium py-[.5em] px-[.75em]',
+                    'block rounded font-medium py-[.5em] px-[.75em]',
+                    $backdrop ?? false
+                        ? 'bg-[#0009] interactive:hover:bg-[#000c] backdrop-blur'
+                        : 'bg-lighter interactive:hover:bg-light',
                     $tag['color'] ? 'border-custom border-l-[.75em]' : null,
                 ],
             ]))

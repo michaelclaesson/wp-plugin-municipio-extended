@@ -86,6 +86,11 @@ class Tags extends MxBaseController {
 
     extract($this->data);
 
+    if ($this->hasContext("block")) {
+      $this->data["backdrop"] ??= true;
+      $this->data["classList"][] = "text-sm";
+    }
+
     if ($this->hasContext("article")) {
       $this->data["classList"][] = "mt-5";
     }
