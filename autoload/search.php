@@ -673,7 +673,7 @@ add_action(
 
     remove_submenu_page("elasticpress", "edit.php?post_type=ep-pointer");
 
-    remove_submenu_page("elasticpress", "elasticpress-synonyms");
+    // remove_submenu_page("elasticpress", "elasticpress-synonyms");
   },
   60,
 );
