@@ -24,12 +24,7 @@ add_action(
 
 add_filter("Modularity/Display/mod-section-full/viewData", function ($data) {
   if (!empty($data["meta"]["text"][0])) {
-    $rawText = $data["meta"]["text"][0];
-    $processedText = apply_filters(
-      "the_content",
-      do_shortcode(trim(mx_replace_builtin_classes($rawText))),
-    );
-    $data["text"] = $processedText;
+    $data["text"] = mx_process_content($data["meta"]["text"][0]);
   }
   return $data;
 });

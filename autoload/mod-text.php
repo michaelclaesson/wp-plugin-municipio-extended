@@ -2,10 +2,9 @@
 
 add_filter("Modularity/Display/mod-text/viewData", function ($data) {
   if (!empty($data["post_content"])) {
-    $data["post_content"] = apply_filters(
-      "the_content",
-      mx_replace_builtin_classes($data["post_content"]),
-    );
+    $data["post_content"] = mx_process_content($data["post_content"], [
+      "wpautop" => true,
+    ]);
   }
   return $data;
 });
@@ -60,4 +59,18 @@ function mx_replace_builtin_classes($content) {
     ],
     $content,
   );
+}
+
+function mx_process_content($content, $options = []) {
+  if (!($options["wpautop"] ?? false)) {
+    remove_filter("the_content", "wpautop");
+  }
+  $content = mx_replace_builtin_classes($content);
+  $content = trim($content);
+  $content = do_shortcode($content);
+  $content = apply_filters("the_content", $content);
+  if (!($options["wpautop"] ?? false)) {
+    add_filter("the_content", "wpautop");
+  }
+  return $content;
 }
