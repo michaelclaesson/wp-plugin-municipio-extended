@@ -2,9 +2,8 @@
 
 add_filter("Modularity/Display/mod-text/viewData", function ($data) {
   if (!empty($data["post_content"])) {
-    $data["post_content"] = mx_process_content($data["post_content"], [
-      "wpautop" => true,
-    ]);
+    $data["post_content"] = wpautop($data["post_content"]);
+    $data["post_content"] = do_shortcode($data["post_content"]);
   }
   return $data;
 });

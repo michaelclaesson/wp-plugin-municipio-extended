@@ -394,3 +394,24 @@ body {
   right: auto;
   width: calc(min(100cqw, 1920px));
 }
+
+/* Mod text */
+.modularity-mod-text a img.alignleft {
+  float: left;
+  margin: 5px 20px 5px 0;
+}
+
+.modularity-mod-text a img.alignright {
+  float: right;
+  margin: 5px 0 5px 20px;
+}
+
+.modularity-mod-text a img.alignnone {
+  margin: 0;
+}
+
+.modularity-mod-text a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
