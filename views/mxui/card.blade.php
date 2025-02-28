@@ -13,7 +13,7 @@ Left to handle:
 @php
   $asSubgrid ??= false;
   $classList ??= null;
-  $content ??= null;
+  $content ??= $slot ?? null;
   $date ??= null;
   $dateBadge ??= false;
   $heading ??= null;
@@ -39,16 +39,16 @@ Left to handle:
               'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
               'w-full',
               'overflow-hidden' => !$overflowVisible,
-
+  
               // In some places (e.g. contact module in list mode), headers are added via $content, so we cannot style them in-place. Hence the weird selectors here.
               '[&_.c-card\_\_header]:bg-primary [&_.c-card\_\_header]:text-primary-contrasting' => $modifier == 'panel',
               '[&_.c-card\_\_header]:border-b-[length:calc(var(--base,8px)/2)] [&_.c-card\_\_header]:border-b-[color:var(--color-primary)]' =>
                   $modifier == 'accented',
-
+  
               // Replacement for `.c-card .c-collection { border: none; }`
               '[&_.c-collection]:border-none',
               '@container',
-
+  
               $classList,
           ],
       ],
@@ -106,8 +106,8 @@ Left to handle:
               'bg-secondary first:last:mb-0',
               'overflow-hidden border-none',
               [
-                'aspect-video' => $imageAspectRatio == 'video',
-                'aspect-square' => $imageAspectRatio == 'square',
+                  'aspect-video' => $imageAspectRatio == 'video',
+                  'aspect-square' => $imageAspectRatio == 'square',
               ],
           ],
       ]) }}>
@@ -191,9 +191,9 @@ Left to handle:
         ],
     ]) }}>
     @component('mxui.taglist', [
-          'tags' => $tags,
-          'classList' => [],
-      ])
+        'tags' => $tags,
+        'classList' => [],
+    ])
     @endcomponent
   </div>
 @endif
