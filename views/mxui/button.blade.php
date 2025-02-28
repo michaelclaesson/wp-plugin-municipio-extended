@@ -6,7 +6,7 @@
         'transition-colors',
         'font-[number:var(--button-font-weight,var(--font-weight-button,500))]',
         [
-            'primary' => 'bg-primary hover:bg-layer text-primary-contrasting hover:text-black',
+            'primary' => 'bg-primary hover:bg-primary-dark text-primary-contrasting',
             'secondary' =>
                 'bg-secondary hover:bg-primary text-secondary-contrasting hover:text-primary-contrasting',
         ][$variant ?? 'default'] ?? 'bg-layer hover:bg-primary hover:text-primary-contrasting',
