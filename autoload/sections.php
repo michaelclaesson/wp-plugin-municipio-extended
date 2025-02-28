@@ -28,3 +28,21 @@ add_filter("Modularity/Display/mod-section-full/viewData", function ($data) {
   }
   return $data;
 });
+
+/**
+ * Enables full wysiwyg editor for all Modularity Sections modules
+ */
+add_filter("acf/load_field/key=field_63ff1e7124e0e", function ($field) {
+  $field["type"] = "wysiwyg";
+  $field["toolbar"] = "full";
+  return $field;
+});
+add_filter("acf/load_field/key=field_6154339333497", function ($field) {
+  $field["toolbar"] = "full";
+  return $field;
+});
+add_filter("acf/load_field/key=field_60d1a8040b829", function ($field) {
+  $field["type"] = "wysiwyg";
+  $field["toolbar"] = "full";
+  return $field;
+});
