@@ -55,16 +55,50 @@ function show_admin_notice() {
   echo "<div class='$class notice is-dismissible'><p>$message</p></div>";
 }
 
+add_action("wp_ajax_mx_import_theme_mods_export", function () {
+  $mods = get_theme_mods();
+  $json = json_encode($mods);
+  header("Content-Type: application/json");
+  header("Content-Disposition: attachment; filename=theme-mods.json");
+  echo $json;
+  exit();
+});
+
+// Handler for import
+add_action("admin_post_mx_import_theme_mods_import", function () {
+  if (!isset($_FILES["file"])) {
+    wp_die(__("No file uploaded.", "municipio-extended"));
+  }
+  $file = $_FILES["file"];
+  if ($file["error"] !== UPLOAD_ERR_OK) {
+    wp_die(__("Error uploading file.", "municipio-extended"));
+  }
+  $json = file_get_contents($file["tmp_name"]);
+  $mods = json_decode($json, true);
+  if (empty($mods)) {
+    wp_die(__("Invalid JSON file.", "municipio-extended"));
+  }
+  mx_import_theme_mods($mods);
+  $redirect_url = add_query_arg(
+    "form_status",
+    "success",
+    admin_url("tools.php?page=mx-import-theme-mods"),
+  );
+  wp_redirect($redirect_url);
+  exit();
+});
+
 function mx_render_theme_mods_submenu_page() {
   ?>
   <div class="wrap">
     <h1><?php _e("Clone Theme Customizations", "municipio-extended"); ?></h1>
+    <h2><?php _e("Clone from other site", "municipio-extended"); ?></h2>
     <form action="admin-post.php" method="post" class="wp-form">
       <p><?php _e(
         "Select a site to clone theme customizations from.",
         "municipio-extended",
       ); ?></p>
-      <input type="hidden" name="action" value="mx_import_theme_mods_action">
+      <input type="hidden" name="action" value="mx_import_theme_mods_clone">
       <table class="form-table">
         <tbody>
           <tr>
@@ -105,6 +139,40 @@ function mx_render_theme_mods_submenu_page() {
       </table>
       <?php submit_button(__("Clone", "municipio-extended")); ?>
     </form>
+    <h2><?php _e("Export customizations", "municipio-extended"); ?></h2>
+      <p><?php _e(
+        "Export theme customizations to a JSON file.",
+        "municipio-extended",
+      ); ?></p>
+      <p class="submit">
+        <a href="admin-ajax.php?action=mx_import_theme_mods_export" class="button button-primary">
+          <?php _e("Export", "municipio-extended"); ?>
+        </a>
+      </p>
+    <h2><?php _e("Import customizations", "municipio-extended"); ?></h2>
+    <form action="admin-post.php" method="post" class="wp-form" enctype="multipart/form-data">
+      <input type="hidden" name="action" value="mx_import_theme_mods_import">
+      <p><?php _e(
+        "Import theme customizations form a JSON file.",
+        "municipio-extended",
+      ); ?></p>
+      <table class="form-table">
+        <tbody>
+          <tr>
+            <th scope="row">
+              <label for="mx-theme-mods-import-file"><?php _e(
+                "File",
+                "municipio-extended",
+              ); ?></label>
+            </th>
+            <td>
+              <input type="file" name="file" id="mx-theme-mods-import-file" accept=".json">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <?php submit_button(__("Import", "municipio-extended")); ?>
+    </form>
   </div>
   <?php
 }
@@ -112,7 +180,7 @@ function mx_render_theme_mods_submenu_page() {
 /**
  * Imports theme mods from another site on the network.
  */
-add_action("admin_post_mx_import_theme_mods_action", function () {
+add_action("admin_post_mx_import_theme_mods_clone", function () {
   $site_id = $_POST["site_id"];
   $site_url = get_site_url($site_id);
   if (defined("DISABLE_LOOPBACK_HTTPS") && constant("DISABLE_LOOPBACK_HTTPS")) {
