@@ -82,7 +82,7 @@ add_filter("Municipio/Helper/Post/postObject", function ($postObject) {
 add_filter(
   "mx/meta_field/label",
   function ($label, $field) {
-    switch ($field->field) {
+    switch ($field) {
       case "application_end_date":
         return _x(
           "Application end date",
