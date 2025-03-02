@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-02-10T17:15:25+00:00\n"
-"PO-Revision-Date: 2025-02-10 18:16+0100\n"
+"POT-Creation-Date: 2025-03-02T16:17:15+00:00\n"
+"PO-Revision-Date: 2025-03-02 17:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -142,6 +142,22 @@ msgstr ""
 msgid "Widget area made for related pages"
 msgstr ""
 
+#: autoload/custom-widgets.php:17
+msgid "Under hero sidebar"
+msgstr ""
+
+#: autoload/custom-widgets.php:18
+msgid "Widget area made for under hero"
+msgstr ""
+
+#: autoload/editor-access.php:13
+msgid "Redirection"
+msgstr "Redirection"
+
+#: autoload/editor-access.php:17
+msgid "Allow Editors access to Redirection"
+msgstr "Tillåt redaktörer åtkomst till Redirection"
+
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
 msgstr "Visa textinnehåll för One Page-mall"
@@ -178,6 +194,20 @@ msgstr "Stor"
 msgctxt "Screen Breakpoint"
 msgid "Extra large"
 msgstr "Extra stor"
+
+#: autoload/job-listings.php:30
+msgid "Table"
+msgstr "Tabell"
+
+#: autoload/job-listings.php:87
+msgctxt "Post Meta Field Label"
+msgid "Application end date"
+msgstr "Ansök senast"
+
+#: autoload/job-listings.php:93
+msgctxt "Post Meta Field Label"
+msgid "Publish start date"
+msgstr "Publicerad"
 
 #: autoload/migrations.php:170
 msgctxt "Admin Page Title"
@@ -253,72 +283,77 @@ msgctxt "Navigation Module Format Choice"
 msgid "Buttons"
 msgstr "Knappar"
 
-#: autoload/mod-navigation.php:90
+#: autoload/mod-navigation.php:86
+msgctxt "Navigation Module Format Choice"
+msgid "Inline"
+msgstr ""
+
+#: autoload/mod-navigation.php:95
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr "Källa"
 
-#: autoload/mod-navigation.php:102
+#: autoload/mod-navigation.php:107
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr "Underordnade sidor"
 
-#: autoload/mod-navigation.php:107
+#: autoload/mod-navigation.php:112
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr "Syskonsidor"
 
-#: autoload/mod-navigation.php:112
+#: autoload/mod-navigation.php:117
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:117
+#: autoload/mod-navigation.php:122
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr "Manuellt utvalda"
 
-#: autoload/mod-navigation.php:126
+#: autoload/mod-navigation.php:131
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:150
+#: autoload/mod-navigation.php:155
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr "Objekt"
 
-#: autoload/mod-navigation.php:171
+#: autoload/mod-navigation.php:176
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr "Länk"
 
-#: autoload/mod-navigation.php:183
+#: autoload/mod-navigation.php:188
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr "Färg"
 
-#: autoload/mod-navigation.php:203
+#: autoload/mod-navigation.php:208
 msgctxt "Navigation Module Field Label"
 msgid "Variant"
 msgstr "Variant"
 
-#: autoload/mod-navigation.php:211
+#: autoload/mod-navigation.php:216
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Primary"
 msgstr "Primär"
 
-#: autoload/mod-navigation.php:216
+#: autoload/mod-navigation.php:221
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Secondary"
 msgstr "Sekundär"
 
-#: autoload/mod-navigation.php:221
+#: autoload/mod-navigation.php:226
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Default"
 msgstr "Standard"
 
-#: autoload/mod-navigation.php:241
+#: autoload/mod-navigation.php:246
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr "Ikon"
@@ -341,7 +376,7 @@ msgstr ""
 msgid "Cards"
 msgstr "Kort"
 
-#: autoload/mxui.php:22 autoload/mxui.php:38
+#: autoload/mxui.php:22
 msgid "Use MXUI version"
 msgstr "Använd MXUI-version"
 
@@ -349,71 +384,71 @@ msgstr "Använd MXUI-version"
 msgid "Segments"
 msgstr "Segment"
 
-#: autoload/mxui.php:48
+#: autoload/mxui.php:40
 msgid "Style for main menu"
 msgstr "Stil för huvudmenyn"
 
-#: autoload/mxui.php:52 autoload/mxui.php:66
+#: autoload/mxui.php:44 autoload/mxui.php:58
 msgid "Standard"
 msgstr "Standard"
 
-#: autoload/mxui.php:53
+#: autoload/mxui.php:45
 msgid "Compact"
 msgstr "Kompakt"
 
-#: autoload/mxui.php:62
+#: autoload/mxui.php:54
 msgid "Placing for tab menu"
 msgstr "Tabbmeny – Placering"
 
-#: autoload/mxui.php:67
+#: autoload/mxui.php:59
 msgid "Above"
 msgstr "På egen rad"
 
-#: autoload/mxui.php:76
+#: autoload/mxui.php:68
 msgid "Tab menu button size"
 msgstr "Tabbmeny – Knappstorlek"
 
-#: autoload/mxui.php:80
+#: autoload/mxui.php:72
 msgid "Small"
 msgstr "Liten"
 
-#: autoload/mxui.php:81
+#: autoload/mxui.php:73
 msgid "Medium"
 msgstr "Mellan"
 
-#: autoload/mxui.php:82
+#: autoload/mxui.php:74
 msgid "Large"
 msgstr "Stor"
 
-#: autoload/mxui.php:93
+#: autoload/mxui.php:85
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
-#: autoload/mxui.php:168
+#: autoload/mxui.php:160
 msgid "Display taxonomies"
 msgstr "Visa taxonomier"
 
-#: autoload/mxui.php:169
+#: autoload/mxui.php:161
 msgid "Select which taxonomies to display for this post type."
 msgstr "Välj vilka taxonomier som ska visas för den här inläggstypen."
 
-#: autoload/mxui.php:183
+#: autoload/mxui.php:175
 msgid "Taxonomy placement"
 msgstr "Taxonomi placering"
 
-#: autoload/mxui.php:184
+#: autoload/mxui.php:176
 msgid "Select where to display taxonomy terms for this post type."
 msgstr "Välj var du vill visa taxonomitermer för den här inläggstypen."
 
-#: autoload/mxui.php:191
+#: autoload/mxui.php:183
 msgid "Under header"
 msgstr "Under rubriken"
 
-#: autoload/mxui.php:192
+#: autoload/mxui.php:184
 msgid "After content"
 msgstr "Efter innehåll"
 
-#: autoload/mxui.php:208
+#: autoload/mxui.php:200
 msgid "Hero search placeholder"
 msgstr ""
 
@@ -556,14 +591,6 @@ msgstr "Nyhetslista"
 msgid "Select a page or post to redirect to."
 msgstr "Välj en sida eller ett inlägg att omdirigera till."
 
-#: autoload/redirection-permissions.php:13
-msgid "Redirection"
-msgstr "Redirection"
-
-#: autoload/redirection-permissions.php:17
-msgid "Allow Editors access to Redirection"
-msgstr "Tillåt redaktörer åtkomst till Redirection"
-
 #: autoload/search.php:572
 msgid "Search"
 msgstr "Sök"
@@ -684,11 +711,15 @@ msgstr "Temaanpassningar kunde inte klonas."
 msgid "Select a site to clone theme customizations from."
 msgstr "Välj en webbplats att klona temaanpassningar från."
 
-#: autoload/theme-mods.php:68
+#: autoload/theme-mods.php:72
 msgid "Site"
 msgstr "Webbplats"
 
-#: autoload/theme-mods.php:82
+#: autoload/theme-mods.php:95
+msgid "Debug"
+msgstr ""
+
+#: autoload/theme-mods.php:106
 msgid "Clone"
 msgstr "Klona"
 
