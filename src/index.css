@@ -424,3 +424,11 @@ body {
 ul li::marker {
   color: inherit;
 }
+
+#site-footer {
+  margin-top: 4rem;
+}
+.bottom-sidebar {
+  margin-top: 4rem;
+  margin-bottom: -4rem;
+}
