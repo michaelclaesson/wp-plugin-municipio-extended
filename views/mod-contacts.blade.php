@@ -1,4 +1,4 @@
-<div class="tailwind content">
+<div class="tailwind contents">
   @if (!$hideTitle && !empty($postTitle))
     @typography([
         'element' => 'h2',
@@ -22,14 +22,15 @@
                 ' ' .
                 (isset($contact['last_name']) && !empty($contact['last_name']) ? $contact['last_name'] : ''),
             'wrapContent' => true,
-            'image' => (!empty($contact['image']) && is_array($contact['image']))
-                ? array_merge($contact['image'], [
-                    'src' => $contact['image']['url'],
-                    'alt' => $contact['image']['alt'],
-                    'classList' => ['min-h-96'],
-                    'size' => ['large'],
-                ])
-                : [],
+            'image' =>
+                !empty($contact['image']) && is_array($contact['image'])
+                    ? array_merge($contact['image'], [
+                        'src' => $contact['image']['url'],
+                        'alt' => $contact['image']['alt'],
+                        'classList' => ['min-h-96'],
+                        'size' => ['large'],
+                    ])
+                    : [],
             'imageAspectRatio' => 'square',
             'overflowVisible' => true,
         ])
