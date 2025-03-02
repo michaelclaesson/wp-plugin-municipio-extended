@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-03-02T16:17:15+00:00\n"
-"PO-Revision-Date: 2025-03-02 17:18+0100\n"
+"POT-Creation-Date: 2025-03-02T18:18:44+00:00\n"
+"PO-Revision-Date: 2025-03-02 19:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -136,11 +136,11 @@ msgstr ""
 
 #: autoload/custom-widgets.php:5
 msgid "Related pages sidebar"
-msgstr ""
+msgstr "Yta för relaterade sidor"
 
 #: autoload/custom-widgets.php:6
 msgid "Widget area made for related pages"
-msgstr ""
+msgstr "Widgetområde för relaterade sidor"
 
 #: autoload/custom-widgets.php:17
 msgid "Under hero sidebar"
@@ -286,7 +286,7 @@ msgstr "Knappar"
 #: autoload/mod-navigation.php:86
 msgctxt "Navigation Module Format Choice"
 msgid "Inline"
-msgstr ""
+msgstr "På linje"
 
 #: autoload/mod-navigation.php:95
 msgctxt "Navigation Module Field Label"
@@ -450,7 +450,7 @@ msgstr "Efter innehåll"
 
 #: autoload/mxui.php:200
 msgid "Hero search placeholder"
-msgstr ""
+msgstr "Platshållare för sökfält i hero"
 
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"
@@ -695,7 +695,7 @@ msgid "Document"
 msgstr "Dokument"
 
 #: autoload/theme-mods.php:29 autoload/theme-mods.php:30
-#: autoload/theme-mods.php:61
+#: autoload/theme-mods.php:94
 msgid "Clone Theme Customizations"
 msgstr "Klona temaanpassningar"
 
@@ -707,21 +707,65 @@ msgstr "Temaanpassningar klonades utan problem."
 msgid "Theme customizations could not be cloned."
 msgstr "Temaanpassningar kunde inte klonas."
 
-#: autoload/theme-mods.php:63
+#: autoload/theme-mods.php:70
+msgid "No file uploaded."
+msgstr "Ingen fil har laddats upp."
+
+#: autoload/theme-mods.php:74
+msgid "Error uploading file."
+msgstr "Fel vid uppladdning av fil."
+
+#: autoload/theme-mods.php:79
+msgid "Invalid JSON file."
+msgstr "Ogiltig JSON-fil."
+
+#: autoload/theme-mods.php:95
+msgid "Clone from other site"
+msgstr "Klon från annan webbplats"
+
+#: autoload/theme-mods.php:97
 msgid "Select a site to clone theme customizations from."
 msgstr "Välj en webbplats att klona temaanpassningar från."
 
-#: autoload/theme-mods.php:72
+#: autoload/theme-mods.php:106
 msgid "Site"
 msgstr "Webbplats"
 
-#: autoload/theme-mods.php:95
+#: autoload/theme-mods.php:129
 msgid "Debug"
-msgstr ""
+msgstr "Felsökning"
 
-#: autoload/theme-mods.php:106
+#: autoload/theme-mods.php:140
 msgid "Clone"
 msgstr "Klona"
+
+#: autoload/theme-mods.php:142
+msgid "Export customizations"
+msgstr "Exportera anpassningar"
+
+#: autoload/theme-mods.php:143
+msgid "Export theme customizations to a JSON file."
+msgstr "Exportera temaanpassningar till en JSON-fil."
+
+#: autoload/theme-mods.php:149
+msgid "Export"
+msgstr "Exportera"
+
+#: autoload/theme-mods.php:152
+msgid "Import customizations"
+msgstr "Importera anpassningar"
+
+#: autoload/theme-mods.php:155
+msgid "Import theme customizations form a JSON file."
+msgstr "Importera temaanpassningar från en JSON-fil."
+
+#: autoload/theme-mods.php:163
+msgid "File"
+msgstr "Fil"
+
+#: autoload/theme-mods.php:174
+msgid "Import"
+msgstr "Importera"
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"

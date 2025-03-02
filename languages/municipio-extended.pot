@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-02T16:17:15+00:00\n"
+"POT-Creation-Date: 2025-03-02T18:18:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -680,7 +680,7 @@ msgstr ""
 
 #: autoload/theme-mods.php:29
 #: autoload/theme-mods.php:30
-#: autoload/theme-mods.php:61
+#: autoload/theme-mods.php:94
 msgid "Clone Theme Customizations"
 msgstr ""
 
@@ -692,20 +692,64 @@ msgstr ""
 msgid "Theme customizations could not be cloned."
 msgstr ""
 
-#: autoload/theme-mods.php:63
-msgid "Select a site to clone theme customizations from."
+#: autoload/theme-mods.php:70
+msgid "No file uploaded."
 msgstr ""
 
-#: autoload/theme-mods.php:72
-msgid "Site"
+#: autoload/theme-mods.php:74
+msgid "Error uploading file."
+msgstr ""
+
+#: autoload/theme-mods.php:79
+msgid "Invalid JSON file."
 msgstr ""
 
 #: autoload/theme-mods.php:95
-msgid "Debug"
+msgid "Clone from other site"
+msgstr ""
+
+#: autoload/theme-mods.php:97
+msgid "Select a site to clone theme customizations from."
 msgstr ""
 
 #: autoload/theme-mods.php:106
+msgid "Site"
+msgstr ""
+
+#: autoload/theme-mods.php:129
+msgid "Debug"
+msgstr ""
+
+#: autoload/theme-mods.php:140
 msgid "Clone"
+msgstr ""
+
+#: autoload/theme-mods.php:142
+msgid "Export customizations"
+msgstr ""
+
+#: autoload/theme-mods.php:143
+msgid "Export theme customizations to a JSON file."
+msgstr ""
+
+#: autoload/theme-mods.php:149
+msgid "Export"
+msgstr ""
+
+#: autoload/theme-mods.php:152
+msgid "Import customizations"
+msgstr ""
+
+#: autoload/theme-mods.php:155
+msgid "Import theme customizations form a JSON file."
+msgstr ""
+
+#: autoload/theme-mods.php:163
+msgid "File"
+msgstr ""
+
+#: autoload/theme-mods.php:174
+msgid "Import"
 msgstr ""
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
