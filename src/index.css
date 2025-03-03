@@ -432,3 +432,8 @@ ul li::marker {
   margin-top: 4rem;
   margin-bottom: -4rem;
 }
+
+/* Pressidium Cookie Consent floating button*/
+pressidium-floating-button {
+  position: absolute;
+}
