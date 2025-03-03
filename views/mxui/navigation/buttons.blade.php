@@ -4,6 +4,7 @@
       @component('mxui.button', [
           'href' => $item['href'],
           'variant' => $item['buttonVariant'] ?? 'default',
+          'classList' => ['font-normal px-4']
       ])
         @if ($item['icon'])
           <span class="min-h-[1lh] flex-none flex items-center">
