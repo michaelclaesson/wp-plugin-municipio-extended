@@ -231,6 +231,12 @@
   display: none !important;
 }
 
+.site-language-menu .site-language-menu__card {
+  @media screen and (max-width: 600px) {
+    height: auto;
+  }
+}
+
 #sidebar-top-sidebar {
   background: var(--color-complementary-light);
   @apply layer-white;
