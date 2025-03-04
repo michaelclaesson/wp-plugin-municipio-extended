@@ -427,3 +427,12 @@ ul li::marker {
   margin-top: 4rem;
   margin-bottom: -4rem;
 }
+
+/* Hero search */
+.ep-autosuggest-container {
+  width: 100%;
+}
+
+#input_hero-search-form__field {
+  width: 100%;
+}
