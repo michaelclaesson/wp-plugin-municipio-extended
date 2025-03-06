@@ -450,6 +450,11 @@ body {
   font-synthesis: none;
 }
 
+/* Iframe button */
+.c-acceptance__modal-button .c-button__filled--primary {
+  background-color: var(--color-primary-dark);
+}
+
 /* Old buttons */
 a.c-button.c-button__filled.c-button--md,
 a.c-button.c-button__outlined.c-button--md {
