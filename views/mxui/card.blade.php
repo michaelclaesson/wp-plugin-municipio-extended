@@ -158,7 +158,7 @@ Left to handle:
           @component('mxui.button', [
               'href' => $button['href'],
               'variant' => $button['color'] ?? ($button['buttonVariant'] ?? 'default'),
-              'classList' => 'h-14',
+              'classList' => 'h-auto',
           ])
             @if ($button['icon'])
               <span class="min-h-[1lh] flex-none flex items-center">
