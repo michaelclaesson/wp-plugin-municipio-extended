@@ -31,7 +31,6 @@ add_filter("Modularity/Display/mod-video/viewData", function ($data) {
 });
 
 add_filter("Modularity/Display/mod-video/pre_getEmbedMarkup", function (
-  $markup,
   $embedLink,
 ) {
   if (
