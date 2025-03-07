@@ -29,3 +29,17 @@ add_filter("Modularity/Display/mod-video/viewData", function ($data) {
   }
   return $data;
 });
+
+add_filter("Modularity/Display/mod-video/pre_getEmbedMarkup", function (
+  $markup,
+  $embedLink,
+) {
+  if (
+    is_string($embedLink) &&
+    preg_match("/\bplay\.mediaflowpro\b/", $embedLink)
+  ) {
+    // For videos from mediaflow
+    return $embedLink;
+  }
+  return $markup;
+});
