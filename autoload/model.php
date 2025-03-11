@@ -56,6 +56,12 @@ function mx_date($value, ...$args) {
   if (!$value) {
     return null;
   }
+  if ($value instanceof \MunicipioExtended\Model\Date) {
+    if (!empty($args)) {
+      return $value->toFormat($args[0]);
+    }
+    return $value;
+  }
   if (is_string($value)) {
     $value = strtotime($value);
   }
