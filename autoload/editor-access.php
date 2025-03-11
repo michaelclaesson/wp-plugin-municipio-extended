@@ -173,9 +173,14 @@ add_filter("admin_init", function () {
     arvidsjaur.se
     trelleborgvaxer.se
     bildenavtrelleborg.se
+    soderslattsgymnasiet.trelleborg.se
     trelleborg.se
     hoor.se
     salabostader.se
+    medborgarhuset.eslov.se
+    utveckla.eslov.se
+    foretag.eslov.se
+    programforoffentligmiljo.eslov.se
     eslov.se
     */
     $customPostTypes = [
@@ -197,6 +202,7 @@ add_filter("admin_init", function () {
       'pressmeddelanden',
       'job-listing',
       'offentlig-konst',
+      'manadens-konst',
     ];
     foreach($customPostTypes as $cpt) {
       $allowedMenuItems[] = "edit.php?post_type=".$cpt;
@@ -216,6 +222,12 @@ add_filter("admin_init", function () {
       'job-listing-category',
       'job-listing-source',
       'anslagstyp',
+      'plats',
+      'status',
+      'detaljplanering',
+      'dialog',
+      'byggstatus',
+      'markanvisning',
     ];
     foreach($customTaxonomies as $ct) {
       $allowedMenuItems[] = "edit-tags.php?taxonomy=".$ct;
