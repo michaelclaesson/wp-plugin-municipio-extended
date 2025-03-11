@@ -81,109 +81,167 @@ add_filter("redirection_role", function () {
 2. Clean up editor permissions and capabilities
 */
 
-add_filter('admin_init', function() {
-  if (current_user_can('administrator')) {
+add_filter("admin_init", function () {
+  if (current_user_can("administrator")) {
     return;
   }
-  if(current_user_can('editor')) {
+  if (current_user_can("editor")) {
     global $menu;
     global $submenu;
-    $roleObject = get_role('editor');
+    $roleObject = get_role("editor");
     // Remove all current capabilities
     $currentCapabilities = $roleObject->capabilities;
-    foreach($currentCapabilities as $cap=>$value) {
+    foreach ($currentCapabilities as $cap => $value) {
       $roleObject->remove_cap($cap);
     }
     // Add allowed capabilities
-    $allowedCapabilities = array(
-      'moderate_comments',
-      'manage_categories',
-      'manage_links',
-      'upload_files',
-      'unfiltered_html',
-      'edit_posts',
-      'edit_others_posts',
-      'edit_published_posts',
-      'publish_posts',
-      'edit_pages',
-      'edit_posts',
-      'read',
-      'level_7',
-      'level_6',
-      'level_5',
-      'level_4',
-      'level_3',
-      'level_2',
-      'level_1',
-      'level_0',
-      'edit_others_pages',
-      'edit_published_pages',
-      'publish_pages',
-      'delete_pages',
-      'delete_others_pages',
-      'delete_published_pages',
-      'delete_posts',
-      'delete_others_posts',
-      'delete_published_posts',
-      'delete_private_posts',
-      'edit_private_posts',
-      'read_private_posts',
-      'delete_private_pages',
-      'edit_private_pages',
-      'read_private_pages',
-      'edit_module',
-      'edit_modules',
-      'edit_other_modules',
-      'publish_modules',
-      'read_modules',
-      'delete_module',
-      'edit_theme_options',
-      'manage_options',
-      'nestedpages',
-      'gform_full_access',
-    );
-    foreach($allowedCapabilities as $key=>$cap) {
+    $allowedCapabilities = [
+      "moderate_comments",
+      "manage_categories",
+      "manage_links",
+      "upload_files",
+      "unfiltered_html",
+      "edit_posts",
+      "edit_others_posts",
+      "edit_published_posts",
+      "publish_posts",
+      "edit_pages",
+      "edit_posts",
+      "read",
+      "level_7",
+      "level_6",
+      "level_5",
+      "level_4",
+      "level_3",
+      "level_2",
+      "level_1",
+      "level_0",
+      "edit_others_pages",
+      "edit_published_pages",
+      "publish_pages",
+      "delete_pages",
+      "delete_others_pages",
+      "delete_published_pages",
+      "delete_posts",
+      "delete_others_posts",
+      "delete_published_posts",
+      "delete_private_posts",
+      "edit_private_posts",
+      "read_private_posts",
+      "delete_private_pages",
+      "edit_private_pages",
+      "read_private_pages",
+      "edit_module",
+      "edit_modules",
+      "edit_other_modules",
+      "publish_modules",
+      "read_modules",
+      "delete_module",
+      "edit_theme_options",
+      "manage_options",
+      "nestedpages",
+      "gform_full_access",
+    ];
+    foreach ($allowedCapabilities as $key => $cap) {
       $roleObject->add_cap($cap, true);
     }
     // Clean up admin menu and submenus
-    $allowedMenuItems = array(
+    $allowedMenuItems = [
       // Posts
-      'edit.php',
-      'post-new.php',
-      'edit-tags.php?taxonomy=category',
-      'edit-tags.php?taxonomy=post_tag',
+      "edit.php",
+      "post-new.php",
+      "edit-tags.php?taxonomy=category",
+      "edit-tags.php?taxonomy=post_tag",
       // Media
-      'upload.php',
-      'media-new.php',
+      "upload.php",
+      "media-new.php",
       // Pages
-      'nestedpages',
-      'admin.php?page=nestedpages',
-      'edit.php?post_type=page',
-      'post-new.php?post_type=page',
-      'options.php?page=modularity-editor&id=single-page',
+      "nestedpages",
+      "admin.php?page=nestedpages",
+      "edit.php?post_type=page",
+      "post-new.php?post_type=page",
+      "options.php?page=modularity-editor&id=single-page",
       // Events
-      'edit.php?post_type=event',
-      // Anslag
-      'edit.php?post_type=anslag',
-      'post-new.php?post_type=anslag',
+      "edit.php?post_type=event",
       // Users
-      'profile.php',
+      "profile.php",
       // Forms
-      'edit.php?post_type=form-submissions'
-    );
+      "edit.php?post_type=form-submissions",
+    ];
+    /*
+    Temporary handling of custom post types & taxonomies from:
+    arvidsjaur.se
+    trelleborgvaxer.se
+    bildenavtrelleborg.se
+    trelleborg.se
+    hoor.se
+    salabostader.se
+    eslov.se
+    */
+    $customPostTypes = [
+      'anslag',
+      'alert',
+      'project',
+      'api-resource',
+      'modal-content',
+      'operational-status',
+      'bulletin-board',
+      'nyheter',
+      'driftinformation',
+      'external_page',
+      'fragor-svar',
+      'common-alert',
+      'area',
+      'projekt',
+      'driftsinformation',
+      'pressmeddelanden',
+      'job-listing',
+      'offentlig-konst',
+    ];
+    foreach($customPostTypes as $cpt) {
+      $allowedMenuItems[] = "edit.php?post_type=".$cpt;
+      $allowedMenuItems[] = "post-new.php?post_type=".$cpt;
+    }
+    $customTaxonomies = [
+      'project_status',
+      'project_category',
+      'platser',
+      'teman',
+      'operational-status-category',
+      'operational-status-status',
+      'bulletin-board-category',
+      'external_page_content_type',
+      'common-alert-type',
+      'amne',
+      'job-listing-category',
+      'job-listing-source',
+      'anslagstyp',
+    ];
+    foreach($customTaxonomies as $ct) {
+      $allowedMenuItems[] = "edit-tags.php?taxonomy=".$ct;
+    }
+    /*
+    End temporary code
+    */
     if (
       current_user_can("editor") &&
       get_field("editor_access_to_redirection", "options") == 1
     ) {
-      $allowedMenuItems[] = 'tools.php?page=redirection.php';
+      $allowedMenuItems[] = "tools.php?page=redirection.php";
     }
-    foreach($menu as $key=>$menuItem) {
-      if(!in_array($menuItem[1], $allowedCapabilities) || !in_array($menuItem[2], $allowedMenuItems)) {
+    foreach ($menu as $key => $menuItem) {
+      if (
+        !in_array($menuItem[1], $allowedCapabilities) ||
+        !in_array($menuItem[2], $allowedMenuItems)
+      ) {
         unset($menu[$key]);
       } else {
-        if(isset($submenu[$menuItem[2]])) {
-          foreach($submenu[$menuItem[2]] as $k1=>$subMenuItem) {
-            if(!in_array($subMenuItem[2], $allowedMenuItems) || !in_array($subMenuItem[1], $allowedCapabilities)) {
+        if (isset($submenu[$menuItem[2]])) {
+          foreach ($submenu[$menuItem[2]] as $k1 => $subMenuItem) {
+            if (
+              !in_array($subMenuItem[2], $allowedMenuItems) ||
+              !in_array($subMenuItem[1], $allowedCapabilities)
+            ) {
               unset($submenu[$menuItem[2]][$k1]);
             }
           }
