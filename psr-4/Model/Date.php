@@ -18,6 +18,7 @@ class Date extends Model {
       "dayLong" => "l",
       "date" => get_option("date_format"),
       "time" => get_option("time_format"),
+      "dateTime" => get_option("date_format") . " " . get_option("time_format"),
     ];
   }
 
