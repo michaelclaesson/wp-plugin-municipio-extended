@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Municipio Extended
  * Description: Adds more features to Municipio.
- * Version: 24.111.0
+ * Version: 24.111.1
  * Author: Whitespace Dev
  * Text Domain: municipio-extended
  * Domain Path: /languages/
