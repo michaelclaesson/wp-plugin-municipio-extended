@@ -15,10 +15,10 @@ add_filter("Modularity/Display/mod-video/viewData", function ($data) {
     $embedLink = $data["embed_link"];
     if (
       is_string($embedLink) &&
-      preg_match("/\bplay\.mediaflowpro\b/", $embedLink)
+      preg_match("/\bplay\.mediaflow(pro)?\b/", $embedLink)
     ) {
       preg_match(
-        '/"([^"]+\bplay\.mediaflowpro\b[^"]+)"/',
+        '/"([^"]+\bplay\.mediaflow(?:pro)?\b[^"]+)"/',
         $embedLink,
         $matches,
       );
@@ -35,9 +35,14 @@ add_filter(
   function ($markup, $embedLink) {
     if (
       is_string($embedLink) &&
-      preg_match("/\bplay\.mediaflowpro\b/", $embedLink)
+      preg_match("/\\bplay\\.mediaflow(pro)?\\b/", $embedLink)
     ) {
-      // For videos from mediaflow
+      // Remove 'position:relative;' styles from the embedLink
+      $embedLink = preg_replace(
+        '/style="[^"]*position:\s*relative;?[^"]*"/',
+        "",
+        $embedLink,
+      );
       return $embedLink;
     }
     return $markup;
