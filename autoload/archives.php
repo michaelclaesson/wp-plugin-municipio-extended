@@ -1,28 +1,6 @@
 <?php
 
 use Kirki;
-use Municipio\Customizer;
-
-add_filter(
-  "Municipio/viewData",
-  function ($data) {
-    if (
-      $data["isSingular"] &&
-      ($data["post"]->postType ?? "") == "job-listing"
-    ) {
-      $articleContentBefore = $data["hook"]->articleContentBefore;
-      $articleContentBefore .= '<div class="tailwind">';
-      $articleContentBefore .= mx_render_view(
-        "mxui.job-listing.article-content-before",
-        $data,
-      );
-      $articleContentBefore .= "</div>";
-      $data["hook"]->articleContentBefore = $articleContentBefore;
-    }
-    return $data;
-  },
-  20,
-);
 
 add_filter(
   "Municipio/Customizer/Sections/Archive/archiveStyleChoices",
@@ -35,6 +13,18 @@ add_filter(
 add_action(
   "Municipio/Customizer/Sections/Archive/init",
   function ($section_id, $archive) {
+    $choices = array_map(function ($meta_field) {
+      $label = apply_filters(
+        "mx/meta_field/label",
+        ucfirst(preg_replace("/_/", " ", $meta_field)),
+        $meta_field,
+      );
+      if ($label != $meta_field) {
+        $label .= " ($meta_field)";
+      }
+      return $label;
+    }, $archive->dateSource ?? []);
+    error_log(var_export($choices, true));
     Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
       "type" => "select",
       "settings" => "archive_" . $archive->name . "_metas_to_display",
@@ -42,8 +32,7 @@ add_action(
       // 'description' => esc_html__('What meta fields', 'municipio'),
       "multiple" => 4,
       "section" => $section_id,
-      "choices" => $archive->dateSource,
-      // Below prevents Kirki bugg from using faulty default sanitize_callback.
+      "choices" => $choices,
       "sanitize_callback" => fn($values) => $values,
       "output" => [
         [
@@ -78,26 +67,3 @@ add_filter("Municipio/Helper/Post/postObject", function ($postObject) {
   $postObject->metaValues = $values;
   return $postObject;
 });
-
-add_filter(
-  "mx/meta_field/label",
-  function ($label, $field) {
-    switch ($field) {
-      case "application_end_date":
-        return _x(
-          "Application end date",
-          "Post Meta Field Label",
-          "municipio-extended",
-        );
-      case "publish_start_date":
-        return _x(
-          "Publish start date",
-          "Post Meta Field Label",
-          "municipio-extended",
-        );
-    }
-    return $label;
-  },
-  10,
-  2,
-);
