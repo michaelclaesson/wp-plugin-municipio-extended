@@ -14,6 +14,16 @@ function mx_get_post($post_id = null, ...$args) {
   return mx_get_model("WpPost", $post_id, ...$args);
 }
 
+function mx_get_post_meta($post_id = null, ...$args) {
+  if (!$post_id) {
+    $post_id = get_the_ID();
+  }
+  if (!$post_id) {
+    return null;
+  }
+  return mx_get_model("WpPostMeta", $post_id, ...$args);
+}
+
 function mx_get_menu_item($post_id = null, ...$args) {
   if (!$post_id) {
     $post_id = get_the_ID();

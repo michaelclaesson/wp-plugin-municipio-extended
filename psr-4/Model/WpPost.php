@@ -123,4 +123,13 @@ class WpPost extends Model {
   public function getId() {
     return $this->post_id;
   }
+
+  private $meta = null;
+
+  public function getMeta() {
+    if ($this->meta === null) {
+      $this->meta = mx_get_post_meta($this->post_id);
+    }
+    return $this->meta;
+  }
 }
