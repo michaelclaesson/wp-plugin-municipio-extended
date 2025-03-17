@@ -94,7 +94,7 @@
                           ', ',
                           array_map(
                               function ($field) {
-                                  return $field['value'];
+                                  return apply_filters('mx/meta_field/display_value', $field['value'], $field['field']);
                               },
                               array_filter($post->metaValues, function ($field) use ($meta_field) {
                                   return $field['field'] === $meta_field['field'];
