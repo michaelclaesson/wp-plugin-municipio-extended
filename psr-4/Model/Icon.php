@@ -67,14 +67,14 @@ class Icon extends Model implements Htmlable, IconInterface {
     $render_param_values = [];
     foreach ($name_parts as $name_part) {
       foreach ($render_params as $param_name => $param) {
-        $regex = $param["regex"];
+        $regex = $param["regex"] ?? null;
         if ($regex == null) {
           if ($param["type"] === "enum") {
             $regex =
               "/^(" . implode("|", array_keys($param["options"])) . ')$/';
           }
         }
-        if (preg_match($param["regex"], $name_part, $matches)) {
+        if (preg_match($regex, $name_part, $matches)) {
           if ($param["type"] === "boolean") {
             $render_param_values[$param_name] = true;
           } elseif ($param["type"] === "number") {
