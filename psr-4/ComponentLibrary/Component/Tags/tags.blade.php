@@ -1,4 +1,4 @@
-@if ($useHbg)
+@if ($useHbg ?? null)
   <!-- tags.blade.php -->
   @if (!empty($tags))
     <{{ $componentElement }} class="{{ $class }}" id="{{ $uid }}" {!! $attribute !!}>

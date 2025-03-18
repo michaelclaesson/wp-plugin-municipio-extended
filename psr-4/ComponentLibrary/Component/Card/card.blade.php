@@ -1,14 +1,14 @@
-@if ($useHbg)
+@if ($useHbg ?? null)
   <!-- card.blade.php -->
-  <{{ $componentElement }} class="{{$class}}" {!! $attribute !!}>
+  <{{ $componentElement }} class="{{ $class }}" {!! $attribute !!}>
     @includeWhen(!$slotHasData, 'Card.views.base')
     {!! $slot !!}
-    @if($afterContentSlotHasData)
+    @if ($afterContentSlotHasData)
       {!! $afterContent !!}
     @endif
-  </{{ $componentElement }}>
-@else
-  <div class="tailwind contents">
-    @include('mxui.card')
-  </div>
+    </{{ $componentElement }}>
+  @else
+    <div class="tailwind contents">
+      @include('mxui.card')
+    </div>
 @endif

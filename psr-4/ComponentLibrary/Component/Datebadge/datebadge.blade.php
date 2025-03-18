@@ -1,7 +1,7 @@
-@if ($useHbg)
+@if ($useHbg ?? null)
   <!-- datebadge.blade.php -->
   <div class="{{ $class }}" {!! $attribute !!}>
-    <div class="{{$baseClass . '__daymonth'}}">
+    <div class="{{ $baseClass . '__daymonth' }}">
       @typography(['variant' => 'h1', 'element' => 'span', 'classList' => [$baseClass . '__date']])
         {{ $day }}
       @endtypography
@@ -9,8 +9,8 @@
         {{ $month }}
       @endtypography
     </div>
-    @if($includeTime)
-      <div class="{{$baseClass . '__time'}}">
+    @if ($includeTime)
+      <div class="{{ $baseClass . '__time' }}">
         {{ mx_icon('access_time', ['size' => 'inherit']) }}
         @typography(['variant' => 'meta', 'element' => 'span'])
           {{ $time }}

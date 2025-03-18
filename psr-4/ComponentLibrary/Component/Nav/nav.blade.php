@@ -1,6 +1,6 @@
-@if ($useHbg)
+@if ($useHbg ?? null)
   <!-- nav-useHbg.blade.php -->
-  @if ($items)
+  @if ($items ?? null)
     <ul class="{{ $class }}" {!! $attribute !!}>
       @foreach ($items as $item)
         <li id="{{ $id }}-{{ $item['id'] }}-{{ $loop->index }}__item"

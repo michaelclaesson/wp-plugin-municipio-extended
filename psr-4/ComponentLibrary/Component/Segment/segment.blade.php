@@ -1,25 +1,25 @@
-@if ($useHbg)
+@if ($useHbg ?? null)
   <!-- segment.blade.php -->
-  <section class="{{ $class }}" {!! $attribute !!}>
-    @if ($floatingSlotHasData)
+  <section class="{{ $class ?? '' }}" {!! $attribute ?? '' !!}>
+    @if ($floatingSlotHasData ?? null)
       <div class="{{ $baseClass }}__floating">
         {!! $floating !!}
       </div>
     @endif
-    @includeWhen($image, 'Segment.components.image')
+    @includeWhen($image ?? null, 'Segment.components.image')
     @include('Segment.partials.' . $layout)
   </section>
 @else
-    @switch($layout ?? 'card')
-      @case('card')
-        @include('mxui.segment')
-      @break
+  @switch($layout ?? 'card')
+    @case('card')
+      @include('mxui.segment')
+    @break
 
-      @case('full-width')
-        @include('mxui.block')
-      @break
+    @case('full-width')
+      @include('mxui.block')
+    @break
 
-      @default
-        @include('mxui.segment')
-    @endswitch
+    @default
+      @include('mxui.segment')
+  @endswitch
 @endif
