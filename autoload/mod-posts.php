@@ -264,3 +264,18 @@ add_action("acf/init", function () {
     "parent" => "group_56c6ba934d682",
   ]);
 });
+
+add_filter(
+  "mx/module_wrapper_attrs",
+  function ($attrs, $args, $post_type, $post_id) {
+    if ($post_type === "mod-posts") {
+      $posts_data_source = get_field("posts_data_source", $post_id);
+      if ($posts_data_source) {
+        $attrs["data-mod-posts-data-source"] = $posts_data_source;
+      }
+    }
+    return $attrs;
+  },
+  10,
+  4,
+);
