@@ -1,4 +1,4 @@
-@if ( ?? null)
+@if ($useHbg ?? null)
   <!-- icon.blade.php -->
   @if ($icon ?? null)
     <{{ $componentElement }} class="{{ $class }}" {!! $attribute !!}>
