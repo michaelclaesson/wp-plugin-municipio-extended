@@ -275,12 +275,12 @@ function mx_handle_async_job($job_id) {
       "status" => $status,
     ];
     add_post_meta($job->ID, "mx_async_job_run", $run);
-    error_log(var_export($status, true));
+    // error_log(var_export($status, true));
     if ($status != "completed") {
       $max_runs = get_field("mx_async_max_runs", $job) ?: 3;
-      error_log(var_export($max_runs, true));
+      // error_log(var_export($max_runs, true));
       $runs = get_post_meta($job->ID, "mx_async_job_run");
-      error_log(var_export(count($runs), true));
+      // error_log(var_export(count($runs), true));
       if (count($runs) >= $max_runs) {
         $status = "failed";
       } else {
@@ -336,7 +336,7 @@ add_action("add_meta_boxes", function () {
 add_action("admin_post_mx_async_trigger", function () {
   check_admin_referer("mx_async_trigger");
   mx_async_trigger();
-  error_log(var_export("resumed", true));
+  // error_log(var_export("resumed", true));
   wp_redirect(wp_get_referer());
   exit();
 });

@@ -24,7 +24,6 @@ add_action(
       }
       return $label;
     }, $archive->dateSource ?? []);
-    error_log(var_export($choices, true));
     Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
       "type" => "select",
       "settings" => "archive_" . $archive->name . "_metas_to_display",
