@@ -21,11 +21,12 @@ Left to handle:
   $image ??= null;
   $imageAspectRatio ??= 'video';
   $link ??= null;
-  $wrapContent ??= !empty($content) && is_string($content);
+  $wrapContent ??= !empty($content) && (is_string($content) || $asTemplate);
   $proseWrap ??= false;
   $expandLinkCover ??= false;
   $buttons ??= null;
   $overflowVisible ??= false;
+  $asTemplate ??= false;
 @endphp
 <!-- mxui.card -->
 
@@ -73,18 +74,25 @@ Left to handle:
         <h{!! $headingLevel !!} class="typography-h3">
           {{-- CardClickable --}}
           @include('mxui.clickable', [
-              'link' => $link ?? null,
-              'content' => $heading ?? null,
+              'link' => $asTemplate ? ($link === true ? '/___' : $link) : $link ?? null,
+              'content' => $asTemplate ? ($heading === true ? '' : $heading) : $heading ?? null,
               'classList' =>
                   'no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none break-words hyphens-auto',
-              'attributes' => ['data-mxui-card-link' => ''],
+              'attributes' => [
+                  'data-mxui-card-link' => '',
+                  'slot' => $asTemplate ? 'link title' : null,
+              ],
           ])
           </h{!! $headingLevel !!}>
       @endif
       @if (!empty($date))
-        <div class="flex items-center gap-1 text-sm text-gray-500">
+        <div
+          {{ mx_attrs([
+              'class' => ['flex items-center gap-1 text-sm text-gray-500'],
+              'slot' => $asTemplate ? 'date' : null,
+          ]) }}>
           {{-- <Icon class="text-deep-blue" name="calendar" /> --}}
-          {{ $date }}
+          {{ $asTemplate ? ($date === true ? '' : $date) : $date }}
         </div>
       @endif
       @if (!empty($meta))
@@ -116,6 +124,7 @@ Left to handle:
           'size' => 'medium',
           'classList' =>
               'group-hover:group-has-[[data-mxui-card-link][data-mxui-interactive]]:scale-105 transition-transform duration-500 text-transparent',
+          'slot' => $asTemplate ? 'image' : null,
       ])
       @endcomponent
     </div>
@@ -139,6 +148,7 @@ Left to handle:
               'px-[var(--card-px,1rem)] pb-[var(--card-py,1rem)]' => $wrapContent,
               'border-l-[length:var(--base,8px)] border-l-[color:var(--color-primary)]' => $modifier == 'highlight',
           ],
+          'slot' => $asTemplate ? 'content' : null,
       ]) }}>
       @if ($proseWrap)
         <div class="prose">
@@ -146,7 +156,7 @@ Left to handle:
       @if (is_string($content))
         <p>{{ $content }}</p>
       @else
-        {!! $content !!}
+        {!! $asTemplate ? ($content === true ? '' : $content) : $content !!}
       @endif
       @if ($proseWrap)
     </div>

@@ -96,7 +96,9 @@ class Card extends MxBaseController {
 
   public function init() {
     $this->data["useHbg"] =
-      $this->data["useHbg"] ?? !$this->getKirkiOption("card_mxui_enabled");
+      $this->data["useHbg"] ??
+      !$this->getKirkiOption("card_mxui_enabled") &&
+        !($this->data["asTemplate"] ?? false);
     if ($this->data["useHbg"]) {
       return $this->originalInit();
     }
