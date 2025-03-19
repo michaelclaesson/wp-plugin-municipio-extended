@@ -87,6 +87,14 @@ add_action("init", function () {
   ]);
 });
 
+function mx_get_fallback_image() {
+  $logotypeEmblem = Kirki::get_option(
+    Customizer::KIRKI_CONFIG,
+    "logotype_emblem",
+  );
+  return $logotypeEmblem;
+}
+
 /**
  * Overrides the default way of setting placeholder images on cards.
  */
@@ -95,10 +103,7 @@ function mxui_component_data_emblem_filter_cb($data) {
     if (!is_array($data["image"])) {
       $data["image"] = [];
     }
-    $logotypeEmblem = Kirki::get_option(
-      Customizer::KIRKI_CONFIG,
-      "logotype_emblem",
-    );
+    $logotypeEmblem = mx_get_fallback_image();
     if ($logotypeEmblem) {
       $data["image"]["src"] = $logotypeEmblem;
     } else {
