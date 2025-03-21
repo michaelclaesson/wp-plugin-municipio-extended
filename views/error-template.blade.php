@@ -7,9 +7,11 @@
 @section('content')
   <div class="tailwind">
     <div class="t-404">
-      @typography(['element' => 'h1'])
-        {{ $mx_post->title }}
-      @endtypography
+      <div class="mt-8">
+        @typography(['element' => 'h1'])
+          {{ $mx_post->title }}
+        @endtypography
+      </div>
 
       @includeIf('partials.sidebar', ['id' => 'content-area-top', 'classes' => ['o-grid']])
 
