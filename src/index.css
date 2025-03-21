@@ -487,3 +487,17 @@ Fixes image modal sizing issues in webkit browsers
   max-height: 100svh;
   max-width: 100svw;
 }
+
+.t-404 {
+  height: auto;
+}
+.t-404::after {
+  display: none;
+}
+
+.t-404
+  .s-sidebar:not(
+    :has(:not(:empty), area, embed, hr, img, input, source, track)
+  ) {
+  display: none;
+}
