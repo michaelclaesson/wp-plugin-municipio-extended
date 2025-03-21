@@ -22,6 +22,12 @@ add_action(
       if ($custom_404_page) {
         // Reset query flags so that WordPress treats this as a regular page.
         global $wp_query, $post;
+
+        $original_post = $post;
+        $original_is_404 = $wp_query->is_404;
+        $original_is_page = $wp_query->is_page;
+        $original_is_singular = $wp_query->is_singular;
+
         $wp_query->is_404 = false;
         $wp_query->is_page = true;
         $wp_query->is_singular = true;
@@ -29,8 +35,17 @@ add_action(
 
         setup_postdata($post);
 
-        include get_page_template();
-        exit();
+        $file = get_page_template() ?: get_query_template("page");
+
+        if (file_exists($file)) {
+          include $file;
+          exit();
+        }
+
+        $post = $original_post;
+        $wp_query->is_404 = $original_is_404;
+        $wp_query->is_page = $original_is_page;
+        $wp_query->is_singular = $original_is_singular;
       }
     }
   },
