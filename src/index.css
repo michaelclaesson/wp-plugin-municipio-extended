@@ -501,3 +501,8 @@ Fixes image modal sizing issues in webkit browsers
   ) {
   display: none;
 }
+
+/* Event form button */
+.c-button.event-submit__submit-button.c-button__filled {
+  background-color: var(--color-primary-dark);
+}
