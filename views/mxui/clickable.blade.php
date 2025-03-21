@@ -17,6 +17,19 @@
     ) }}>
     {{ $content }}
   </a>
+@elseif (!empty($onclick))
+  <button
+    {{ mx_attrs(
+        [
+            'onclick' => $onclick,
+            'class' => [$classList ?? null],
+            'data-mxui-clickable' => '',
+            'data-mxui-interactive' => true,
+        ],
+        $attributes ?? null,
+    ) }}>
+    {{ $content }}
+  </button>
 @else
   <span
     {{ mx_attrs(
