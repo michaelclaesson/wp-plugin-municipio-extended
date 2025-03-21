@@ -45,7 +45,7 @@
     $show_date = !empty($posts[0]->archiveDate);
   @endphp
   <div class="tailwind contents">
-    <div class="@@container/table">
+    <div class=" {{ '@container/table' }}">
       <div class="{{ clsx('@[43rem]/table:grid', mx_grid_cols_class(2)) }}">
         <div class="hidden @[43rem]/table:grid col-start-1 -col-end-1 grid-cols-subgrid p-3 gap-3 mt-0 font-medium"
           aria-hidden="true">

@@ -47,7 +47,7 @@
                 <template name="hit">
                   <li>
                     <a href=""
-                      class="flex text-inherit no-underline bg-layer-lighter p-6 [&_mark]:bg-complementary-light hover:text-inherit visited:hover:text-inherit group/hit gap-6 @@container"
+                      class="flex text-inherit no-underline bg-layer-lighter p-6 [&_mark]:bg-complementary-light hover:text-inherit visited:hover:text-inherit group/hit gap-6  {{ '@container' }}"
                       slot="link">
                       <div class="flex-grow space-y-2">
                         <h3 slot="title" class="m-0 decoration-1 group-hover/hit:underline typography-h4"></h3>

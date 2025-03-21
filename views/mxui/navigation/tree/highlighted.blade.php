@@ -1,5 +1,5 @@
 <div class="tailwind">
-  <ul class="space-y-12 @@container">
+  <ul class="space-y-12  {{ '@container' }}">
     @foreach ($items as $item)
       <li class="grid grid-cols-[min(200px,33%)_minmax(0,1fr)] grid-rows-[auto_auto_auto] gap-7">
         <!-- Wrapper div for Image and Text section -->
