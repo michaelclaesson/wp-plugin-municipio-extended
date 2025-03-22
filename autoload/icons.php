@@ -13,16 +13,14 @@ add_action(
 );
 
 function mx_get_materialsymbols_cache_path() {
-  return apply_filters(
-    "mx_materialsymbols_cache_path",
-    MUNICIPIO_EXTENDED_PATH . "/cache/materialsymbols",
-  );
+  $upload_dir = wp_upload_dir();
+  $path = $upload_dir["basedir"] . "/cache/materialsymbols";
+  return apply_filters("mx_materialsymbols_cache_path", $path);
 }
 function mx_get_materialsymbols_cache_url() {
-  return apply_filters(
-    "mx_materialsymbols_cache_url",
-    MUNICIPIO_EXTENDED_URL . "/cache/materialsymbols",
-  );
+  $upload_dir = wp_upload_dir();
+  $url = $upload_dir["baseurl"] . "/cache/materialsymbols";
+  return apply_filters("mx_materialsymbols_cache_url", $url);
 }
 
 function mx_get_materialsymbols_unzipped_pack_file($pack) {
