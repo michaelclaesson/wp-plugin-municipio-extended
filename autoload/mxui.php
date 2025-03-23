@@ -219,3 +219,10 @@ add_filter("Municipio/Search/Hero_search_placeholder", function ($placeholder) {
   // Return the custom placeholder or default
   return !empty($customPlaceholder) ? $customPlaceholder : $placeholder;
 });
+
+function mxui_debug_enabled() {
+  return apply_filters(
+    "mxui/debug_enabled",
+    defined("MXUI_DEBUG") ? constant("MXUI_DEBUG") : false,
+  );
+}

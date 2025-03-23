@@ -55,6 +55,14 @@ Left to handle:
       ],
       $attributeList ?? [],
   ) }}>
+  @if (mxui_debug_enabled())
+    <div class="absolute top-0 right-0 w-full m-1 opacity-50 group-hover:opacity-100 flex justify-end flex-wrap gap-1">
+      @foreach (['wrapContent', 'proseWrap', 'context'] as $var)
+        <span class="bg-black rounded p-1 leading-none text-[.625rem] text-white font-mono">{{ $var }}:
+          {{ json_encode($$var) }}</span>
+      @endforeach
+    </div>
+  @endif
   @if (!empty($date) || !empty($heading) || !empty($meta))
     {{-- CardHeader --}}
     <div
