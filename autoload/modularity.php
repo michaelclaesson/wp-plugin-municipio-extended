@@ -3,7 +3,7 @@
 add_filter(
   "Modularity/Display/BeforeModule",
   function ($beforeModule, $args, $postType, $postId) {
-    if (preg_match("/^(.*?)>(.*)$/m", $beforeModule, $matches)) {
+    if (preg_match("/^(.*?)>(.*)$/s", $beforeModule, $matches)) {
       $attrs = apply_filters(
         "mx/module_wrapper_attrs",
         [],
