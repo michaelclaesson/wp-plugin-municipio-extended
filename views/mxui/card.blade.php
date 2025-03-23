@@ -18,6 +18,7 @@ Left to handle:
   $dateBadge ??= false;
   $heading ??= null;
   $headingLevel ??= 3;
+  $headingVariant ??= 'typography-h3';
   $image ??= null;
   $imageAspectRatio ??= 'video';
   $link ??= null;
@@ -79,7 +80,7 @@ Left to handle:
       ]) }}>
       @if (!empty($heading))
         {{-- CardTitle --}}
-        <h{!! $headingLevel !!} class="typography-h3">
+        <h{!! $headingLevel !!} class={{ clsx($headingVariant) }}>
           {{-- CardClickable --}}
           @include('mxui.clickable', [
               'link' => $asTemplate ? ($link === true ? '/___' : $link) : $link ?? null,
