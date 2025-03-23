@@ -159,6 +159,12 @@ export default {
       lg: '78em', // 1248px
       xl: '100em', // 1600px
     },
+    containers: {
+      sm: '32.5em', // 520px
+      md: '56em', // 896px
+      lg: '78em', // 1248px
+      xl: '100em', // 1600px
+    },
     extend: {
       // ...defaultTheme,
       fontSize: {
