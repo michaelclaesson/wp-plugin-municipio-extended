@@ -1,7 +1,7 @@
 {
   "name": "wp-plugin-municipio-extended",
   "private": true,
-  "version": "24.113.1",
+  "version": "24.113.2",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
