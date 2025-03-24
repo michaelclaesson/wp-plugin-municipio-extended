@@ -305,6 +305,14 @@ class ModNavigation extends MxModule {
   public function data(): array {
     $data = parent::data();
     $data["items"] = $this->getItems();
+    $data["hideTitle"] = apply_filters(
+      "mx/hide_module_title",
+      $data["hideTitle"] || empty($data["items"]),
+      $this->slug,
+      $this->ID,
+      $data,
+      $this,
+    );
     return $data;
   }
 }

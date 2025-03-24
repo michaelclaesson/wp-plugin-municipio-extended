@@ -1,4 +1,4 @@
-@if (!$hideTitle && !empty($postTitle) && !empty($items))
+@if (!$hideTitle && !empty($postTitle))
   @typography([
       'id' => 'mod-navigation-' . $ID . '-label',
       'element' => 'h2',
