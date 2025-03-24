@@ -228,6 +228,12 @@ class Nav extends MxBaseController {
   public function normalizeItems(array $items): array {
     if (is_countable($items)) {
       foreach ($items as $key => &$item) {
+        // Skip items that are not of post_type "page"
+        if (isset($item["post_type"]) && $item["post_type"] !== "page") {
+          unset($items[$key]);
+          continue;
+        }
+
         $item = array_merge(
           [
             "id" => rand(1, PHP_INT_MAX),
