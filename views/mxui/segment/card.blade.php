@@ -22,10 +22,9 @@ buttons
           [
               'class' => [
                   'grid min-h-full group',
-                  '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]',
                   $reverseColumns
-                      ? '@sm:grid-cols-[minmax(12.5rem,1fr)_minmax(12.5rem,1fr)_1fr_1fr]'
-                      : '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]',
+                      ? '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]'
+                      : '@sm:grid-cols-[minmax(12.5rem,1fr)_minmax(12.5rem,1fr)_1fr_1fr]',
               ],
           ],
           $attributeList,
