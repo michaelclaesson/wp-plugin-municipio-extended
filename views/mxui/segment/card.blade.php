@@ -20,7 +20,13 @@ buttons
     <section
       {{ mx_attrs(
           [
-              'class' => ['grid min-h-full group', '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]'],
+              'class' => [
+                  'grid min-h-full group',
+                  '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]',
+                  $reverseColumns
+                      ? '@sm:grid-cols-[minmax(12.5rem,1fr)_minmax(12.5rem,1fr)_1fr_1fr]'
+                      : '@sm:grid-cols-[1fr_1fr_minmax(12.5rem,1fr)_minmax(12.5rem,1fr)]',
+              ],
           ],
           $attributeList,
       ) }}>
@@ -28,7 +34,7 @@ buttons
         class="{{ clsx([
             'z-[1] w-auto',
             'row-start-2 -mt-8 last:mt-0 mx-4',
-            '@sm:my-8 @sm:mx-0 @sm:row-start-1 @sm:row-span-1',
+            '@sm:my-8 @sm:mx-0 @sm:row-start-1 @sm:row-span-1 @sm:self-center',
             $reverseColumns ? '@sm:col-start-3 @sm:col-end-5' : '@sm:col-start-1 @sm:col-end-3',
         ]) }}">
         @component('mxui.card', [
@@ -53,7 +59,7 @@ buttons
               'class' => [
                   'row-start-1',
                   'w-full @sm:row-start-1 @sm:place-self-stretch',
-                  // '@sm:max-h-96',
+                  '@sm:aspect-[100]', // Causes the image to shrink as much as possible vertically
                   $reverseColumns ? '@sm:col-start-1 @sm:col-end-4' : '@sm:col-start-2 @sm:col-end-5',
                   'aspect-video bg-secondary first:last:mb-0',
                   'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
