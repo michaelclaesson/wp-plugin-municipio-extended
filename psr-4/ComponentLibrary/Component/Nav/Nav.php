@@ -228,6 +228,19 @@ class Nav extends MxBaseController {
   public function normalizeItems(array $items): array {
     if (is_countable($items)) {
       foreach ($items as $key => &$item) {
+        // Skip items from mobile primary menu that are not of post_type "page" or "custom"
+        if (
+          in_array(
+            "site-nav-mobile__primary",
+            $this->data["classList"] ?? [],
+          ) &&
+          isset($item["post_type"]) &&
+          ($item["post_type"] !== "page" && $item["post_type"] !== "custom")
+        ) {
+          unset($items[$key]);
+          continue;
+        }
+
         $item = array_merge(
           [
             "id" => rand(1, PHP_INT_MAX),
