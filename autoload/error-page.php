@@ -43,6 +43,10 @@ add_action(
 add_action(
   "init",
   function () {
+    // Theme is not always loaded, e.g. when running database updates.
+    if (!defined("MUNICIPIO_PATH")) {
+      define("MUNICIPIO_PATH", get_template_directory() . "/");
+    }
     \Municipio\Helper\Template::add(
       __("Error page", "municipio-extended"),
       \Municipio\Helper\Template::locateTemplate("error-template.blade.php"),
