@@ -1,43 +1,111 @@
 <?php
-add_action('wp_head', 'inject_matomo_script');
 
-function inject_matomo_script() {
-    ?>
-    <!-- Matomo Cookie Consent -->
-    <script>
-    var waitForTrackerCount = 0;
-    function matomoWaitForTracker() {
-      if (typeof _paq === 'undefined') {
-        if (waitForTrackerCount < 40) {
-          setTimeout(matomoWaitForTracker, 250);
-          waitForTrackerCount++;
-          return;
-        }
-      } else {
-        document.addEventListener("cookieyes_consent_update", function (eventData) {
-            const data = eventData.detail;
-            consentSet(data);
-        });   
-      }
-    }
-    function consentSet(data) {
-       if (data.accepted.includes("analytics")) {
-           _paq.push(['rememberCookieConsentGiven']);
-           _paq.push(['setConsentGiven']);
-       } else {
-           _paq.push(['forgetCookieConsentGiven']);  
-           _paq.push(['deleteCookies']);         
-       }
-    }
-    document.addEventListener('DOMContentLoaded', matomoWaitForTracker());
-    </script>
-    <!-- End Matomo Cookie Consent -->
-    <?php
+add_action("acf/init", function () {
+  // Add subpage for Tracking options
+  acf_add_options_sub_page([
+    "page_title" => _x("Tracking", "Options Page Title", "municipio-extended"),
+    "menu_title" => _x(
+      "Tracking",
+      "Options Page Menu Title",
+      "municipio-extended",
+    ),
+    "parent_slug" => "options-general.php",
+    "menu_slug" => "acf-options-mx-tracking",
+    "capability" => "manage_options",
+    "autoload" => true,
+  ]);
 
-    if (defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL')) {
-      // This is for Matomo Tag Manager. It's the one we will use for all the new LTS
-      // sites.
-      ?>
+  acf_add_local_field_group([
+    "key" => "group_mx_matomo",
+    "title" => __("Matomo", "municipio-extended"),
+    "fields" => [
+      [
+        "key" => "field_mx_matomo_url",
+        "label" => __("URL", "municipio-extended"),
+        "name" => "mx_matomo_url",
+        "type" => "text",
+        "instructions" => __(
+          "The URL for the Matomo Tag Manager.",
+          "municipio-extended",
+        ),
+        "constant" => "MATOMO_URL",
+      ],
+      [
+        "key" => "field_mx_matomo_container_id",
+        "label" => __("Container ID", "municipio-extended"),
+        "name" => "mx_matomo_container_id",
+        "type" => "text",
+        // "instructions" => __(
+        //   "The container ID for the Matomo Tag Manager.",
+        //   "municipio-extended",
+        // ),
+        "constant" => "MATOMO_CONTAINER_ID",
+      ],
+      [
+        "key" => "field_mx_matomo_site_id",
+        "label" => __("Site ID", "municipio-extended"),
+        "name" => "mx_matomo_site_id",
+        "type" => "text",
+        "instructions" => __(
+          "The site ID for the Matomo Tag Manager.",
+          "municipio-extended",
+        ),
+        "constant" => "MATOMO_SITE_ID",
+      ],
+    ],
+    "location" => [
+      [
+        [
+          "param" => "options_page",
+          "operator" => "==",
+          "value" => "acf-options-mx-tracking",
+        ],
+      ],
+    ],
+  ]);
+});
+
+add_filter("acf/prepare_field", function ($field) {
+  if (
+    $field["constant"] &&
+    defined($field["constant"]) &&
+    constant($field["constant"])
+  ) {
+    $field["value"] = constant($field["constant"]);
+    $field["disabled"] = true;
+    $field["instructions"] =
+      (empty($field["instructions"]) ? "" : $field["instructions"] . "\n") .
+      "<i>" .
+      sprintf(
+        __(
+          "This field is disabled because the constant %s has been defined in code.",
+          "municipio-extended",
+        ),
+        "<code>{$field["constant"]}</code>",
+      ) .
+      "</i>";
+  }
+  return $field;
+});
+
+function mx_matomo_option_is_contant($option) {
+  $constant = "MATOMO_" . strtoupper($option);
+  return defined($constant) && constant($constant);
+}
+
+function mx_get_matomo_option($option) {
+  $constant = "MATOMO_" . strtoupper($option);
+  if (defined($constant) && constant($constant)) {
+    return constant($constant);
+  }
+  return get_field("mx_matomo_" . $option, "option");
+}
+
+add_action("wp_head", function () {
+  $url = mx_get_matomo_option("url");
+  $container_id = mx_get_matomo_option("container_id");
+  $site_id = mx_get_matomo_option("site_id");
+  if ($container_id && $url): ?>
       <!-- Matomo Tag Manager -->
       <script>
         var _mtm = window._mtm = window._mtm || [];
@@ -45,19 +113,12 @@ function inject_matomo_script() {
         (function() {
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
           g.async=true;
-          g.src='<?php echo MATOMO_URL; ?>js/container_' + '<?php echo MATOMO_CONTAINER_ID; ?>' + '.js';
+          g.src='<?php echo $url; ?>js/container_' + '<?php echo $container_id; ?>' + '.js';
           s.parentNode.insertBefore(g,s);
         })();
       </script>
       <!-- End Matomo Tag Manager -->
-      <?php
-    } elseif (!defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL') && defined('MATOMO_SITE_ID')) {
-        // This is for regular Matomo tag. Use this temporarily while migrating an old
-        // site to LTS. This way we don't need to migrate Matomo at the exact same moment
-        // as the LTS site goes live. Then when we have tested that the frontend is
-        // working, the next step will be to migrate the Matomo db from old instance to
-        // insights.analys.cloud to change from MATOMO_SITE_ID to MATOMO_CONTAINER_ID.
-        ?>
+      <?php elseif (!$container_id && $url && $site_id): ?>
         <!-- Matomo -->
         <script>
           var _paq = window._paq = window._paq || [];
@@ -65,14 +126,13 @@ function inject_matomo_script() {
           _paq.push(['trackPageView']);
           _paq.push(['enableLinkTracking']);
           (function() {
-            var u="<?php echo MATOMO_URL; ?>";
+            var u="<?php echo $url; ?>";
             _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '<?php echo MATOMO_SITE_ID; ?>']);
+            _paq.push(['setSiteId', '<?php echo $site_id; ?>']);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
           })();
         </script>
         <!-- End Matomo Code -->
-        <?php
-    }
-}
+        <?php endif;
+});
