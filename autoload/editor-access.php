@@ -203,6 +203,7 @@ add_filter("admin_init", function () {
       'job-listing',
       'offentlig-konst',
       'manadens-konst',
+      'anslagstavla',
     ];
     foreach($customPostTypes as $cpt) {
       $allowedMenuItems[] = "edit.php?post_type=".$cpt;
