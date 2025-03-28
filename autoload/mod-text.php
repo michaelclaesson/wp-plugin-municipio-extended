@@ -54,3 +54,26 @@ function mx_process_content($content, $options = []) {
   }
   return $content;
 }
+
+add_action("acf/init", function () {
+  acf_add_local_field([
+    "key" => "field_mod_text_box_color",
+    "label" => __("Text box color", "municipio-extended"),
+    "name" => "box_color",
+    "aria-label" => "",
+    "type" => "color_picker",
+    "instructions" => "",
+    "required" => 0,
+    "conditional_logic" => 0,
+    "wrapper" => [
+      "width" => "",
+      "class" => "",
+      "id" => "",
+    ],
+    "default_value" => 0,
+    "ui_on_text" => "",
+    "ui_off_text" => "",
+    "ui" => 0,
+    "parent" => "group_5891b49127038",
+  ]);
+});
