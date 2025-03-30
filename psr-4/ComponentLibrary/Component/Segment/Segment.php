@@ -187,7 +187,7 @@ class Segment extends MxBaseController {
     if ($this->hasContext("module.manual-input.segment")) {
       $this->data["headingVariant"] ??= "typography-h2";
       $this->data["proseWrap"] ??= true;
-      $this->data["content"] = mx_content_to_prose($this->data["content"]);
+      $this->data["content"] = mx_prosify($this->data["content"]);
     }
 
     $this->data["buttons"] = array_filter(

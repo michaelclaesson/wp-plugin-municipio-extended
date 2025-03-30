@@ -1,6 +1,6 @@
 <?php
 
-function mx_content_to_prose($content, $options = []) {
+function mx_prosify($content, $options = []) {
   $content = preg_replace_callback(
     '/(<a\s[^>]*class="((?:[^"]+\s)c-button)([^"]*)"\s[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>)/',
     function ($matches) {
