@@ -143,3 +143,14 @@ function mx_array_replace($array, $search, $replace) {
     return $value === $search ? $replace : $value;
   }, $array);
 }
+
+function mx_css_vars($vars) {
+  $css = "";
+  foreach ($vars as $key => $value) {
+    if (is_null($value)) {
+      continue;
+    }
+    $css .= "$key:$value;";
+  }
+  return $css;
+}
