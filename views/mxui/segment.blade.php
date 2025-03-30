@@ -1,3 +1,4 @@
+<!-- mxui.segment, layout: {{ $layout }} -->
 @switch($layout ?? 'card')
   @case ('card')
     @include('mxui.segment.card')

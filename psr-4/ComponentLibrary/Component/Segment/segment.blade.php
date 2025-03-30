@@ -10,6 +10,7 @@
     @include('Segment.partials.' . $layout)
   </section>
 @else
+  <!-- Segment (MXUI), layout: {{ $layout }} -->
   @switch($layout ?? 'card')
     @case('card')
       @include('mxui.segment')
