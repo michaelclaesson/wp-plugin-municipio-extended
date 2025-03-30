@@ -1,9 +1,10 @@
 <!-- mxui.taglist -->
 @if (!empty($tags))
-  <ul {{ mx_attrs([
-      'class' => ['flex flex-wrap gap-[.75em] space-y-0', $class],
-      'id' => $uid,
-  ]) }}>
+  <ul
+    {{ mx_attrs([
+        'class' => ['flex flex-wrap gap-[.75em] space-y-0 no-prose', $class],
+        'id' => $uid,
+    ]) }}>
     @foreach ($tags as $tag)
       <li class="{{ clsx(['hidden' => $compress && $loop->index > $compress]) }}"
         style="--color-custom: {{ $tag['color'] }};">

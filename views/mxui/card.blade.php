@@ -86,7 +86,7 @@ Left to handle:
               'link' => $asTemplate ? ($link === true ? '/___' : $link) : $link ?? null,
               'content' => $asTemplate ? ($heading === true ? '' : $heading) : $heading ?? null,
               'classList' =>
-                  'no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none break-words hyphens-auto',
+                  'no-prose no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none break-words hyphens-auto',
               'attributes' => [
                   'data-mxui-card-link' => '',
                   'slot' => $asTemplate ? 'link title' : null,
