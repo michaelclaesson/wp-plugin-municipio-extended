@@ -296,12 +296,13 @@ function mx_handle_async_job($job_id) {
 add_action("add_meta_boxes", function () {
   add_meta_box(
     "mx_async_job",
-    __("Async Job", "municipio-extended"),
+    __("Runs", "municipio-extended"),
     function ($post) {
       $runs = get_post_meta($post->ID, "mx_async_job_run"); ?>
       <table class="wp-list-table widefat fixed striped table-view-list">
         <thead>
           <tr>
+            <th style="width: 50px;">#</th>
             <th>Start time</th>
             <th>End time</th>
             <th>Duration</th>
@@ -309,12 +310,28 @@ add_action("add_meta_boxes", function () {
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($runs as $run): ?>
+          <?php foreach ($runs as $index => $run): ?>
             <tr>
-              <td><?php echo esc_html($run["start_time"]); ?></td>
-              <td><?php echo esc_html($run["end_time"]); ?></td>
-              <td><?php echo esc_html($run["duration"]); ?></td>
-              <td><?php echo esc_html($run["status"]); ?></td>
+              <td style="width: 50px;">
+                <?php echo esc_html($index + 1); ?>
+              </td>
+              <td>
+                <?php echo esc_html(
+                  date("Y-m-d H:i:s", round($run["start_time"])),
+                ); ?>
+              </td>
+              <td>
+                <?php echo esc_html(
+                  date("Y-m-d H:i:s", round($run["end_time"])),
+                ); ?>
+              </td>
+              <td>
+                <?php
+                $duration = round($run["end_time"] - $run["start_time"], 2);
+                echo esc_html($duration . " seconds");
+                ?>
+              </td>
+              <td><?php echo esc_html(ucfirst($run["status"])); ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
