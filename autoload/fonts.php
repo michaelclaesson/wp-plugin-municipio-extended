@@ -14,10 +14,10 @@ add_filter("upload_mimes", function ($mimes) {
  */
 function mx_get_uploaded_fonts() {
   // Check if fonts are already cached
-  $cached_fonts = get_transient('mx_uploaded_fonts');
+  $cached_fonts = get_transient("mx_uploaded_fonts");
 
   if ($cached_fonts !== false) {
-      return $cached_fonts;
+    return $cached_fonts;
   }
 
   // If not cached, retrieve fonts from the database
@@ -28,7 +28,11 @@ function mx_get_uploaded_fonts() {
   ]);
 
   // Cache the fonts for 1 minute (60 seconds)
-  set_transient('mx_uploaded_fonts', $fonts, 60);
+  set_transient("mx_uploaded_fonts", $fonts, 60);
+
+  error_log(
+    var_export(["new mx_uploaded_fonts transient value" => $fonts], true),
+  );
 
   return $fonts;
 }
