@@ -82,14 +82,14 @@ function mx_search_perform_es_search($body) {
     throw new Exception("No Elasticsearch host defined.");
   }
   $hosts = [$host];
-  mx_error_log("Searching on hosts", $hosts);
+  // mx_error_log("Searching on hosts", $hosts);
   $index = \ElasticPress\Indexables::factory()
     ->get("post")
     ->get_index_name(null);
   if (empty($index)) {
     throw new Exception("No Elasticsearch index defined.");
   }
-  mx_error_log("Searching in index '$index'");
+  // mx_error_log("Searching in index '$index'");
 
   $client = ClientBuilder::create()->setHosts($hosts)->build();
 
@@ -132,7 +132,7 @@ function mx_search_ajax_handler() {
 
   $query = $data["s"];
 
-  mx_error_log("Searching for '$query'");
+  // mx_error_log("Searching for '$query'");
 
   $query = [
     "bool" => [
@@ -489,7 +489,7 @@ function mx_search_ajax_handler() {
 
     wp_send_json($results);
   } catch (Exception $e) {
-    mx_error_log($e->getMessage());
+    // mx_error_log($e->getMessage());
     return wp_send_json([
       "success" => false,
       "error" => "An error occurred while searching.",
