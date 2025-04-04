@@ -103,7 +103,9 @@ function mx_attrs(...$attrs) {
 }
 
 function mx_error_log(...$messages) {
-  if (defined("MX_DEBUG") && MX_DEBUG) {
+  if (class_exists("Lumbermill")) {
+    Lumbermill::debug(...$messages);
+  } elseif (defined("MX_DEBUG") && MX_DEBUG) {
     foreach ($messages as $message) {
       error_log(var_export($message, true));
     }
