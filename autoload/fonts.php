@@ -30,7 +30,7 @@ function mx_get_uploaded_fonts() {
   // Cache the fonts for 1 minute (60 seconds)
   set_transient("mx_uploaded_fonts", $fonts, 60);
 
-  mx_error_log("new mx_uploaded_fonts transient value", $fonts);
+  // mx_error_log("new mx_uploaded_fonts transient value", $fonts);
 
   return $fonts;
 }
