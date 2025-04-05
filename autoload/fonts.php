@@ -25,6 +25,7 @@ function mx_get_uploaded_fonts() {
     "post_type" => "attachment",
     "post_mime_type" => "font/woff2",
     "posts_per_page" => -1,
+    "post_status" => "inherit",
   ]);
 
   // Cache the fonts for 1 minute (60 seconds)
