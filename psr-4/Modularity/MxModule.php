@@ -49,7 +49,7 @@ class MxModule extends \Modularity\Module {
    * @return array
    */
   protected function getFields() {
-    $fields = parent::getFields();
+    $fields = parent::getFields() ?: [];
     $fields = array_combine(
       array_map(function ($key) {
         return preg_replace("/^mod_" . $this->slug . "_/", "", $key);
