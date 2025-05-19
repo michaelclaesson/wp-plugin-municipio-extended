@@ -5,7 +5,7 @@ add_filter(
   function ($args, $post_type) {
     if (
       $post_type === "post" &&
-      get_field("disable_default_blog_post_type", "option") === "0"
+      !get_option("options_disable_default_blog_post_type", 0)
     ) {
       $args["labels"] = [
         "name" => _x("News", "Post type general name", "municipio-extended"),

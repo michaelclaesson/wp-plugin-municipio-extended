@@ -22,7 +22,7 @@ add_action(
     if (isset($wp_post_types["post"])) {
       if (
         function_exists("get_field") &&
-        get_field("disable_default_blog_post_type", "option")
+        get_option("options_disable_default_blog_post_type", 0)
       ) {
         $wp_post_types["post"]->exclude_from_search = true;
       }
