@@ -2,9 +2,10 @@
   $link = is_string($link ?? null) ? ['href' => $link] : $link ?? null;
   $href = $href ?? null ?: $link['href'] ?? null ?: $link['url'] ?? null;
   $content = $content ?? null ?: $link['content'] ?? null ?: $link['text'] ?? null ?: $label ?? null ?: $slot ?? null;
+  $type = $type ?? ((!empty($href) ? 'link' : !empty($onclick)) ? 'button' : null);
 @endphp
 
-@if (!empty($href))
+@if ($type === 'link')
   <a
     {{ mx_attrs(
         [
@@ -17,7 +18,7 @@
     ) }}>
     {{ $content }}
   </a>
-@elseif (!empty($onclick))
+@elseif ($type === 'button' || $type === 'submit' || $type === 'reset')
   <button
     {{ mx_attrs(
         [
@@ -27,6 +28,9 @@
             'data-mxui-interactive' => true,
         ],
         $attributes ?? null,
+        [
+            'type' => $type,
+        ],
     ) }}>
     {{ $content }}
   </button>
