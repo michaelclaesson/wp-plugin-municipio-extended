@@ -226,3 +226,15 @@ function mxui_debug_enabled() {
     defined("MXUI_DEBUG") ? constant("MXUI_DEBUG") : false,
   );
 }
+
+add_filter(
+  "Municipio/Content/ImageNormalized",
+  function ($normalized, \DOMElement $image) {
+    if ($image->getAttribute("data-mxui-type") === "image") {
+      return true;
+    }
+    return $normalized;
+  },
+  10,
+  2,
+);
