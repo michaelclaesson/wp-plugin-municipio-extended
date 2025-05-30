@@ -386,7 +386,6 @@ blockquote::after {
 /**
  * Fixes for full-width sections:
  * - Uses container query units to account for scrollbar width
- * - Limits the width to 1920px for larger screens
  */
 body {
   container-type: inline-size;
@@ -394,11 +393,11 @@ body {
 }
 .c-segment.c-segment--stretch {
   left: auto;
-  margin-left: calc((min(100cqw, 1920px) - 100%) / -2);
+  margin-left: calc((100cqw - 100%) / -2);
   margin-right: 0;
   position: relative;
   right: auto;
-  width: calc(min(100cqw, 1920px));
+  width: 100cqw;
 }
 
 /* Mod text */
