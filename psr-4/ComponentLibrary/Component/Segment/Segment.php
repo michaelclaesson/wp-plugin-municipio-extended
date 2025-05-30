@@ -190,6 +190,11 @@ class Segment extends MxBaseController {
       $this->data["content"] = mx_prosify($this->data["content"]);
     }
 
+    if ($this->hasContext("module.sections.card")) {
+      $this->data["proseWrap"] ??= true;
+      $this->data["content"] = mx_prosify($this->data["content"]);
+    }
+
     $this->data["buttons"] = array_filter(
       $this->data["buttons"] ?? [] ?: [],
       function ($button) {

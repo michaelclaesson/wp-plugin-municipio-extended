@@ -1,3 +1,4 @@
+<!-- Segment, context: {{ implode(', ', $context ?? []) }} -->
 @if ($useHbg ?? null)
   <!-- segment.blade.php -->
   <section class="{{ $class ?? '' }}" {!! $attribute ?? '' !!}>
