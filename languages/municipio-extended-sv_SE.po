@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-03-02T18:18:44+00:00\n"
-"PO-Revision-Date: 2025-03-02 19:20+0100\n"
+"POT-Creation-Date: 2025-06-03T10:06:55+00:00\n"
+"PO-Revision-Date: 2025-06-03 12:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -109,6 +109,102 @@ msgstr "Fara"
 msgid "Disable event hero overlay"
 msgstr "Inaktivera textöverlägg på evenemangshero"
 
+#: autoload/archives.php:8
+msgid "Table"
+msgstr "Tabell"
+
+#: autoload/async.php:6
+msgid "Async jobs"
+msgstr ""
+
+#: autoload/async.php:7
+msgid "Async job"
+msgstr ""
+
+#: autoload/async.php:8
+msgid "Add New"
+msgstr ""
+
+#: autoload/async.php:9
+msgid "Add New Job"
+msgstr ""
+
+#: autoload/async.php:10
+msgid "Edit Job"
+msgstr ""
+
+#: autoload/async.php:11
+msgid "New Job"
+msgstr ""
+
+#: autoload/async.php:12
+msgid "View Job"
+msgstr ""
+
+#: autoload/async.php:13
+msgid "No jobs found"
+msgstr ""
+
+#: autoload/async.php:14
+msgid "No jobs found in trash"
+msgstr ""
+
+#: autoload/async.php:18
+msgid "Search jobs"
+msgstr ""
+
+#: autoload/async.php:19 autoload/async.php:20 autoload/async.php:21
+msgid "Async Jobs"
+msgstr ""
+
+#: autoload/async.php:50
+msgid "Pending"
+msgstr ""
+
+#: autoload/async.php:51
+msgid "Running"
+msgstr ""
+
+#: autoload/async.php:52
+msgid "Completed"
+msgstr ""
+
+#: autoload/async.php:53
+msgid "Failed"
+msgstr ""
+
+#: autoload/async.php:192
+msgid "Every five minutes"
+msgstr ""
+
+#: autoload/async.php:299
+msgid "Runs"
+msgstr ""
+
+#: autoload/async.php:399 autoload/migrations.php:189
+msgid "Status"
+msgstr "Status"
+
+#: autoload/async.php:401
+msgid "Number of runs"
+msgstr ""
+
+#: autoload/async.php:406
+msgid "Last run"
+msgstr ""
+
+#: autoload/async.php:443
+msgid "Incomplete Jobs"
+msgstr ""
+
+#: autoload/async.php:448
+msgid "Completed Jobs"
+msgstr ""
+
+#: autoload/async.php:452
+msgid "All Jobs"
+msgstr ""
+
 #: autoload/button-navigation.php:14
 msgctxt "Secondary navigation position"
 msgid "Below title"
@@ -158,6 +254,10 @@ msgstr "Redirection"
 msgid "Allow Editors access to Redirection"
 msgstr "Tillåt redaktörer åtkomst till Redirection"
 
+#: autoload/error-page.php:51
+msgid "Error page"
+msgstr ""
+
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
 msgstr "Visa textinnehåll för One Page-mall"
@@ -195,19 +295,44 @@ msgctxt "Screen Breakpoint"
 msgid "Extra large"
 msgstr "Extra stor"
 
-#: autoload/job-listings.php:30
-msgid "Table"
-msgstr "Tabell"
+#: autoload/matomo-tag-manager.php:6
+msgctxt "Options Page Title"
+msgid "Tracking"
+msgstr ""
 
-#: autoload/job-listings.php:87
-msgctxt "Post Meta Field Label"
-msgid "Application end date"
-msgstr "Ansök senast"
+#: autoload/matomo-tag-manager.php:7
+msgctxt "Options Page Menu Title"
+msgid "Tracking"
+msgstr ""
 
-#: autoload/job-listings.php:93
-msgctxt "Post Meta Field Label"
-msgid "Publish start date"
-msgstr "Publicerad"
+#: autoload/matomo-tag-manager.php:20
+msgid "Matomo"
+msgstr ""
+
+#: autoload/matomo-tag-manager.php:24 autoload/search.php:892
+msgid "URL"
+msgstr "URL"
+
+#: autoload/matomo-tag-manager.php:27
+msgid "The URL for the Matomo Tag Manager."
+msgstr ""
+
+#: autoload/matomo-tag-manager.php:35
+msgid "Container ID"
+msgstr ""
+
+#: autoload/matomo-tag-manager.php:46
+msgid "Site ID"
+msgstr ""
+
+#: autoload/matomo-tag-manager.php:49
+msgid "The site ID for the Matomo Tag Manager."
+msgstr ""
+
+#: autoload/matomo-tag-manager.php:80
+msgid ""
+"This field is disabled because the constant %s has been defined in code."
+msgstr ""
 
 #: autoload/migrations.php:170
 msgctxt "Admin Page Title"
@@ -226,10 +351,6 @@ msgstr "Migreringar"
 #: autoload/migrations.php:188
 msgid "Name"
 msgstr "Namn"
-
-#: autoload/migrations.php:189
-msgid "Status"
-msgstr "Status"
 
 #: autoload/mod-contacts.php:20
 msgid "Use improved appearance"
@@ -372,6 +493,27 @@ msgstr "Kort och lista"
 msgid "Välj taxonomier"
 msgstr ""
 
+#: autoload/mod-posts.php:208
+msgid "Display age notification on posts"
+msgstr ""
+
+#: autoload/mod-posts.php:220
+msgid ""
+"Whether to display an information notice on posts after X amount of days"
+msgstr ""
+
+#: autoload/mod-posts.php:234
+msgid "Display the notice after this many days"
+msgstr ""
+
+#: autoload/mod-posts.php:263
+msgid "days"
+msgstr ""
+
+#: autoload/mod-text.php:61
+msgid "Text box color"
+msgstr ""
+
 #: autoload/mxui.php:14
 msgid "Cards"
 msgstr "Kort"
@@ -424,31 +566,31 @@ msgstr "Stor"
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
-#: autoload/mxui.php:160
+#: autoload/mxui.php:165
 msgid "Display taxonomies"
 msgstr "Visa taxonomier"
 
-#: autoload/mxui.php:161
+#: autoload/mxui.php:166
 msgid "Select which taxonomies to display for this post type."
 msgstr "Välj vilka taxonomier som ska visas för den här inläggstypen."
 
-#: autoload/mxui.php:175
+#: autoload/mxui.php:180
 msgid "Taxonomy placement"
 msgstr "Taxonomi placering"
 
-#: autoload/mxui.php:176
+#: autoload/mxui.php:181
 msgid "Select where to display taxonomy terms for this post type."
 msgstr "Välj var du vill visa taxonomitermer för den här inläggstypen."
 
-#: autoload/mxui.php:183
+#: autoload/mxui.php:188
 msgid "Under header"
 msgstr "Under rubriken"
 
-#: autoload/mxui.php:184
+#: autoload/mxui.php:189
 msgid "After content"
 msgstr "Efter innehåll"
 
-#: autoload/mxui.php:200
+#: autoload/mxui.php:205
 msgid "Hero search placeholder"
 msgstr "Platshållare för sökfält i hero"
 
@@ -681,10 +823,6 @@ msgstr "Innehållstyper"
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
 
-#: autoload/search.php:892
-msgid "URL"
-msgstr "URL"
-
 #: autoload/search.php:895
 msgid "The URL to the external page."
 msgstr "URL:en till den externa sidan."
@@ -693,6 +831,19 @@ msgstr "URL:en till den externa sidan."
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr "Dokument"
+
+#: autoload/sections.php:58
+msgctxt "Module Field Group Label"
+msgid "Layout"
+msgstr "Layout"
+
+#: autoload/sections.php:62
+msgid "Remove spacing below"
+msgstr "Ta bort mellanrum nedanför"
+
+#: autoload/sections.php:65
+msgid "Check this to remove the spacing below this section."
+msgstr "Markera detta för att ta bort mellanrummet under denna sektion."
 
 #: autoload/theme-mods.php:29 autoload/theme-mods.php:30
 #: autoload/theme-mods.php:94
@@ -825,6 +976,14 @@ msgstr "Standard"
 msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
+
+#~ msgctxt "Post Meta Field Label"
+#~ msgid "Application end date"
+#~ msgstr "Ansök senast"
+
+#~ msgctxt "Post Meta Field Label"
+#~ msgid "Publish start date"
+#~ msgstr "Publicerad"
 
 #~ msgid "Alert"
 #~ msgstr "Lavinmeddelande"

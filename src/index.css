@@ -521,3 +521,7 @@ Fixes image modal sizing issues in webkit browsers
 .c-segment__text p {
   margin-top: 0.75rem;
 }
+
+.-u-margin-after--grid-gap {
+  margin-block-end: calc(var(--grid-gap) * -1) !important;
+}

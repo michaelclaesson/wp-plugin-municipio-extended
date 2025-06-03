@@ -46,3 +46,77 @@ add_filter("acf/load_field/key=field_60d1a8040b829", function ($field) {
   $field["toolbar"] = "full";
   return $field;
 });
+
+/**
+ * Adds a checkbox to the section modules that allows editors to remove the spacing below them.
+ */
+add_action(
+  "acf/init",
+  function () {
+    acf_add_local_field_group([
+      "key" => "group_module_layout",
+      "title" => _x("Layout", "Module Field Group Label", "municipio-extended"),
+      "fields" => [
+        [
+          "key" => "field_module_layout_remove_spacing_below",
+          "label" => __("Remove spacing below", "municipio-extended"),
+          "name" => "module_layout_remove_spacing_below",
+          "type" => "true_false",
+          "instructions" => __(
+            "Check this to remove the spacing below this section.",
+            "municipio-extended",
+          ),
+          "ui" => 1,
+        ],
+      ],
+      "location" => [
+        [
+          [
+            "param" => "post_type",
+            "operator" => "==",
+            "value" => "mod-section-featured",
+          ],
+        ],
+        [
+          [
+            "param" => "post_type",
+            "operator" => "==",
+            "value" => "mod-section-full",
+          ],
+        ],
+        [
+          [
+            "param" => "post_type",
+            "operator" => "==",
+            "value" => "mod-section-split",
+          ],
+        ],
+      ],
+    ]);
+  },
+  20,
+);
+
+add_filter(
+  "Modularity/Display/BeforeModule::classes",
+  function ($classes, $args, $module_type, $module_id) {
+    if (
+      in_array($module_type, [
+        "mod-section-featured",
+        "mod-section-full",
+        "mod-section-split",
+      ])
+    ) {
+      $remove_spacing_below = get_field(
+        "module_layout_remove_spacing_below",
+        $module_id,
+      );
+      if ($remove_spacing_below) {
+        $classes[] = "-u-margin-after--grid-gap";
+      }
+    }
+    return $classes;
+  },
+  10,
+  4,
+);
