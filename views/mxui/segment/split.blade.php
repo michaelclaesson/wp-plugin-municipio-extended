@@ -16,10 +16,10 @@ buttons
   {{ mx_attrs(
       [
           'class' => [
-            'flex flex-row min-h-full group',
-            'relative left-1/2 transform -translate-x-1/2 m-0 w-[100vw] max-w-[1920px] rounded-none',
-             $classList,
-             ],
+              'flex flex-row min-h-full group',
+              'relative left-1/2 transform -translate-x-1/2 m-0 w-[100vw] rounded-none',
+              $classList,
+          ],
       ],
       $attributeList,
   ) }}>
