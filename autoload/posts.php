@@ -61,3 +61,49 @@ add_filter(
   10,
   2,
 );
+
+add_filter(
+  "register_post_type_args",
+  function ($args, $post_type) {
+    if (!isset($args["rewrite"]) || $args["rewrite"] === true) {
+      $args["rewrite"] = [
+        "with_front" => false,
+      ];
+      // error_log(var_export(["post_type" => $post_type], true));
+    } elseif (is_array($args["rewrite"])) {
+      if (
+        !in_array($post_type, apply_filters("mx_post_types_with_front", []))
+      ) {
+        // if (($args["rewrite"]["with_front"] ?? null) !== false) {
+        //   error_log(var_export(["post_type" => $post_type], true));
+        // }
+        $args["rewrite"]["with_front"] = false;
+      }
+    }
+    return $args;
+  },
+  10,
+  2,
+);
+
+add_filter(
+  "register_taxonomy_args",
+  function ($args, $taxonomy) {
+    if (!isset($args["rewrite"]) || $args["rewrite"] === true) {
+      $args["rewrite"] = [
+        "with_front" => false,
+      ];
+      // error_log(var_export(["taxonomy" => $taxonomy], true));
+    } elseif (is_array($args["rewrite"])) {
+      if (!in_array($taxonomy, apply_filters("mx_taxonomies_with_front", []))) {
+        // if (($args["rewrite"]["with_front"] ?? null) !== false) {
+        //   error_log(var_export(["taxonomy" => $taxonomy], true));
+        // }
+        $args["rewrite"]["with_front"] = false;
+      }
+    }
+    return $args;
+  },
+  10,
+  2,
+);
