@@ -133,7 +133,9 @@ Left to handle:
           'size' => 'medium',
           'classList' =>
               'group-hover:group-has-[[data-mxui-card-link][data-mxui-interactive]]:scale-105 transition-transform duration-500 text-transparent',
-          'slot' => $asTemplate ? 'image' : null,
+          'attributeList' => [
+              'slot' => $asTemplate ? 'image' : null,
+          ],
       ])
       @endcomponent
     </div>
