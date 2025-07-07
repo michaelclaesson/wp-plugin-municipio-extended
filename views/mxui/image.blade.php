@@ -7,11 +7,14 @@
 
 <!-- mxui.image -->
 <img
-  {{ mx_attrs([
-      'src' => $image['src'] ?? null,
-      'srcset' => $image['srcset'] ?? null,
-      'sizes' => $sizes ?? null,
-      'alt' => $alt ?? ($image['alt'] ?? ''),
-      'class' => ['object-cover', 'w-full', 'h-full', 'mt-0', $classList ?? []],
-      'data-mxui-type' => 'image',
-  ]) }}>
+  {{ mx_attrs(
+      [
+          'src' => $image['src'] ?? null,
+          'srcset' => $image['srcset'] ?? null,
+          'sizes' => $sizes ?? null,
+          'alt' => $alt ?? ($image['alt'] ?? ''),
+          'class' => ['object-cover', 'w-full', 'h-full', 'mt-0', $classList ?? []],
+          'data-mxui-type' => 'image',
+      ],
+      $attributeList ?? [],
+  ) }}>
