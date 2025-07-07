@@ -21,10 +21,12 @@ class WpPost extends Model {
       $this->post_id = $post->ID;
       $this->post = $post;
     } else {
-      throw new \InvalidArgumentException("Invalid post");
+      throw new \InvalidArgumentException("Invalid post " . json_encode($post));
     }
     if (!$this->post) {
-      throw new \InvalidArgumentException("Post $post not found");
+      throw new \InvalidArgumentException(
+        "Post " . json_encode($post) . " not found",
+      );
     }
     parent::__construct($data);
   }

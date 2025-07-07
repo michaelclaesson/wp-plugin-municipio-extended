@@ -11,7 +11,9 @@ class WpPostMeta extends Model {
     } elseif ($post_id instanceof \WP_Post) {
       $this->post_id = $post_id->ID;
     } else {
-      throw new \InvalidArgumentException("Invalid post");
+      throw new \InvalidArgumentException(
+        "Invalid post " . json_encode($post_id),
+      );
     }
     parent::__construct($data);
   }
