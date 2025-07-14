@@ -209,6 +209,18 @@ add_filter("admin_init", function () {
       $allowedMenuItems[] = "edit.php?post_type=".$cpt;
       $allowedMenuItems[] = "post-new.php?post_type=".$cpt;
     }
+
+    // Allow editors to manage Modularity content
+    $all_post_types = get_post_types();
+    $mod_post_types = array_filter($all_post_types, function ($post_type_name) {
+      return strpos($post_type_name, 'mod-') === 0;
+    });
+    foreach ($mod_post_types as $post_type_name) {
+      $allowedMenuItems[] = "edit.php?post_type=" . $post_type_name;
+      $allowedMenuItems[] = "post-new.php?post_type=" . $post_type_name;
+    }
+    $allowedMenuItems[] = "modularity";
+    
     $customTaxonomies = [
       'project_status',
       'project_category',
