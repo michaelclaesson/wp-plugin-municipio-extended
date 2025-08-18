@@ -525,3 +525,13 @@ Fixes image modal sizing issues in webkit browsers
 .-u-margin-after--grid-gap {
   margin-block-end: calc(var(--grid-gap) * -1) !important;
 }
+
+/**
+ * Fixes for event form
+ */
+.c-field--checkbox .c-field__options {
+  column-width: 12rem;
+}
+.c-field--checkbox .c-field__options > * {
+  padding-block: 0.25rem;
+}

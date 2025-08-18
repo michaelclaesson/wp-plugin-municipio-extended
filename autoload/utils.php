@@ -156,3 +156,44 @@ function mx_css_vars($vars) {
   }
   return $css;
 }
+
+function mx_get_nested_value($item, $value_key) {
+  $value_keys = explode(".", $value_key);
+  $value = $item;
+  foreach ($value_keys as $key) {
+    $value = $value[$key] ?? null;
+  }
+  return $value;
+}
+
+/**
+ * Remove items with duplicate values in array
+ * @param array $array Array to filter
+ * @param string $key Key to filter on
+ * @return array Filtered array
+ */
+function mx_unique_on($array, $key) {
+  $unique = [];
+  $keys = [];
+  foreach ($array as $item) {
+    $value = $item[$key];
+    if (!in_array($value, $keys)) {
+      $keys[] = $value;
+      $unique[] = $item;
+    }
+  }
+  return $unique;
+}
+
+/**
+ * Like php array_walk_recursive but with all nodes. The callback is passed the value, the key, the parent array and the full path.
+ */
+function mx_array_walk_recursive($array, $callback, $path = []) {
+  foreach ($array as $key => $value) {
+    if (is_array($value)) {
+      mx_array_walk_recursive($value, $callback, array_merge($path, [$key]));
+    } else {
+      $callback($value, $key, $array, array_merge($path, [$key]));
+    }
+  }
+}
