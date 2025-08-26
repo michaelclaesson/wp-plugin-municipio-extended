@@ -79,7 +79,6 @@ function mx_event_form_fetch_options($args, $data, $options_filter_cb = null) {
   $transient_key =
     "event_form_field_options_" . md5(json_encode([$args, $user_groups]));
   $options = get_transient($transient_key);
-  $options = null;
   if (!$options) {
     $per_page = 100;
     $options = [];
