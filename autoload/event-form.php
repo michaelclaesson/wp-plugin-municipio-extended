@@ -19,7 +19,7 @@ function mx_event_form_fetch_datalist_options(
     $has_next_page = true;
     $page = 1;
     while ($has_next_page) {
-      $url = "$api_url/$path?page=$page&per_page=$per_page&user_groups=$user_groups";
+      $url = "$api_url/$path?page=$page&per_page=$per_page&lang=sv&user_groups=$user_groups";
       $result = wp_remote_get($url);
       if (
         is_wp_error($result) ||
@@ -58,7 +58,7 @@ function mx_event_form_fetch_datalist_options(
         return strcmp($a["value"], $b["value"]);
       });
     }
-    $datalist["options"] = mx_unique_on($datalist["options"], "value");
+    // $datalist["options"] = mx_unique_on($datalist["options"], "value");
     set_transient($transient_key, $datalist["options"], HOUR_IN_SECONDS);
   }
   if ($options_filter_cb) {
@@ -79,13 +79,14 @@ function mx_event_form_fetch_options($args, $data, $options_filter_cb = null) {
   $transient_key =
     "event_form_field_options_" . md5(json_encode([$args, $user_groups]));
   $options = get_transient($transient_key);
+  $options = null;
   if (!$options) {
     $per_page = 100;
     $options = [];
     $has_next_page = true;
     $page = 1;
     while ($has_next_page) {
-      $url = "$api_url/$path?page=$page&per_page=$per_page&user_groups=$user_groups";
+      $url = "$api_url/$path?page=$page&per_page=$per_page&lang=sv&user_groups=$user_groups";
       $result = wp_remote_get($url);
       if (
         is_wp_error($result) ||
@@ -116,13 +117,13 @@ function mx_event_form_fetch_options($args, $data, $options_filter_cb = null) {
     }
     if (class_exists("Collator")) {
       $collator = new \Collator(get_locale());
-      usort($options, function ($a, $b) use ($collator) {
+      uasort($options, function ($a, $b) use ($collator) {
         return $collator->compare($a, $b);
       });
     } else {
-      sort($options);
+      asort($options);
     }
-    $options = array_unique($options);
+    // $options = array_unique($options);
     set_transient($transient_key, $options, HOUR_IN_SECONDS);
   }
   if ($options_filter_cb) {
