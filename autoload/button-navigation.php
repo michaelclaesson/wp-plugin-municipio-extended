@@ -1,6 +1,5 @@
 <?php
 
-use Kirki;
 use Municipio\Customizer;
 
 add_action("article_content_before", function () {

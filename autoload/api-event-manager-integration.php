@@ -1,5 +1,4 @@
 <?php
-use Kirki;
 use Municipio\Customizer;
 
 // add_filter("EventManagerIntegration/DisableEventHero", "__return_true");

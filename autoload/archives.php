@@ -1,7 +1,5 @@
 <?php
 
-use Kirki;
-
 add_filter(
   "Municipio/Customizer/Sections/Archive/archiveStyleChoices",
   function ($choices) {

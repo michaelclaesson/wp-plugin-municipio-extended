@@ -1,6 +1,5 @@
 <?php
 
-use Kirki;
 use Municipio\Customizer;
 
 /**
