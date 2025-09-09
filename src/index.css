@@ -535,3 +535,8 @@ Fixes image modal sizing issues in webkit browsers
 .c-field--checkbox .c-field__options > * {
   padding-block: 0.25rem;
 }
+
+.s-article.s-article--centered {
+  margin-inline: auto;
+  width: 100%;
+}

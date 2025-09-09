@@ -1,4 +1,4 @@
-<article class="c-article c-article--readable-width s-article u-clearfix" id="article" {!! !empty($postLanguage) ? 'lang="' . $postLanguage . '"' : '' !!}>
+<article class="c-article c-article--readable-width s-article u-clearfix {{ get_theme_mod("mx_article_alignment", 'left') === 'center' ? 's-article--centered' : '' }}" id="article" {!! !empty($postLanguage) ? 'lang="' . $postLanguage . '"' : '' !!}>
 
     <!-- Title -->
     @section('article.title.before')@show
@@ -67,6 +67,10 @@
     @endif
     {!! $postContentFiltered !!}
     @section('article.content.after')@show
+
+    @if (get_theme_mod('mx_content_area_placement', 'outside') === 'inside')
+        @includeIf('partials.sidebar', ['id' => 'content-area', 'classes' => ['o-grid']])
+    @endif
 
     <!-- Terms -->
     @section('article.terms.before')@show
