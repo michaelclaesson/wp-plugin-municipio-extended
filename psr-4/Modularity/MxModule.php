@@ -2,7 +2,7 @@
 
 namespace MunicipioExtended\Modularity;
 
-use Kirki;
+use Kirki\Compatibility\Kirki;
 use Municipio\Customizer;
 use Municipio\Customizer\KirkiPanelSection;
 

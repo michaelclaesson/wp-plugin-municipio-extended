@@ -2,7 +2,7 @@
 
 namespace MunicipioExtended\ComponentLibrary\Component;
 
-use Kirki;
+use Kirki\Compatibility\Kirki;
 use Municipio\Customizer;
 
 class MxBaseController extends \ComponentLibrary\Component\BaseController {

@@ -3,7 +3,7 @@
 namespace MunicipioExtended\ComponentLibrary\Component\Nav;
 
 use Illuminate\Support\HtmlString;
-use Kirki;
+use Kirki\Compatibility\Kirki;
 use Municipio\Customizer;
 use MunicipioExtended\ComponentLibrary\Component\MxBaseController;
 use SubItem;

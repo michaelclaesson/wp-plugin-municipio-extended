@@ -1,6 +1,6 @@
 <?php
 
-// use Kirki;
+// use Kirki\Compatibility\Kirki;
 // use Municipio\Customizer;
 
 // function mx_is_white($color) {
