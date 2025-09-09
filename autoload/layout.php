@@ -98,3 +98,13 @@ add_filter(
   10,
   2,
 );
+
+add_filter("Municipio/views/single/content-area/show", function ($show) {
+  $placement = get_theme_mod("mx_content_area_placement", "outside");
+  return $show && $placement === "outside";
+});
+
+add_filter("Municipio/views/page-centered/content-area/show", function ($show) {
+  $placement = get_theme_mod("mx_content_area_placement", "outside");
+  return $show && $placement === "outside";
+});
