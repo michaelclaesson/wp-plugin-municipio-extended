@@ -1,38 +1,49 @@
-// import defaultTheme from 'tailwindcss/defaultTheme';
 import containerQueriesPlugin from '@tailwindcss/container-queries';
 import plugin from 'tailwindcss/plugin';
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
-import withAlphaVariable from 'tailwindcss/lib/util/withAlphaVariable';
 
-// const REM_SIZE = 16;
-// function checkValue(obj, key, value) {
-//   if (typeof value === 'string' && value.endsWith('rem')) {
-//     obj[key] = parseFloat(value) * REM_SIZE + 'px';
-//   }
-// }
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
 
-// const mod = (obj) => {
-//   if (typeof obj !== 'object') {
-//     return;
-//   }
+// Recursively traverse the directory structure to find the closest parent folder with a wp-cli.yml file.
+let wpPath: string | null = __dirname;
+while (wpPath !== '/') {
+  if (existsSync(resolve(wpPath, 'wp-cli.yml'))) {
+    break;
+  }
+  wpPath = dirname(wpPath);
+}
+if (wpPath === '/') {
+  wpPath = null;
+}
 
-//   if (Array.isArray(obj)) {
-//     obj.forEach((value, key) => {
-//       mod(value);
-//       checkValue(obj, key, value);
-//     });
-//     return;
-//   }
-//   Object.keys(obj).forEach((key) => {
-//     const value = obj[key];
-//     mod(value);
-//     checkValue(obj, key, value);
-//   });
-// };
+let configPath;
+let config;
 
-// mod(defaultTheme);
+if (wpPath) {
+  console.info(
+    `Found wp-cli.yml in ${wpPath}, loading config.json from there.`,
+  );
+  configPath = resolve(wpPath, './config.json');
+  try {
+    const configFile = readFileSync(configPath, 'utf-8');
+    config = JSON.parse(configFile);
+  } catch (error) {
+    console.warn(`Could not read config file at ${configPath}:`, error);
+    config = {};
+  }
+} else {
+  console.info(
+    'No wp-cli.yml found, using default Tailwind CSS configuration.',
+  );
+  config = {};
+}
 
-function toContrastColor(color) {
+const additionalContent = [...(config?.tailwind?.content || [])].map((path) =>
+  resolve(wpPath || __dirname, path),
+);
+
+function toContrastColor(color: string) {
   return `oklab(from ${color} calc(1 / (.6 - l)) 0 0)`;
 }
 
@@ -45,6 +56,7 @@ export default {
     './psr-4/**/*.php',
     './src/**/*.php',
     './views/**/*.php',
+    ...additionalContent,
   ],
   safelist: [],
   theme: {
@@ -243,30 +255,6 @@ export default {
             // sort,
           },
         );
-        // matchUtilities(
-        //   {
-        //     // Turns `bg-toned-[base-color]/[alpha]` into `color-mix(in oklab, oklab(from [base-color] calc(1 / (.6 - l)) 0 0) [alpha]%, [base-color])`
-        //     'toned-bg': (value, { modifier }) => {
-        //       return {
-        //         '--debug': e(JSON.stringify({ value, modifier })),
-        //         // 'background-color': `color-mix(in oklab, oklab(from ${value} calc(1 / (.6 - l)) 0 0) ${10}%, ${value})`,
-        //       };
-        //     },
-        //     // 'bg-tinted': (value, { modifier }) => {
-        //     //   return {
-        //     //     color: `color-mix(in oklab, white ${modifier}%, ${value})`,
-        //     //   };
-        //     // },
-        //     // 'bg-shaded': (value, { modifier }) => {
-        //     //   return {
-        //     //     color: `color-mix(in oklab, black ${modifier}%, ${value})`,
-        //     //   };
-        //     // },
-        //   },
-        //   {
-        //     values: flattenColorPalette(theme('backgroundColors')),
-        //   },
-        // );
       },
     ),
   ],
