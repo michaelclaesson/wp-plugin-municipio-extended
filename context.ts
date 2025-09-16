@@ -28,7 +28,7 @@ if (wpPath) {
     const configFile = readFileSync(configPath, 'utf-8');
     config = JSON.parse(configFile);
   } catch (error) {
-    console.warn(`Could not read config file at ${configPath}:`, error);
+    console.warn(`Could not read config file at ${configPath}.`);
   }
 } else {
   console.info(
