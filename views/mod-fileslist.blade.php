@@ -47,7 +47,6 @@
         @collection__item([
             'link' => $row['href'],
             'icon' => 'download',
-            'displayIcon' => 'true',
             'attributeList' => [
                 'js-filter-item' => '',
                 'style' => 'color: var(--color-link);'

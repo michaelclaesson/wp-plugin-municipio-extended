@@ -22,12 +22,13 @@ Left to handle:
   $image ??= null;
   $imageAspectRatio ??= 'video';
   $link ??= null;
+  $asTemplate ??= false;
   $wrapContent ??= !empty($content) && (is_string($content) || $asTemplate);
   $proseWrap ??= false;
   $expandLinkCover ??= false;
   $buttons ??= null;
   $overflowVisible ??= false;
-  $asTemplate ??= false;
+  $modifier ??= null;
 @endphp
 <!-- mxui.card -->
 
