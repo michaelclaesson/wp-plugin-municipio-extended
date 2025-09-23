@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-09-23T12:26:19+00:00\n"
-"PO-Revision-Date: 2025-09-23 14:30+0200\n"
+"POT-Creation-Date: 2025-09-23T13:46:27+00:00\n"
+"PO-Revision-Date: 2025-09-23 15:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -256,7 +256,7 @@ msgstr "Tillåt redaktörer åtkomst till Redirection"
 
 #: autoload/error-page.php:51
 msgid "Error page"
-msgstr ""
+msgstr "Felsida"
 
 #: autoload/general.php:10
 msgid "Display text content for One Page template"
@@ -298,19 +298,19 @@ msgstr "Extra stor"
 #: autoload/layout.php:15
 msgctxt "Customizer Section Width Heading"
 msgid "Content layout"
-msgstr ""
+msgstr "Layout för innehåll"
 
 #: autoload/layout.php:27
 msgid "Default module width"
-msgstr ""
+msgstr "Standardbredd för moduler"
 
 #: autoload/layout.php:28
 msgid "Select the width modules should have when set to “inherit”."
-msgstr ""
+msgstr "Välj den bredd som moduler ska ha när satt till ”ärv”."
 
 #: autoload/layout.php:40
 msgid "Content area placement"
-msgstr ""
+msgstr "Placering i innehållsyta"
 
 #: autoload/layout.php:41
 #, php-format
@@ -318,34 +318,36 @@ msgid ""
 "Select how modules in the “%s” module area are placed in relation to the "
 "article."
 msgstr ""
+"Välj hur modulerna i modulytan \"%s\" ska placeras i förhållande till "
+"artikeln."
 
 #: autoload/layout.php:47
 msgctxt "Content Area Placement Option"
 msgid "Outside"
-msgstr ""
+msgstr "Utanför"
 
 #: autoload/layout.php:52
 msgctxt "Content Area Placement Option"
 msgid "Inside"
-msgstr ""
+msgstr "Inuti"
 
 #: autoload/layout.php:64
 msgid "Article content alignment"
-msgstr ""
+msgstr "Justering av artikelinnehåll"
 
 #: autoload/layout.php:65
 msgid "Select how the article content should be aligned."
-msgstr ""
+msgstr "Välj hur artikelinnehållet ska justeras."
 
 #: autoload/layout.php:71
 msgctxt "Article Content Alignment Option"
 msgid "Left"
-msgstr ""
+msgstr "Vänsterställt"
 
 #: autoload/layout.php:76
 msgctxt "Article Content Alignment Option"
 msgid "Center"
-msgstr ""
+msgstr "Centrerat"
 
 #: autoload/matomo-tag-manager.php:6
 msgctxt "Options Page Title"
@@ -567,75 +569,75 @@ msgstr ""
 msgid "Text box color"
 msgstr ""
 
-#: autoload/modularity.php:88
+#: autoload/modularity.php:92
 msgid "Transparent"
 msgstr "Genomskinlig"
 
-#: autoload/modularity.php:89
+#: autoload/modularity.php:93
 msgid "Complementary color"
 msgstr "Komplementärfärg"
 
-#: autoload/modularity.php:90
+#: autoload/modularity.php:94
 msgid "White"
 msgstr "Vit"
 
-#: autoload/modularity.php:91
+#: autoload/modularity.php:95
 msgid "Neutral color"
 msgstr "Neutral färg"
 
-#: autoload/modularity.php:92
+#: autoload/modularity.php:96
 msgid "Card color"
 msgstr ""
 
-#: autoload/modularity.php:93
+#: autoload/modularity.php:97
 msgid "Background color"
 msgstr "Bakgrundsfärg"
 
-#: autoload/module-editor.php:46
+#: autoload/module-editor.php:44
 msgctxt "Modularity Editor Module Field"
 msgid "(No title)"
 msgstr "(Ingen titel)"
 
-#: autoload/module-editor.php:51
+#: autoload/module-editor.php:49
 msgctxt "Modularity Editor Module Field"
 msgid "(Deactivated module)"
 msgstr "(Inaktiverad modul)"
 
-#: autoload/module-editor.php:66
+#: autoload/module-editor.php:64
 msgctxt "Modularity Editor Module Field"
 msgid "Hidden"
 msgstr "Dold"
 
-#: autoload/module-editor.php:75
+#: autoload/module-editor.php:73
 msgctxt "Modularity Editor Module Field"
 msgid "Width:"
 msgstr "Bredd:"
 
-#: autoload/module-editor.php:127
+#: autoload/module-editor.php:125
 msgctxt "Modularity Editor Module Field"
 msgid "Edit"
 msgstr "Redigera"
 
-#: autoload/module-editor.php:147
+#: autoload/module-editor.php:145
 msgctxt "Modularity Editor Module Field"
 msgid "Import"
 msgstr "Importera"
 
-#: autoload/module-editor.php:155
+#: autoload/module-editor.php:153
 msgctxt "Modularity Editor Module Field"
 msgid "Remove"
 msgstr "Ta bort"
 
-#: autoload/module-editor.php:353 autoload/module-editor.php:442
+#: autoload/module-editor.php:362 autoload/module-editor.php:451
 msgctxt "Modularity Editor Module Group Field"
 msgid "Background:"
 msgstr "Bakgrund:"
 
-#: autoload/module-editor.php:403 autoload/module-editor.php:492
+#: autoload/module-editor.php:412 autoload/module-editor.php:501
 msgid "Drag modules here. Empty groups are removed automatically."
 msgstr "Dra moduler hit. Tomma grupper tas bort automatiskt."
 
-#: autoload/module-editor.php:506
+#: autoload/module-editor.php:515
 msgid "Add group"
 msgstr "Lägg till grupp"
 

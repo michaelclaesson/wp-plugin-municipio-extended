@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-23T12:26:19+00:00\n"
+"POT-Creation-Date: 2025-09-23T13:46:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: municipio-extended\n"
@@ -563,77 +563,77 @@ msgstr ""
 msgid "Text box color"
 msgstr ""
 
-#: autoload/modularity.php:88
+#: autoload/modularity.php:92
 msgid "Transparent"
 msgstr ""
 
-#: autoload/modularity.php:89
+#: autoload/modularity.php:93
 msgid "Complementary color"
 msgstr ""
 
-#: autoload/modularity.php:90
+#: autoload/modularity.php:94
 msgid "White"
 msgstr ""
 
-#: autoload/modularity.php:91
+#: autoload/modularity.php:95
 msgid "Neutral color"
 msgstr ""
 
-#: autoload/modularity.php:92
+#: autoload/modularity.php:96
 msgid "Card color"
 msgstr ""
 
-#: autoload/modularity.php:93
+#: autoload/modularity.php:97
 msgid "Background color"
 msgstr ""
 
-#: autoload/module-editor.php:46
+#: autoload/module-editor.php:44
 msgctxt "Modularity Editor Module Field"
 msgid "(No title)"
 msgstr ""
 
-#: autoload/module-editor.php:51
+#: autoload/module-editor.php:49
 msgctxt "Modularity Editor Module Field"
 msgid "(Deactivated module)"
 msgstr ""
 
-#: autoload/module-editor.php:66
+#: autoload/module-editor.php:64
 msgctxt "Modularity Editor Module Field"
 msgid "Hidden"
 msgstr ""
 
-#: autoload/module-editor.php:75
+#: autoload/module-editor.php:73
 msgctxt "Modularity Editor Module Field"
 msgid "Width:"
 msgstr ""
 
-#: autoload/module-editor.php:127
+#: autoload/module-editor.php:125
 msgctxt "Modularity Editor Module Field"
 msgid "Edit"
 msgstr ""
 
-#: autoload/module-editor.php:147
+#: autoload/module-editor.php:145
 msgctxt "Modularity Editor Module Field"
 msgid "Import"
 msgstr ""
 
-#: autoload/module-editor.php:155
+#: autoload/module-editor.php:153
 msgctxt "Modularity Editor Module Field"
 msgid "Remove"
 msgstr ""
 
-#: autoload/module-editor.php:353
-#: autoload/module-editor.php:442
+#: autoload/module-editor.php:362
+#: autoload/module-editor.php:451
 msgctxt "Modularity Editor Module Group Field"
 msgid "Background:"
 msgstr ""
 
-#: autoload/module-editor.php:403
-#: autoload/module-editor.php:492
+#: autoload/module-editor.php:412
+#: autoload/module-editor.php:501
 msgid "Drag modules here. Empty groups are removed automatically."
 msgstr ""
 
-#: autoload/module-editor.php:506
+#: autoload/module-editor.php:515
 msgid "Add group"
 msgstr ""
 
