@@ -11,7 +11,11 @@ function mx_get_post($post_id = null, ...$args) {
   if (!$post_id) {
     return null;
   }
-  return mx_get_model("WpPost", $post_id, ...$args);
+  try {
+    return mx_get_model("WpPost", $post_id, ...$args);
+  } catch (\Exception $e) {
+    return null;
+  }
 }
 
 function mx_get_post_meta($post_id = null, ...$args) {

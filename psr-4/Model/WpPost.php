@@ -15,9 +15,9 @@ class WpPost extends Model {
 
   public function __construct($post, $data = []) {
     if (is_numeric($post)) {
-      $this->post_id = $post;
-      $this->post = get_post($post);
-    } elseif ($post instanceof \WP_Post) {
+      $post = get_post($post);
+    }
+    if ($post instanceof \WP_Post) {
       $this->post_id = $post->ID;
       $this->post = $post;
     } else {
@@ -77,7 +77,7 @@ class WpPost extends Model {
     return $this->post->post_parent;
   }
 
-  public function getParent() {
+  public function getParent(): ?WpPost {
     if (!$this->parentId) {
       return null;
     }
