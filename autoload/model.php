@@ -24,6 +24,20 @@ function mx_get_post_meta($post_id = null, ...$args) {
   return mx_get_model("WpPostMeta", $post_id, ...$args);
 }
 
+function mx_get_post_type($post_type = null, ...$args) {
+  if (!$post_type) {
+    $post = get_post();
+    if (!$post) {
+      return null;
+    }
+    $post_type = $post->post_type;
+  }
+  if (!$post_type) {
+    return null;
+  }
+  return mx_get_model("WpPostType", $post_type, ...$args);
+}
+
 function mx_get_menu_item($post_id = null, ...$args) {
   if (!$post_id) {
     $post_id = get_the_ID();

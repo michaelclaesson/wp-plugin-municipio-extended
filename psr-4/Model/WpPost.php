@@ -134,4 +134,8 @@ class WpPost extends Model {
     }
     return $this->meta;
   }
+
+  public function getPostType() {
+    return mx_get_post_type($this->post->post_type);
+  }
 }
