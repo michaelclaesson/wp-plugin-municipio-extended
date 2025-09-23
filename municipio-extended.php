@@ -17,23 +17,27 @@ define(
   MUNICIPIO_EXTENDED_PATH . "/autoload",
 );
 define(
+  "MUNICIPIO_EXTENDED_IS_MU",
+  strpos(MUNICIPIO_EXTENDED_PATH, WPMU_PLUGIN_DIR) === 0,
+);
+define(
   "MUNICIPIO_EXTENDED_LANGUAGES_PATH",
   plugin_basename(dirname(__FILE__)) . "/languages",
 );
 
-add_action("plugins_loaded", function () {
-  load_plugin_textdomain(
-    "municipio-extended",
-    false,
-    MUNICIPIO_EXTENDED_LANGUAGES_PATH,
-  );
-});
-
-add_action("muplugins_loaded", function () {
-  load_muplugin_textdomain(
-    "municipio-extended",
-    MUNICIPIO_EXTENDED_LANGUAGES_PATH,
-  );
+add_action("init", function () {
+  if (MUNICIPIO_EXTENDED_IS_MU) {
+    load_muplugin_textdomain(
+      "municipio-extended",
+      MUNICIPIO_EXTENDED_LANGUAGES_PATH,
+    );
+  } else {
+    load_plugin_textdomain(
+      "municipio-extended",
+      false,
+      MUNICIPIO_EXTENDED_LANGUAGES_PATH,
+    );
+  }
 });
 
 array_map(static function () {
