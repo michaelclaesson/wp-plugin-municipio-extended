@@ -8,13 +8,25 @@ importers:
 
   .:
     dependencies:
+      '@alpinejs/sort':
+        specifier: ^3.15.0
+        version: 3.15.0
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@3.4.4)
+      alpinejs:
+        specifier: ^3.15.0
+        version: 3.15.0
     devDependencies:
       '@prettier/plugin-php':
         specifier: ^0.22.2
         version: 0.22.2(prettier@3.3.2)
+      '@types/alpinejs':
+        specifier: ^3.13.11
+        version: 3.13.11
+      '@types/alpinejs__sort':
+        specifier: ^3.13.0
+        version: 3.13.0
       '@types/node':
         specifier: ^24.4.0
         version: 24.4.0
@@ -54,6 +66,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@alpinejs/sort@3.15.0':
+    resolution: {integrity: sha512-ayRmcuGvqL2t9otuUiLaq6Rx8lYHAVok4TXdSXF97tcTaGLA1DN3/mwone8amCLlBar8FwVE6vak/4AtwRpWjw==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -321,11 +336,26 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.2.0'
 
+  '@types/alpinejs@3.13.11':
+    resolution: {integrity: sha512-3KhGkDixCPiLdL3Z/ok1GxHwLxEWqQOKJccgaQL01wc0EVM2tCTaqlC3NIedmxAXkVzt/V6VTM8qPgnOHKJ1MA==}
+
+  '@types/alpinejs__sort@3.13.0':
+    resolution: {integrity: sha512-iR9vEy6e3yXbYAK45/hpulzlt8SSKTsvYUl/t5nuWjtbJPoGxzxUUqOm3egp83Gqtf//TyJnDCI4OTebAKDRAA==}
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
   '@types/node@24.4.0':
     resolution: {integrity: sha512-gUuVEAK4/u6F9wRLznPUU4WGUacSEBDPoC2TrBkw3GAnOLHBL45QdfHOXp1kJ4ypBGLxTOB+t7NJLpKoC3gznQ==}
+
+  '@vue/reactivity@3.1.5':
+    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
+
+  '@vue/shared@3.1.5':
+    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+
+  alpinejs@3.15.0:
+    resolution: {integrity: sha512-lpokA5okCF1BKh10LG8YjqhfpxyHBk4gE7boIgVHltJzYoM7O9nK3M7VlntLEJGsVmu7U/RzUWajmHREGT38Eg==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -931,6 +961,8 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
+  '@alpinejs/sort@3.15.0': {}
+
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
@@ -1099,11 +1131,27 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.4
 
+  '@types/alpinejs@3.13.11': {}
+
+  '@types/alpinejs__sort@3.13.0':
+    dependencies:
+      '@types/alpinejs': 3.13.11
+
   '@types/estree@1.0.5': {}
 
   '@types/node@24.4.0':
     dependencies:
       undici-types: 7.11.0
+
+  '@vue/reactivity@3.1.5':
+    dependencies:
+      '@vue/shared': 3.1.5
+
+  '@vue/shared@3.1.5': {}
+
+  alpinejs@3.15.0:
+    dependencies:
+      '@vue/reactivity': 3.1.5
 
   ansi-regex@5.0.1: {}
 

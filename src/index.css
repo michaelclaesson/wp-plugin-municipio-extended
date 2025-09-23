@@ -39,6 +39,12 @@
   --color-layer-light: var(--color-background-card);
   --color-layer-lighter: var(--color-background-card);
 }
+.layer-background {
+  --color-layer-dark: var(--color-background);
+  --color-layer: var(--color-background);
+  --color-layer-light: var(--color-background);
+  --color-layer-lighter: var(--color-background);
+}
 
 @layer components {
   .typography-h1 {
@@ -539,4 +545,110 @@ Fixes image modal sizing issues in webkit browsers
 .s-article.s-article--centered {
   margin-inline: auto;
   width: 100%;
+}
+
+/* @property --mod-group-boundary-top-anchor {
+  syntax: '<anchor-name>';
+  inherits: true;
+}
+@property --mod-group-boundary-bottom-anchor {
+  syntax: '<anchor-name>';
+  inherits: true;
+} */
+
+.mx-module-group {
+  position: relative;
+  padding-top: var(--mx-module-group-padding-top, 0);
+  padding-bottom: var(--mx-module-group-padding-bottom, 0);
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    /* outline: 1px solid red; */
+    background-color: var(--mx-module-group-bg-color, transparent);
+    pointer-events: none;
+  }
+  &.mx-module-group--bg-complementary {
+    --mx-module-group-bg-color: var(--color-complementary-light);
+  }
+  &.mx-module-group--bg-white {
+    --mx-module-group-bg-color: var(--color-white);
+  }
+  &.mx-module-group--bg-neutral {
+    --mx-module-group-bg-color: var(--color-light);
+  }
+  &.mx-module-group--bg-card {
+    --mx-module-group-bg-color: var(--color-background-card);
+  }
+  &.mx-module-group--bg-background {
+    --mx-module-group-bg-color: var(--color-background);
+  }
+  &:not(.mx-module-group--bg-transparent:first-child) {
+    --mx-module-group-padding-top: calc(
+      var(--base, 8px) * var(--o-grid-gap, 4) * 0.5
+    );
+    @media (min-width: 56em) {
+      --mx-module-group-padding-top: calc(
+        var(--base, 8px) * var(--o-grid-gap, 4) * 0.75
+      );
+    }
+    @media (min-width: 78em) {
+      --mx-module-group-padding-top: calc(
+        var(--base, 8px) * var(--o-grid-gap, 4)
+      );
+    }
+  }
+  &:not(.mx-module-group--bg-transparent:last-child) {
+    --mx-module-group-padding-bottom: calc(
+      var(--base, 8px) * var(--o-grid-gap, 4) * 0.5
+    );
+    @media (min-width: 56em) {
+      --mx-module-group-padding-bottom: calc(
+        var(--base, 8px) * var(--o-grid-gap, 4) * 0.75
+      );
+    }
+    @media (min-width: 78em) {
+      --mx-module-group-padding-bottom: calc(
+        var(--base, 8px) * var(--o-grid-gap, 4)
+      );
+    }
+  }
+}
+
+.mx-module-group.o-grid {
+  margin-top: 0;
+}
+
+.mod-group-boundary.mod-group-boundary {
+  min-height: 0;
+  height: 0;
+  /* anchor-name: var(--mod-group-boundary-top-anchor);
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: anchor(var(--mod-group-boundary-top-anchor) bottom);
+    bottom: anchor(var(--mod-group-boundary-bottom-anchor) top);
+  } */
+}
+.mod-group-background.mod-group-background {
+  position: absolute;
+  background-color: var(--color);
+  /* anchor-name: var(--mod-group-boundary-top-anchor);
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: anchor(var(--mod-group-boundary-top-anchor) bottom);
+    bottom: anchor(var(--mod-group-boundary-bottom-anchor) top);
+  } */
+}
+
+body {
+  overflow-x: hidden;
 }
