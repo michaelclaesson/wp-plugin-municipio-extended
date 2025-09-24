@@ -237,3 +237,12 @@ add_filter(
   10,
   2,
 );
+
+
+add_action('customize_register', function (\WP_Customize_Manager $wp_customize) {
+    $control = $wp_customize->get_control('business_header_alignment');
+
+    if ($control instanceof \WP_Customize_Control) {
+        $control->choices['business-center'] = esc_html__('Center', 'municipio');
+    }
+}, 999);

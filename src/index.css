@@ -547,6 +547,10 @@ Fixes image modal sizing issues in webkit browsers
   width: 100%;
 }
 
+.c-nav--business-center {
+  justify-content: center;
+ }
+
 /* @property --mod-group-boundary-top-anchor {
   syntax: '<anchor-name>';
   inherits: true;
