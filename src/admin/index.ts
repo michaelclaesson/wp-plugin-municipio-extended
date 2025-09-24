@@ -8,9 +8,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-console.log(window.mx.moduleGroupsEnabled);
-
-if (window.mx.moduleGroupsEnabled) {
+if (window.mx?.moduleGroupsEnabled && window.Modularity?.Editor?.Module) {
   const Module = window.Modularity.Editor.Module.constructor;
 
   const MxModule = function MxModule(
