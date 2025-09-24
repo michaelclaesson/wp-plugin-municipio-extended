@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-09-23T13:46:27+00:00\n"
-"PO-Revision-Date: 2025-09-23 15:49+0200\n"
+"POT-Creation-Date: 2025-09-24T22:26:13+00:00\n"
+"PO-Revision-Date: 2025-09-25 00:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -418,6 +418,50 @@ msgstr "Formulär"
 #: autoload/mod-form.php:21
 msgid "Default content for GDPR notice"
 msgstr "Standardinnehåll för GDPR-meddelande"
+
+#: autoload/mod-manualinput.php:31
+msgid "Preferred image aspect ratio"
+msgstr "Önskat bildförhållande"
+
+#: autoload/mod-manualinput.php:34
+msgid ""
+"Select the preferred aspect ratio for the images when displayed as segments. "
+"It might still be cropped on some screen sizes, depending on how much text "
+"you add."
+msgstr ""
+"Välj önskat bildförhållande för bilden när den visas som segment. Den kan "
+"fortfarande vara beskuren i vissa skärmstorlekar, beroende på hur mycket "
+"text du lägger till."
+
+#: autoload/mod-manualinput.php:39
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Unconstrained"
+msgstr "Obegränsad"
+
+#: autoload/mod-manualinput.php:44
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Original"
+msgstr "Original"
+
+#: autoload/mod-manualinput.php:49
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Landscape 16:9"
+msgstr "Liggande 16:9"
+
+#: autoload/mod-manualinput.php:54
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Landscape 4:3"
+msgstr "Liggande 4:3"
+
+#: autoload/mod-manualinput.php:59
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Square 1:1"
+msgstr "Kvadrat (1:1)"
+
+#: autoload/mod-manualinput.php:64
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Portrait 3:4"
+msgstr "Stående 3:4"
 
 #: autoload/mod-navigation.php:36
 msgctxt "Navigation Module Field Group Title"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-23T13:46:27+00:00\n"
+"POT-Creation-Date: 2025-09-24T22:26:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: municipio-extended\n"
@@ -412,6 +412,44 @@ msgstr ""
 
 #: autoload/mod-form.php:21
 msgid "Default content for GDPR notice"
+msgstr ""
+
+#: autoload/mod-manualinput.php:31
+msgid "Preferred image aspect ratio"
+msgstr ""
+
+#: autoload/mod-manualinput.php:34
+msgid "Select the preferred aspect ratio for the images when displayed as segments. It might still be cropped on some screen sizes, depending on how much text you add."
+msgstr ""
+
+#: autoload/mod-manualinput.php:39
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Unconstrained"
+msgstr ""
+
+#: autoload/mod-manualinput.php:44
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Original"
+msgstr ""
+
+#: autoload/mod-manualinput.php:49
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Landscape 16:9"
+msgstr ""
+
+#: autoload/mod-manualinput.php:54
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Landscape 4:3"
+msgstr ""
+
+#: autoload/mod-manualinput.php:59
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Square 1:1"
+msgstr ""
+
+#: autoload/mod-manualinput.php:64
+msgctxt "Preferred Image Aspect Ratio"
+msgid "Portrait 3:4"
 msgstr ""
 
 #: autoload/mod-navigation.php:36

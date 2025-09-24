@@ -5,12 +5,12 @@ height
 icon
 layout
 overlay
-reverseColumns
 sub_title
-
-buttons
 --}}
 
+@php
+  $imageAspectRatio = $imageAspectRatio ?? null;
+@endphp
 
 <!-- mxui.segment.card -->
 <div {{ mx_attrs([
@@ -55,12 +55,17 @@ buttons
       @if (!empty($image))
         <div
           {{ mx_attrs([
+              'style' => [
+                  '--aspect-ratio' => $imageAspectRatio ?: '16/9',
+                  '--aspect-ratio-sm' => $imageAspectRatio ?: '100',
+              ],
               'class' => [
                   'row-start-1',
                   'w-full @sm:row-start-1 @sm:place-self-stretch',
-                  '@sm:aspect-[100]', // Causes the image to shrink as much as possible vertically
+                  '@sm:aspect-[--aspect-ratio-sm]', // Causes the image to shrink as much as possible vertically
                   $reverseColumns ? '@sm:col-start-1 @sm:col-end-4' : '@sm:col-start-2 @sm:col-end-5',
-                  'aspect-video bg-secondary first:last:mb-0',
+                  'aspect-[--aspect-ratio]',
+                  'bg-secondary first:last:mb-0',
                   'overflow-hidden border-none rounded-[var(--c-segment-image-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))]',
               ],
           ]) }}>
