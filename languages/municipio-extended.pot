@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Municipio Extended plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Municipio Extended 24.113.5\n"
+"Project-Id-Version: Municipio Extended 24.125.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-municipio-extended-2024\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-03T10:06:55+00:00\n"
+"POT-Creation-Date: 2025-09-23T13:46:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -105,11 +105,11 @@ msgctxt "Alert Type Choice"
 msgid "Danger"
 msgstr ""
 
-#: autoload/api-event-manager-integration.php:20
+#: autoload/api-event-manager-integration.php:19
 msgid "Disable event hero overlay"
 msgstr ""
 
-#: autoload/archives.php:8
+#: autoload/archives.php:6
 msgid "Table"
 msgstr ""
 
@@ -208,7 +208,7 @@ msgstr ""
 msgid "All Jobs"
 msgstr ""
 
-#: autoload/button-navigation.php:14
+#: autoload/button-navigation.php:13
 msgctxt "Secondary navigation position"
 msgid "Below title"
 msgstr ""
@@ -257,41 +257,91 @@ msgstr ""
 msgid "Error page"
 msgstr ""
 
-#: autoload/general.php:11
+#: autoload/general.php:10
 msgid "Display text content for One Page template"
 msgstr ""
 
-#: autoload/header.php:16
+#: autoload/header.php:15
 msgid "Header Logotype Text: Width"
 msgstr ""
 
-#: autoload/header.php:35
+#: autoload/header.php:34
 msgid "Header breakpoint"
 msgstr ""
 
-#: autoload/header.php:38
+#: autoload/header.php:37
 msgctxt "Screen Breakpoint"
 msgid "Extra small"
 msgstr ""
 
-#: autoload/header.php:39
+#: autoload/header.php:38
 msgctxt "Screen Breakpoint"
 msgid "Small"
 msgstr ""
 
-#: autoload/header.php:40
+#: autoload/header.php:39
 msgctxt "Screen Breakpoint"
 msgid "Medium"
 msgstr ""
 
-#: autoload/header.php:41
+#: autoload/header.php:40
 msgctxt "Screen Breakpoint"
 msgid "Large"
 msgstr ""
 
-#: autoload/header.php:42
+#: autoload/header.php:41
 msgctxt "Screen Breakpoint"
 msgid "Extra large"
+msgstr ""
+
+#: autoload/layout.php:15
+msgctxt "Customizer Section Width Heading"
+msgid "Content layout"
+msgstr ""
+
+#: autoload/layout.php:27
+msgid "Default module width"
+msgstr ""
+
+#: autoload/layout.php:28
+msgid "Select the width modules should have when set to “inherit”."
+msgstr ""
+
+#: autoload/layout.php:40
+msgid "Content area placement"
+msgstr ""
+
+#: autoload/layout.php:41
+#, php-format
+msgid "Select how modules in the “%s” module area are placed in relation to the article."
+msgstr ""
+
+#: autoload/layout.php:47
+msgctxt "Content Area Placement Option"
+msgid "Outside"
+msgstr ""
+
+#: autoload/layout.php:52
+msgctxt "Content Area Placement Option"
+msgid "Inside"
+msgstr ""
+
+#: autoload/layout.php:64
+msgid "Article content alignment"
+msgstr ""
+
+#: autoload/layout.php:65
+msgid "Select how the article content should be aligned."
+msgstr ""
+
+#: autoload/layout.php:71
+msgctxt "Article Content Alignment Option"
+msgid "Left"
+msgstr ""
+
+#: autoload/layout.php:76
+msgctxt "Article Content Alignment Option"
+msgid "Center"
 msgstr ""
 
 #: autoload/matomo-tag-manager.php:6
@@ -330,6 +380,7 @@ msgid "The site ID for the Matomo Tag Manager."
 msgstr ""
 
 #: autoload/matomo-tag-manager.php:80
+#, php-format
 msgid "This field is disabled because the constant %s has been defined in code."
 msgstr ""
 
@@ -351,15 +402,15 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: autoload/mod-contacts.php:20
+#: autoload/mod-contacts.php:19
 msgid "Use improved appearance"
 msgstr ""
 
-#: autoload/mod-form.php:14
+#: autoload/mod-form.php:13
 msgid "Form"
 msgstr ""
 
-#: autoload/mod-form.php:22
+#: autoload/mod-form.php:21
 msgid "Default content for GDPR notice"
 msgstr ""
 
@@ -512,84 +563,158 @@ msgstr ""
 msgid "Text box color"
 msgstr ""
 
-#: autoload/mxui.php:14
+#: autoload/modularity.php:92
+msgid "Transparent"
+msgstr ""
+
+#: autoload/modularity.php:93
+msgid "Complementary color"
+msgstr ""
+
+#: autoload/modularity.php:94
+msgid "White"
+msgstr ""
+
+#: autoload/modularity.php:95
+msgid "Neutral color"
+msgstr ""
+
+#: autoload/modularity.php:96
+msgid "Card color"
+msgstr ""
+
+#: autoload/modularity.php:97
+msgid "Background color"
+msgstr ""
+
+#: autoload/module-editor.php:44
+msgctxt "Modularity Editor Module Field"
+msgid "(No title)"
+msgstr ""
+
+#: autoload/module-editor.php:49
+msgctxt "Modularity Editor Module Field"
+msgid "(Deactivated module)"
+msgstr ""
+
+#: autoload/module-editor.php:64
+msgctxt "Modularity Editor Module Field"
+msgid "Hidden"
+msgstr ""
+
+#: autoload/module-editor.php:73
+msgctxt "Modularity Editor Module Field"
+msgid "Width:"
+msgstr ""
+
+#: autoload/module-editor.php:125
+msgctxt "Modularity Editor Module Field"
+msgid "Edit"
+msgstr ""
+
+#: autoload/module-editor.php:145
+msgctxt "Modularity Editor Module Field"
+msgid "Import"
+msgstr ""
+
+#: autoload/module-editor.php:153
+msgctxt "Modularity Editor Module Field"
+msgid "Remove"
+msgstr ""
+
+#: autoload/module-editor.php:362
+#: autoload/module-editor.php:451
+msgctxt "Modularity Editor Module Group Field"
+msgid "Background:"
+msgstr ""
+
+#: autoload/module-editor.php:412
+#: autoload/module-editor.php:501
+msgid "Drag modules here. Empty groups are removed automatically."
+msgstr ""
+
+#: autoload/module-editor.php:515
+msgid "Add group"
+msgstr ""
+
+#: autoload/mxui.php:13
 msgid "Cards"
 msgstr ""
 
-#: autoload/mxui.php:22
+#: autoload/mxui.php:21
 msgid "Use MXUI version"
 msgstr ""
 
-#: autoload/mxui.php:30
+#: autoload/mxui.php:29
 msgid "Segments"
 msgstr ""
 
-#: autoload/mxui.php:40
+#: autoload/mxui.php:39
 msgid "Style for main menu"
 msgstr ""
 
-#: autoload/mxui.php:44
-#: autoload/mxui.php:58
+#: autoload/mxui.php:43
+#: autoload/mxui.php:57
 msgid "Standard"
 msgstr ""
 
-#: autoload/mxui.php:45
+#: autoload/mxui.php:44
 msgid "Compact"
 msgstr ""
 
-#: autoload/mxui.php:54
+#: autoload/mxui.php:53
 msgid "Placing for tab menu"
 msgstr ""
 
-#: autoload/mxui.php:59
+#: autoload/mxui.php:58
 msgid "Above"
 msgstr ""
 
-#: autoload/mxui.php:68
+#: autoload/mxui.php:67
 msgid "Tab menu button size"
 msgstr ""
 
-#: autoload/mxui.php:72
+#: autoload/mxui.php:71
 msgid "Small"
 msgstr ""
 
-#: autoload/mxui.php:73
+#: autoload/mxui.php:72
 msgid "Medium"
 msgstr ""
 
-#: autoload/mxui.php:74
+#: autoload/mxui.php:73
 msgid "Large"
 msgstr ""
 
-#: autoload/mxui.php:85
+#: autoload/mxui.php:84
 msgid "Section start page"
 msgstr ""
 
-#: autoload/mxui.php:165
+#: autoload/mxui.php:164
 msgid "Display taxonomies"
 msgstr ""
 
-#: autoload/mxui.php:166
+#: autoload/mxui.php:165
 msgid "Select which taxonomies to display for this post type."
 msgstr ""
 
-#: autoload/mxui.php:180
+#: autoload/mxui.php:179
 msgid "Taxonomy placement"
 msgstr ""
 
-#: autoload/mxui.php:181
+#: autoload/mxui.php:180
 msgid "Select where to display taxonomy terms for this post type."
 msgstr ""
 
-#: autoload/mxui.php:188
+#: autoload/mxui.php:187
 msgid "Under header"
 msgstr ""
 
-#: autoload/mxui.php:189
+#: autoload/mxui.php:188
 msgid "After content"
 msgstr ""
 
-#: autoload/mxui.php:205
+#: autoload/mxui.php:204
 msgid "Hero search placeholder"
 msgstr ""
 

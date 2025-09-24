@@ -11,6 +11,7 @@ export default defineConfig(
             config?.vite?.build?.outDir || './web/app/mu-plugins/dist',
           ),
           emptyOutDir: true,
+          modulePreload: false,
           rollupOptions: {
             input: 'src/index.css',
             output: {
@@ -23,7 +24,10 @@ export default defineConfig(
       }
     : {
         build: {
+          modulePreload: false,
+          sourcemap: true,
           rollupOptions: {
+            input: ['index.html', 'admin.html'],
             output: {
               entryFileNames: `assets/[name].js`,
               chunkFileNames: `assets/[name].js`,

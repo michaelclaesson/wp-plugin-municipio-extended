@@ -62,3 +62,25 @@ add_filter(
   10,
   2,
 );
+
+add_action("admin_enqueue_scripts", function () {
+  wp_register_script(
+    "mx-admin",
+    MUNICIPIO_EXTENDED_URL . "/dist/assets/admin.js",
+    ["modularity"],
+    filemtime(MUNICIPIO_EXTENDED_PATH . "/dist/assets/admin.js"),
+    true,
+  );
+  // Add window.mx.moduleGroupsEnabled
+  wp_localize_script("mx-admin", "mx", [
+    "moduleGroupsEnabled" => mx_module_groups_enabled(),
+  ]);
+  wp_enqueue_script("mx-admin");
+  wp_register_style(
+    "mx-admin",
+    MUNICIPIO_EXTENDED_URL . "/dist/assets/admin.css",
+    [],
+    filemtime(MUNICIPIO_EXTENDED_PATH . "/dist/assets/admin.css"),
+  );
+  wp_enqueue_style("mx-admin");
+});

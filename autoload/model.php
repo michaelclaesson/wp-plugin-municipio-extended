@@ -11,7 +11,11 @@ function mx_get_post($post_id = null, ...$args) {
   if (!$post_id) {
     return null;
   }
-  return mx_get_model("WpPost", $post_id, ...$args);
+  try {
+    return mx_get_model("WpPost", $post_id, ...$args);
+  } catch (\Exception $e) {
+    return null;
+  }
 }
 
 function mx_get_post_meta($post_id = null, ...$args) {
@@ -22,6 +26,20 @@ function mx_get_post_meta($post_id = null, ...$args) {
     return null;
   }
   return mx_get_model("WpPostMeta", $post_id, ...$args);
+}
+
+function mx_get_post_type($post_type = null, ...$args) {
+  if (!$post_type) {
+    $post = get_post();
+    if (!$post) {
+      return null;
+    }
+    $post_type = $post->post_type;
+  }
+  if (!$post_type) {
+    return null;
+  }
+  return mx_get_model("WpPostType", $post_type, ...$args);
 }
 
 function mx_get_menu_item($post_id = null, ...$args) {
