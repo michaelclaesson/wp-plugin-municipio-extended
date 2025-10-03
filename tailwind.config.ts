@@ -42,6 +42,8 @@ export default {
       'secondary-contrasting': 'var(--color-secondary-contrasting)',
       background: 'var(--color-background)',
       'background-complementary': 'var(--color-background-complementary)',
+
+      // Card
       'background-card': 'var(--color-background-card)',
       'border-card': 'var(--color-border-card)',
 

@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-09-24T22:26:13+00:00\n"
-"PO-Revision-Date: 2025-09-25 00:27+0200\n"
+"POT-Creation-Date: 2025-10-03T13:19:52+00:00\n"
+"PO-Revision-Date: 2025-10-03 15:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -614,8 +614,8 @@ msgid "Text box color"
 msgstr ""
 
 #: autoload/modularity.php:92
-msgid "Transparent"
-msgstr "Genomskinlig"
+msgid "No background"
+msgstr "Ingen bakgrund"
 
 #: autoload/modularity.php:93
 msgid "Complementary color"
@@ -1147,6 +1147,9 @@ msgstr "Standard"
 msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
+
+#~ msgid "Transparent"
+#~ msgstr "Genomskinlig"
 
 #~ msgctxt "Post Meta Field Label"
 #~ msgid "Application end date"

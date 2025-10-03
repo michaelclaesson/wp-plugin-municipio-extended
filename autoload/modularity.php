@@ -89,7 +89,7 @@ add_action(
 
 function mx_get_module_group_background_options() {
   return [
-    "" => __("Transparent", "municipio-extended"),
+    "" => __("No background", "municipio-extended"),
     "complementary" => __("Complementary color", "municipio-extended"),
     "white" => __("White", "municipio-extended"),
     "neutral" => __("Neutral color", "municipio-extended"),
@@ -101,11 +101,11 @@ function mx_get_module_group_background_options() {
 function mx_get_module_group_background_class($value) {
   $classes = [
     "" => "mx-module-group--bg-transparent",
-    "complementary" => "mx-module-group--bg-complementary layer-complementary",
-    "white" => "mx-module-group--bg-white layer-white",
-    "neutral" => "mx-module-group--bg-neutral layer-neutral",
-    "card" => "mx-module-group--bg-card layer-card",
-    "background" => "mx-module-group--bg-background layer-background",
+    "complementary" => "mx-module-group--bg-complementary layer-white",
+    "white" => "mx-module-group--bg-white",
+    "neutral" => "mx-module-group--bg-neutral layer-white",
+    "card" => "mx-module-group--bg-card layer-background",
+    "background" => "mx-module-group--bg-background",
   ];
   $class = $classes[$value] ?? $classes[""];
   return $class;

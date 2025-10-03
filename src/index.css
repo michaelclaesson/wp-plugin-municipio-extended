@@ -579,15 +579,18 @@ Fixes image modal sizing issues in webkit browsers
   }
   &.mx-module-group--bg-complementary {
     --mx-module-group-bg-color: var(--color-complementary);
+    --color-background-card: #fff;
   }
   &.mx-module-group--bg-white {
     --mx-module-group-bg-color: var(--color-white);
   }
   &.mx-module-group--bg-neutral {
     --mx-module-group-bg-color: var(--color-light);
+    --color-background-card: #fff;
   }
   &.mx-module-group--bg-card {
     --mx-module-group-bg-color: var(--color-background-card);
+    --color-background-card: var(--color-background);
   }
   &.mx-module-group--bg-background {
     --mx-module-group-bg-color: var(--color-background);
