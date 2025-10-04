@@ -155,7 +155,7 @@ export default {
         h4: 'var(--h4-font-size)',
         h5: 'var(--h5-font-size)',
         h6: 'var(--h6-font-size)',
-        caption: 'var(--caption-font-size)',
+        caption: 'var(--font-size-caption)',
       },
       prose: {
         elements: {
