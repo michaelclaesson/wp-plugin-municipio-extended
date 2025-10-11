@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-10-11T13:29:50+00:00\n"
-"PO-Revision-Date: 2025-10-11 15:30+0200\n"
+"POT-Creation-Date: 2025-10-11T13:38:16+00:00\n"
+"PO-Revision-Date: 2025-10-11 15:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -1089,13 +1089,21 @@ msgstr "Fil"
 msgid "Import"
 msgstr "Importera"
 
-#: autoload/typography.php:10
+#: autoload/typography.php:11
 msgid "Page title color"
 msgstr "Färg på sidans titel"
 
-#: autoload/typography.php:11
+#: autoload/typography.php:12
 msgid "If no color is selected, the primary color will be used."
 msgstr "Om ingen färg väljs kommer primärfärgen att användas."
+
+#: autoload/typography.php:30
+msgid "Quote background color"
+msgstr "Bakgrundsfärg för citat"
+
+#: autoload/typography.php:31
+msgid "If no color is selected, the light secondary color will be used."
+msgstr "Om ingen färg väljs kommer den ljusa sekundärfärgen att användas."
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"

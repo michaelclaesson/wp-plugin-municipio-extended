@@ -373,7 +373,10 @@
 }
 
 blockquote {
-  background: var(--color-secondary-light);
+  background: var(
+    --quote-background-color,
+    var(--color-secondary-light, #ec6701)
+  );
 }
 blockquote::before,
 blockquote::after {
