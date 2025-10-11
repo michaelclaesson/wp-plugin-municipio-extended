@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-10-03T13:19:52+00:00\n"
-"PO-Revision-Date: 2025-10-03 15:29+0200\n"
+"POT-Creation-Date: 2025-10-11T13:29:50+00:00\n"
+"PO-Revision-Date: 2025-10-11 15:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -685,83 +685,83 @@ msgstr "Dra moduler hit. Tomma grupper tas bort automatiskt."
 msgid "Add group"
 msgstr "Lägg till grupp"
 
-#: autoload/mxui.php:13
+#: autoload/mxui.php:14
 msgid "Cards"
 msgstr "Kort"
 
-#: autoload/mxui.php:21
+#: autoload/mxui.php:22
 msgid "Use MXUI version"
 msgstr "Använd MXUI-version"
 
-#: autoload/mxui.php:29
+#: autoload/mxui.php:30
 msgid "Segments"
 msgstr "Segment"
 
-#: autoload/mxui.php:39
+#: autoload/mxui.php:40
 msgid "Style for main menu"
 msgstr "Stil för huvudmenyn"
 
-#: autoload/mxui.php:43 autoload/mxui.php:57
+#: autoload/mxui.php:44 autoload/mxui.php:58
 msgid "Standard"
 msgstr "Standard"
 
-#: autoload/mxui.php:44
+#: autoload/mxui.php:45
 msgid "Compact"
 msgstr "Kompakt"
 
-#: autoload/mxui.php:53
+#: autoload/mxui.php:54
 msgid "Placing for tab menu"
 msgstr "Tabbmeny – Placering"
 
-#: autoload/mxui.php:58
+#: autoload/mxui.php:59
 msgid "Above"
 msgstr "På egen rad"
 
-#: autoload/mxui.php:67
+#: autoload/mxui.php:68
 msgid "Tab menu button size"
 msgstr "Tabbmeny – Knappstorlek"
 
-#: autoload/mxui.php:71
+#: autoload/mxui.php:72
 msgid "Small"
 msgstr "Liten"
 
-#: autoload/mxui.php:72
+#: autoload/mxui.php:73
 msgid "Medium"
 msgstr "Mellan"
 
-#: autoload/mxui.php:73
+#: autoload/mxui.php:74
 msgid "Large"
 msgstr "Stor"
 
-#: autoload/mxui.php:84
+#: autoload/mxui.php:85
 msgid "Section start page"
 msgstr "Avdelningsstartsida"
 
-#: autoload/mxui.php:164
+#: autoload/mxui.php:165
 msgid "Display taxonomies"
 msgstr "Visa taxonomier"
 
-#: autoload/mxui.php:165
+#: autoload/mxui.php:166
 msgid "Select which taxonomies to display for this post type."
 msgstr "Välj vilka taxonomier som ska visas för den här inläggstypen."
 
-#: autoload/mxui.php:179
+#: autoload/mxui.php:180
 msgid "Taxonomy placement"
 msgstr "Taxonomi placering"
 
-#: autoload/mxui.php:180
+#: autoload/mxui.php:181
 msgid "Select where to display taxonomy terms for this post type."
 msgstr "Välj var du vill visa taxonomitermer för den här inläggstypen."
 
-#: autoload/mxui.php:187
+#: autoload/mxui.php:188
 msgid "Under header"
 msgstr "Under rubriken"
 
-#: autoload/mxui.php:188
+#: autoload/mxui.php:189
 msgid "After content"
 msgstr "Efter innehåll"
 
-#: autoload/mxui.php:204
+#: autoload/mxui.php:205
 msgid "Hero search placeholder"
 msgstr "Platshållare för sökfält i hero"
 
@@ -1088,6 +1088,14 @@ msgstr "Fil"
 #: autoload/theme-mods.php:174
 msgid "Import"
 msgstr "Importera"
+
+#: autoload/typography.php:10
+msgid "Page title color"
+msgstr "Färg på sidans titel"
+
+#: autoload/typography.php:11
+msgid "If no color is selected, the primary color will be used."
+msgstr "Om ingen färg väljs kommer primärfärgen att användas."
 
 #: psr-4/Modularity/ModNavigation/ModNavigation.php:12
 msgctxt "Post Type Singular Name"
