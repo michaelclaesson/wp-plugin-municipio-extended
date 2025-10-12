@@ -37,6 +37,7 @@ Left to handle:
       [
           'class' => [
               'grid content-start rounded-[var(--c-card-border-radius,var(--radius-lg,calc(var(--base,8px)*1.5)))] bg-[--color-background-card] hover:bg-[var(--color-background-card-hover,var(--color-background-card))] hover:text-[var(--color-text-card-hover,var(--color-black))] grid-cols-[100%]',
+              'border border-[length:var(--border-width-card,0)] border-[color:var(--color-border-card)]',
               'relative group' => !$expandLinkCover,
               'grid-rows-subgrid' => $asSubgrid,
               'grid-rows-[auto,auto,1fr,auto]' => !$asSubgrid,
