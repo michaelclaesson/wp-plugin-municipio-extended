@@ -8,13 +8,13 @@
         'font-[number:var(--button-font-weight,var(--font-weight-button,500))]',
         [
             'primary' =>
-                'bg-primary hover:bg-primary-dark text-primary-contrasting visited:text-primary-contrasting hover:text-primary-contrasting hover:visited:text-primary-contrasting border-transparent',
+                'bg-button-primary hover:bg-button-primary-hover text-button-primary-contrasting visited:text-button-primary-contrasting hover:text-button-primary-hover-contrasting hover:visited:text-primary-hover-contrasting border-transparent',
             'secondary' =>
-                'bg-secondary hover:bg-primary text-secondary-contrasting visited:text-secondary-contrasting hover:text-primary-contrasting hover:visited:text-primary-contrasting border-transparent',
+                'bg-button-secondary hover:bg-button-secondary-hover text-button-secondary-contrasting visited:text-button-secondary-contrasting hover:text-button-secondary-hover-contrasting hover:visited:text-button-secondary-hover-contrasting border-transparent',
             'outlined' =>
-                'bg-transparent hover:bg-[#00000018] text-primary visited:text-primary border-primary hover:text-primary-dark hover:visited:text-primary-dark hover:border-primary-dark',
+                'bg-transparent hover:bg-[#00000018] text-button-primary visited:text-button-primary border-button-primary hover:text-button-primary-hover hover:visited:text-button-primary-hover hover:border-button-primary-hover',
         ][$variant ?? 'default'] ??
-        'bg-layer hover:bg-primary hover:text-primary-contrasting hover:visited:text-primary-contrasting border-transparent',
+        'bg-button text-button-contrasting hover:bg-button-hover hover:text-button-hover-contrasting hover:visited:text-button-hover-contrasting border-transparent',
         $classList ?? null,
     ],
 ])

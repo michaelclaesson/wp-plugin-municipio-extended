@@ -80,6 +80,31 @@ export default {
       'complementary-lighter': 'var(--color-complementary-lighter)',
       'complementary-lightest': 'var(--color-complementary-lightest)',
 
+      'button-primary': 'var(--c-button-primary-color, var(--color-primary))',
+      'button-primary-hover':
+        'var(--c-button-primary-color-hover, var(--color-primary-dark))',
+      'button-primary-contrasting':
+        'var(--c-button-primary-color-contrasting, var(--color-primary-contrasting))',
+      'button-primary-hover-contrasting':
+        'var(--c-button-primary-color-hover-contrasting, var(--color-primary-contrasting))',
+
+      'button-secondary':
+        'var(--c-button-secondary-color, var(--color-secondary))',
+      'button-secondary-hover':
+        'var(--c-button-secondary-color-hover, var(--color-primary))',
+      'button-secondary-contrasting':
+        'var(--c-button-secondary-color-contrasting, var(--color-secondary-contrasting))',
+      'button-secondary-hover-contrasting':
+        'var(--c-button-secondary-color-hover-contrasting, var(--color-primary-contrasting))',
+
+      button:
+        'var(--c-button-color, var(--color-layer, var(--color-complementary-light)))',
+      'button-hover': 'var(--c-button-color-hover, var(--color-primary))',
+      'button-contrasting':
+        'var(--c-button-color-contrasting, var(--color-black))',
+      'button-hover-contrasting':
+        'var(--c-button-color-hover-contrasting, var(--color-primary-contrasting))',
+
       'layer-dark': 'var(--color-layer-dark, var(--color-complementary))',
       layer: 'var(--color-layer, var(--color-complementary-light))',
       'layer-light':
