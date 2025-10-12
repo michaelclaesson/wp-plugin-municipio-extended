@@ -1,5 +1,7 @@
 <?php
 
+use Kirki\Compatibility\Kirki;
+
 add_filter(
   "register_post_type_args",
   function ($args, $post_type) {
@@ -87,7 +89,7 @@ add_action("wp", function () {
   // Retrieve placement option for the current post type
   $section_id = "municipio_customizer_panel_content_types_" . $post_type;
   $placement =
-    \Kirki::get_option(
+    Kirki::get_option(
       \Municipio\Customizer::KIRKI_CONFIG,
       $section_id . "_taxonomy_placement",
     ) ?? "under_header"; // Default to 'under_header' if not set
@@ -101,7 +103,7 @@ add_action("wp", function () {
   // Add the callback to the selected hook
   add_action($hook, function () use ($post_id, $post_type, $section_id) {
     // Retrieve selected taxonomies for this post type
-    $selected_taxonomies = \Kirki::get_option(
+    $selected_taxonomies = Kirki::get_option(
       \Municipio\Customizer::KIRKI_CONFIG,
       $section_id . "_taxonomies",
     );

@@ -1,6 +1,7 @@
 <?php
 
 use Municipio\Customizer;
+use Kirki\Compatibility\Kirki;
 
 /**
  * Adds a customizer section for MXUI components.
@@ -158,7 +159,7 @@ add_action("municipio_customizer_section_registered", function ($section) {
 
     // Add the taxonomy field
     if (!empty($taxonomyChoices)) {
-      \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+      Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
         "type" => "multicheck",
         "settings" => $sectionId . "_taxonomies",
         "label" => esc_html__("Display taxonomies", "municipio-extended"),
@@ -173,7 +174,7 @@ add_action("municipio_customizer_section_registered", function ($section) {
     }
 
     // Add the placement field
-    \Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
+    Kirki::add_field(\Municipio\Customizer::KIRKI_CONFIG, [
       "type" => "select",
       "settings" => $sectionId . "_taxonomy_placement",
       "label" => esc_html__("Taxonomy placement", "municipio-extended"),
@@ -238,11 +239,14 @@ add_filter(
   2,
 );
 
-
-add_action('customize_register', function (\WP_Customize_Manager $wp_customize) {
-    $control = $wp_customize->get_control('business_header_alignment');
+add_action(
+  "customize_register",
+  function (\WP_Customize_Manager $wp_customize) {
+    $control = $wp_customize->get_control("business_header_alignment");
 
     if ($control instanceof \WP_Customize_Control) {
-        $control->choices['business-center'] = esc_html__('Center', 'municipio');
+      $control->choices["business-center"] = esc_html__("Center", "municipio");
     }
-}, 999);
+  },
+  999,
+);
