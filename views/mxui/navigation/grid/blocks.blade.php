@@ -1,5 +1,5 @@
 <div class="tailwind">
-  <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-2 sm:gap-6">
+  <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-2 sm:gap-6 peer">
     @foreach ($items as $item)
       <li>
         <a href="{{ $item['href'] }}"
@@ -19,4 +19,9 @@
       </li>
     @endforeach
   </ul>
+  @if (!empty($empty_message))
+    <div class="hidden peer-contentless:block prose">
+      {{ mx_safe_html($empty_message) }}
+    </div>
+  @endif
 </div>

@@ -307,7 +307,7 @@ class ModNavigation extends MxModule {
     $data["items"] = $this->getItems();
     $data["hideIfEmpty"] = apply_filters(
       "mx/mod_navigation/hide_if_empty",
-      true,
+      !$data["show_if_empty"],
       $this->slug,
       $this->ID,
       $data,

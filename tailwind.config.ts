@@ -225,6 +225,10 @@ export default {
           '&:empty:not(area, embed, hr, img, input, source, track)',
           '&:not(:has(:not(:empty), area, embed, hr, img, input, source, track))',
         ]);
+        addVariant('peer-contentless', [
+          ':empty:not(area, embed, hr, img, input, source, track) + &',
+          ':not(:has(:not(:empty), area, embed, hr, img, input, source, track)) + &',
+        ]);
         matchUtilities(
           {
             'text-contrast': (value) => {

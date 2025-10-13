@@ -1,6 +1,6 @@
 <div class="tailwind">
   <ul
-    class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0 [--color-background-card:var(--color-complementary-light)] [--color-background-card-hover:var(--color-primary)] [--color-text-card-hover:var(--color-primary-contrasting)]">
+    class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,16rem),1fr))] gap-[--grid-gap] space-y-0 [--color-background-card:var(--color-complementary-light)] [--color-background-card-hover:var(--color-primary)] [--color-text-card-hover:var(--color-primary-contrasting)] peer">
     @foreach ($items as $item)
       @php
         $content = wp_trim_words($item['post']->post_content ?? '', 8, '...');
@@ -30,4 +30,9 @@
       </li>
     @endforeach
   </ul>
+  @if (!empty($empty_message))
+    <div class="hidden peer-contentless:block prose">
+      {{ mx_safe_html($empty_message) }}
+    </div>
+  @endif
 </div>

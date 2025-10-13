@@ -1,5 +1,5 @@
 <div class="tailwind">
-  <ul class="px-0 space-y-1">
+  <ul class="px-0 space-y-1 peer">
     @foreach ($items as $item)
       <li class="">
         <a href="{{ $item['href'] }}"
@@ -16,4 +16,9 @@
       </li>
     @endforeach
   </ul>
+  @if (!empty($empty_message))
+    <div class="hidden peer-contentless:block prose">
+      {{ mx_safe_html($empty_message) }}
+    </div>
+  @endif
 </div>

@@ -1,5 +1,5 @@
 <div class="tailwind">
-  <ul class="px-0 space-y-0 flex flex-wrap gap-4 contentless:hidden">
+  <ul class="px-0 space-y-0 flex flex-wrap gap-4 contentless:hidden peer">
     @foreach ($items as $item)
       <li class="">
         @component('mxui.button', [
@@ -34,4 +34,9 @@
       </li>
     </template>
   </ul>
+  @if (!empty($empty_message))
+    <div class="hidden peer-contentless:block prose">
+      {{ mx_safe_html($empty_message) }}
+    </div>
+  @endif
 </div>
