@@ -27,7 +27,7 @@ export default defineConfig(
           modulePreload: false,
           sourcemap: true,
           rollupOptions: {
-            input: ['index.html', 'admin.html'],
+            input: ['index.html', 'admin.html', 'editor.html'],
             output: {
               entryFileNames: `assets/[name].js`,
               chunkFileNames: `assets/[name].js`,

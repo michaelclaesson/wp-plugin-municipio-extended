@@ -1,0 +1,10 @@
+#tinymce:focus,
+#tinymce:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.mce-content-body {
+  max-width: var(--container-width-content) !important;
+  color: var(--color-base);
+}
