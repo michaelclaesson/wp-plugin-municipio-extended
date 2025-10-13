@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-10-11T13:38:16+00:00\n"
-"PO-Revision-Date: 2025-10-11 15:38+0200\n"
+"POT-Creation-Date: 2025-10-13T15:38:31+00:00\n"
+"PO-Revision-Date: 2025-10-13 17:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -209,6 +209,14 @@ msgstr ""
 msgctxt "Secondary navigation position"
 msgid "Below title"
 msgstr "Under rubrik"
+
+#: autoload/buttons.php:32 autoload/buttons.php:59 autoload/buttons.php:86
+msgid "Hover"
+msgstr ""
+
+#: autoload/buttons.php:43 autoload/buttons.php:70 autoload/buttons.php:97
+msgid "Hover contrasting"
+msgstr ""
 
 #: autoload/custom-post-types.php:29
 msgid "Post type singular name"
@@ -468,115 +476,125 @@ msgctxt "Navigation Module Field Group Title"
 msgid "Navigation module"
 msgstr "Navigationsmodul"
 
-#: autoload/mod-navigation.php:44
+#: autoload/mod-navigation.php:45
 msgctxt "Navigation Module Field Label"
 msgid "Format"
 msgstr "Format"
 
-#: autoload/mod-navigation.php:56
+#: autoload/mod-navigation.php:57
 msgctxt "Navigation Module Format Choice"
 msgid "List"
 msgstr "Lista"
 
-#: autoload/mod-navigation.php:61
+#: autoload/mod-navigation.php:62
 msgctxt "Navigation Module Format Choice"
 msgid "Grid"
 msgstr "Rutnät"
 
-#: autoload/mod-navigation.php:66
+#: autoload/mod-navigation.php:67
 msgctxt "Navigation Module Format Choice"
 msgid "Bar"
 msgstr "Rad"
 
-#: autoload/mod-navigation.php:71
+#: autoload/mod-navigation.php:72
 msgctxt "Navigation Module Format Choice"
 msgid "Tree"
 msgstr "Träd"
 
-#: autoload/mod-navigation.php:76
+#: autoload/mod-navigation.php:77
 msgctxt "Navigation Module Format Choice"
 msgid "Cards"
 msgstr "Kort"
 
-#: autoload/mod-navigation.php:81
+#: autoload/mod-navigation.php:82
 msgctxt "Navigation Module Format Choice"
 msgid "Buttons"
 msgstr "Knappar"
 
-#: autoload/mod-navigation.php:86
+#: autoload/mod-navigation.php:87
 msgctxt "Navigation Module Format Choice"
 msgid "Inline"
 msgstr "På linje"
 
-#: autoload/mod-navigation.php:95
+#: autoload/mod-navigation.php:96
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr "Källa"
 
-#: autoload/mod-navigation.php:107
+#: autoload/mod-navigation.php:108
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr "Underordnade sidor"
 
-#: autoload/mod-navigation.php:112
+#: autoload/mod-navigation.php:113
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr "Syskonsidor"
 
-#: autoload/mod-navigation.php:117
+#: autoload/mod-navigation.php:118
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:122
+#: autoload/mod-navigation.php:123
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr "Manuellt utvalda"
 
-#: autoload/mod-navigation.php:131
+#: autoload/mod-navigation.php:132
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr "Meny"
 
-#: autoload/mod-navigation.php:155
+#: autoload/mod-navigation.php:156
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr "Objekt"
 
-#: autoload/mod-navigation.php:176
+#: autoload/mod-navigation.php:177
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr "Länk"
 
-#: autoload/mod-navigation.php:188
+#: autoload/mod-navigation.php:189
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr "Färg"
 
-#: autoload/mod-navigation.php:208
+#: autoload/mod-navigation.php:209
 msgctxt "Navigation Module Field Label"
 msgid "Variant"
 msgstr "Variant"
 
-#: autoload/mod-navigation.php:216
+#: autoload/mod-navigation.php:217
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Primary"
 msgstr "Primär"
 
-#: autoload/mod-navigation.php:221
+#: autoload/mod-navigation.php:222
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Secondary"
 msgstr "Sekundär"
 
-#: autoload/mod-navigation.php:226
+#: autoload/mod-navigation.php:227
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Default"
 msgstr "Standard"
 
-#: autoload/mod-navigation.php:246
+#: autoload/mod-navigation.php:247
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr "Ikon"
+
+#: autoload/mod-navigation.php:272
+msgctxt "Navigation Module Field Label"
+msgid "Display this module even when there are no items"
+msgstr "Visa denna modul även när det inte finns några länkar"
+
+#: autoload/mod-navigation.php:287
+msgctxt "Navigation Module Field Label"
+msgid "Message to display when there are no items"
+msgstr "Meddelande so visas när det inte finns några länkar"
 
 #: autoload/mod-notice.php:6
 msgctxt "Notice Module Field Icon"
@@ -802,107 +820,111 @@ msgstr "Menyn i det vänstra sidofältet"
 msgid "The menu in the right sidebar"
 msgstr "Menyn i det högra sidofältet"
 
-#: autoload/post.php:11
+#: autoload/post.php:13
 msgctxt "Post type general name"
 msgid "News"
 msgstr "Nyheter"
 
-#: autoload/post.php:12
+#: autoload/post.php:14
 msgctxt "Post type singular name"
 msgid "News"
 msgstr "Nyhet"
 
-#: autoload/post.php:17
+#: autoload/post.php:19
 msgctxt "Admin Menu text"
 msgid "News"
 msgstr "Nyheter"
 
-#: autoload/post.php:18
+#: autoload/post.php:20
 msgctxt "Add New on Toolbar"
 msgid "News"
 msgstr "Nyheter"
 
-#: autoload/post.php:23 autoload/post.php:24
+#: autoload/post.php:25 autoload/post.php:26
 msgid "Add news"
 msgstr "Lägg till nyhet"
 
-#: autoload/post.php:25
+#: autoload/post.php:27
 msgid "New item"
 msgstr "Nytt objekt"
 
-#: autoload/post.php:26
+#: autoload/post.php:28
 msgid "Edit news"
 msgstr "Redigera nyhet"
 
-#: autoload/post.php:27
+#: autoload/post.php:29
 msgid "View news"
 msgstr "Visa nyhet"
 
-#: autoload/post.php:28
+#: autoload/post.php:30
 msgid "All news"
 msgstr "Alla nyheter"
 
-#: autoload/post.php:29
+#: autoload/post.php:31
 msgid "Search news"
 msgstr "Sök nyheter"
 
-#: autoload/post.php:30
+#: autoload/post.php:32
 msgid "Parent news:"
 msgstr "Överordnat nyhet:"
 
-#: autoload/post.php:31
+#: autoload/post.php:33
 msgid "No news found."
 msgstr "Inga nyheter hittades."
 
-#: autoload/post.php:32
+#: autoload/post.php:34
 msgid "No news found in Trash."
 msgstr "Inga nyheter hittades i papperskorgen."
 
-#: autoload/post.php:36
+#: autoload/post.php:38
 msgctxt ""
 "The post type archive label used in nav menus. Default “Post Archives”. "
 "Added in 4.4"
 msgid "News archives"
 msgstr "Nyhetsarkiv"
 
-#: autoload/post.php:41
+#: autoload/post.php:43
 msgctxt ""
 "Overrides the “Insert into post”/”Insert into page” phrase (used when "
 "inserting media into a post). Added in 4.4"
 msgid "Insert into news"
 msgstr "Infoga i nyheten"
 
-#: autoload/post.php:46
+#: autoload/post.php:48
 msgctxt ""
 "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
 "when viewing media attached to a post). Added in 4.4"
 msgid "Uploaded to this news"
 msgstr "Uppladdat till denna nyhet"
 
-#: autoload/post.php:51
+#: autoload/post.php:53
 msgctxt ""
 "Screen reader text for the filter links heading on the post type listing "
 "screen. Default “Filter posts list”. Added in 4.4"
 msgid "Filter news list"
 msgstr "Filtrera nyhetslista"
 
-#: autoload/post.php:56
+#: autoload/post.php:58
 msgctxt ""
 "Screen reader text for the pagination heading on the post type listing "
 "screen. Default “Posts list navigation”. Added in 4.4"
 msgid "News list navigation"
 msgstr "Navigation för nyhetslita"
 
-#: autoload/post.php:61
+#: autoload/post.php:63
 msgctxt ""
 "Screen reader text for the items list heading on the post type listing "
 "screen. Default “Posts list”. Added in 4.4"
 msgid "News list"
 msgstr "Nyhetslista"
 
-#: autoload/post.php:195
+#: autoload/post.php:197
 msgid "Select a page or post to redirect to."
 msgstr "Välj en sida eller ett inlägg att omdirigera till."
+
+#: autoload/print.php:11
+msgid "Show print button"
+msgstr "Visa skriv ut-knapp"
 
 #: autoload/search.php:572
 msgid "Search"
