@@ -667,17 +667,46 @@ body {
  * Whitespace Tracking & GDPR plugin
  */
 #cc-main {
-  /** Change font **/
   --cc-font-family: var(--font-family-base);
   font-size: var(--font-size-base);
+  --cc-primary-color: var(--color-black);
+  --cc-secondary-color: var(--text-secondary);
 
-  /** Change button primary color to custom **/
-  --cc-btn-primary-bg: var(--color-primary);
-  --cc-btn-primary-border-color: #000000;
-  --cc-btn-primary-hover-bg: white;
-  --cc-btn-primary-hover-color: var(--color-primary);
-  --cc-btn-primary-hover-border-color: var(--color-primary);
-  /** Also make toggles the same color as the button **/
+  --cc-btn-primary-bg: var(--c-button-primary-color, var(--color-primary));
+  --cc-btn-primary-color: var(
+    --c-button-primary-color-contrasting,
+    var(--color-primary-contrasting)
+  );
+  --cc-btn-primary-border-color: transparent;
+  --cc-btn-primary-hover-bg: var(
+    --c-button-primary-color-hover,
+    var(--color-primary-dark)
+  );
+  --cc-btn-primary-hover-color: var(
+    --c-button-secondary-color-hover-contrasting,
+    var(--color-primary-contrasting)
+  );
+  --cc-btn-primary-hover-border-color: transparent;
+
+  --cc-btn-secondary-bg: var(
+    --c-button-secondary-color,
+    var(--color-secondary)
+  );
+  --cc-btn-secondary-color: var(
+    --c-button-secondary-color-contrasting,
+    var(--color-secondary-contrasting)
+  );
+  --cc-btn-secondary-border-color: transparent;
+  --cc-btn-secondary-hover-bg: var(
+    --c-button-secondary-color-hover,
+    var(--color-primary)
+  );
+  --cc-btn-secondary-hover-color: var(
+    --c-button-secondary-color-hover-contrasting,
+    var(--color-primary-contrasting)
+  );
+  --cc-btn-secondary-hover-border-color: transparent;
+
   --cc-toggle-on-bg: var(--cc-btn-primary-bg);
   --cc-modal-border-radius: var(--radius-lg);
   --cc-btn-border-radius: var(--radius-sm);
