@@ -6,25 +6,25 @@
 
         <h1 class="sr-only">Sök på webbplatsen</h1>
 
-        <script>
+        <script{!! wp_sanitize_script_attributes(apply_filters('wp_inline_script_attributes', [])) !!}>
           window.mxSearch = async function(query) {
-            const url = this.dataset.adminUrl;
-            const nonce = this.dataset.nonce;
-            const response = await fetch(url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-              },
-              body: new URLSearchParams({
-                action: 'mx_search',
-                nonce,
-                // Any additional data you want to send
-                data: JSON.stringify(query)
-              }),
-            });
-            return await response.json();
+          const url = this.dataset.adminUrl;
+          const nonce = this.dataset.nonce;
+          const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          },
+          body: new URLSearchParams({
+          action: 'mx_search',
+          nonce,
+          // Any additional data you want to send
+          data: JSON.stringify(query)
+          }),
+          });
+          return await response.json();
           };
-        </script>
+          </script>
 
         <mx-site-search class="group space-y-10" search-callback="mxSearch"
           data-admin-url="{{ admin_url('admin-ajax.php') }}" data-nonce="{{ wp_create_nonce('mx_search') }}">
