@@ -29,7 +29,6 @@ if (window.mx?.moduleGroupsEnabled && window.Modularity?.Editor?.Module) {
 
   MxModule.prototype.updateModule = function (moduleEl, data) {
     const xData = Alpine.closestDataStack(moduleEl)[0];
-    console.log({ moduleEl, data, xData });
     xData.postId = data.post_id ?? xData.postId;
     xData.postTitle = data.title ?? xData.postTitle;
     xData.editingModule = false;
