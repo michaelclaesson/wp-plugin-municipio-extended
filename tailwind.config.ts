@@ -32,14 +32,17 @@ export default {
       inherit: 'inherit',
       transparent: 'transparent',
       white: '#fff',
+
       primary: 'var(--color-primary)',
       'primary-dark': 'var(--color-primary-dark)',
       'primary-light': 'var(--color-primary-light)',
       'primary-contrasting': 'var(--color-primary-contrasting)',
+
       secondary: 'var(--color-secondary)',
       'secondary-dark': 'var(--color-secondary-dark)',
       'secondary-light': 'var(--color-secondary-light)',
       'secondary-contrasting': 'var(--color-secondary-contrasting)',
+
       background: 'var(--color-background)',
       'background-complementary': 'var(--color-background-complementary)',
 
@@ -49,27 +52,34 @@ export default {
 
       'secondary-text': 'var(--text-secondary)',
       'disabled-text': 'var(--text-disabled)',
+
       'border-divider': 'var(--color-border-divider)',
       'border-outline': 'var(--color-border-outline)',
       'border-input': 'var(--color-border-input)',
+
       link: 'var(--color-link)',
       'link-hover': 'var(--color-link-hover)',
       'link-active': 'var(--color-link-active)',
       'link-visited': 'var(--color-link-visited)',
       'link-visited-hover': 'var(--color-link-visited-hover)',
+
       alpha: 'var(--color-alpha)',
+
       success: 'var(--color-success)',
       'success-dark': 'var(--color-success-dark)',
       'success-light': 'var(--color-success-light)',
       'success-contrasting': 'var(--color-success-contrasting)',
+
       danger: 'var(--color-danger)',
       'danger-dark': 'var(--color-danger-dark)',
       'danger-light': 'var(--color-danger-light)',
       'danger-contrasting': 'var(--color-danger-contrasting)',
+
       warning: 'var(--color-warning)',
       'warning-dark': 'var(--color-warning-dark)',
       'warning-light': 'var(--color-warning-light)',
       'warning-contrasting': 'var(--color-warning-contrasting)',
+
       info: 'var(--color-info)',
       'info-dark': 'var(--color-info-dark)',
       'info-light': 'var(--color-info-light)',
