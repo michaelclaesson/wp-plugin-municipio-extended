@@ -262,8 +262,6 @@ function mx_render_modularity_editor_modules_metabox($post, $args) {
 }
 
 function mx_render_modularity_editor_sidebar_metabox($post, $args) {
-  global $post; // TODO: Check if we can remove this
-
   if (\Modularity\Helper\Post::isArchive()) {
     global $archive;
     $options = get_option("modularity_" . $archive . "_sidebar-options");
