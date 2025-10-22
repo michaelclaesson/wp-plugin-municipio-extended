@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-10-13T15:38:31+00:00\n"
-"PO-Revision-Date: 2025-10-13 17:39+0200\n"
+"POT-Creation-Date: 2025-10-22T11:00:07+00:00\n"
+"PO-Revision-Date: 2025-10-22 13:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -357,46 +357,6 @@ msgctxt "Article Content Alignment Option"
 msgid "Center"
 msgstr "Centrerat"
 
-#: autoload/matomo-tag-manager.php:6
-msgctxt "Options Page Title"
-msgid "Tracking"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:7
-msgctxt "Options Page Menu Title"
-msgid "Tracking"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:20
-msgid "Matomo"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:24 autoload/search.php:892
-msgid "URL"
-msgstr "URL"
-
-#: autoload/matomo-tag-manager.php:27
-msgid "The URL for the Matomo Tag Manager."
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:35
-msgid "Container ID"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:46
-msgid "Site ID"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:49
-msgid "The site ID for the Matomo Tag Manager."
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:80
-#, php-format
-msgid ""
-"This field is disabled because the constant %s has been defined in code."
-msgstr ""
-
 #: autoload/migrations.php:170
 msgctxt "Admin Page Title"
 msgid "Migrations"
@@ -640,18 +600,22 @@ msgid "Complementary color"
 msgstr "Komplementärfärg"
 
 #: autoload/modularity.php:94
+msgid "Secondary color"
+msgstr "Sekundärfärg"
+
+#: autoload/modularity.php:95
 msgid "White"
 msgstr "Vit"
 
-#: autoload/modularity.php:95
+#: autoload/modularity.php:96
 msgid "Neutral color"
 msgstr "Neutral färg"
 
-#: autoload/modularity.php:96
+#: autoload/modularity.php:97
 msgid "Card color"
 msgstr "Kortfärg"
 
-#: autoload/modularity.php:97
+#: autoload/modularity.php:98
 msgid "Background color"
 msgstr "Bakgrundsfärg"
 
@@ -690,16 +654,16 @@ msgctxt "Modularity Editor Module Field"
 msgid "Remove"
 msgstr "Ta bort"
 
-#: autoload/module-editor.php:362 autoload/module-editor.php:451
+#: autoload/module-editor.php:360 autoload/module-editor.php:449
 msgctxt "Modularity Editor Module Group Field"
 msgid "Background:"
 msgstr "Bakgrund:"
 
-#: autoload/module-editor.php:412 autoload/module-editor.php:501
+#: autoload/module-editor.php:410 autoload/module-editor.php:499
 msgid "Drag modules here. Empty groups are removed automatically."
 msgstr "Dra moduler hit. Tomma grupper tas bort automatiskt."
 
-#: autoload/module-editor.php:515
+#: autoload/module-editor.php:513
 msgid "Add group"
 msgstr "Lägg till grupp"
 
@@ -1015,6 +979,10 @@ msgstr "Innehållstyper"
 #: autoload/search.php:888
 msgid "External page attributes"
 msgstr "Attribut för extern sida"
+
+#: autoload/search.php:892
+msgid "URL"
+msgstr "URL"
 
 #: autoload/search.php:895
 msgid "The URL to the external page."

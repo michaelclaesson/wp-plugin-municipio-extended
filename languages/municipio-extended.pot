@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-13T15:38:31+00:00\n"
+"POT-Creation-Date: 2025-10-22T11:00:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: municipio-extended\n"
@@ -356,46 +356,6 @@ msgctxt "Article Content Alignment Option"
 msgid "Center"
 msgstr ""
 
-#: autoload/matomo-tag-manager.php:6
-msgctxt "Options Page Title"
-msgid "Tracking"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:7
-msgctxt "Options Page Menu Title"
-msgid "Tracking"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:20
-msgid "Matomo"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:24
-#: autoload/search.php:892
-msgid "URL"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:27
-msgid "The URL for the Matomo Tag Manager."
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:35
-msgid "Container ID"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:46
-msgid "Site ID"
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:49
-msgid "The site ID for the Matomo Tag Manager."
-msgstr ""
-
-#: autoload/matomo-tag-manager.php:80
-#, php-format
-msgid "This field is disabled because the constant %s has been defined in code."
-msgstr ""
-
 #: autoload/migrations.php:170
 msgctxt "Admin Page Title"
 msgid "Migrations"
@@ -632,18 +592,22 @@ msgid "Complementary color"
 msgstr ""
 
 #: autoload/modularity.php:94
-msgid "White"
+msgid "Secondary color"
 msgstr ""
 
 #: autoload/modularity.php:95
-msgid "Neutral color"
+msgid "White"
 msgstr ""
 
 #: autoload/modularity.php:96
-msgid "Card color"
+msgid "Neutral color"
 msgstr ""
 
 #: autoload/modularity.php:97
+msgid "Card color"
+msgstr ""
+
+#: autoload/modularity.php:98
 msgid "Background color"
 msgstr ""
 
@@ -682,18 +646,18 @@ msgctxt "Modularity Editor Module Field"
 msgid "Remove"
 msgstr ""
 
-#: autoload/module-editor.php:362
-#: autoload/module-editor.php:451
+#: autoload/module-editor.php:360
+#: autoload/module-editor.php:449
 msgctxt "Modularity Editor Module Group Field"
 msgid "Background:"
 msgstr ""
 
-#: autoload/module-editor.php:412
-#: autoload/module-editor.php:501
+#: autoload/module-editor.php:410
+#: autoload/module-editor.php:499
 msgid "Drag modules here. Empty groups are removed automatically."
 msgstr ""
 
-#: autoload/module-editor.php:515
+#: autoload/module-editor.php:513
 msgid "Add group"
 msgstr ""
 
@@ -996,6 +960,10 @@ msgstr ""
 
 #: autoload/search.php:888
 msgid "External page attributes"
+msgstr ""
+
+#: autoload/search.php:892
+msgid "URL"
 msgstr ""
 
 #: autoload/search.php:895

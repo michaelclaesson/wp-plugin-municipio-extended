@@ -91,6 +91,7 @@ function mx_get_module_group_background_options() {
   return [
     "" => __("No background", "municipio-extended"),
     "complementary" => __("Complementary color", "municipio-extended"),
+    "secondary" => __("Secondary color", "municipio-extended"),
     "white" => __("White", "municipio-extended"),
     "neutral" => __("Neutral color", "municipio-extended"),
     "card" => __("Card color", "municipio-extended"),
@@ -102,6 +103,7 @@ function mx_get_module_group_background_class($value) {
   $classes = [
     "" => "mx-module-group--bg-transparent",
     "complementary" => "mx-module-group--bg-complementary layer-white",
+    "secondary" => "mx-module-group--bg-secondary layer-white",
     "white" => "mx-module-group--bg-white",
     "neutral" => "mx-module-group--bg-neutral layer-white",
     "card" => "mx-module-group--bg-card layer-background",
