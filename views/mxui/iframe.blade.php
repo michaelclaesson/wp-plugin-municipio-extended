@@ -25,6 +25,7 @@
           'style' => [
               '--iframe-aspect-ratio' => $iframe['aspectRatio'] ?? null,
           ],
+          'height' => $height,
       ],
       $iframe['attributes'] ?? [],
   ) }}>
