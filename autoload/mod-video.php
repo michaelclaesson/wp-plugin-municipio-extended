@@ -1,10 +1,10 @@
 <?php
 
 add_filter("acf/load_field/key=field_57454c7ad44dc", function ($field) {
-  $field["label"] = __("Video URL or embed code", "mu-plugins");
+  $field["label"] = __("Video URL or embed code", "municipio-extended");
   $field["instructions"] = __(
     "Only supports YouTube URLs and MediaFlow embed codes",
-    "mu-plugins",
+    "municipio-extended",
   );
   $field["type"] = "textarea";
   return $field;

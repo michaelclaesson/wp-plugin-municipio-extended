@@ -78,7 +78,7 @@ add_action("acf/init", function () {
 add_action("acf/init", function () {
   acf_add_local_field([
     "key" => "field_taxonomy_selection_in_fields",
-    "label" => __("Välj taxonomier", "municipio-extended"),
+    "label" => __("Select taxonomies", "municipio-extended"),
     "name" => "taxonomy_selection_in_fields",
     "type" => "checkbox",
     "parent" => "group_571dfd3c07a77",

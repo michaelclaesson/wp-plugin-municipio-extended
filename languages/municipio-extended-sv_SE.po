@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-10-22T11:00:07+00:00\n"
-"PO-Revision-Date: 2025-10-22 13:00+0200\n"
+"POT-Creation-Date: 2025-12-17T19:59:58+00:00\n"
+"PO-Revision-Date: 2025-12-17 20:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 "X-Domain: municipio-extended\n"
 
 #. Plugin Name of the plugin
@@ -115,71 +115,71 @@ msgstr "Tabell"
 
 #: autoload/async.php:6
 msgid "Async jobs"
-msgstr ""
+msgstr "Asynkrona jobb"
 
 #: autoload/async.php:7
 msgid "Async job"
-msgstr ""
+msgstr "Asynkrot jobb"
 
 #: autoload/async.php:8
 msgid "Add New"
-msgstr ""
+msgstr "Lägg till nytt"
 
 #: autoload/async.php:9
 msgid "Add New Job"
-msgstr ""
+msgstr "Lägg till nytt jobb"
 
 #: autoload/async.php:10
 msgid "Edit Job"
-msgstr ""
+msgstr "Redigera jobb"
 
 #: autoload/async.php:11
 msgid "New Job"
-msgstr ""
+msgstr "Nytt jobb"
 
 #: autoload/async.php:12
 msgid "View Job"
-msgstr ""
+msgstr "Visa jobb"
 
 #: autoload/async.php:13
 msgid "No jobs found"
-msgstr ""
+msgstr "Inga jobb hittades"
 
 #: autoload/async.php:14
 msgid "No jobs found in trash"
-msgstr ""
+msgstr "Inga jobb hittades i papperskorgen"
 
 #: autoload/async.php:18
 msgid "Search jobs"
-msgstr ""
+msgstr "Sök jobb"
 
 #: autoload/async.php:19 autoload/async.php:20 autoload/async.php:21
 msgid "Async Jobs"
-msgstr ""
+msgstr "Asynkrona jobb"
 
 #: autoload/async.php:50
 msgid "Pending"
-msgstr ""
+msgstr "Väntande"
 
 #: autoload/async.php:51
 msgid "Running"
-msgstr ""
+msgstr "Pågående"
 
 #: autoload/async.php:52
 msgid "Completed"
-msgstr ""
+msgstr "Slutförd"
 
 #: autoload/async.php:53
 msgid "Failed"
-msgstr ""
+msgstr "Misslyckad"
 
 #: autoload/async.php:192
 msgid "Every five minutes"
-msgstr ""
+msgstr "Var femte minut"
 
 #: autoload/async.php:299
 msgid "Runs"
-msgstr ""
+msgstr "Körningar"
 
 #: autoload/async.php:399 autoload/migrations.php:189
 msgid "Status"
@@ -187,23 +187,23 @@ msgstr "Status"
 
 #: autoload/async.php:401
 msgid "Number of runs"
-msgstr ""
+msgstr "Antal körningar"
 
 #: autoload/async.php:406
 msgid "Last run"
-msgstr ""
+msgstr "Senaste körning"
 
 #: autoload/async.php:443
 msgid "Incomplete Jobs"
-msgstr ""
+msgstr "Ofullständiga jobb"
 
 #: autoload/async.php:448
 msgid "Completed Jobs"
-msgstr ""
+msgstr "Slutförda jobb"
 
 #: autoload/async.php:452
 msgid "All Jobs"
-msgstr ""
+msgstr "Alla jobb"
 
 #: autoload/button-navigation.php:13
 msgctxt "Secondary navigation position"
@@ -212,11 +212,11 @@ msgstr "Under rubrik"
 
 #: autoload/buttons.php:32 autoload/buttons.php:59 autoload/buttons.php:86
 msgid "Hover"
-msgstr ""
+msgstr "Hover"
 
 #: autoload/buttons.php:43 autoload/buttons.php:70 autoload/buttons.php:97
 msgid "Hover contrasting"
-msgstr ""
+msgstr "Hover kontrasterande"
 
 #: autoload/custom-post-types.php:29
 msgid "Post type singular name"
@@ -248,11 +248,11 @@ msgstr "Widgetområde för relaterade sidor"
 
 #: autoload/custom-widgets.php:17
 msgid "Under hero sidebar"
-msgstr ""
+msgstr "Sidfält under hero"
 
 #: autoload/custom-widgets.php:18
 msgid "Widget area made for under hero"
-msgstr ""
+msgstr "Widgetområde skapat för under hero"
 
 #: autoload/editor-access.php:13
 msgid "Redirection"
@@ -567,29 +567,37 @@ msgid "Cards and list"
 msgstr "Kort och lista"
 
 #: autoload/mod-posts.php:81
-msgid "Välj taxonomier"
-msgstr ""
+msgid "Select taxonomies"
+msgstr "Välj taxonomier"
 
 #: autoload/mod-posts.php:208
 msgid "Display age notification on posts"
-msgstr ""
+msgstr "Visa åldersmeddelande på inlägg"
 
 #: autoload/mod-posts.php:220
 msgid ""
 "Whether to display an information notice on posts after X amount of days"
-msgstr ""
+msgstr "Om ett informationsmeddelande ska visas på inlägg efter X antal dagar"
 
 #: autoload/mod-posts.php:234
 msgid "Display the notice after this many days"
-msgstr ""
+msgstr "Visa meddelandet efter så här många dagar"
 
 #: autoload/mod-posts.php:263
 msgid "days"
-msgstr ""
+msgstr "dagar"
 
 #: autoload/mod-text.php:61
 msgid "Text box color"
 msgstr "Textrutans färg"
+
+#: autoload/mod-video.php:4
+msgid "Video URL or embed code"
+msgstr "Video-url eller inbäddningskod"
+
+#: autoload/mod-video.php:5
+msgid "Only supports YouTube URLs and MediaFlow embed codes"
+msgstr "Stöder endast YouTube-url:er och MediaFlow-inbäddningskoder"
 
 #: autoload/modularity.php:92
 msgid "No background"
