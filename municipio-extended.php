@@ -25,20 +25,24 @@ define(
   plugin_basename(dirname(__FILE__)) . "/languages",
 );
 
-add_action("init", function () {
-  if (MUNICIPIO_EXTENDED_IS_MU) {
-    load_muplugin_textdomain(
-      "municipio-extended",
-      MUNICIPIO_EXTENDED_LANGUAGES_PATH,
-    );
-  } else {
-    load_plugin_textdomain(
-      "municipio-extended",
-      false,
-      MUNICIPIO_EXTENDED_LANGUAGES_PATH,
-    );
-  }
-});
+add_action(
+  "init",
+  function () {
+    if (MUNICIPIO_EXTENDED_IS_MU) {
+      load_muplugin_textdomain(
+        "municipio-extended",
+        MUNICIPIO_EXTENDED_LANGUAGES_PATH,
+      );
+    } else {
+      load_plugin_textdomain(
+        "municipio-extended",
+        false,
+        MUNICIPIO_EXTENDED_LANGUAGES_PATH,
+      );
+    }
+  },
+  -10,
+);
 
 array_map(static function () {
   include_once func_get_args()[0];
