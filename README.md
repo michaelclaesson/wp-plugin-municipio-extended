@@ -1,6 +1,6 @@
 # Municipio Extended
 
-A WordPress plugin that adds more features to Municipio
+This plugin is part of [Municipio LTS](https://github.com/municipio-se/municipio-lts).
 
 ## Development
 
