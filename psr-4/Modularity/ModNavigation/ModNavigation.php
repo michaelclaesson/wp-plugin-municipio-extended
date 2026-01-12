@@ -149,6 +149,33 @@ class ModNavigation extends MxModule {
     if (!$post) {
       return [];
     }
+
+    // Check if we should use Nested Pages menu instead of page tree
+    $use_np = apply_filters(
+      "mx_mod_navigation_use_nested_pages",
+      false,
+      $post,
+      "children",
+      $this->slug,
+      $this->ID,
+    );
+    if ($use_np) {
+      $np_menu = get_option("nestedpages_menu");
+      if ($np_menu) {
+        $menu_items = wp_get_associated_nav_menu_items($post->ID);
+        $menu_items = array_filter($menu_items, function ($menu_item_id) use (
+          $np_menu,
+        ) {
+          return has_term($np_menu, "nav_menu", $menu_item_id);
+        });
+        if (!empty($menu_items)) {
+          $menu_item_id = reset($menu_items);
+          return self::getMenuItemsByMenu($np_menu, $depth, $menu_item_id);
+        }
+      }
+    }
+
+    // Use the regular page tree
     $args = [
       "post_parent" => $post->ID,
       "post_type" => $post->post_type,
@@ -192,6 +219,33 @@ class ModNavigation extends MxModule {
     if (!$post) {
       return [];
     }
+
+    // Check if we should use Nested Pages menu instead of page tree
+    $use_np = apply_filters(
+      "mx_mod_navigation_use_nested_pages",
+      false,
+      $post,
+      "siblings",
+      $this->slug,
+      $this->ID,
+    );
+    if ($use_np) {
+      $np_menu = get_option("nestedpages_menu");
+      if ($np_menu) {
+        $menu_items = wp_get_associated_nav_menu_items($post->ID);
+        $menu_items = array_filter($menu_items, function ($menu_item_id) use (
+          $np_menu,
+        ) {
+          return has_term($np_menu, "nav_menu", $menu_item_id);
+        });
+        if (!empty($menu_items)) {
+          $menu_item_id = reset($menu_items);
+          return self::getMenuItemsByMenu($np_menu, 1, $menu_item_id);
+        }
+      }
+    }
+
+    // Use the regular page tree
     $args = [
       "post_parent" => $post->post_parent,
       "post_type" => $post->post_type,
@@ -229,16 +283,11 @@ class ModNavigation extends MxModule {
     return $items;
   }
 
-  protected function getMenuItems($depth = 1, $post_parent = 0) {
-    if ($depth <= 0) {
-      return null;
-    }
-
-    $menu_slug = $this->getField("mod_navigation_menu");
-    if (empty($menu_slug)) {
-      return [];
-    }
-
+  public static function getMenuItemsByMenu(
+    $menu_slug,
+    $depth = 1,
+    $post_parent = 0,
+  ) {
     $menu_items = wp_get_nav_menu_items($menu_slug);
     $menu_items = array_filter($menu_items, function ($item) use (
       $post_parent,
@@ -249,7 +298,7 @@ class ModNavigation extends MxModule {
       return [];
     }
 
-    return array_map(function (\WP_Post $item) use ($depth) {
+    return array_map(function (\WP_Post $item) use ($menu_slug, $depth) {
       $item = mx_get_menu_item($item);
       return [
         "id" => $item->id,
@@ -259,9 +308,26 @@ class ModNavigation extends MxModule {
         "icon" => $item->icon,
         "color" => $item->ownThemeColor,
         "description" => $item->description ?: $item->menuDescription,
-        "children" => $this->getMenuItems($depth - 1, $item->ID),
+        "children" => self::getMenuItemsByMenu(
+          $menu_slug,
+          $depth - 1,
+          $item->ID,
+        ),
       ];
     }, $menu_items);
+  }
+
+  protected function getMenuItems($depth = 1, $post_parent = 0) {
+    if ($depth <= 0) {
+      return null;
+    }
+
+    $menu_slug = $this->getField("mod_navigation_menu");
+    if (empty($menu_slug)) {
+      return [];
+    }
+
+    return self::getMenuItemsByMenu($menu_slug, $post_parent, $depth);
   }
 
   protected function getManualItems() {
