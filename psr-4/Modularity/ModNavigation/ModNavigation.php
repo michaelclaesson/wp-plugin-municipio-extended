@@ -168,9 +168,11 @@ class ModNavigation extends MxModule {
         ) {
           return has_term($np_menu, "nav_menu", $menu_item_id);
         });
-        if (!empty($menu_items)) {
-          $menu_item_id = reset($menu_items);
-          return self::getMenuItemsByMenu($np_menu, $depth, $menu_item_id);
+        foreach ($menu_items as $menu_item_id) {
+          $items = self::getMenuItemsByMenu($np_menu, $depth, $menu_item_id);
+          if (!empty($items)) {
+            return $items;
+          }
         }
       }
     }
@@ -238,9 +240,11 @@ class ModNavigation extends MxModule {
         ) {
           return has_term($np_menu, "nav_menu", $menu_item_id);
         });
-        if (!empty($menu_items)) {
-          $menu_item_id = reset($menu_items);
-          return self::getMenuItemsByMenu($np_menu, 1, $menu_item_id);
+        foreach ($menu_items as $menu_item_id) {
+          $items = self::getMenuItemsByMenu($np_menu, 1, $menu_item_id);
+          if (!empty($items)) {
+            return $items;
+          }
         }
       }
     }
