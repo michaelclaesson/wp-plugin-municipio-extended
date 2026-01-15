@@ -331,7 +331,7 @@ class ModNavigation extends MxModule {
       return [];
     }
 
-    return self::getMenuItemsByMenu($menu_slug, $post_parent, $depth);
+    return self::getMenuItemsByMenu($menu_slug, $depth, $post_parent);
   }
 
   protected function getManualItems() {
