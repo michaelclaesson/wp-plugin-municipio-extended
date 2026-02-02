@@ -15,23 +15,63 @@ function is_custom_404() {
 }
 
 add_action(
+  "parse_request",
+  function ($wp) {
+    if (is_admin() || is_feed()) {
+      return;
+    }
+
+    $request_path = trim((string) ($wp->request ?? ""), "/");
+    if ($request_path === "") {
+      return;
+    }
+
+    if (!empty($wp->matched_rule)) {
+      return;
+    }
+
+    $posts_archive_path = trim(
+      (string) parse_url(get_post_type_archive_link("post"), PHP_URL_PATH),
+      "/",
+    );
+
+    if ($posts_archive_path !== "" && $request_path === $posts_archive_path) {
+      return;
+    }
+
+    $page = get_page_by_path($request_path);
+    if ($page) {
+      return;
+    }
+
+    $wp->query_vars["error"] = "404";
+  },
+  11,
+  1,
+);
+
+add_action(
   "wp",
   function () {
+    global $wp_query;
     if (is_404()) {
       $custom_404_page = mx_get_custom_404_page();
       if ($custom_404_page) {
         // Reset query flags so that WordPress treats this as a regular page.
-        global $wp_query, $post;
+        global $post;
 
+        $post = $custom_404_page;
         $wp_query->is_404 = false;
         $wp_query->is_front_page = false;
+        $wp_query->is_home = false;
         $wp_query->is_page = true;
         $wp_query->is_singular = true;
+        $wp_query->queried_object = $post;
         $wp_query->queried_object_id = $post->ID;
         $wp_query->post_count = 1;
         $wp_query->current_post = -1;
         $wp_query->posts = [$post];
-        $post = $custom_404_page;
+        $wp_query->post = $post;
 
         setup_postdata($post);
       }
