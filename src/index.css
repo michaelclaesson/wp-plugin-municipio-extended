@@ -734,3 +734,33 @@ body {
       calc(var(--drop-shadow-amount) * 0.6em) var(--drop-shadow-color);
   }
 }
+
+.gallery {
+  display: grid;
+  gap: var(--base, 1rem);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      calc(600px / var(--wp-gallery-column-count, 1) - var(--base, 1rem)),
+      1fr
+    )
+  );
+}
+.gallery.gallery-columns-1 {
+  --wp-gallery-column-count: 1;
+}
+.gallery.gallery-columns-2 {
+  --wp-gallery-column-count: 2;
+}
+.gallery.gallery-columns-3 {
+  --wp-gallery-column-count: 3;
+}
+.gallery.gallery-columns-4 {
+  --wp-gallery-column-count: 4;
+}
+.gallery.gallery-columns-5 {
+  --wp-gallery-column-count: 5;
+}
+.gallery.gallery-columns-6 {
+  --wp-gallery-column-count: 6;
+}
