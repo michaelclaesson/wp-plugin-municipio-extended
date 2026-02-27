@@ -147,6 +147,7 @@ add_filter("admin_init", function () {
     }
     // Clean up admin menu and submenus
     $allowedMenuItems = [
+      "index.php",
       // Posts
       "edit.php",
       "post-new.php",
