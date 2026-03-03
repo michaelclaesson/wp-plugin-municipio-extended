@@ -14,11 +14,13 @@ add_action("admin_init", function () {
   );
 
   // Enqueue material symbols font from Municipio theme (using same cache busting as other assets)
-  add_editor_style(
-    get_template_directory_uri() .
-      ASSETS_DIST_PATH .
-      MunicipioCacheBust::name("fonts/material-symbols.css"),
-  );
+  if (defined("ASSETS_DIST_PATH")) {
+    add_editor_style(
+      get_template_directory_uri() .
+        ASSETS_DIST_PATH .
+        MunicipioCacheBust::name("fonts/material-symbols.css"),
+    );
+  }
 
   // Enqueue our fixes
   add_editor_style(MUNICIPIO_EXTENDED_URL . "/dist/assets/editor.css");
