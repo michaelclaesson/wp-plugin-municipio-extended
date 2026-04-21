@@ -489,7 +489,30 @@ function mx_search_ajax_handler() {
 
     wp_send_json($results);
   } catch (Exception $e) {
-    // mx_error_log($e->getMessage());
+    /**
+     * Whether to enable search error logging. Opt-in, disabled by default.
+     * @param bool $enabled
+     */
+    if (apply_filters("mx_search_error_logging_enabled", false)) {
+      /**
+       * The path to write search error logs to.
+       * Defaults to the standard WordPress debug log location.
+       * @param string $log_path
+       */
+      $log_path = apply_filters(
+        "mx_search_error_log_path",
+        WP_CONTENT_DIR . "/debug.log",
+      );
+      error_log(
+        "[" . date("Y-m-d H:i:s") . "]" .
+          " site=" . home_url() .
+          " query=" . ($data["s"] ?? "(unknown)") .
+          " error=" . $e->getMessage() .
+          " in " . $e->getFile() . " on line " . $e->getLine() . PHP_EOL,
+        3,
+        $log_path,
+      );
+    }
     return wp_send_json([
       "success" => false,
       "error" => "An error occurred while searching.",
