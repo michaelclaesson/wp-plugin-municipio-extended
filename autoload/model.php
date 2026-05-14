@@ -91,11 +91,7 @@ function mx_date($value, ...$args) {
     return $value;
   }
   if (is_string($value)) {
-    $timezone = function_exists("wp_timezone")
-      ? wp_timezone()
-      : new DateTimeZone(wp_timezone_string() ?: "UTC");
-    $date = date_create_immutable($value, $timezone);
-    $value = $date ? $date->getTimestamp() : strtotime($value);
+    $value = strtotime($value);
   }
   return mx_get_model("Date", $value, ...$args);
 }
